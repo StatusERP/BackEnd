@@ -9,5 +9,7 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
     public class Pais:EntityBase
     {
         public int MyProperty { get; set; }
+
+        public string Conjunto { get; set; }
     }
 }
