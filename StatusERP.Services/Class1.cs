@@ -1,4 +1,4 @@
-﻿namespace StatusERP.DataAccess
+﻿namespace StatusERP.Services
 {
     public class Class1
     {

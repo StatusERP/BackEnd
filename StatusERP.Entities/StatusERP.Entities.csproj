@@ -6,4 +6,20 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="AS\Consultas\" />
+    <Folder Include="AS\Tablas\" />
+    <Folder Include="CB\Consultas\" />
+    <Folder Include="CB\Tablas\" />
+    <Folder Include="CC\Consultas\" />
+    <Folder Include="CC\Tablas\" />
+    <Folder Include="CI\Consultas\" />
+    <Folder Include="CI\Tablas\" />
+    <Folder Include="CP\Consultas\" />
+    <Folder Include="CP\Tablas\" />
+    <Folder Include="ERPADMIN\Consultas\" />
+    <Folder Include="FA\Consultas\" />
+    <Folder Include="FA\Tablas\" />
+  </ItemGroup>
+
 </Project>

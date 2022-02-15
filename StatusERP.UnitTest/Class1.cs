@@ -1,4 +1,4 @@
-﻿namespace StatusERP.Entities
+﻿namespace StatusERP.UnitTest
 {
     public class Class1
     {

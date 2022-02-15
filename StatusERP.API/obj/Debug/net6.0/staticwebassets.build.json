@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "J780BAsD3BZaxoz62WAefxuz8RWdlxtMMdk3dTlMcks=",
+  "Source": "StatusERP.API",
+  "BasePath": "_content/StatusERP.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
