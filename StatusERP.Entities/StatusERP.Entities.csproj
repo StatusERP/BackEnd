@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="AS\Consultas\" />
-    <Folder Include="AS\Tablas\" />
     <Folder Include="CB\Consultas\" />
     <Folder Include="CB\Tablas\" />
     <Folder Include="CC\Consultas\" />
