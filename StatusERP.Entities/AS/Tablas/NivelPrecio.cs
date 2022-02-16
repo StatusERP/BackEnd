@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StatusERP.Entities.ERPADMIN.Tablas;
 
-namespace StatusERP.Entities.ERPADMIN.Tablas
+namespace StatusERP.Entities.AS.Tablas
 {
-    internal class NivelPrecio:EntityBase
+    public class NivelPrecio:EntityBase
     {
         public int ConjuntoId { get; set; }
+        public Conjunto Conjunto { get; set; }
     }
 }

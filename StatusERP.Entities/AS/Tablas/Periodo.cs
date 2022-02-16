@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StatusERP.Entities.ERPADMIN.Tablas;
 
-namespace StatusERP.Entities.ERPADMIN.Tablas
+namespace StatusERP.Entities.AS.Tablas
 {
-    internal class Periodo:EntityBase
+    public class Periodo:EntityBase
     {
-        public int MConjuntoId { get; set; }
+        public int ConjuntoId { get; set; }
+        public Conjunto Conjunto { get; set; }
     }
 }

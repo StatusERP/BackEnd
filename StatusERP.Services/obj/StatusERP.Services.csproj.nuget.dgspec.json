@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {}
+    "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {}
   },
   "projects": {
-    "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {
+    "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
+        "projectUniqueName": "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
         "projectName": "StatusERP.Services",
-        "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
+        "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\StatusERP\\StatusERP.Services\\obj\\",
+        "outputPath": "C:\\Proyectos\\StatusERP\\StatusERP.Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
