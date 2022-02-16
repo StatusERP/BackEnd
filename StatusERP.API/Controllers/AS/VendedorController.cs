@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess;
 using StatusERP.Dto.Request.AS;
+using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.API.Controllers.AS
@@ -18,18 +19,50 @@ namespace StatusERP.API.Controllers.AS
             _context = context;
         }
         [HttpGet]   
-        public async Task< ActionResult<ICollection<Vendedor>>> Get()
+        public async Task< ActionResult<BaseResponseGeneric< ICollection<Vendedor>>>> Get()
         {
-            return Ok(await _context.Vendedores.ToListAsync());
+            var response = new BaseResponseGeneric<ICollection<Vendedor>>();
+            try
+            {
+               
+                response.Result = await _context.Vendedores.ToListAsync();
+                response.Success = true;
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                response.Errors.Add(ex.Message);
+                return response;
+            }
+
+            
         }
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Vendedor>> Get(int id)
+        public async Task<ActionResult<BaseResponseGeneric <Vendedor>>> Get(int id)
         {
-            var entity= await _context.Vendedores.FindAsync(id);
-            if (entity == null) return NotFound();
+            var response = new BaseResponseGeneric<Vendedor>();
+            try
+            {
+                var entity = await _context.Vendedores.FindAsync(id);
+                if (entity == null)
+                {
+                    response.Errors.Add("No se Encontro el Vendedor");
+                    return NotFound(response);
+                };
+
+                response.Result = entity;
+                response.Success = true;    
+
+            }
+            catch (Exception ex)
+            {
+
+                response.Errors.Add(ex.Message);
+            }
+          
 
 
-            return Ok(entity);
+            return Ok(response);
         }
         [HttpPost]
         public async Task<ActionResult> Post(DtoVendedor request)
@@ -44,9 +77,7 @@ namespace StatusERP.API.Controllers.AS
                 Updateby = "SA",
                 CreateDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
-                Createby = "SA"
-               
-               
+                Createby = "SA",
                 
             };
             _context.Vendedores.Add(entity);
