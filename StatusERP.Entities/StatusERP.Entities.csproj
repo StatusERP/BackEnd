@@ -12,7 +12,6 @@
     <Folder Include="CC\Consultas\" />
     <Folder Include="CI\Consultas\" />
     <Folder Include="CP\Consultas\" />
-    <Folder Include="CP\Tablas\" />
     <Folder Include="ERPADMIN\Consultas\" />
     <Folder Include="FA\Consultas\" />
     <Folder Include="FA\Tablas\" />
