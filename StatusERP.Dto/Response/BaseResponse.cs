@@ -10,14 +10,14 @@ namespace StatusERP.Dto.Response
     {
 
         public bool Success { get; set; }
-        public bool IsDeleted { get; set; }
+        //public bool IsDeleted { get; set; }
         
-        public string Createby { get; set; }
-        public DateTime CreateDate { get; set; }
+        //public string Createby { get; set; }
+        //public DateTime CreateDate { get; set; }
         
-        public string Updateby { get; set; }
+        //public string Updateby { get; set; }
 
-        public DateTime UpdateDate { get; set; }
+        //public DateTime UpdateDate { get; set; }
 
         public ICollection<string> Errors { get; set; }
         public BaseResponse()
