@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StatusERP.Entities.ERPADMIN.Tablas;
 
-namespace StatusERP.Entities.ERPADMIN.Tablas
+namespace StatusERP.Entities.CB.Tablas
 {
-    internal class TipoCuentaBanco:EntryPointNotFoundException
+    public class TipoCuentaBanco:EntityBase
     {
         public int ConjuntoId { get; set; }
+        public Conjunto Conjunto { get; set; }
     }
 }
