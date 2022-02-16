@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -15,5 +16,6 @@ namespace StatusERP.DataAccess
 
         }
         public DbSet<Conjunto> Conjuntos { get; set; }
+        public DbSet<Vendedor> Vendedores { get; set; } 
     }
 }
