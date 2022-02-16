@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4175968e-df5a-4f0f-b24d-bc5d5453f5bd": {
+      "ProjectGuid": "4175968e-df5a-4f0f-b24d-bc5d5453f5bd",
+      "DisplayName": "StatusERP.Entities",
+      "ColorIndex": 0
+    },
+    "1de475cd-56fb-4770-a34c-4287b4dc0071": {
+      "ProjectGuid": "1de475cd-56fb-4770-a34c-4287b4dc0071",
+      "DisplayName": "StatusERP.DataAccess",
+      "ColorIndex": 1
+    },
+    "18205561-0e6b-4b0f-a3ce-d2788bf100a2": {
+      "ProjectGuid": "18205561-0e6b-4b0f-a3ce-d2788bf100a2",
+      "DisplayName": "StatusERP.API",
+      "ColorIndex": 2
+    },
+    "ac1b7ebc-a78f-43d6-8a9c-e1b09d12f021": {
+      "ProjectGuid": "ac1b7ebc-a78f-43d6-8a9c-e1b09d12f021",
+      "DisplayName": "StatusERP.Dto",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

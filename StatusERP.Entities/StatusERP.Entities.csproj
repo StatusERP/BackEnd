@@ -10,10 +10,15 @@
     <Folder Include="AS\Consultas\" />
     <Folder Include="CB\Consultas\" />
     <Folder Include="CC\Consultas\" />
+    <Folder Include="CG\Consultas\" />
+    <Folder Include="CG\Tablas\" />
     <Folder Include="CI\Consultas\" />
     <Folder Include="CP\Consultas\" />
     <Folder Include="ERPADMIN\Consultas\" />
     <Folder Include="FA\Consultas\" />
+    <Folder Include="FC\Consultas\" />
+    <Folder Include="FC\Tablas\" />
+    <Folder Include="NewFolder\" />
   </ItemGroup>
 
 </Project>
