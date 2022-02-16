@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace StatusERP.Entities.ERPADMIN.Tablas
 {
-    public class Pais:EntityBase
+    internal class RetencionesDocCC:EntityBase
     {
-        public int MyProperty { get; set; }
-
-        public string Conjunto { get; set; }
+        public int ConjuntoId { get; set; }
     }
 }

@@ -9,9 +9,7 @@
   <ItemGroup>
     <Folder Include="AS\Consultas\" />
     <Folder Include="CB\Consultas\" />
-    <Folder Include="CB\Tablas\" />
     <Folder Include="CC\Consultas\" />
-    <Folder Include="CC\Tablas\" />
     <Folder Include="CI\Consultas\" />
     <Folder Include="CI\Tablas\" />
     <Folder Include="CP\Consultas\" />
