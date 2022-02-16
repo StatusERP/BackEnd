@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C1T9/DQXXruaun78sEaQnWSSp+C0r9bl7U3Grewuhz5w2dhYajI7RwPBicUQP3XjuaEzyXv3FZHz5arKk5aPTA==",
+  "dgSpecHash": "1xcPO2acMhz3hHFu2h2EZFl8aV+fFWjotDkWis1Vq/dh7fN58DZnKX76Tsf+u+lAwPsUBc3ZIfv15idcxZelvw==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
+  "projectFilePath": "C:\\Dev\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
