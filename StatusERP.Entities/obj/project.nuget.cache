@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ded1SAcKZ5YRhVgXbZNWjVmEv5fqQZ3bnQvuhviCjdotuFh2SWjI7pTYosuSERsa1J/4wk1hg2TXwkFece+7dA==",
+  "dgSpecHash": "n+fl06wxf1+YbyeFvJuNEnYdu0IfrOyBclHY2IirpBtAIKACIn7eB7QHh6dxLH4nFbYdsWfo93ClEIRF2IEXNQ==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
+  "projectFilePath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

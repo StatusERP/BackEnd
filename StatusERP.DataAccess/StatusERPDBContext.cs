@@ -17,5 +17,7 @@ namespace StatusERP.DataAccess
         }
         public DbSet<Conjunto> Conjuntos { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; } 
+     
+        public DbSet<Bodega> Bodega { get; set; }
     }
 }
