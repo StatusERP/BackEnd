@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "/bD6vJadbZIkghPuCyfkUQ8Igi1Cwjx43MuycEFz93I3hZkEs9+5yGcD2NsQDY1VoODMAxK6sPe4McoVT/p3sw==",
   "success": true,
   "projectFilePath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+=======
+  "dgSpecHash": "8SLS5J11tBGLNkK47shnrygEdyEYqfDiwPGoYN+GbXRXUswOw5ffR3UPdRLbJ/rri3D4O/XRX/new7Ht+KitKg==",
+  "success": true,
+  "projectFilePath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+>>>>>>> 5f21d832845050a3bc117c50a56fa57510601943
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
