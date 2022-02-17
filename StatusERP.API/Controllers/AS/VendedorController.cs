@@ -19,23 +19,37 @@ namespace StatusERP.API.Controllers.AS
             _context = context;
         }
         [HttpGet]   
-        public async Task< ActionResult<BaseResponseGeneric< ICollection<Vendedor>>>> Get()
+        //filter =""
+        //page =1||2
+        //rows =10||10
+        public async Task< ActionResult<BaseResponseGeneric< ICollection<Vendedor>>>> Get(
+            string? filter,
+            int page,
+            int rows ,
+            int conjunto)
         {
-            var response = new BaseResponseGeneric<ICollection<Vendedor>>();
+
+            var response = new BaseResponseGeneric< ICollection<Vendedor>>();
+
             try
             {
-               
-                response.Result = await _context.Vendedores.ToListAsync();
+                var query = await _context.Set<Vendedor>()
+                .Where(p => p.Nombre.Contains(filter) && p.Activo && p.ConjuntoId.Equals(conjunto))
+                .OrderBy(p => p.Nombre)
+                .Skip((page - 1) * rows)
+                .Take(rows)
+                .ToListAsync();
+                response.Result = query;
                 response.Success = true;
-                return Ok(response);
             }
             catch (Exception ex)
             {
-                response.Errors.Add(ex.Message);
-                return response;
-            }
 
-            
+               response.Errors.Add(ex.Message);
+            }
+           
+            return Ok(response);
+
         }
         [HttpGet("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric <Vendedor>>> Get(int id)
