@@ -88,10 +88,10 @@ namespace StatusERP.API.Controllers.AS
                 Email=request.Email,
                 Activo=true,
                 ConjuntoId =request.ConjutoId,
-                Updateby = "SA",
+                Updatedby = "SA",
                 CreateDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
-                Createby = "SA",
+                Createdby = "SA",
                 
             };
             _context.Vendedores.Add(entity);
