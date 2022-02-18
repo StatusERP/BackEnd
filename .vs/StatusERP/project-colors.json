@@ -15,7 +15,17 @@
       "ProjectGuid": "18205561-0e6b-4b0f-a3ce-d2788bf100a2",
       "DisplayName": "StatusERP.API",
       "ColorIndex": 2
+    },
+    "1de475cd-56fb-4770-a34c-4287b4dc0071": {
+      "ProjectGuid": "1de475cd-56fb-4770-a34c-4287b4dc0071",
+      "DisplayName": "StatusERP.DataAccess",
+      "ColorIndex": 3
+    },
+    "d3a8ef0a-ef36-4024-9965-87fa76c1cdeb": {
+      "ProjectGuid": "d3a8ef0a-ef36-4024-9965-87fa76c1cdeb",
+      "DisplayName": "StatusERP.Services",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 5
 }

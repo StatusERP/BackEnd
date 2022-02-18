@@ -4,6 +4,7 @@ using StatusERP.DataAccess;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
+using StatusERP.Services.Interfaces.AS;
 
 namespace StatusERP.API.Controllers.AS
 {
@@ -12,11 +13,11 @@ namespace StatusERP.API.Controllers.AS
 
     public class VendedorController:ControllerBase
     {
-        private readonly StatusERPDBContext _context;
+        private readonly IVendedorService _service;
 
-        public VendedorController(StatusERPDBContext context)
+        public VendedorController(IVendedorService service)
         {
-            _context = context;
+            _service = service;
         }
         [HttpGet]   
         //filter =""
@@ -28,105 +29,36 @@ namespace StatusERP.API.Controllers.AS
             int conjunto)
         {
 
-            var response = new BaseResponseGeneric< ICollection<Vendedor>>();
-
-            try
-            {
-                var query = await _context.Set<Vendedor>()
-                .Where(p => p.ConjuntoId.Equals(conjunto))
-                .OrderBy(p => p.Nombre)
-                .Skip((page - 1) * rows)
-                .Take(rows)
-                .ToListAsync();
-                response.Result = query;
-                response.Success = true;
-            }
-            catch (Exception ex)
-            {
-
-               response.Errors.Add(ex.Message);
-            }
-           
-            return Ok(response);
+            return Ok(await _service.GetAsync(conjunto, page, rows));
 
         }
         [HttpGet("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric <Vendedor>>> Get(int id)
         {
-            var response = new BaseResponseGeneric<Vendedor>();
-            try
-            {
-                var entity = await _context.Vendedores.FindAsync(id);
-                if (entity == null)
-                {
-                    response.Errors.Add("No se Encontro el Vendedor");
-                    return NotFound(response);
-                };
-
-                response.Result = entity;
-                response.Success = true;    
-
-            }
-            catch (Exception ex)
-            {
-
-                response.Errors.Add(ex.Message);
-            }
-          
-
-
-            return Ok(response);
+                       return Ok(await _service.GetByIdAsync(id));
         }
         [HttpPost]
         public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoVendedor request)
         {
-            var response =new BaseResponseGeneric<int>();
-            var entity = new Vendedor
-            {
-                CodVendedor = request.CodVendedor,
-                Nombre = request.Nombre,
-                Email=request.Email,
-                Activo=true,
-                ConjuntoId =request.ConjutoId,
-                Updatedby = "SA",
-                CreateDate = DateTime.Now,
-                UpdateDate = DateTime.Now,
-                Createdby = "SA",
-                
-            };
-            _context.Vendedores.Add(entity);
-           response.Success=  await _context.SaveChangesAsync() > 0;
+            var response = await _service.CreateAsync(request);
 
-            HttpContext.Response.Headers.Add("location", $"/api/AS/vendedor/{entity.Id}");
-            return Ok();
+            HttpContext.Response.Headers.Add("location", $"/api/AS/vendedor/{response.Result}");
+            return Ok(response);
         }
 
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, DtoVendedor request)
         {
-            var entity = await _context.Vendedores.FindAsync(id);
-            if(entity == null) return NotFound();
-            entity.Nombre = request.Nombre;
-            entity.Email = request.Email;
-            entity.ConjuntoId = request.ConjutoId;
-            entity.CodVendedor=request.CodVendedor;
-            _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return Ok(new {Id=id});
+            var response =await _service.UpdateAsync(id, request);
+            return Ok(new {response});
         }
         
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
         {
-            var response = new BaseResponseGeneric<int>
-            {
-                Result=id
-            };
-            var entity = await _context.Vendedores.FindAsync(id);
-            if (entity == null) return NotFound();
-            _context.Entry(entity).State= EntityState.Deleted;
-            response.Success = await _context.SaveChangesAsync() >0;
+            var response = await _service.DeleteAsync(id);
             return Ok(response);
+           
         }
     }
 }

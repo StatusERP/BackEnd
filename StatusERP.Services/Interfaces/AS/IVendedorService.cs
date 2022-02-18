@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS
 {
     public interface IVendedorService
     {
-        Task<BaseResponseGeneric<ICollection<Vendedor>>> GetAsync(int conjunto);
+        Task<BaseResponseGeneric<ICollection<Vendedor>>> GetAsync(int conjunto, int page, int rows);
         Task<BaseResponseGeneric<Vendedor>> GetByIdAsync(int id);
 
         Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request);

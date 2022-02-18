@@ -20,6 +20,7 @@
     <ProjectReference Include="..\StatusERP.DataAccess\StatusERP.DataAccess.csproj" />
     <ProjectReference Include="..\StatusERP.Dto\StatusERP.Dto.csproj" />
     <ProjectReference Include="..\StatusERP.Entities\StatusERP.Entities.csproj" />
+    <ProjectReference Include="..\StatusERP.Services\StatusERP.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
