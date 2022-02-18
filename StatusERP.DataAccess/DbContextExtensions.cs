@@ -27,14 +27,14 @@ namespace StatusERP.DataAccess
                 .AsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == id &&  !t.IsDeleted);
         }
-        public static async Task<int> InsertAsync<TEntitybase>(this DbContext context, TEntitybase entity)
-            where TEntitybase : EntityBase
+        public static async Task<int> InsertAsync<TEntityBase>(this DbContext context, TEntityBase entity)
+            where TEntityBase : EntityBase
         {
             bool success;
             try
             {
                 await context.Database.BeginTransactionAsync();
-                await context.Set<TEntitybase>().AddAsync(entity);
+                await context.Set<TEntityBase>().AddAsync(entity);
                 context.Entry(entity).State = EntityState.Added;
                 
                 success = await context.SaveChangesAsync() > 0;
@@ -51,22 +51,23 @@ namespace StatusERP.DataAccess
 
             return success ? entity.Id : 0;
         }
-        public static async Task UpdateAsync<TEntitybase>(this DbContext context, TEntitybase entity)
-            where TEntitybase : EntityBase
+        public static async Task UpdateAsync<TEntityBase>(this DbContext context, TEntityBase entity)
+            where TEntityBase : EntityBase
         {
-            var registro = await context.Set<TEntitybase>()
-                .AsNoTracking()
+            var registro = await context.Set<TEntityBase>()
+                ///.AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Id == entity.Id);
             if (registro == null) return;
             
-      //      context.Set<EntityBase>().Attach(entity);
+            context.Set<EntityBase>().Attach(registro);
             context.Entry(registro).State = EntityState.Modified;
+            
             await context.SaveChangesAsync();
         }
-        public static async Task DeleteAsync<TEntitybase>(this DbContext context, TEntitybase entity)
-           where TEntitybase : EntityBase
+        public static async Task DeleteAsync<TEntityBase>(this DbContext context, TEntityBase entity)
+           where TEntityBase : EntityBase
         {
-            var registro = await context.Set<TEntitybase>()
+            var registro = await context.Set<TEntityBase>()
                 .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Id == entity.Id);
             if (registro == null) return;
