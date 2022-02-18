@@ -21,6 +21,7 @@ namespace StatusERP.Entities
         public DateTime UpdateDate { get; set; }
 
         public int ConjuntoId { get; set; }
+        [System.Text.Json.Serialization.JsonIgnore]
         public Conjunto Conjunto { get; set; }
 
 

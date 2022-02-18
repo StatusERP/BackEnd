@@ -23,9 +23,8 @@ namespace StatusERP.API.Controllers.AS
         //page =1||2
         //rows =10||10
         public async Task< ActionResult<BaseResponseGeneric< ICollection<Vendedor>>>> Get(
-            string? filter,
             int page,
-            int rows ,
+            int rows,
             int conjunto)
         {
 
@@ -34,7 +33,7 @@ namespace StatusERP.API.Controllers.AS
             try
             {
                 var query = await _context.Set<Vendedor>()
-                .Where(p => p.Nombre.Contains(filter) && p.Activo && p.ConjuntoId.Equals(conjunto))
+                .Where(p => p.ConjuntoId.Equals(conjunto))
                 .OrderBy(p => p.Nombre)
                 .Skip((page - 1) * rows)
                 .Take(rows)
@@ -79,8 +78,9 @@ namespace StatusERP.API.Controllers.AS
             return Ok(response);
         }
         [HttpPost]
-        public async Task<ActionResult> Post(DtoVendedor request)
+        public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoVendedor request)
         {
+            var response =new BaseResponseGeneric<int>();
             var entity = new Vendedor
             {
                 CodVendedor = request.CodVendedor,
@@ -95,7 +95,7 @@ namespace StatusERP.API.Controllers.AS
                 
             };
             _context.Vendedores.Add(entity);
-            await _context.SaveChangesAsync();
+           response.Success=  await _context.SaveChangesAsync() > 0;
 
             HttpContext.Response.Headers.Add("location", $"/api/AS/vendedor/{entity.Id}");
             return Ok();
@@ -113,6 +113,20 @@ namespace StatusERP.API.Controllers.AS
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return Ok(new {Id=id});
+        }
+        
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
+        {
+            var response = new BaseResponseGeneric<int>
+            {
+                Result=id
+            };
+            var entity = await _context.Vendedores.FindAsync(id);
+            if (entity == null) return NotFound();
+            _context.Entry(entity).State= EntityState.Deleted;
+            response.Success = await _context.SaveChangesAsync() >0;
+            return Ok(response);
         }
     }
 }

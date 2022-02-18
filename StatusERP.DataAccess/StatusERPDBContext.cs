@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
-using System.Data.Entity;
+
 
 namespace StatusERP.DataAccess
 {
