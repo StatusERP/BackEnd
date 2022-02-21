@@ -1,4 +1,4 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using StatusERP.Entities.CG.Tablas;
 using System.ComponentModel.DataAnnotations;
 
 namespace StatusERP.Entities.AS.Tablas
@@ -15,9 +15,11 @@ namespace StatusERP.Entities.AS.Tablas
 
         [StringLength(25)]
         public string ? CtrVentas { get; set; }
+        public virtual CentroCosto CentroCosto { get; set; }
 
         [StringLength(25)]
         public string ? CtaVentas { get; set; }
+        public virtual CuentaContable CuentaContable { get; set; }
 
         [StringLength(25)]
         public string ? CtrDescGral { get; set; }

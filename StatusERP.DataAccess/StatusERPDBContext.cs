@@ -38,6 +38,14 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodCategoriaProveedor, "IxCategoriaProveedorId")
                 .IsUnique();
 
+            modelBuilder.Entity<CentroCosto>()
+                .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
+                .IsUnique();
+
+            modelBuilder.Entity<Cobrador>()
+                .HasIndex(p => p.CodCobrador, "IxCobradorId")
+                .IsUnique();
+
             modelBuilder.Entity<Vendedor>()
                 .HasIndex(p => p.CodVendedor, "IxVendedorId")
                 .IsUnique();
