@@ -7,6 +7,7 @@ namespace StatusERP.Entities.AS.Tablas
     {
         [Required]
         [StringLength(4)]
+
         public string CodBodega { get; set; }
 
         [Required]
