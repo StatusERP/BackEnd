@@ -2,6 +2,7 @@
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
+
 namespace StatusERP.DataAccess
 {
     public class StatusERPDBContext:DbContext
@@ -17,9 +18,11 @@ namespace StatusERP.DataAccess
         }
         public DbSet<Conjunto> Conjuntos { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; } 
+
      
         public DbSet<Bodega> Bodegas { get; set; }
 
         
+
     }
 }

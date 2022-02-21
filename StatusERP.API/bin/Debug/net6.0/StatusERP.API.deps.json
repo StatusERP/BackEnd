@@ -14,6 +14,7 @@
           "StatusERP.DataAccess": "1.0.0",
           "StatusERP.Dto": "1.0.0",
           "StatusERP.Entities": "1.0.0",
+          "StatusERP.Services": "1.0.0",
           "Swashbuckle.AspNetCore": "6.2.3"
         },
         "runtime": {
@@ -504,6 +505,18 @@
         "runtime": {
           "StatusERP.Entities.dll": {}
         }
+      },
+      "StatusERP.Services/1.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "6.0.0",
+          "Microsoft.Extensions.Options": "6.0.0",
+          "StatusERP.DataAccess": "1.0.0",
+          "StatusERP.Dto": "1.0.0",
+          "StatusERP.Entities": "1.0.0"
+        },
+        "runtime": {
+          "StatusERP.Services.dll": {}
+        }
       }
     }
   },
@@ -867,6 +880,11 @@
       "sha512": ""
     },
     "StatusERP.Entities/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "StatusERP.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
