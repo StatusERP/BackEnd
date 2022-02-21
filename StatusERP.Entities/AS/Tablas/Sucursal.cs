@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("Sucursales")]
     public class Sucursal:EntityBase
     {
         [Required]
