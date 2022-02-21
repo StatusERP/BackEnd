@@ -16,4 +16,15 @@
     <ProjectReference Include="..\StatusERP.Entities\StatusERP.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\CB\" />
+    <Folder Include="Repositories\CC\" />
+    <Folder Include="Repositories\CG\" />
+    <Folder Include="Repositories\CI\" />
+    <Folder Include="Repositories\CP\" />
+    <Folder Include="Repositories\ERPADMIN\" />
+    <Folder Include="Repositories\FA\" />
+    <Folder Include="Repositories\FC\" />
+  </ItemGroup>
+
 </Project>
