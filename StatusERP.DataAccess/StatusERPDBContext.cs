@@ -58,16 +58,24 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodConsecutivo, "IxConsecutivoUsuarioId")
                 .IsUnique();
 
+            modelBuilder.Entity<DocTributario>()
+                .HasIndex(p => p.CodDocTributario, "IxDocTributarioId")
+                .IsUnique();
+
             modelBuilder.Entity<EntidadFinanciera>()
                 .HasIndex(p => p.CodEntidadFinanciera, "IxEntidadFinancieraId")
+                .IsUnique();
+
+            modelBuilder.Entity<Impuesto>()
+                .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
                 .IsUnique();
 
             modelBuilder.Entity<Moneda>()
                 .HasIndex(p => p.CodMoneda, "IxMonedaId")
                 .IsUnique();
 
-            modelBuilder.Entity<Impuesto>()
-                .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
+            modelBuilder.Entity<NivelPrecio>()
+                .HasIndex(p => p.CodNivelPrecio, "IxNivelPrecioId")
                 .IsUnique();
 
             modelBuilder.Entity<Vendedor>()
