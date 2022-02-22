@@ -23,10 +23,10 @@ namespace StatusERP.Entities.AS.Tablas
 
         [StringLength(25)]
         public string ? CtrDescGral { get; set; }
-
+   
         [StringLength(25)]
         public string ? CtaDescGral { get; set; }
-
+ 
         [StringLength(25)]
         public string ? CtrCostVent { get; set; }
 
@@ -137,7 +137,7 @@ namespace StatusERP.Entities.AS.Tablas
 
         [StringLength(25)]
         public string ? CtrDescBonif { get; set; }
-
+ 
         [StringLength(25)]
         public string ? CtaDescBonif { get; set; }
 
