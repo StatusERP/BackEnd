@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4n1I6DeMeS3gJAlwwbd1ySubkfZRiHgCE8IxiD87/xCy8WdlJhNkeQqJT8W/tpk/SlRXdI/a/qy+C87aW6Rfew==",
+  "dgSpecHash": "zxGoflYCP4AG3osW/C3CmimN3c7G9wMWYh/uCz44zbYNDqOl1bG6IWDHxV0Q2pU15gHP5pSEwkR75l1gUtrC5Q==",
   "success": true,
-  "projectFilePath": "C:\\Dev\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
+  "projectFilePath": "C:\\Proyectos\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
@@ -54,5 +54,12 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Proyectos\\StatusERP\\StatusERP.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
