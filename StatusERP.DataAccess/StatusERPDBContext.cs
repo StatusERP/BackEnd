@@ -70,6 +70,10 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
                 .IsUnique();
 
+            modelBuilder.Entity<Localizacion>()
+                .Property(p => p.Volumen)
+                .HasPrecision(28, 8);
+
             modelBuilder.Entity<Moneda>()
                 .HasIndex(p => p.CodMoneda, "IxMonedaId")
                 .IsUnique();
@@ -78,13 +82,33 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodNivelPrecio, "IxNivelPrecioId")
                 .IsUnique();
 
+            modelBuilder.Entity<Pais>()
+                .HasIndex(p => p.CodPais, "IxPaisId")
+                .IsUnique();
+
+            modelBuilder.Entity<Ruta>()
+                .HasIndex(p => p.CodRuta, "IxRutaId")
+                .IsUnique();
+
+            modelBuilder.Entity<Sucursal>()
+                .HasIndex(p => p.CodSucursal, "IxSucursalId")
+                .IsUnique();
+
+            modelBuilder.Entity<TipoCambio>()
+                .HasIndex(p => p.CodTipoCambio, "IxTipoCambioId")
+                .IsUnique();
+
+            modelBuilder.Entity<UnidadMedida>()
+                .HasIndex(p => p.CodUnidadMedida, "IxUnidadMedidaId")
+                .IsUnique();
+
             modelBuilder.Entity<Vendedor>()
                 .HasIndex(p => p.CodVendedor, "IxVendedorId")
                 .IsUnique();
 
-            modelBuilder.Entity<Localizacion>()
-                .Property(p=>p.Volumen)
-                .HasPrecision(28,8);   
+            modelBuilder.Entity<Zona>()
+                .HasIndex(p => p.CodZona, "IxZonaId")
+                .IsUnique();
         }
         
     }
