@@ -28,7 +28,6 @@ namespace StatusERP.Entities.AS.Tablas
         public string ? Direccion { get; set; }
 
         public int ? SucursalId  { get; set; }
-
         public virtual Sucursal Sucursal { get; set; }
 
     }

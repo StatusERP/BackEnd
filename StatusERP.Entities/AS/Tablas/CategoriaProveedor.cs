@@ -36,7 +36,6 @@ namespace StatusERP.Entities.AS.Tablas
         [StringLength(25)]
         public string ? CtaDebitoCP { get; set; }
 
-
         [StringLength(25)]
         public string ? CtrProntoPagoCP { get; set; }
 
@@ -48,7 +47,6 @@ namespace StatusERP.Entities.AS.Tablas
 
         [StringLength(25)]
         public string ? CtaImpuesto1CP { get; set; }
-
 
         [StringLength(25)]
         public string ? CtrImpuesto2CP { get; set; }

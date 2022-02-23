@@ -1,10 +1,31 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace StatusERP.Entities.AS.Tablas
 {
     public class NivelPrecio:EntityBase
     {
-        public int ConjuntoId { get; set; }
-        public Conjunto Conjunto { get; set; }
+        [Required]
+        [StringLength(12)]
+        public string CodNivelPrecio { get; set; }
+
+        [Required]
+        [StringLength(1)]
+        public string Moneda { get; set; }
+
+        [StringLength(4)]
+        public string ? CondicionPago { get; set; }
+
+        [Required]
+        [StringLength(1)]
+        public string EsquemaTrabajo { get; set; }
+
+        [Required]
+        public bool Descuentos { get; set; }
+
+        [Required]
+        public bool SugerirDescuento { get; set; }
+
+        [Required]
+        public bool SincMovil { get; set; }
     }
 }
