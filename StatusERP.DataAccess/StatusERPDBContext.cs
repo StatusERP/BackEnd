@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 
 namespace StatusERP.DataAccess
 {
-    public class StatusERPDBContext : DbContext
+    public class StatusERPDBContext : IdentityDbContext<StatusERPUserIdentity>
     {
         public StatusERPDBContext()
         {
@@ -22,10 +23,10 @@ namespace StatusERP.DataAccess
       
         public DbSet<Bodega> Bodegas { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) 
-        { 
-            base.OnModelCreating (modelBuilder);
-            
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Bodega>()
                 .HasIndex(p => p.CodBodega, "IxBodegaId")
                 .IsUnique();
@@ -106,10 +107,24 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodVendedor, "IxVendedorId")
                 .IsUnique();
 
+<<<<<<< HEAD
             modelBuilder.Entity<Zona>()
                 .HasIndex(p => p.CodZona, "IxZonaId")
                 .IsUnique();
+=======
+            modelBuilder.Entity<Localizacion>()
+<<<<<<< HEAD
+                .Property(p => p.Volumen)
+                .HasPrecision(28, 8);
+
+
+
+=======
+                .Property(p=>p.Volumen)
+                .HasPrecision(28,8);   
+>>>>>>> 6f6e41b0ca0dd864f0dd627bc94646fc3dfc8848
+>>>>>>> b84361061a2f9cd2713a37eeebbc49f0d942114d
         }
-        
+
     }
 }

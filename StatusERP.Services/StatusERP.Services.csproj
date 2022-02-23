@@ -17,4 +17,14 @@
     <ProjectReference Include="..\StatusERP.Entities\StatusERP.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Implementations\CB\" />
+    <Folder Include="Implementations\CC\" />
+    <Folder Include="Implementations\CG\" />
+    <Folder Include="Implementations\CI\" />
+    <Folder Include="Implementations\CP\" />
+    <Folder Include="Implementations\ERPADMIN\" />
+    <Folder Include="Implementations\FA\" />
+  </ItemGroup>
+
 </Project>
