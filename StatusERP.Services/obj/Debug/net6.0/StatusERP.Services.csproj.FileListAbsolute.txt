@@ -29,3 +29,10 @@ C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.pdb
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.pdb
 C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.dll
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.dll
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.dll
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.pdb
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.pdb
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.pdb
+C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete

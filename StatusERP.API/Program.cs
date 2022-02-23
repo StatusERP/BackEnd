@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess;
 using StatusERP.DataAccess.Repositories.AS;
@@ -20,10 +21,27 @@ builder.Services.AddScoped<IVendedorService, VendedorService>();
 builder.Services.AddControllers();
 
 
-builder.Services.AddDbContext<StatusERPDBContext>(options =>
+builder.Services.AddSqlServer<StatusERPDBContext>(builder.Configuration.GetConnectionString("Default"));
+builder.Services.AddIdentity<StatusERPUserIdentity, IdentityRole>(setup =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default"));
-});
+    setup.Password.RequireNonAlphanumeric = false;
+    setup.Password.RequiredUniqueChars = 0;
+    setup.Password.RequireUppercase = false;
+    setup.Password.RequireLowercase = false;
+    setup.Password.RequireDigit = false;
+    setup.Password.RequiredLength = 8;
+    setup.Lockout = new LockoutOptions()
+    {
+        MaxFailedAccessAttempts = 2,
+        AllowedForNewUsers = false,
+        DefaultLockoutTimeSpan = new TimeSpan(0, 0, 40)
+    };
+    setup.User.RequireUniqueEmail = true;
+    setup.SignIn.RequireConfirmedAccount = true;
+})
+.AddEntityFrameworkStores<StatusERPDBContext>()
+.AddDefaultTokenProviders();
+
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
@@ -34,6 +52,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthorization();
+app.UseAuthentication();
 
 app.MapControllers();
 app.Run();

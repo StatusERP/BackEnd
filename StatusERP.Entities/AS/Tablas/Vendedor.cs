@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace StatusERP.Entities.AS.Tablas
 {
     [Table("Vendedores")]
-    public class Vendedor : EntityBase
+    public class  Vendedor : EntityBase
     {
         
         [Column("Vendedor")]
