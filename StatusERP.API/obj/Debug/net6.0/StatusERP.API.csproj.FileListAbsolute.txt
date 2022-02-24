@@ -141,3 +141,8 @@ C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptograph
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Proyectos\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Proyectos\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Proyectos\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Proyectos\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Proyectos\StatusERP\StatusERP.API\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

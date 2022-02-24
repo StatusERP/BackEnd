@@ -2,7 +2,7 @@
 
 namespace StatusERP.Entities.AS.Tablas
 {
-    public class DocTributario
+    public class DocTributario:EntityBase
     {
         [Required]
         [StringLength(20)]
