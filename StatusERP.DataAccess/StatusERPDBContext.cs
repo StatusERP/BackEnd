@@ -105,6 +105,10 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodPais, "IxPaisId")
                 .IsUnique();
 
+            modelBuilder.Entity<PaqueteContable>()
+                .HasIndex(p => p.CodPaquete, "IxPaqueteId")
+                .IsUnique();
+
             //modelBuilder.Entity<Ruta>()
             //    .HasIndex(p => p.CodRuta, "IxRutaId")
             //    .IsUnique();
@@ -133,7 +137,7 @@ namespace StatusERP.DataAccess
             //    .IsUnique();
         }
 
-       
+
 
     }
 }
