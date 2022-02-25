@@ -1,10 +1,17 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace StatusERP.Entities.CG.Tablas
 {
     public class CentroCuenta:EntityBase
     {
-        public int ConjuntoId { get; set; }
-        public Conjunto Conjunto { get; set; }
+        [Required]
+        [StringLength(25)]
+        public string CentroCosto { get; set; }
+
+        [Required]
+        [StringLength(25)]
+        public string CuentaContable { get; set; }
+
+        public bool Activo { get; set; }
     }
 }

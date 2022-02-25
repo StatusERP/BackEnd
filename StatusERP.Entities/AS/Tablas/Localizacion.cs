@@ -25,7 +25,5 @@ namespace StatusERP.Entities.AS.Tablas
         [Required]
         [Column(TypeName = "decimal(28,8)")]
         public decimal PesoMaximo { get; set; }
-
-
     }
 }

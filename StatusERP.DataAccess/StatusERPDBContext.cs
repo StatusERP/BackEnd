@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
+using StatusERP.Entities.CG.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 
@@ -27,74 +28,116 @@ namespace StatusERP.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Bodega>()
-                .HasIndex(p => p.CodBodega, "IxBodegaId")
+            //modelBuilder.Entity<Bodega>()
+            //    .HasIndex(p => p.CodBodega, "IxBodegaId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<CategoriaCliente>()
+            //    .HasIndex(p => p.CodCategoriaCliente, "IxCategoriaClienteId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<CategoriaProveedor>()
+            //    .HasIndex(p => p.CodCategoriaProveedor, "IxCategoriaProveedorId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<CentroCosto>()
+            //    .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
+            //    .IsUnique();
+
+            modelBuilder.Entity<CentroCuenta>()
+               .HasKey(c => new { c.CentroCosto, c.CuentaContable });
+
+            //modelBuilder.Entity<Cobrador>()
+            //    .HasIndex(p => p.CodCobrador, "IxCobradorId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<CondicionPago>()
+            //    .HasIndex(p => p.CodCondicionPago, "IxCondicionPagoId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<ConsecutivoGlobal>()
+            //    .HasIndex(p => p.CodConsecutivoGlobal, "IxConsecutivoGlobalId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<ConsecutivoUsuario>()
+            //    .HasIndex(p => p.CodConsecutivo, "IxConsecutivoUsuarioId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<CuentaContable>()
+            //    .HasIndex(p => p.CodCuentaContable, "IxCuentaContableId")
+            //    .IsUnique();
+
+            modelBuilder.Entity<CuadreCG>()
+                .HasIndex(p => p.CodCuadreCG, "IxCuadreCGId")
                 .IsUnique();
 
-            modelBuilder.Entity<CategoriaCliente>()
-                .HasIndex(p => p.CodCategoriaCliente, "IxCategoriaClienteId")
+            modelBuilder.Entity<DiarioEnc>()
+                .HasIndex(p => p.Asiento, "IxAsientoId")
                 .IsUnique();
 
-            modelBuilder.Entity<CategoriaProveedor>()
-                .HasIndex(p => p.CodCategoriaProveedor, "IxCategoriaProveedorId")
+
+            //modelBuilder.Entity<DocTributario>()
+            //    .HasIndex(p => p.CodDocTributario, "IxDocTributarioId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<EntidadFinanciera>()
+            //    .HasIndex(p => p.CodEntidadFinanciera, "IxEntidadFinancieraId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<Impuesto>()
+            //    .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
+            //    .IsUnique();
+
+
+            modelBuilder.Entity<MayorEnc>()
+                .HasIndex(p => p.Asiento, "IxAsientoId")
                 .IsUnique();
 
-            modelBuilder.Entity<CentroCosto>()
-                .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
+            //modelBuilder.Entity<Moneda>()
+            //    .HasIndex(p => p.CodMoneda, "IxMonedaId")
+            //    .IsUnique();
+
+            //modelBuilder.Entity<NivelPrecio>()
+            //    .HasIndex(p => p.CodNivelPrecio, "IxNivelPrecioId")
+            //    .IsUnique();
+
+            modelBuilder.Entity<Pais>()
+                .HasIndex(p => p.CodPais, "IxPaisId")
                 .IsUnique();
 
-            modelBuilder.Entity<Cobrador>()
-                .HasIndex(p => p.CodCobrador, "IxCobradorId")
+            modelBuilder.Entity<PaqueteContable>()
+                .HasIndex(p => p.CodPaquete, "IxPaqueteId")
                 .IsUnique();
 
-            modelBuilder.Entity<CondicionPago>()
-                .HasIndex(p => p.CodCondicionPago, "IxCondicionPagoId")
-                .IsUnique();
+            //modelBuilder.Entity<Ruta>()
+            //    .HasIndex(p => p.CodRuta, "IxRutaId")
+            //    .IsUnique();
 
-            modelBuilder.Entity<ConsecutivoGlobal>()
-                .HasIndex(p => p.CodConsecutivoGlobal, "IxConsecutivoGlobalId")
-                .IsUnique();
+            //modelBuilder.Entity<Sucursal>()
+            //    .HasAlternateKey(p => p.CodSucursal)
+            //    .HasName("AKCodSucursal");
 
-            modelBuilder.Entity<ConsecutivoUsuario>()
-                .HasIndex(p => p.CodConsecutivo, "IxConsecutivoUsuarioId")
-                .IsUnique();
+            //modelBuilder.Entity<DivGeografica1>()
+            //   .HasKey(c => new { c.Pais, c.CodDivGeografica1 });
 
-            modelBuilder.Entity<DocTributario>()
-                .HasIndex(p => p.CodDocTributario, "IxDocTributarioId")
-                .IsUnique();
+            //modelBuilder.Entity<TipoCambio>()
+            //    .HasIndex(p => p.CodTipoCambio, "IxTipoCambioId")
+            //    .IsUnique();
 
-            modelBuilder.Entity<EntidadFinanciera>()
-                .HasIndex(p => p.CodEntidadFinanciera, "IxEntidadFinancieraId")
-                .IsUnique();
+            //modelBuilder.Entity<UnidadMedida>()
+            //    .HasIndex(p => p.CodUnidadMedida, "IxUnidadMedidaId")
+            //    .IsUnique();
 
-            modelBuilder.Entity<Impuesto>()
-                .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
-                .IsUnique();
+            //modelBuilder.Entity<Vendedor>()
+            //    .HasIndex(p => p.CodVendedor, "IxVendedorId")
+            //    .IsUnique();
 
-            modelBuilder.Entity<Moneda>()
-                .HasIndex(p => p.CodMoneda, "IxMonedaId")
-                .IsUnique();
-
-            modelBuilder.Entity<NivelPrecio>()
-                .HasIndex(p => p.CodNivelPrecio, "IxNivelPrecioId")
-                .IsUnique();
-
-            modelBuilder.Entity<Vendedor>()
-                .HasIndex(p => p.CodVendedor, "IxVendedorId")
-                .IsUnique();
-
-            modelBuilder.Entity<Localizacion>()
-<<<<<<< HEAD
-                .Property(p => p.Volumen)
-                .HasPrecision(28, 8);
-
-
-
-=======
-                .Property(p=>p.Volumen)
-                .HasPrecision(28,8);   
->>>>>>> 6f6e41b0ca0dd864f0dd627bc94646fc3dfc8848
+            //modelBuilder.Entity<Zona>()
+            //    .HasIndex(p => p.CodZona, "IxZonaId")
+            //    .IsUnique();
         }
+
+
 
     }
 }

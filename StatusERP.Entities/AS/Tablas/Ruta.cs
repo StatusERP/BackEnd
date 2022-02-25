@@ -1,10 +1,18 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace StatusERP.Entities.AS.Tablas
 {
     public class Ruta:EntityBase
     {
-        public int ConjuntoId { get; set; }
-        public Conjunto Conjunto { get; set; }
+        [Required]
+        [StringLength(4)]
+        public string CodRuta { get; set; }
+
+        [Required]
+        [StringLength(40)]
+        public string Descripcion { get; set; }
+
+        [Required]
+        public bool Activa { get; set; }
     }
 }

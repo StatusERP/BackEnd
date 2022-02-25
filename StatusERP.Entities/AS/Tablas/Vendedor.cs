@@ -8,7 +8,6 @@ namespace StatusERP.Entities.AS.Tablas
     [Table("Vendedores")]
     public class  Vendedor : EntityBase
     {
-        
         [Column("Vendedor")]
         [Required]
         [StringLength(4)]
@@ -22,8 +21,5 @@ namespace StatusERP.Entities.AS.Tablas
         public string ? Email { get; set; }
 
         public bool Activo { get; set; }
-        
-   
-
     }
 }
