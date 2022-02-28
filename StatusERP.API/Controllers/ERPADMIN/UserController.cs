@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using StatusERP.Dto.Request.ERPADMIN;
 using StatusERP.Dto.Response;
+using StatusERP.Dto.Response.ERPADMIN;
 using StatusERP.Services.Interfaces.ERPADMIN;
 
 namespace StatusERP.API.Controllers.ERPADMIN
@@ -15,6 +17,7 @@ namespace StatusERP.API.Controllers.ERPADMIN
         {
             this.service = service;
         }
+        [AllowAnonymous]
         [HttpPost]
         [ProducesResponseType(typeof(BaseResponseGeneric<string>),200)]
         [ProducesResponseType(typeof(BaseResponseGeneric<string>), 400)]
@@ -23,5 +26,16 @@ namespace StatusERP.API.Controllers.ERPADMIN
             var response = await service.RegisterAsync( request);
             return response.Success ? Ok(response) : BadRequest(response);
         }
+        [AllowAnonymous]
+        [HttpPost]
+        [ProducesResponseType(typeof(DtoLoginResponse),200)]
+        [ProducesResponseType(typeof(DtoLoginResponse), 403)]
+        public async Task<IActionResult> Login(DtoLogin resquest)
+        {
+            var response = await service.LoginAsync(resquest);
+            return response.Success ? Ok(response) : Unauthorized(response);
+        }
     }
+
+    
 }

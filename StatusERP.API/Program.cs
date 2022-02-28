@@ -1,11 +1,15 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using StatusERP.DataAccess;
 using StatusERP.DataAccess.Repositories.AS;
+using StatusERP.Entities;
 using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Implementations.ERPADMIN;
 using StatusERP.Services.Interfaces.AS;
 using StatusERP.Services.Interfaces.ERPADMIN;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +17,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.Configure<AppSettings>(builder.Configuration);
 
 //Registro la dependencia (Inyeccion de Dependencia)
 builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
@@ -43,6 +49,28 @@ builder.Services.AddIdentity<StatusERPUserIdentity, IdentityRole>(setup =>
 })
 .AddEntityFrameworkStores<StatusERPDBContext>()
 .AddDefaultTokenProviders();
+
+var key = Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("Jwt:Signinkey"));
+
+builder.Services.AddAuthorization();
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(x =>
+    {
+        x.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(key)
+        };
+    });
 
 
 var app = builder.Build();

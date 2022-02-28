@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
+using StatusERP.Entities;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
 
@@ -10,7 +12,7 @@ namespace StatusERP.API.Controllers.AS
 {
     [ApiController]
     [Route("api/AS/[controller]")]
-
+    //[Authorize(Roles=Constants.RoleAdministrador)]
     public class VendedorController:ControllerBase
     {
         private readonly IVendedorService _service;
