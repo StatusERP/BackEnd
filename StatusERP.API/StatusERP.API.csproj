@@ -24,7 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\ERPADMIN\" />
     <Folder Include="Controllers\FA\" />
     <Folder Include="Controllers\CC\" />
     <Folder Include="Controllers\CI\" />

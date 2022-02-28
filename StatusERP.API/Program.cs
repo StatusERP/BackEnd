@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess;
 using StatusERP.DataAccess.Repositories.AS;
 using StatusERP.Services.Implementations.AS;
+using StatusERP.Services.Implementations.ERPADMIN;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Services.Interfaces.ERPADMIN;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +17,7 @@ builder.Services.AddSwaggerGen();
 //Registro la dependencia (Inyeccion de Dependencia)
 builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
 builder.Services.AddScoped<IVendedorService, VendedorService>();
-
+builder.Services.AddScoped<IUserService, UserService>();
 
 
 builder.Services.AddControllers();
