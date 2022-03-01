@@ -50,6 +50,14 @@ namespace StatusERP.API.Controllers.ERPADMIN
         {
             return Ok(await service.ResetPassword(request));
         }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword(DtoChangePassword request)
+        {
+            return Ok(await service.ChangePassword(request));
+        }
+
+
     }
 
     

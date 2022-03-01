@@ -11,5 +11,6 @@ namespace StatusERP.Services.Interfaces.ERPADMIN
 
         Task<BaseResponseGeneric<string>> SendTokenToResetPasswordAsnc(DtoResetPasssword request);
         Task<BaseResponseGeneric<string>> ResetPassword(DtoConfirmReset request);
+        Task<BaseResponse> ChangePassword(DtoChangePassword request);
     }
 }

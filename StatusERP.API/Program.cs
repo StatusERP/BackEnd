@@ -46,9 +46,8 @@ builder.Services.AddIdentity<StatusERPUserIdentity, IdentityRole>(setup =>
     setup.Password.RequireLowercase = false;
     setup.Password.RequireDigit = false;
     setup.Password.RequiredLength = 8;
-    setup.Lockout = new LockoutOptions()
-    {
-        MaxFailedAccessAttempts = 2,
+    setup.Lockout = new LockoutOptions() {
+        MaxFailedAccessAttempts = 5,
         AllowedForNewUsers = false,
         DefaultLockoutTimeSpan = new TimeSpan(0, 0, 40)
     };

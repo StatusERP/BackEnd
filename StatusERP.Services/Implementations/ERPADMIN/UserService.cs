@@ -10,6 +10,8 @@ using StatusERP.Dto.Response.ERPADMIN;
 using StatusERP.Entities;
 using StatusERP.Services.Interfaces.ERPADMIN;
 using System.IdentityModel.Tokens.Jwt;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Claims;
 using System.Text;
 
@@ -157,6 +159,22 @@ namespace StatusERP.Services.Implementations.ERPADMIN
                 }
                 var token = await _userManager.GeneratePasswordResetTokenAsync(userIdentity);
                 //TODO: Enviar un correo electronico al usuario con el token generado
+
+                var mail = new MailMessage(
+                        new MailAddress(_options.Value.MailConfiguration.FromAddress,
+                        _options.Value.MailConfiguration.FromName),
+                        new MailAddress(userIdentity.Email));
+                mail.Subject = "Reseteo de Contrasena";
+                mail.Body = $"Se le envia su cuenta con el token generado , apuntelo\n<b>{token}</b>\n Que Tenga un buen dia";
+                mail.IsBodyHtml = true;
+                var smtpClient = new SmtpClient(_options.Value.MailConfiguration.SmtpServer,
+                    _options.Value.MailConfiguration.Port);
+                smtpClient.EnableSsl = true;
+                smtpClient.Credentials = new NetworkCredential(_options.Value.MailConfiguration.UserName,
+                    _options.Value.MailConfiguration.Password);
+                await smtpClient.SendMailAsync(mail);
+
+
                 response.Result = token;
                 response.Success = true;
 
@@ -196,6 +214,35 @@ namespace StatusERP.Services.Implementations.ERPADMIN
                 response.Errors.Add(ex.Message);
 
             }
+            return response;
+        }
+
+        public async Task<BaseResponse> ChangePassword(DtoChangePassword request)
+        {
+            var response = new BaseResponse();
+
+            try
+            {
+                var userIdentity = await _userManager.FindByEmailAsync(request.Email);
+                if (userIdentity == null)
+                {
+                    response.Success = false;
+                    response.Errors.Add($"El correo {request.Email} no existe");
+                    return response;
+                }
+                var identity = await _userManager.ChangePasswordAsync(userIdentity, request.OldPassword, request.NewPassword);
+                response.Success = identity.Succeeded;
+                response.Errors = identity.Errors
+                    .Select(p => p.Description)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
+
             return response;
         }
     }
