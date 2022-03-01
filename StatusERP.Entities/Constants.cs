@@ -8,7 +8,7 @@ namespace StatusERP.Entities
 {
     public static class Constants
     {
-        public const string RoleAdministrador = "Administrador";
+        public const string RoleAdministrador = "Administrator";
         public const string RoleCustomer = "Customer";
     }
 }

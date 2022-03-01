@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "H9TD+HhPnPhNVj0y5zHdqEhK696QlpBc3cg+lWF8VKlqwqSmKGustmscPNpZ+5GKkMVzjwpepoUppO8K0KzaGQ==",
+  "dgSpecHash": "N8bKN/4rD7Yi4mnqnypkaFQCbzEl/pgIecwMI4sgY4rRIKOj12mZQkR2evohRcgLHAgEMiy92og78ajqfWlaFA==",
   "success": true,
-  "projectFilePath": "C:\\proyectos\\statusERP\\StatusERP.Dto\\StatusERP.Dto.csproj",
+  "projectFilePath": "C:\\Proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Proyectos\\StatusERP\\StatusERP.Dto\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

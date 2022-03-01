@@ -18,7 +18,7 @@ namespace StatusERP.Services.Implementations.AS
             _repository = repository;
             _logger = logger;   
         }
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId)
         {
             var response =new BaseResponseGeneric<int>();
             try
@@ -30,10 +30,10 @@ namespace StatusERP.Services.Implementations.AS
                     Email = request.Email,
                     Activo = true,
                     ConjuntoId = request.ConjutoId,
-                    Updatedby = "SA",
+                    Updatedby = userId,
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
-                    Createdby = "SA",
+                    Createdby = userId,
                 });
                 response.Success = true;
 

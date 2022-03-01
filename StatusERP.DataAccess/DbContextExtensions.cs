@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities;
 using System;
 using System.Collections.Generic;
@@ -51,15 +52,15 @@ namespace StatusERP.DataAccess
 
             return success ? entity.Id : 0;
         }
-        public static async Task UpdateAsync<TEntityBase>(this DbContext context, TEntityBase entity)
+        public static async Task UpdateAsync<TEntityBase>(this DbContext context, TEntityBase entity,IMapper mapper)
             where TEntityBase : EntityBase
         {
             var registro = await context.Set<TEntityBase>()
-                ///.AsNoTracking()
+                .AsNoTracking()
                 .SingleOrDefaultAsync(x => x.Id == entity.Id);
             if (registro == null) return;
-            
-            context.Set<EntityBase>().Attach(registro);
+
+            registro = mapper.Map<TEntityBase>(entity);
             context.Entry(registro).State = EntityState.Modified;
             
             await context.SaveChangesAsync();
