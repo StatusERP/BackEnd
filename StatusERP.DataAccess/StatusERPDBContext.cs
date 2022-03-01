@@ -4,7 +4,6 @@ using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.CG.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
-
 namespace StatusERP.DataAccess
 {
     public class StatusERPDBContext : IdentityDbContext<StatusERPUserIdentity>
@@ -137,7 +136,9 @@ namespace StatusERP.DataAccess
             //    .IsUnique();
         }
 
-
-
+        internal Task<object> UpdateAsync(Vendedor vendedor, object mapper)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

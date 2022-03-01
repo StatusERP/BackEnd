@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using StatusERP.DataAccess;
 using StatusERP.DataAccess.Repositories.AS;
 using StatusERP.Entities;
+using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Implementations.ERPADMIN;
 using StatusERP.Services.Interfaces.AS;
@@ -17,6 +18,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(options =>
+{
+    options.AddMaps(typeof(Vendedor));
+   // options.AddMaps(typeof(Concert));
+   // options.AddProfile<SaleProfile>();
+});
 
 builder.Services.Configure<AppSettings>(builder.Configuration);
 
@@ -81,10 +89,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseAuthentication();
+app.UseAuthorization();
+
 
 app.MapControllers();
 app.Run();

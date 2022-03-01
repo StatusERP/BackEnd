@@ -9,7 +9,7 @@ namespace StatusERP.Services.Interfaces.AS
         Task<BaseResponseGeneric<ICollection<Vendedor>>> GetAsync(int conjunto, int page, int rows);
         Task<BaseResponseGeneric<Vendedor>> GetByIdAsync(int id);
 
-        Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request);
+        Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId);
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoVendedor request);
 
         Task<BaseResponseGeneric<int>> DeleteAsync(int id);

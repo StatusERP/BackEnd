@@ -53,7 +53,7 @@ namespace StatusERP.Services.Implementations.ERPADMIN
                 return response;
             }
 
-            var expiredDate = DateTime.Now.AddMinutes(1);
+            var expiredDate = DateTime.Now.AddHours(1);
             response.FullName = $"{identity.Firstname} {identity.Lastname}";
 
             var authClaims = new List<Claim>
@@ -64,9 +64,11 @@ namespace StatusERP.Services.Implementations.ERPADMIN
             };
 
             var roles = await _userManager.GetRolesAsync(identity);
+            response.Roles = new List<string>();
             foreach (var role in roles)
             {
                 authClaims.Add(new Claim(ClaimTypes.Role, role));
+                response.Roles.Add(role);
             }
 
             var llavesimetrica = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_options.Value.Jwt.Signinkey));

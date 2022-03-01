@@ -7,12 +7,14 @@ using StatusERP.Dto.Response;
 using StatusERP.Entities;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using System.Security.Claims;
 
 namespace StatusERP.API.Controllers.AS
 {
     [ApiController]
     [Route("api/AS/[controller]")]
     //[Authorize(Roles=Constants.RoleAdministrador)]
+    [Authorize]
     public class VendedorController:ControllerBase
     {
         private readonly IVendedorService _service;
@@ -42,7 +44,10 @@ namespace StatusERP.API.Controllers.AS
         [HttpPost]
         public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoVendedor request)
         {
-            var response = await _service.CreateAsync(request);
+            var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+
+            if (userId == null) return Unauthorized();
+            var response = await _service.CreateAsync(request,userId.Value);
 
             HttpContext.Response.Headers.Add("location", $"/api/AS/vendedor/{response.Result}");
             return Ok(response);

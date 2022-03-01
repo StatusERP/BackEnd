@@ -25,6 +25,7 @@
     <Folder Include="Implementations\CP\" />
     <Folder Include="Implementations\ERPADMIN\" />
     <Folder Include="Implementations\FA\" />
+    <Folder Include="Profile\" />
   </ItemGroup>
 
 </Project>
