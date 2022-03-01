@@ -142,5 +142,61 @@ namespace StatusERP.Services.Implementations.ERPADMIN
             }
             return response;
         }
+
+        public async Task<BaseResponseGeneric<string>> SendTokenToResetPasswordAsnc(DtoResetPasssword request)
+        {
+            var response = new BaseResponseGeneric<string>();
+            try
+            {
+                var userIdentity = await _userManager.FindByEmailAsync(request.Email);
+                if (userIdentity == null)
+                {
+                    response.Success = false;
+                    response.Errors.Add($"El Correo {request.Email} no existe");
+                    return response;
+                }
+                var token = await _userManager.GeneratePasswordResetTokenAsync(userIdentity);
+                //TODO: Enviar un correo electronico al usuario con el token generado
+                response.Result = token;
+                response.Success = true;
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex);
+                throw;
+            }
+            return response;
+        }
+        public async Task<BaseResponseGeneric<string>> ResetPassword(DtoConfirmReset request)
+        {
+            var response = new BaseResponseGeneric<string>();
+            try
+            {
+                var userIdentity = await _userManager.FindByEmailAsync(request.Email);
+                if (userIdentity == null)
+                {
+                    response.Success = false;
+                    response.Errors.Add($"El correo {request.Email} no existe");
+                    return response;
+                }
+                var identity = await _userManager.ResetPasswordAsync(userIdentity, request.Token, request.Password);
+
+                response.Result = userIdentity.Email;
+                response.Success = identity.Succeeded;
+                response.Errors = identity.Errors
+                    .Select(p => p.Description)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+
+            }
+            return response;
+        }
     }
 }
