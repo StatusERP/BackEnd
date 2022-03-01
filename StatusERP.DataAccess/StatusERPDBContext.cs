@@ -22,6 +22,7 @@ namespace StatusERP.DataAccess
         public DbSet<Vendedor> Vendedores { get; set; }
       
         public DbSet<Bodega> Bodegas { get; set; }
+        public DbSet<Cobrador> Cobradores { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,12 +44,13 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
             //    .IsUnique();
 
-            modelBuilder.Entity<CentroCuenta>()
-               .HasKey(c => new { c.CentroCosto, c.CuentaContable });
+            //modelBuilder.Entity<CentroCuenta>()
+            //   .HasKey(c => new { c.CentroCosto, c.CuentaContable });
 
-            //modelBuilder.Entity<Cobrador>()
-            //    .HasIndex(p => p.CodCobrador, "IxCobradorId")
-            //    .IsUnique();
+            modelBuilder.Entity<Cobrador>()
+                .HasIndex(p => p.CodCobrador, "IxCobradorId")
+                .IsUnique();
+            //modelBuilder.Entity<Cobrador>().ToTable(name: "TablaCobradores", schema: "PRUEBA");
 
             //modelBuilder.Entity<CondicionPago>()
             //    .HasIndex(p => p.CodCondicionPago, "IxCondicionPagoId")
@@ -66,13 +68,13 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodCuentaContable, "IxCuentaContableId")
             //    .IsUnique();
 
-            modelBuilder.Entity<CuadreCG>()
-                .HasIndex(p => p.CodCuadreCG, "IxCuadreCGId")
-                .IsUnique();
+            //modelBuilder.Entity<CuadreCG>()
+            //    .HasIndex(p => p.CodCuadreCG, "IxCuadreCGId")
+            //    .IsUnique();
 
-            modelBuilder.Entity<DiarioEnc>()
-                .HasIndex(p => p.Asiento, "IxAsientoId")
-                .IsUnique();
+            //modelBuilder.Entity<DiarioEnc>()
+            //    .HasIndex(p => p.Asiento, "IxAsientoId")
+            //    .IsUnique();
 
 
             //modelBuilder.Entity<DocTributario>()
@@ -88,9 +90,9 @@ namespace StatusERP.DataAccess
             //    .IsUnique();
 
 
-            modelBuilder.Entity<MayorEnc>()
-                .HasIndex(p => p.Asiento, "IxAsientoId")
-                .IsUnique();
+            //modelBuilder.Entity<MayorEnc>()
+            //    .HasIndex(p => p.Asiento, "IxAsientoId")
+            //    .IsUnique();
 
             //modelBuilder.Entity<Moneda>()
             //    .HasIndex(p => p.CodMoneda, "IxMonedaId")
@@ -100,13 +102,13 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodNivelPrecio, "IxNivelPrecioId")
             //    .IsUnique();
 
-            modelBuilder.Entity<Pais>()
-                .HasIndex(p => p.CodPais, "IxPaisId")
-                .IsUnique();
+            //modelBuilder.Entity<Pais>()
+            //    .HasIndex(p => p.CodPais, "IxPaisId")
+            //    .IsUnique();
 
-            modelBuilder.Entity<PaqueteContable>()
-                .HasIndex(p => p.CodPaquete, "IxPaqueteId")
-                .IsUnique();
+            //modelBuilder.Entity<PaqueteContable>()
+            //    .HasIndex(p => p.CodPaquete, "IxPaqueteId")
+            //    .IsUnique();
 
             //modelBuilder.Entity<Ruta>()
             //    .HasIndex(p => p.CodRuta, "IxRutaId")
