@@ -1,11 +1,11 @@
 ﻿using StatusERP.Entities.AS.Tablas;
-
+using AutoMapper;
 namespace StatusERP.DataAccess.Repositories.AS
 {
     public class VendedorRepository :StatusERPContextBase<Vendedor> , IVendedorRepository
     {
-        public VendedorRepository(StatusERPDBContext context)
-            : base(context)
+        public VendedorRepository(StatusERPDBContext context,IMapper mapper)
+            : base(context,mapper)
         {
         }
 
@@ -35,10 +35,8 @@ namespace StatusERP.DataAccess.Repositories.AS
 
         public async Task<int> UpdateAsync(Vendedor vendedor)
         {
-            await _dbContext.UpdateAsync(vendedor);
+            await _dbContext.UpdateAsync(vendedor, Mapper);
             return vendedor.Id;
         }
-
-        
     }
 }
