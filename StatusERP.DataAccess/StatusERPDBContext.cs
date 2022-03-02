@@ -17,20 +17,23 @@ namespace StatusERP.DataAccess
         {
 
         }
-        public DbSet<Conjunto> Conjuntos { get; set; }
+        //public DbSet<Conjunto> Conjuntos { get; set; }
 
         public DbSet<Vendedor> Vendedores { get; set; }
       
         public DbSet<Bodega> Bodegas { get; set; }
+
         public DbSet<Cobrador> Cobradores { get; set; }
+
+        public DbSet<Sucursal> Sucursales { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<Bodega>()
-            //    .HasIndex(p => p.CodBodega, "IxBodegaId")
-            //    .IsUnique();
+            modelBuilder.Entity<Bodega>()
+                .HasIndex(p => p.CodBodega, "IxBodegaId")
+                .IsUnique();
 
             //modelBuilder.Entity<CategoriaCliente>()
             //    .HasIndex(p => p.CodCategoriaCliente, "IxCategoriaClienteId")
@@ -50,6 +53,7 @@ namespace StatusERP.DataAccess
             modelBuilder.Entity<Cobrador>()
                 .HasIndex(p => p.CodCobrador, "IxCobradorId")
                 .IsUnique();
+
             //modelBuilder.Entity<Cobrador>().ToTable(name: "TablaCobradores", schema: "PRUEBA");
 
             //modelBuilder.Entity<CondicionPago>()
@@ -114,9 +118,9 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodRuta, "IxRutaId")
             //    .IsUnique();
 
-            //modelBuilder.Entity<Sucursal>()
-            //    .HasAlternateKey(p => p.CodSucursal)
-            //    .HasName("AKCodSucursal");
+            modelBuilder.Entity<Sucursal>()
+                .HasAlternateKey(p => p.CodSucursal)
+                .HasName("AKCodSucursal");
 
             //modelBuilder.Entity<DivGeografica1>()
             //   .HasKey(c => new { c.Pais, c.CodDivGeografica1 });
@@ -129,9 +133,9 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodUnidadMedida, "IxUnidadMedidaId")
             //    .IsUnique();
 
-            //modelBuilder.Entity<Vendedor>()
-            //    .HasIndex(p => p.CodVendedor, "IxVendedorId")
-            //    .IsUnique();
+            modelBuilder.Entity<Vendedor>()
+                .HasIndex(p => p.CodVendedor, "IxVendedorId")
+                .IsUnique();
 
             //modelBuilder.Entity<Zona>()
             //    .HasIndex(p => p.CodZona, "IxZonaId")

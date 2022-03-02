@@ -1,5 +1,4 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities
@@ -20,9 +19,9 @@ namespace StatusERP.Entities
 
         public DateTime UpdateDate { get; set; }
 
-        public int ConjuntoId { get; set; }
-        [System.Text.Json.Serialization.JsonIgnore]
-        public Conjunto Conjunto { get; set; }
+        //public int ConjuntoId { get; set; }
+        //[System.Text.Json.Serialization.JsonIgnore]
+        //public Conjunto Conjunto { get; set; }
 
 
 
