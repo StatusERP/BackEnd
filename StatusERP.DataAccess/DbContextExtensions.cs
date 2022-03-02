@@ -15,7 +15,7 @@ namespace StatusERP.DataAccess
         where TEntityBase : EntityBase
         {
             return await context.Set<TEntityBase>()
-                .Where(p => !p.IsDeleted && p.ConjuntoId==conjunto)
+                .Where(p => !p.IsDeleted)
                 .AsNoTracking()
                  .Skip((page - 1) * rows)
                 .Take(rows)

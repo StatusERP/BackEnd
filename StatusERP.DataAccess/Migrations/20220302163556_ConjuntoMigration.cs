@@ -5,12 +5,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StatusERP.DataAccess.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class ConjuntoMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "ERPADMIN");
+
             migrationBuilder.CreateTable(
                 name: "Conjuntos",
+                schema: "ERPADMIN",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -30,22 +34,22 @@ namespace StatusERP.DataAccess.Migrations
                     VersionBD = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
                     UsuarioModBd = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FechaHoraModBd = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    VersionInstalad = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
-                    NIT = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    PAIS = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    VersionInstalada = table.Column<string>(type: "nvarchar(8)", maxLength: 8, nullable: false),
+                    DocTributario = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    Pais = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     UsaSucursales = table.Column<bool>(type: "bit", nullable: false),
-                    MascaraSucursal = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
-                    DireccionWeb = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    CorreoDocEletronico = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    NumeroRegistro = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    ActividadComercial = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AgentePerseccion = table.Column<bool>(type: "bit", nullable: false),
-                    CalPerscVentas = table.Column<bool>(type: "bit", nullable: false),
-                    AgenteRetencionn = table.Column<bool>(type: "bit", nullable: false),
+                    MascaraSucursal = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
+                    DireccionWeb = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: true),
+                    CorreoDocElectronico = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    NumeroRegistro = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: true),
+                    ActividadComercial = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AgentePercepcion = table.Column<bool>(type: "bit", nullable: false),
+                    CalPercepVentas = table.Column<bool>(type: "bit", nullable: false),
+                    AgenteRetencion = table.Column<bool>(type: "bit", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    Createby = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Createdby = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Updateby = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
+                    Updatedby = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -57,7 +61,8 @@ namespace StatusERP.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Conjuntos");
+                name: "Conjuntos",
+                schema: "ERPADMIN");
         }
     }
 }

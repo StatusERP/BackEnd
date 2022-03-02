@@ -12,8 +12,8 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    [Migration("20220223211406_Pais")]
-    partial class Pais
+    [Migration("20220302163556_ConjuntoMigration")]
+    partial class ConjuntoMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -262,9 +262,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int?>("CodSucursal")
                         .HasColumnType("int");
 
-                    b.Property<int>("ConjuntoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -285,8 +282,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<int>("SucursalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Telefono")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -305,362 +304,15 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConjuntoId");
+                    b.HasIndex("SucursalId");
 
-                    b.ToTable("Bodegas");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Pais", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("CodPais")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("CodigoISO")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<int>("ConjuntoId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Createdby")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
-
-                    b.Property<string>("CtaAjusteRedondeo")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaAnticipoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaAnticipoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaComisionCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaContado")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCostoLin")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCostoVen")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCreditoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCreditoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDebitoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDebitoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescBonif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescGral")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescLin")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDevVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaGasCom")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaImpuesto1CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaImpuesto1CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaImpuesto2CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaImpuesto2CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaIntCorriente")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaIntMoraCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaLC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaLP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaProntoPagoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaProntoPagoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaRecibosCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaRentaCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaRubro1CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaRubro1CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaRubro2CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaRubro2CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVentasExen")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrAjusteRedondeo")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrAnticipoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrAnticipoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrComisionCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrContado")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCostoLin")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCostoVen")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCreditoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCreditoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDebitoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDebitoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescBonif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescGral")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescLin")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDevVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrGasCom")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImpuesto1CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImpuesto1CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImpuesto2CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImpuesto2CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrIntCorriente")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrIntMoraCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrLC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrLP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrProntoPagoCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrProntoPagoCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrRecibosCC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrRentaCP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrRubro1CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrRubro1CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrRubro2CC")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrRubro2CP")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVentasExen")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("EtiquetaDivGeo1")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<string>("EtiquetaDivGeo2")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(40)
-                        .HasColumnType("nvarchar(40)");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Updatedby")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ConjuntoId");
-
-                    b.HasIndex(new[] { "CodPais" }, "IxPaisId")
+                    b.HasIndex(new[] { "CodBodega" }, "IxBodegaId")
                         .IsUnique();
 
-                    b.ToTable("Pais");
+                    b.ToTable("Bodegas", "DEMO");
                 });
 
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Vendedor", b =>
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Cobrador", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -671,14 +323,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CodVendedor")
+                    b.Property<string>("CodCobrador")
                         .IsRequired()
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)")
-                        .HasColumnName("Vendedor");
-
-                    b.Property<int>("ConjuntoId")
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -710,9 +358,111 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConjuntoId");
+                    b.HasIndex(new[] { "CodCobrador" }, "IxCobradorId")
+                        .IsUnique();
 
-                    b.ToTable("Vendedores");
+                    b.ToTable("Cobradores", "DEMO");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Sucursal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activa")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CodSucursal")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("CodSucursal")
+                        .HasName("AKCodSucursal");
+
+                    b.ToTable("Sucursales", "DEMO");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Vendedor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CodVendedor")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)")
+                        .HasColumnName("Vendedor");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodVendedor" }, "IxVendedorId")
+                        .IsUnique();
+
+                    b.ToTable("Vendedores", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", b =>
@@ -724,16 +474,15 @@ namespace StatusERP.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ActividadComercial")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("AgentePerseccion")
+                    b.Property<bool>("AgentePercepcion")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("AgenteRetencionn")
+                    b.Property<bool>("AgenteRetencion")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CalPerscVentas")
+                    b.Property<bool>("CalPercepVentas")
                         .HasColumnType("bit");
 
                     b.Property<string>("Compania")
@@ -742,15 +491,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("Conjunto");
 
-                    b.Property<string>("CorreoDocEletronico")
-                        .IsRequired()
+                    b.Property<string>("CorreoDocElectronico")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Createby")
+                    b.Property<string>("Createdby")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -760,7 +508,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DireccionWeb")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -769,6 +516,11 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Property<bool>("DobleMoneda")
                         .HasColumnType("bit");
+
+                    b.Property<string>("DocTributario")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("FechaHoraModBd")
                         .HasColumnType("datetime2");
@@ -785,14 +537,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("MascaraSucursal")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("NIT")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -804,11 +550,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumeroRegistro")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<string>("PAIS")
+                    b.Property<string>("Pais")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -821,7 +566,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Updateby")
+                    b.Property<string>("Updatedby")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -848,14 +593,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<string>("VersionInstalad")
+                    b.Property<string>("VersionInstalada")
                         .IsRequired()
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Conjuntos");
+                    b.ToTable("Conjuntos", "ERPADMIN");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -911,35 +656,13 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Bodega", b =>
                 {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Sucursal", "Sucursal")
                         .WithMany()
-                        .HasForeignKey("ConjuntoId")
+                        .HasForeignKey("SucursalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Conjunto");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Pais", b =>
-                {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
-                        .WithMany()
-                        .HasForeignKey("ConjuntoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Conjunto");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Vendedor", b =>
-                {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
-                        .WithMany()
-                        .HasForeignKey("ConjuntoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Conjunto");
+                    b.Navigation("Sucursal");
                 });
 #pragma warning restore 612, 618
         }

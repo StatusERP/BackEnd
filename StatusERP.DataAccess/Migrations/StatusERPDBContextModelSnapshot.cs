@@ -260,9 +260,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int?>("CodSucursal")
                         .HasColumnType("int");
 
-                    b.Property<int>("ConjuntoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -283,8 +280,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<int>("SucursalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Telefono")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -303,9 +302,12 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConjuntoId");
+                    b.HasIndex("SucursalId");
 
-                    b.ToTable("Bodegas");
+                    b.HasIndex(new[] { "CodBodega" }, "IxBodegaId")
+                        .IsUnique();
+
+                    b.ToTable("Bodegas", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Cobrador", b =>
@@ -323,9 +325,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
-
-                    b.Property<int>("ConjuntoId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -357,12 +356,58 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConjuntoId");
-
                     b.HasIndex(new[] { "CodCobrador" }, "IxCobradorId")
                         .IsUnique();
 
-                    b.ToTable("TablaCobradores", "PRUEBA");
+                    b.ToTable("Cobradores", "DEMO");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Sucursal", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activa")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CodSucursal")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasAlternateKey("CodSucursal")
+                        .HasName("AKCodSucursal");
+
+                    b.ToTable("Sucursales", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Vendedor", b =>
@@ -382,9 +427,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(4)")
                         .HasColumnName("Vendedor");
 
-                    b.Property<int>("ConjuntoId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -415,9 +457,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ConjuntoId");
+                    b.HasIndex(new[] { "CodVendedor" }, "IxVendedorId")
+                        .IsUnique();
 
-                    b.ToTable("Vendedores");
+                    b.ToTable("Vendedores", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", b =>
@@ -429,16 +472,15 @@ namespace StatusERP.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("ActividadComercial")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("AgentePerseccion")
+                    b.Property<bool>("AgentePercepcion")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("AgenteRetencionn")
+                    b.Property<bool>("AgenteRetencion")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("CalPerscVentas")
+                    b.Property<bool>("CalPercepVentas")
                         .HasColumnType("bit");
 
                     b.Property<string>("Compania")
@@ -447,15 +489,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(10)")
                         .HasColumnName("Conjunto");
 
-                    b.Property<string>("CorreoDocEletronico")
-                        .IsRequired()
+                    b.Property<string>("CorreoDocElectronico")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Createby")
+                    b.Property<string>("Createdby")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -465,7 +506,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("DireccionWeb")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -474,6 +514,11 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Property<bool>("DobleMoneda")
                         .HasColumnType("bit");
+
+                    b.Property<string>("DocTributario")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("FechaHoraModBd")
                         .HasColumnType("datetime2");
@@ -490,14 +535,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("MascaraSucursal")
-                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("NIT")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -509,11 +548,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumeroRegistro")
-                        .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
 
-                    b.Property<string>("PAIS")
+                    b.Property<string>("Pais")
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -526,7 +564,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Updateby")
+                    b.Property<string>("Updatedby")
                         .IsRequired()
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -553,14 +591,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<string>("VersionInstalad")
+                    b.Property<string>("VersionInstalada")
                         .IsRequired()
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Conjuntos");
+                    b.ToTable("Conjuntos", "ERPADMIN");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -616,35 +654,13 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Bodega", b =>
                 {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Sucursal", "Sucursal")
                         .WithMany()
-                        .HasForeignKey("ConjuntoId")
+                        .HasForeignKey("SucursalId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Conjunto");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Cobrador", b =>
-                {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
-                        .WithMany()
-                        .HasForeignKey("ConjuntoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Conjunto");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Vendedor", b =>
-                {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
-                        .WithMany()
-                        .HasForeignKey("ConjuntoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Conjunto");
+                    b.Navigation("Sucursal");
                 });
 #pragma warning restore 612, 618
         }

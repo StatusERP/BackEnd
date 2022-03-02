@@ -29,7 +29,7 @@ namespace StatusERP.Services.Implementations.AS
                     Nombre = request.Nombre,
                     Email = request.Email,
                     Activo = true,
-                    ConjuntoId = request.ConjutoId,
+                    //ConjuntoId = request.ConjutoId,
                     Updatedby = userId,
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,

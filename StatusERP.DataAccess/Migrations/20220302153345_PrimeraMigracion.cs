@@ -5,12 +5,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace StatusERP.DataAccess.Migrations
 {
-    public partial class MigrationIdentity : Migration
+    public partial class PrimeraMigracion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.EnsureSchema(
+                name: "DEMO");
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -25,6 +29,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
+                schema : "dbo",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -54,7 +59,74 @@ namespace StatusERP.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Cobradores",
+                schema: "DEMO",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CodCobrador = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Activo = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Createdby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Updatedby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cobradores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Sucursales",
+                schema: "DEMO",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CodSucursal = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    Activa = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Createdby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Updatedby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Sucursales", x => x.Id);
+                    table.UniqueConstraint("AKCodSucursal", x => x.CodSucursal);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Vendedores",
+                schema: "DEMO",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Vendedor = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    Activo = table.Column<bool>(type: "bit", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Createdby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Updatedby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Vendedores", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -76,6 +148,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
+                schema: "dbo",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -97,6 +170,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
+               schema: "dbo",
                 columns: table => new
                 {
                     LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -117,6 +191,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
+                schema: "dbo",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -141,6 +216,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
+                schema: "dbo",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -159,13 +235,48 @@ namespace StatusERP.DataAccess.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Bodegas",
+                schema: "DEMO",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CodBodega = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Tipo = table.Column<string>(type: "nvarchar(1)", maxLength: 1, nullable: false),
+                    Activa = table.Column<bool>(type: "bit", nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: true),
+                    Direccion = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    CodSucursal = table.Column<int>(type: "int", nullable: true),
+                    SucursalId = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Createdby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    CreateDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Updatedby = table.Column<string>(type: "nvarchar(36)", maxLength: 36, nullable: false),
+                    UpdateDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bodegas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Bodegas_Sucursales_SucursalId",
+                        column: x => x.SucursalId,
+                        principalSchema: "DEMO",
+                        principalTable: "Sucursales",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
+                schema: "dbo",
                 table: "AspNetRoleClaims",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
+                schema: "dbo",
                 table: "AspNetRoles",
                 column: "NormalizedName",
                 unique: true,
@@ -173,30 +284,62 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
+                schema: "dbo",
                 table: "AspNetUserClaims",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserLogins_UserId",
+                schema: "dbo",
                 table: "AspNetUserLogins",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserRoles_RoleId",
+                schema: "dbo",
                 table: "AspNetUserRoles",
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
                 name: "EmailIndex",
+                schema: "dbo",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
+                schema: "dbo",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Bodegas_SucursalId",
+                schema: "DEMO",
+                table: "Bodegas",
+                column: "SucursalId");
+
+            migrationBuilder.CreateIndex(
+                name: "IxBodegaId",
+                schema: "DEMO",
+                table: "Bodegas",
+                column: "CodBodega",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IxCobradorId",
+                schema: "DEMO",
+                table: "Cobradores",
+                column: "CodCobrador",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IxVendedorId",
+                schema: "DEMO",
+                table: "Vendedores",
+                column: "Vendedor",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -217,10 +360,26 @@ namespace StatusERP.DataAccess.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Bodegas",
+                schema: "DEMO");
+
+            migrationBuilder.DropTable(
+                name: "Cobradores",
+                schema: "DEMO");
+
+            migrationBuilder.DropTable(
+                name: "Vendedores",
+                schema: "DEMO");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Sucursales",
+                schema: "DEMO");
         }
     }
 }
