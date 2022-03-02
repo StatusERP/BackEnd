@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("CentrosCosto", Schema = Constants.Conjunto)]
     public class CentroCosto:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar Código para el Centro de Costos")]

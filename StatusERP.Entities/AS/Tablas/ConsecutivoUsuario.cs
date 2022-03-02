@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("ConsecutivoUsuario", Schema = Constants.Conjunto)]
     public class ConsecutivoUsuario:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar código de Consecutivo.")]

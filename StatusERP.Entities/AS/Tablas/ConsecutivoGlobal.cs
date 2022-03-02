@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("ConsecutivosGlobales", Schema = Constants.Conjunto)]
     public class ConsecutivoGlobal : EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar código para el Consecutivo Global.")]

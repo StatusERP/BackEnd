@@ -5,15 +5,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
-    [Table("Vendedores")]
+    [Table("Vendedores", Schema = Constants.Conjunto)]
     public class  Vendedor : EntityBase
     {
         [Column("Vendedor")]
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el código del Vendedor.")]
         [StringLength(4)]
         public string CodVendedor { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el nombre del Vendedor.")]
         [StringLength(40)]
         public string Nombre { get; set; }
 

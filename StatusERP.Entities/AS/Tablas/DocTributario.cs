@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("DocTributarios", Schema = Constants.Conjunto)]
     public class DocTributario:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar el código del Documento Tributario.")]

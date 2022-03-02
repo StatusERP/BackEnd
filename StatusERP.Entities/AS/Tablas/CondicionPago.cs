@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("CondicionesPago", Schema = Constants.Conjunto)]
     public class CondicionPago:EntityBase
     {
         [Required(ErrorMessage = "Se requiere código para la Condición de Pago.")]

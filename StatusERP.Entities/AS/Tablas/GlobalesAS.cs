@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("GlobalesAS", Schema = Constants.Conjunto)]
     public class GlobalesAS:EntityBase
     {
         [Required(ErrorMessage = "Se requiere seleccionar una fecha inicial para el Periodo de Trabajo con Advertencia.")]

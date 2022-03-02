@@ -1,17 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("Paises", Schema = Constants.Conjunto)]
     public class Pais:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el código del País.")]
         [StringLength(4)]
         public string CodPais { get; set; }
 
         [StringLength(4)]
         public string ? CodigoISO { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el nombre del Nivel de Precio.")]
         [StringLength(40)]
         public string Nombre { get; set; }
 

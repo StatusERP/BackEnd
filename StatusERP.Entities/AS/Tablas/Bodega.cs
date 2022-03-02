@@ -1,8 +1,9 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("Bodegas", Schema = Constants.Conjunto)]
     public class Bodega:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar un código de Bodega")]

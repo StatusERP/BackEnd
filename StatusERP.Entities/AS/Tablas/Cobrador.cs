@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
-    [Table("TablaCobradores", Schema = Constants.Conjunto)]
+    [Table("Cobradores", Schema = Constants.Conjunto)]
     public class Cobrador:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar un código de Cobrador")]

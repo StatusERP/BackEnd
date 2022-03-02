@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("CategoriasProveedor", Schema = Constants.Conjunto)]
     public class CategoriaProveedor:EntityBase
     {
         [Required(ErrorMessage = "Se requiere código para la Categoría de Proveedor")]

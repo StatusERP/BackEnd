@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("NivelesPrecios", Schema = Constants.Conjunto)]
     public class NivelPrecio:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar el código del Nivel de Precio.")]
@@ -22,7 +24,5 @@ namespace StatusERP.Entities.AS.Tablas
         public bool Descuentos { get; set; }
 
         public bool SugerirDescuento { get; set; }
-
-          public bool SincMovil { get; set; }
     }
 }

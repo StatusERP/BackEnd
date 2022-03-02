@@ -14,9 +14,7 @@
 
 
     }
-<<<<<<< HEAD
 
-=======
     public class MailConfiguration
     {
         public string SmtpServer { get; set; }
@@ -27,5 +25,5 @@
         public string FromAddress { get; set; }
         public string FromName { get; set; }
     }
->>>>>>> 2c04e6bb9900452235799cd4e939a49d520dcde9
+
 }

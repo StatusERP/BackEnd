@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("Monedas", Schema = Constants.Conjunto)]
     public class Moneda:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar el código de la Moneda.")]

@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("DivGeograficas1", Schema = Constants.Conjunto)]
     public class DivGeografica1:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar código de País.")]

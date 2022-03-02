@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
 {
+    [Table("Impuestos", Schema = Constants.Conjunto)]
     public class Impuesto:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar el Código del Impuesto")]
