@@ -10,7 +10,7 @@ namespace StatusERP.Dto.Response
     {
 
         public bool Success { get; set; }
-        //public bool IsDeleted { get; set; }
+       
         
         //public string Createby { get; set; }
         //public DateTime CreateDate { get; set; }

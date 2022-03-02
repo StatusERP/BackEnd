@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StatusERP.DataAccess
 {
     public static class DbContextExtensions
     {
-        public static async Task<ICollection< TEntityBase>> SelectAsync<TEntityBase>( this DbContext context ,int conjunto ,int page , int rows)
+        public static async Task<ICollection< TEntityBase>> SelectAsync<TEntityBase>( this DbContext context ,int page , int rows)
         where TEntityBase : EntityBase
         {
             return await context.Set<TEntityBase>()
@@ -68,16 +63,26 @@ namespace StatusERP.DataAccess
         public static async Task DeleteAsync<TEntityBase>(this DbContext context, TEntityBase entity)
            where TEntityBase : EntityBase
         {
-            var registro = await context.Set<TEntityBase>()
-                .AsNoTracking()
-                .SingleOrDefaultAsync(x => x.Id == entity.Id);
-            if (registro == null) return;
+            try
+            {
+                var registro = await context.Set<TEntityBase>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == entity.Id);
+                if (registro == null) return;
 
-            registro.IsDeleted = true;
-            
-            context.Set<EntityBase>().Attach(registro);
-            context.Entry(registro).State = EntityState.Modified;
-            await context.SaveChangesAsync();
+                registro.IsDeleted = true;
+                registro.UpdateDate = DateTime.Now;
+
+
+                context.Set<TEntityBase>().Attach(registro);
+                context.Entry(registro).State = EntityState.Modified;
+                await context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+        
         }
     }
 }

@@ -4,32 +4,37 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace StatusERP.Services.Implementations.AS
 {
-    public class VendedorService : IVendedorService
-
+    public class CobradorService : ICobradorService
     {
-        private readonly IVendedorRepository _repository;
-        private readonly ILogger<VendedorService> _logger;
-
-        public VendedorService(IVendedorRepository repository, ILogger<VendedorService> logger) 
+        private readonly ICobradorRepository _repository;
+        private readonly ILogger<CobradorService> _logger;
+        public CobradorService(ICobradorRepository repository,ILogger<CobradorService> logger )
         {
             _repository = repository;
-            _logger = logger;   
+            _logger = logger;
         }
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId)
+
+    
+
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoCobrador request, string userId)
         {
-            var response =new BaseResponseGeneric<int>();
+            var response = new BaseResponseGeneric<int>();
             try
             {
-                response.Result = await _repository.CreateAsync(new Vendedor
+                response.Result = await _repository.CreateAsync(new Cobrador
                 {
-                    CodVendedor = request.CodVendedor,
+                     CodCobrador = request.CodCobrador,
                     Nombre = request.Nombre,
                     Email = request.Email,
                     Activo = true,
-                    //ConjuntoId = request.ConjutoId,
                     Updatedby = userId,
                     CreateDate = DateTime.Now,
                     UpdateDate = DateTime.Now,
@@ -50,7 +55,7 @@ namespace StatusERP.Services.Implementations.AS
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id)
         {
-            var response =new BaseResponseGeneric<int>();
+            var response = new BaseResponseGeneric<int>();
             try
             {
                 await _repository.DeleteAsync(id);
@@ -67,13 +72,13 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
-        public  async Task<BaseResponseGeneric<ICollection<Vendedor>>> GetAsync(int page,int rows)
+        public async Task<BaseResponseGeneric<ICollection<Cobrador>>> GetAsync(int page, int rows)
         {
-            var response =new BaseResponseGeneric<ICollection <Vendedor>>();
+            var response = new BaseResponseGeneric<ICollection<Cobrador>>();
             try
             {
-                response.Result = await _repository.GetCollectionAsync( page, rows);
-                response.Success=true;
+                response.Result = await _repository.GetCollectionAsync(page, rows);
+                response.Success = true;
 
             }
             catch (Exception ex)
@@ -86,13 +91,13 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
-        public async Task<BaseResponseGeneric<Vendedor>> GetByIdAsync(int id)
+        public async Task<BaseResponseGeneric<Cobrador>> GetByIdAsync(int id)
         {
-            var response = new BaseResponseGeneric<Vendedor>();
+            var response = new BaseResponseGeneric<Cobrador>();
             try
             {
-                response.Result= await _repository.GetByIdAsync(id)?? new Vendedor();
-                response.Success=true;
+                response.Result = await _repository.GetByIdAsync(id) ?? new Cobrador();
+                response.Success = true;
             }
             catch (Exception ex)
             {
@@ -104,19 +109,19 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
-        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoVendedor request)
+        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCobrador request)
         {
             var response = new BaseResponseGeneric<int>();
             try
             {
-                response.Result = await _repository.UpdateAsync(new Vendedor
+                response.Result = await _repository.UpdateAsync(new Cobrador
                 {
                     Id = id,
                     Nombre = request.Nombre,
                     Email = request.Email,
-                    Activo=request.Activo,
-                    CodVendedor = request.CodVendedor,
-            });
+                    Activo = request.Activo,
+                    CodCobrador = request.CodCobrador,
+                });
             }
             catch (Exception ex)
             {

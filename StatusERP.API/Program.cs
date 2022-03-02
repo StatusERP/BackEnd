@@ -31,6 +31,8 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 //Registro la dependencia (Inyeccion de Dependencia)
 builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
 builder.Services.AddScoped<IVendedorService, VendedorService>();
+builder.Services.AddScoped<ICobradorRepository, CobradorRepository>();
+builder.Services.AddScoped<ICobradorService, CobradorService>();
 builder.Services.AddScoped<IUserService, UserService>();
 
 

@@ -9,9 +9,9 @@ namespace StatusERP.DataAccess.Repositories.AS
         {
         }
 
-        public async Task<ICollection<Vendedor>> GetCollectionAsync(int conjunto, int page, int rows)
+        public async Task<ICollection<Vendedor>> GetCollectionAsync( int page, int rows)
         {
-            return await _dbContext.SelectAsync<Vendedor>(conjunto, page, rows);
+            return await _dbContext.SelectAsync<Vendedor>( page, rows);
                 
         }
 
