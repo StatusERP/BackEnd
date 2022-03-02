@@ -5,11 +5,11 @@ namespace StatusERP.Entities.AS.Tablas
 {
     public class CategoriaCliente:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Se requiere código para la Categoría de Cliente")]
         [StringLength(8)]
         public string CodCategoriaCliente { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar Descripción de la Categoría de Cliente")]
         [StringLength(40)]
         public string Descripcion { get; set; }
 

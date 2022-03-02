@@ -4,11 +4,11 @@ namespace StatusERP.Entities.AS.Tablas
 {
     public class CategoriaProveedor:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Se requiere código para la Categoría de Proveedor")]
         [StringLength(8)]
         public string CodCategoriaProveedor { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar Descripción de la Categoría de Proveedor")]
         [StringLength(40)]
         public string Descripcion { get; set; }
 

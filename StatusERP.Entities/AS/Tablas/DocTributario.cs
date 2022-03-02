@@ -4,11 +4,11 @@ namespace StatusERP.Entities.AS.Tablas
 {
     public class DocTributario:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el código del Documento Tributario.")]
         [StringLength(20)]
         public string CodDocTributario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar la razón social del Documento.")]
         [StringLength(150)]
         public string RazonSocial { get; set; }
 
@@ -20,7 +20,6 @@ namespace StatusERP.Entities.AS.Tablas
         [StringLength(10)]
         public string ? DigitoVerificador { get; set; }
 
-        [Required]
         public bool Activo { get; set; }
 
         [StringLength(1)]
@@ -46,7 +45,6 @@ namespace StatusERP.Entities.AS.Tablas
         [StringLength(20)]
         public string ? Otro { get; set; }
 
-        [Required]
         public bool InfoLegal { get; set; }
     }
 }

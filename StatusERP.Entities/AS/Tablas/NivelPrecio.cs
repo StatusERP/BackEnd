@@ -4,28 +4,25 @@ namespace StatusERP.Entities.AS.Tablas
 {
     public class NivelPrecio:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el código del Nivel de Precio.")]
         [StringLength(12)]
         public string CodNivelPrecio { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere especificar el código de la Moneda.")]
         [StringLength(1)]
         public string Moneda { get; set; }
 
         [StringLength(4)]
         public string ? CondicionPago { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere seleccionar el Esquema de Trabajo.")]
         [StringLength(1)]
         public string EsquemaTrabajo { get; set; }
 
-        [Required]
         public bool Descuentos { get; set; }
 
-        [Required]
         public bool SugerirDescuento { get; set; }
 
-        [Required]
-        public bool SincMovil { get; set; }
+          public bool SincMovil { get; set; }
     }
 }

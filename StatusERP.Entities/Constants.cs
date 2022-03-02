@@ -10,5 +10,6 @@ namespace StatusERP.Entities
     {
         public const string RoleAdministrador = "Administrator";
         public const string RoleCustomer = "Customer";
+        public const string Conjunto = "DEMO";
     }
 }
