@@ -8,21 +8,25 @@ using System.Threading.Tasks;
 
 namespace StatusERP.Entities.ERPADMIN.Tablas
 {
+    [Table("Conjuntos", Schema = "ERPADMIN")]
     public class Conjunto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         [Column("Conjunto")]
-        [Required]
+        [Required(ErrorMessage = "Se requiere código para la Compañía.")]
         [StringLength(10)]
         public string Compania { get; set; }
-        [Required]
+        
+        [Required(ErrorMessage = "Se requiere nombre para la Compañia.")]
         [StringLength(150)]
         public string Nombre { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Se requiere dirección para la Compañia.")]
         public string Direccion { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Se requiere teléfono para la Compañia.")]
         [StringLength(30)]
         public string Telefono { get; set; }
         
@@ -30,72 +34,76 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
         public string Logo { get; set; }
         
         public bool DobleMoneda { get; set; }
+
         public bool DobleContabilidad { get; set; }
 
         public bool UsaLotes { get; set; }
 
         public bool UsaCentroCosto { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Dato actualizado por el Sistema.")]
         public string UsuarioUltMod { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Dato actualizado por el Sistema.")]
         public DateTime FechaUltMod { get; set; }
 
         public string Notas { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Dato actualizado por el Sistema.")]
         [StringLength(8)]
         public string VersionBD { get; set; }
-
-       
+               
         public string UsuarioModBd { get; set; }
+
         public DateTime FechaHoraModBd { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Dato actualizado por el Sistema.")]
         [StringLength(8)]
-        public string VersionInstalad { get; set; }
-        [Required]
-        [StringLength(20)]
-        public string NIT { get; set; }
+        public string VersionInstalada { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere el número de documento tributario de la Compañía.")]
         [StringLength(20)]
-        public string PAIS { get; set; }
+        public string DocTributario { get; set; }
+
+        [Required(ErrorMessage = "Se requiere indicadar el país sede de la Compañía.")]
+        [StringLength(20)]
+        public string Pais { get; set; }
 
         public bool UsaSucursales { get; set; }
-
-        
+                
         [StringLength(10)]
-        public string MascaraSucursal { get; set; }
+        public string ? MascaraSucursal { get; set; }
 
         [StringLength(150)]
-        public string DireccionWeb { get; set; }
+        public string ? DireccionWeb { get; set; }
 
         [StringLength(250)]
-        public string CorreoDocEletronico { get; set; }
+        public string ? CorreoDocElectronico { get; set; }
 
         [StringLength(25)]
-        public string NumeroRegistro { get; set; }
+        public string ? NumeroRegistro { get; set; }
                 
-        public string ActividadComercial { get; set; }
+        public string ? ActividadComercial { get; set; }
 
-        public bool AgentePerseccion { get; set; }
-        public bool CalPerscVentas { get; set; }
+        public bool AgentePercepcion { get; set; }
 
-        public bool AgenteRetencionn { get; set; }
+        public bool CalPercepVentas { get; set; }
 
+        public bool AgenteRetencion { get; set; }
 
         public bool IsDeleted { get; set; }
         [StringLength(250)]
+
         [Required]
-        public string Createby { get; set; }
+        public string Createdby { get; set; }
         [Required]
         public DateTime CreateDate { get; set; }
         [StringLength(250)]
+        
         [Required]
-        public string Updateby { get; set; }
+        public string Updatedby { get; set; }
+        
         [Required]
         public DateTime UpdateDate { get; set; }
-
     }
 }
