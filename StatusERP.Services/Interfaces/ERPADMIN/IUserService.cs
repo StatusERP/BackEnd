@@ -8,5 +8,9 @@ namespace StatusERP.Services.Interfaces.ERPADMIN
     {
         Task<BaseResponseGeneric<string>> RegisterAsync(DtoRegisterUser request);
         Task<DtoLoginResponse> LoginAsync(DtoLogin request);
+
+        Task<BaseResponseGeneric<string>> SendTokenToResetPasswordAsnc(DtoResetPasssword request);
+        Task<BaseResponseGeneric<string>> ResetPassword(DtoConfirmReset request);
+        Task<BaseResponse> ChangePassword(DtoChangePassword request);
     }
 }

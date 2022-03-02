@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Request\ERPADMIN\" />
     <Folder Include="Request\FA\" />
   </ItemGroup>
 

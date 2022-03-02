@@ -35,6 +35,29 @@ namespace StatusERP.API.Controllers.ERPADMIN
             var response = await service.LoginAsync(resquest);
             return response.Success ? Ok(response) : Unauthorized(response);
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SendTokenToResetPassword([FromBody]DtoResetPasssword request)
+        {
+            return Ok(await service.SendTokenToResetPasswordAsnc(request));
+
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> ResetPassword(DtoConfirmReset request)
+        {
+            return Ok(await service.ResetPassword(request));
+        }
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> ChangePassword(DtoChangePassword request)
+        {
+            return Ok(await service.ChangePassword(request));
+        }
+
+
     }
 
     
