@@ -16,6 +16,7 @@ namespace StatusERP.Entities.AS.Tablas
 
         [StringLength(4)]
         public string ? CondicionPago { get; set; }
+        //public CondicionPago CondicionPago { get; set; }
 
         [Required(ErrorMessage = "Se requiere seleccionar el Esquema de Trabajo.")]
         [StringLength(1)]

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;    
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.CG.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
@@ -17,8 +17,22 @@ namespace StatusERP.DataAccess
         {
 
         }
-        public DbSet<Conjunto> Conjuntos { get; set; }
 
+        // Para tablas de ERPADMIN
+        public DbSet<Accion> Accion { get; set; }
+
+        public DbSet<Conjunto> Conjunto { get; set; }
+
+        public DbSet<GrupoUsuario> GrupoUsuario { get; set; }
+
+        public DbSet<Membresia> Membresia { get; set; }
+
+        public DbSet<Parentesco> Parentesco { get; set; }
+
+        public DbSet<PrivilegioUsuario> PrivilegioUsuario { get; set; }
+
+
+        // Para tablas de AS
         public DbSet<Vendedor> Vendedores { get; set; }
       
         public DbSet<Bodega> Bodegas { get; set; }
@@ -43,9 +57,9 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodCategoriaProveedor, "IxCategoriaProveedorId")
             //    .IsUnique();
 
-            //modelBuilder.Entity<CentroCosto>()
-            //    .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
-            //    .IsUnique();
+            modelBuilder.Entity<CentroCosto>()
+                .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
+                .IsUnique();
 
             //modelBuilder.Entity<CentroCuenta>()
             //   .HasKey(c => new { c.CentroCosto, c.CuentaContable });
@@ -90,9 +104,9 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodEntidadFinanciera, "IxEntidadFinancieraId")
             //    .IsUnique();
 
-            //modelBuilder.Entity<Impuesto>()
-            //    .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
-            //    .IsUnique();
+            modelBuilder.Entity<Impuesto>()
+                .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
+                .IsUnique();
 
 
             //modelBuilder.Entity<MayorEnc>()
@@ -133,6 +147,12 @@ namespace StatusERP.DataAccess
             //modelBuilder.Entity<UnidadMedida>()
             //    .HasIndex(p => p.CodUnidadMedida, "IxUnidadMedidaId")
             //    .IsUnique();
+
+            //modelBuilder.Entity<Pais>()
+            //    .h
+
+            //modelBuilder.Entity<NivelPrecio>()
+
 
             modelBuilder.Entity<Vendedor>()
                 .HasIndex(p => p.CodVendedor, "IxVendedorId")

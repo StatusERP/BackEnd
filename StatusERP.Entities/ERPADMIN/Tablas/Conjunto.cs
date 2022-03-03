@@ -91,6 +91,12 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
 
         public bool AgenteRetencion { get; set; }
 
+        public int MembresiaId { get; set; }
+        public Membresia Membresia {get; set; }
+
+        [Required(ErrorMessage = "Se requiere fecha de vencimiento.")]
+        public DateTime FechaVence { get; set; }
+
         public bool IsDeleted { get; set; }
         [StringLength(250)]
 
