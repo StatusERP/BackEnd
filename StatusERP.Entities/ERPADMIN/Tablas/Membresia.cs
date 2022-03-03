@@ -11,7 +11,7 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
         public string NombreMembresia { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar la vigencia (en días).")]
-         public int Vigencia { get; set; }
+        public int Vigencia { get; set; }
 
         public bool Activa { get; set; }
     }
