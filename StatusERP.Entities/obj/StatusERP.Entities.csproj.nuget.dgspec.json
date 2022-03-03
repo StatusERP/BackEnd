@@ -1,31 +1,17 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {}
+    "C:\\proyectos\\statusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
+    "C:\\proyectos\\statusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
+        "projectUniqueName": "C:\\proyectos\\statusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
         "projectName": "StatusERP.Entities",
-        "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
+        "projectPath": "C:\\proyectos\\statusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\obj\\",
-=======
-    "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {}
-  },
-  "projects": {
-    "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
-        "projectName": "StatusERP.Entities",
-        "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\obj\\",
->>>>>>> 2c0689c836cb05a8b4bb8ebe172ae5b0482ebc31
+        "outputPath": "C:\\proyectos\\statusERP\\StatusERP.Entities\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
