@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities
 {
+    
     public class EntityBase
     {
        [Key]

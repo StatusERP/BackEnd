@@ -11,57 +11,57 @@ namespace StatusERP.API.Controllers.AS
     [ApiController]
     [Route("api/AS/[controller]")]
     [Authorize]
-    public class VendedorController:ControllerBase
+    public class CobradorController : ControllerBase
     {
-        private readonly IVendedorService _service;
+        private readonly ICobradorService _service;
 
-        public VendedorController(IVendedorService service)
+        public CobradorController(ICobradorService service)
         {
             _service = service;
         }
-        [HttpGet]   
+        [HttpGet]
         //filter =""
         //page =1||2
         //rows =10||10
-        public async Task< ActionResult<BaseResponseGeneric< ICollection<Vendedor>>>> Get(
+        public async Task<ActionResult<BaseResponseGeneric<ICollection<Cobrador>>>> Get(
             int page,
             int rows
             )
         {
 
-            return Ok(await _service.GetAsync( page, rows));
+            return Ok(await _service.GetAsync(page, rows));
 
         }
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<BaseResponseGeneric <Vendedor>>> Get(int id)
+        public async Task<ActionResult<BaseResponseGeneric<Cobrador>>> Get(int id)
         {
-                       return Ok(await _service.GetByIdAsync(id));
+            return Ok(await _service.GetByIdAsync(id));
         }
         [HttpPost]
-        public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoVendedor request)
+        public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoCobrador request)
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
 
             if (userId == null) return Unauthorized();
-            var response = await _service.CreateAsync(request,userId.Value);
+            var response = await _service.CreateAsync(request, userId.Value);
 
             HttpContext.Response.Headers.Add("location", $"/api/AS/vendedor/{response.Result}");
             return Ok(response);
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int id, DtoVendedor request)
+        public async Task<ActionResult> Put(int id, DtoCobrador request)
         {
-            var response =await _service.UpdateAsync(id, request);
-            return Ok(new {response});
+            var response = await _service.UpdateAsync(id, request);
+            return Ok(new { response });
         }
-        
+
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
         {
             var response = await _service.DeleteAsync(id);
             return Ok(response);
-           
+
         }
     }
 }
