@@ -52,7 +52,8 @@ namespace StatusERP.API.Controllers.AS
         [HttpPut("{id:int}")]
         public async Task<ActionResult> Put(int id, DtoVendedor request)
         {
-            var response =await _service.UpdateAsync(id, request);
+            var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+            var response =await _service.UpdateAsync(id, request,userId.Value);
             return Ok(new {response});
         }
         

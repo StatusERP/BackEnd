@@ -1,6 +1,5 @@
 C:\Dev\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.deps.json
 C:\Dev\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.dll
-C:\Dev\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
 C:\Dev\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.pdb
 C:\Dev\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.AssemblyReference.cache
 C:\Dev\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.GeneratedMSBuildEditorConfig.editorconfig
@@ -22,3 +21,4 @@ C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.cs
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
+C:\Dev\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\refint\StatusERP.UnitTest.dll

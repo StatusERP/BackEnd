@@ -1,6 +1,5 @@
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
-C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.pdb
 C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.AssemblyReference.cache
 C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.GeneratedMSBuildEditorConfig.editorconfig
@@ -36,3 +35,4 @@ C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.pdb
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
+C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
