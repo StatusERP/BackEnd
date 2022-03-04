@@ -10,7 +10,7 @@ namespace StatusERP.Services.Interfaces.AS
         Task<BaseResponseGeneric<Cobrador>> GetByIdAsync(int id);
 
         Task<BaseResponseGeneric<int>> CreateAsync(DtoCobrador request, string userId);
-        Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCobrador request);
+        Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCobrador request, string userId);
 
         Task<BaseResponseGeneric<int>> DeleteAsync(int id);
     }

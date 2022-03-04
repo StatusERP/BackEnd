@@ -109,7 +109,7 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
-        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCobrador request)
+        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCobrador request ,string userId)
         {
             var response = new BaseResponseGeneric<int>();
             try
@@ -121,6 +121,8 @@ namespace StatusERP.Services.Implementations.AS
                     Email = request.Email,
                     Activo = request.Activo,
                     CodCobrador = request.CodCobrador,
+                    UpdateDate=DateTime.Now,
+                    Updatedby=userId
                 });
             }
             catch (Exception ex)

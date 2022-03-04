@@ -72,6 +72,7 @@ namespace StatusERP.DataAccess
             modelBuilder.Entity<Cobrador>()
                 .HasIndex(p => p.CodCobrador, "IxCobradorId")
                 .IsUnique();
+        
 
             //modelBuilder.Entity<Cobrador>().ToTable(name: "TablaCobradores", schema: "PRUEBA");
 
@@ -176,9 +177,6 @@ namespace StatusERP.DataAccess
             //    .IsUnique();
         }
 
-        internal Task<object> UpdateAsync(Vendedor vendedor, object mapper)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

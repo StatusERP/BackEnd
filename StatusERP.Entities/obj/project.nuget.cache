@@ -1,5 +1,6 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "02mB5QSuG2Cs3x9ZglA8xYttjJZRhfDE575ds4H3ufgtf+YVxgaXJJJKzEm13RrQT+4RhaW3J+3HlxfjVGvsyQ==",
   "success": true,
   "projectFilePath": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
@@ -21,5 +22,11 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
+=======
+  "dgSpecHash": "RCgqRzp8nApXpU2rYujCSfjkkEh5LYXMMhW6NmPrIeD4nwvs5q6Mps+SZs1v8NoEfeQ1QbSRoYU4JEgR/BV3mw==",
+  "success": true,
+  "projectFilePath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
+  "expectedPackageFiles": [],
+>>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
   "logs": []
 }

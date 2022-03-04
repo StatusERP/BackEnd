@@ -50,10 +50,12 @@ namespace StatusERP.API.Controllers.AS
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> Put(int id, DtoCobrador request)
+        public async Task<ActionResult<BaseResponseGeneric<int>>> Put(int id, DtoCobrador request)
         {
-            var response = await _service.UpdateAsync(id, request);
-            return Ok(new { response });
+            var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+            var response = await _service.UpdateAsync(id, request,userId.Value);
+            
+            return Ok(response);
         }
 
         [HttpDelete("{id:int}")]
