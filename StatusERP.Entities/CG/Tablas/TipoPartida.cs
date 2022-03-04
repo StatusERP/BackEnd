@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    
+    [Table("TiposPartida", Schema = Constants.Conjunto)]
     public class TipoPartida:EntityBase
     {
         [Required]

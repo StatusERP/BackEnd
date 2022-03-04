@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    [Table("CuadreConta", Schema = Constants.Conjunto)]
     public class CuadreConta:EntityBase
     {
         [Required]

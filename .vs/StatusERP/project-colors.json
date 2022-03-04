@@ -21,6 +21,11 @@
       "DisplayName": "StatusERP.DataAccess",
       "ColorIndex": 3
     },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Archivos varios",
+      "ColorIndex": -1
+    },
     "d3a8ef0a-ef36-4024-9965-87fa76c1cdeb": {
       "ProjectGuid": "d3a8ef0a-ef36-4024-9965-87fa76c1cdeb",
       "DisplayName": "StatusERP.Services",

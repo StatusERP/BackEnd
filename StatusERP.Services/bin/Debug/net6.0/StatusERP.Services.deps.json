@@ -547,6 +547,9 @@
         }
       },
       "StatusERP.Entities/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.2"
+        },
         "runtime": {
           "StatusERP.Entities.dll": {}
         }
