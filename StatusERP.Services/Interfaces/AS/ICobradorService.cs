@@ -12,6 +12,6 @@ namespace StatusERP.Services.Interfaces.AS
         Task<BaseResponseGeneric<int>> CreateAsync(DtoCobrador request, string userId);
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCobrador request, string userId);
 
-        Task<BaseResponseGeneric<int>> DeleteAsync(int id);
+        Task<BaseResponseGeneric<int>> DeleteAsync(int id,string userId);
     }
 }

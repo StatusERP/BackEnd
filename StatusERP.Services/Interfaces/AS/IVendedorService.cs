@@ -12,7 +12,7 @@ namespace StatusERP.Services.Interfaces.AS
         Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId);
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoVendedor request , string userId);
 
-        Task<BaseResponseGeneric<int>> DeleteAsync(int id);
+        Task<BaseResponseGeneric<int>> DeleteAsync(int id,string userId);
 
     }
 
