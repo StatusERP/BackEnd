@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    [Table("MayorDet", Schema = Constants.Conjunto)]
     public class MayorDet:EntityBase
     {
         [Required]

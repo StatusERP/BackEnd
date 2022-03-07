@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    [Table("CuadreAuxiliar", Schema = Constants.Conjunto)]
     public class CuadreAuxiliar:EntityBase
     {
         [Required]

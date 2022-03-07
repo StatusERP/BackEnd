@@ -672,6 +672,9 @@
       "StatusERP.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.2"
+        },
         "compile": {
           "bin/placeholder/StatusERP.Entities.dll": {}
         },
@@ -1973,11 +1976,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
+      "projectUniqueName": "C:\\Proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+      "projectName": "StatusERP.DataAccess",
+      "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Proyectos\\StatusERP\\StatusERP.DataAccess\\obj\\",
+=======
       "projectUniqueName": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
       "projectName": "StatusERP.DataAccess",
       "projectPath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\obj\\",
+>>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1998,8 +2009,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+<<<<<<< HEAD
+            "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
+              "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
+=======
             "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
               "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
+>>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
             }
           }
         }

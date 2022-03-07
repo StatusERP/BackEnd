@@ -41,6 +41,10 @@ namespace StatusERP.DataAccess
 
         public DbSet<Sucursal> Sucursales { get; set; }
 
+        public DbSet<Pais> Paises { get; set; }
+
+        public DbSet<DivGeografica1> DivGeograficas1 { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -60,6 +64,7 @@ namespace StatusERP.DataAccess
             modelBuilder.Entity<CentroCosto>()
                 .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
                 .IsUnique();
+
 
             //modelBuilder.Entity<CentroCuenta>()
             //   .HasKey(c => new { c.CentroCosto, c.CuentaContable });
@@ -108,6 +113,15 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
                 .IsUnique();
 
+            //modelBuilder.Entity<Pais>()
+              //  .HasOne(p => p.CodPais)
+                //.WithMany <DivGeografica1>
+                //.HasForeignKey(p => p.Pais);
+
+
+           // modelBuilder.Entity<DivGeografica1>()
+            //    .HasAlternateKey(p => p.CodDivGeografica1)
+                
 
             //modelBuilder.Entity<MayorEnc>()
             //    .HasIndex(p => p.Asiento, "IxAsientoId")

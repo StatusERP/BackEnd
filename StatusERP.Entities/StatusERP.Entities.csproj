@@ -24,4 +24,8 @@
     <Folder Include="FC\Consultas\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="6.0.2" />
+  </ItemGroup>
+
 </Project>

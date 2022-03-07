@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    [Table("Diferido", Schema = Constants.Conjunto)]
     public class Diferido:EntityBase
     {
         [Required]

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    [Table("DiarioEnc", Schema = Constants.Conjunto)]
     public class DiarioEnc:EntityBase
     {
         [Required]

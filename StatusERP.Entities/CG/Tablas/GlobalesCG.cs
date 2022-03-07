@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
+    [Table("GlobalesCG", Schema = Constants.Conjunto)]
     public class GlobalesCG : EntityBase
     {
         [StringLength(25)]
