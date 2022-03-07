@@ -60,7 +60,8 @@ namespace StatusERP.API.Controllers.AS
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
         {
-            var response = await _service.DeleteAsync(id);
+            var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+            var response = await _service.DeleteAsync(id,userId.Value);
             return Ok(response);
            
         }

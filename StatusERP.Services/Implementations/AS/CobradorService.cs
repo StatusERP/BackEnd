@@ -53,12 +53,12 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
-        public async Task<BaseResponseGeneric<int>> DeleteAsync(int id)
+        public async Task<BaseResponseGeneric<int>> DeleteAsync(int id,string userId)
         {
             var response = new BaseResponseGeneric<int>();
             try
             {
-                await _repository.DeleteAsync(id);
+                await _repository.DeleteAsync(id,userId);
                 response.Success = true;
                 response.Result = id;
             }

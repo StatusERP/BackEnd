@@ -14,11 +14,12 @@ namespace StatusERP.DataAccess.Repositories.AS
             return await _dbContext.InsertAsync(cobrador);
         }
 
-        public async Task<int> DeleteAsync(int id)
+        public async Task<int> DeleteAsync(int id, string userId)
         {
             await _dbContext.DeleteAsync(new Cobrador
             {
-                Id = id
+                Id = id,
+                Updatedby = userId
             });
             return id;
         }
