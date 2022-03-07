@@ -34,6 +34,10 @@ builder.Services.AddScoped<IVendedorService, VendedorService>();
 builder.Services.AddScoped<ICobradorRepository, CobradorRepository>();
 builder.Services.AddScoped<ICobradorService, CobradorService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
+builder.Services.AddScoped<ISucursalService, SucursalService>();
+builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
+builder.Services.AddScoped<IZonaService, ZonaService>();
 
 
 builder.Services.AddControllers();
