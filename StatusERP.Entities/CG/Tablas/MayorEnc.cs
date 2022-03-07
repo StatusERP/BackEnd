@@ -43,7 +43,7 @@ namespace StatusERP.Entities.CG.Tablas
         [Column(TypeName = "decimal(28,8)")]
         public decimal MontoTotalLocal { get; set; }
 
-        [Required(ErrorMessage = "El valor del monto total dólar es requerido.")]
+        [Required(ErrorMessage = "El valor del monto total en dólares es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal MontoTotalDolar { get; set; }
         

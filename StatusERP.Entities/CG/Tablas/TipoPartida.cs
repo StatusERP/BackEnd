@@ -7,11 +7,11 @@ namespace StatusERP.Entities.CG.Tablas
     [Table("TiposPartida", Schema = Constants.Conjunto)]
     public class TipoPartida:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "El código del tipo de partida es requerido.")]
         [StringLength(4)]
         public string CodTipoPartida { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La descripción es requerida")]
         [StringLength(40)]
         public string Descripcion { get; set; }
     }
