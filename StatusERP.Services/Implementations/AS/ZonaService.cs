@@ -61,7 +61,7 @@ public class ZonaService:IZonaService
         {
             response.Result = await _repository.CreateAsync(new Zona
             {
-                CodZona = request.CodVZona,
+                CodZona = request.CodZona,
                 Descripcion = request.Descripcion,
                 Activa = true,
                 Updatedby = userId,
@@ -89,7 +89,7 @@ public class ZonaService:IZonaService
             response.Result = await _repository.UpdateAsync(new Zona
             {
                 Id = id,
-                CodZona = request.CodVZona,
+                CodZona = request.CodZona,
                 Descripcion = request.Descripcion,
                 Activa = request.Activo,
                 Updatedby = userId,

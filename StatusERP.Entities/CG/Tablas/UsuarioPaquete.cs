@@ -6,27 +6,22 @@ namespace StatusERP.Entities.CG.Tablas
     [Table("UsuarioPaquete", Schema = Constants.Conjunto)]
     public class UsuarioPaquete:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "El código del paquete es requerido")]
         [StringLength(4)]
         public string Paquete { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "El código del usuario es requerido")]
         [StringLength(25)]
         public string Usuario { get; set; }
 
-        [Required]
         public bool SoloLectura { get; set; }
 
-        [Required]
         public bool Aplicacion { get; set; }
 
-        [Required]
         public bool Agregar { get; set; }
 
-        [Required]
         public bool Eliminar { get; set; }
 
-        [Required]
         public bool Total { get; set; }
     }
 }

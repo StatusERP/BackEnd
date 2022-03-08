@@ -15,7 +15,7 @@ namespace StatusERP.Entities.CG.Tablas
         [StringLength(4)]
         public string? TipAsntCierreAn { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se requiere el patrón para los códigos de las cuentas contables.")]
         [StringLength(25)]
         public string Patron { get; set; }
 
@@ -31,39 +31,38 @@ namespace StatusERP.Entities.CG.Tablas
         [StringLength(25)]
         public string ? CtaDifCambioDolar { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fecha de última actualización del diferencial cambiario fiscal no puede ser nula.")]
         public DateTime FechaDifCamFiscal { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fecha de última actualización del diferencial cambiario corporativo no puede ser nula.")]
         public DateTime FechaDifCamCorp { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fecha de último cierre fiscal no puede ser nula.")]
         public DateTime FechaCierreFiscal { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Fecha de último cierre corporativo no puede ser nula.")]
         public DateTime FechaCierreCorp { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mes de cierre fiscal no puede ser nulo.")]
         public Int16 MesCierreFiscal { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Mes de cierre corporativo no puede ser nulo.")]
         public Int16 MesCierreCorp { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "No. de último asiento no puede ser nulo.")]
         [StringLength(10)]
         public string  UltimoAsiento { get; set; }
 
         [Required]
         public bool NumAsientoGlobal { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Se debe indicar un nombre para el asiento contable.")]
         [StringLength(10)]
         public string NombreAsiento { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Cantidad de decimales a utilizar no puede ser nula.")]
         public Int16 CantDecimales { get; set; }
 
-        [Required]
         public bool TruncarConversion { get; set; }
 
         [StringLength(25)]

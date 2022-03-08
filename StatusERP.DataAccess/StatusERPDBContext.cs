@@ -17,33 +17,41 @@ namespace StatusERP.DataAccess
         {
 
         }
-
         // Para tablas de ERPADMIN
         public DbSet<Accion> Accion { get; set; }
-
         public DbSet<Conjunto> Conjunto { get; set; }
-
         public DbSet<GrupoUsuario> GrupoUsuario { get; set; }
-
         public DbSet<Membresia> Membresia { get; set; }
-
         public DbSet<Parentesco> Parentesco { get; set; }
-
         public DbSet<PrivilegioUsuario> PrivilegioUsuario { get; set; }
 
-
         // Para tablas de AS
-        public DbSet<Vendedor> Vendedores { get; set; }
-      
         public DbSet<Bodega> Bodegas { get; set; }
-
+        public DbSet<CategoriaCliente> CategoriasCliente { get; set; }
+        public DbSet<CategoriaProveedor> CategoriasProveedor { get; set; }
+        public DbSet<CentroCosto> CentrosCosto { get; set; }
         public DbSet<Cobrador> Cobradores { get; set; }
-
-        public DbSet<Sucursal> Sucursales { get; set; }
-
-        public DbSet<Pais> Paises { get; set; }
-
+        public DbSet<CondicionPago> CondicionesPago { get; set; }
+        public DbSet<ConsecutivoGlobal> ConsecutivosGlobales { get; set; }
+        public DbSet<ConsecutivoUsuario> ConsecutivoUsuario { get; set; }
         public DbSet<DivGeografica1> DivGeograficas1 { get; set; }
+        public DbSet<DivGeografica2> DivGeograficas2 { get; set; }
+        public DbSet<DocTributario> DocTributarios { get; set; }
+        public DbSet<EntidadFinanciera> EntidadesFinancieras { get; set; }
+        public DbSet<GlobalesAS> GlobalesAS { get; set; }
+        public DbSet<Impuesto> Impuestos { get; set; }
+        public DbSet<Moneda> Monedas { get; set; }
+        public DbSet<Localizacion> Localizaciones { get; set; }
+        public DbSet<NivelPrecio> NivelesPrecio { get; set; }
+        public DbSet<Pais> Paises { get; set; }
+        public DbSet<PeriodoContable> PeriodosContables { get; set; }
+        public DbSet<Ruta> Rutas { get; set; }
+        public DbSet<Sucursal> Sucursales { get; set; }
+        public DbSet<TipoCambio> TiposCambio { get; set; }
+        public DbSet<UnidadMedida> UnidadesMedida { get; set; }
+        public DbSet<UsuarioBodega> UsuarioBodega { get; set; }
+        public DbSet<Vendedor> Vendedores { get; set; }
+        public DbSet<Zona> Zonas { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

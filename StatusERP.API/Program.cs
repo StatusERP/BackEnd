@@ -38,6 +38,8 @@ builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
 builder.Services.AddScoped<ISucursalService, SucursalService>();
 builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
 builder.Services.AddScoped<IZonaService, ZonaService>();
+builder.Services.AddScoped<IRutaRepository, RutaRepository>();
+builder.Services.AddScoped<IRutaService, RutaService>();
 
 
 builder.Services.AddControllers();

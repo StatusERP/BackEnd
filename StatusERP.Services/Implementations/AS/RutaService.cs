@@ -1,4 +1,4 @@
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
@@ -7,19 +7,19 @@ using StatusERP.Services.Interfaces.AS;
 
 namespace StatusERP.Services.Implementations.AS;
 
-public class SucursalService:ISucursalService
+public class RutaService:IRutaService
 {
-    private readonly ISucursalesRepository _repository;
-    private readonly ILogger<SucursalService> _logger;
+    private readonly IRutaRepository _repository;
+    private readonly ILogger<RutaService> _logger;
 
-    public SucursalService(ISucursalesRepository repository,ILogger<SucursalService> logger)
+    public RutaService( IRutaRepository repository,ILogger<RutaService> logger)
     {
         _repository = repository;
         _logger = logger;
     }
-    public async Task<BaseResponseGeneric<ICollection<Sucursal>>> GetAsync(int page, int rows)
+    public  async Task<BaseResponseGeneric<ICollection<Ruta>>> GetAsync(int page, int rows)
     {
-        var response = new BaseResponseGeneric<ICollection<Sucursal>>();
+        var response = new BaseResponseGeneric<ICollection<Ruta>>();
         try
         {
             response.Result = await _repository.GetCollectionAsync(page, rows);
@@ -35,12 +35,12 @@ public class SucursalService:ISucursalService
         return response;
     }
 
-    public async  Task<BaseResponseGeneric<Sucursal>> GetByIdAsync(int id)
+    public async Task<BaseResponseGeneric<Ruta>> GetByIdAsync(int id)
     {
-        var response = new BaseResponseGeneric<Sucursal>();
+        var response = new BaseResponseGeneric<Ruta>();
         try
         {
-            response.Result = await _repository.GetByIdAsync(id) ?? new Sucursal();
+            response.Result = await _repository.GetByIdAsync(id) ?? new Ruta();
             response.Success = true;
         }
         catch (Exception ex)
@@ -49,24 +49,23 @@ public class SucursalService:ISucursalService
             response.Success = false;
             response.Errors.Add(ex.Message);
         }
-
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoSucursal request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoRuta request, string userId)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
-            response.Result = await _repository.CreateAsync(new Sucursal
+            response.Result = await _repository.CreateAsync(new Ruta
             {
-                CodSucursal = request.CodSucursal,
-                Descripcion = request.Nombre,
+                CodRuta = request.CodRuta,
+                Descripcion = request.Descripcion,
                 Activa = true,
                 Updatedby = userId,
-                CreateDate = DateTime.Now,
                 UpdateDate = DateTime.Now,
                 Createdby = userId,
+                CreateDate = DateTime.Now
             });
             response.Success = true;
         }
@@ -76,25 +75,25 @@ public class SucursalService:ISucursalService
             response.Success = false;
             response.Errors.Add(ex.Message);
         }
-
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoSucursal request, string userId)
+    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoRuta request, string userId)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
-            response.Result = await _repository.UpdateAsync(new Sucursal
+            response.Result = await _repository.UpdateAsync(new Ruta
             {
                 Id = id,
-                CodSucursal = request.CodSucursal,
-                Descripcion = request.Nombre,
+                CodRuta = request.CodRuta,
+                Descripcion = request.Descripcion,
                 Activa = request.Activa,
                 Updatedby = userId,
                 UpdateDate = DateTime.Now
+
             });
-            
+            response.Success = true;
         }
         catch (Exception ex)
         {
@@ -105,7 +104,7 @@ public class SucursalService:ISucursalService
         return response;
     }
 
-    public  async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
+    public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
     {
         var response = new BaseResponseGeneric<int>();
         try

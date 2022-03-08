@@ -8,45 +8,43 @@ using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Interfaces.AS;
 
 namespace StatusERP.API.Controllers.AS;
-
 [ApiController]
 [Route("api/AS/[controller]")]
 [Authorize]
-public class ZonaController : ControllerBase
+public class RutaController : ControllerBase
 {
-    private readonly IZonaService _service;
-    private readonly ILogger<ZonaService> _logger;
+    private readonly IRutaService _service;
+    private readonly ILogger<RutaService> _logger;
 
-    public ZonaController(IZonaService service,ILogger<ZonaService> logger)
+    public RutaController(IRutaService service,ILogger<RutaService> logger)
     {
         _service = service;
         _logger = logger;
-    }
-
+    } 
     [HttpGet]
-    public async Task<ActionResult<BaseResponseGeneric<ICollection<Zona>>>> Get(int page, int rows)
+    public async Task<ActionResult<BaseResponseGeneric<ICollection<Ruta>>>> Get(int page, int rows)
     {
         return Ok(await _service.GetAsync(page, rows));
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<BaseResponseGeneric<Zona>>> Get(int id)
+    public async Task<ActionResult<BaseResponseGeneric<Ruta>>> Get(int id)
     {
         return Ok(await _service.GetByIdAsync(id));
     }
 
     [HttpPost]
-    public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoZona request)
+    public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoRuta request)
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
         var response = await _service.CreateAsync(request, userId.Value);
-        HttpContext.Response.Headers.Add("location",$"/api/AS/zona/{response.Result}");
+        HttpContext.Response.Headers.Add("location",$"/api/AS/ruta/{response.Result}");
         return Ok(response);
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult> Put(int id, DtoZona request)
+    public async Task<ActionResult> Put(int id, DtoRuta request)
     {
         var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         var response =await _service.UpdateAsync(id, request,userId.Value);
@@ -60,5 +58,5 @@ public class ZonaController : ControllerBase
         return Ok(response);
            
     }
-
+    
 }

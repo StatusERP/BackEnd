@@ -6,11 +6,11 @@ namespace StatusERP.Entities.CG.Tablas
     [Table("MayorAuditoria", Schema = Constants.Conjunto)]
     public class MayorAuditoria:EntityBase
     {
-        [Required]
+        [Required(ErrorMessage = "El código de usuario es requerido.")]
         [StringLength(25)]
         public string Usuario { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "La fecha es requerida.")]
         public DateTime Fecha { get; set; }
 
         [StringLength(40)]
