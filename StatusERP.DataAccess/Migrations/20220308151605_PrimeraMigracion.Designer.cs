@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220308151605_PrimeraMigracion")]
+    partial class PrimeraMigracion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,6 +259,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
+                    b.Property<int?>("CodSucursal")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -277,7 +282,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int?>("SucursalId")
+                    b.Property<int>("SucursalId")
                         .HasColumnType("int");
 
                     b.Property<string>("Telefono")
@@ -1201,11 +1206,13 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("DocTributarioId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("NIT")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -1216,8 +1223,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DocTributarioId");
 
                     b.ToTable("EntidadesFinancieras", "H2C");
                 });
@@ -4352,7 +4357,9 @@ namespace StatusERP.DataAccess.Migrations
                 {
                     b.HasOne("StatusERP.Entities.AS.Tablas.Sucursal", "Sucursal")
                         .WithMany()
-                        .HasForeignKey("SucursalId");
+                        .HasForeignKey("SucursalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Sucursal");
                 });
@@ -4374,17 +4381,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CentroCosto");
 
                     b.Navigation("CuentaContable");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.EntidadFinanciera", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
-                        .WithMany()
-                        .HasForeignKey("DocTributarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DocTributario");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", b =>

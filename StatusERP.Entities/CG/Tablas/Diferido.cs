@@ -43,7 +43,7 @@ namespace StatusERP.Entities.CG.Tablas
 
         [Required(ErrorMessage = "La modalidad de prorrateo es requerida.")]
         [StringLength(1)]
-        public decimal Modalidad { get; set; }
+        public string Modalidad { get; set; }
 
         [Required(ErrorMessage = "El Valor que se asigna para la distribución según la modalidad es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
@@ -97,7 +97,7 @@ namespace StatusERP.Entities.CG.Tablas
         [Required(ErrorMessage = "La fecha de ingreso es requerida.")]
         public DateTime FechaAudIng { get; set; }
 
-        [Required(ErrorMessage = "El usuario de ingreso es requerido.")]
+        [Required(ErrorMessage = "El cógio de usuario que ingresó es requerido.")]
         [StringLength(25)]
         public string UsuarioAudIng { get; set; }
 

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;    
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.CG.Tablas;
+using StatusERP.Entities.CI.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -53,13 +54,34 @@ namespace StatusERP.DataAccess
         public DbSet<Vendedor> Vendedores { get; set; }
         public DbSet<Zona> Zonas { get; set; }
 
+        // Para tablas de CG
+        public DbSet<CentroCuenta> CentroCuenta { get; set; }
+        public DbSet<CuadreAuxiliar> CuadresAuxiliar { get; set; }
+        public DbSet<CuadreCG> CuadresCG { get; set; }
+        public DbSet<CuadreConta> CuadresConta { get; set; }
+        public DbSet<CuentaContable> CuentasContables { get; set; }
+        public DbSet<DiarioDet> DiaroDet { get; set; }
+        public DbSet<DiarioEnc> DiarioEnc { get; set; }
+        public DbSet<Diferido> Diferidos { get; set; }
+        public DbSet<GlobalesCG> GlobalesCG  { get; set; }
+        public DbSet<MayorAuditoria> MayorAuditoria { get; set; }
+        public DbSet<MayorDet> MayorDet { get; set; }
+        public DbSet<MayorEnc> MayorEnc { get; set; }
+        public DbSet<PaqueteContable> PaquetesContables { get; set; }
+        public DbSet<SaldoCuenta> SaldosCuentas { get; set; }
+        public DbSet<TipoPartida> TiposPartidas { get; set; }
+        public DbSet<UsuarioPaquete> UsuarioPaquete { get; set; }
+        
+        // Para tablas de CI
+        public DbSet<Lote> Lotes { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Bodega>()
-                .HasIndex(p => p.CodBodega, "IxBodegaId")
-                .IsUnique();
+            //modelBuilder.Entity<Bodega>()
+              //  .HasIndex(p => p.CodBodega, "IxBodegaId")
+                //.IsUnique();
 
             //modelBuilder.Entity<CategoriaCliente>()
             //    .HasIndex(p => p.CodCategoriaCliente, "IxCategoriaClienteId")
@@ -69,19 +91,17 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodCategoriaProveedor, "IxCategoriaProveedorId")
             //    .IsUnique();
 
-            modelBuilder.Entity<CentroCosto>()
-                .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
-                .IsUnique();
-
+            //modelBuilder.Entity<CentroCosto>()
+              //  .HasIndex(p => p.CodCentroCosto, "IxCentroCostoId")
+                //.IsUnique();
 
             //modelBuilder.Entity<CentroCuenta>()
             //   .HasKey(c => new { c.CentroCosto, c.CuentaContable });
 
-            modelBuilder.Entity<Cobrador>()
-                .HasIndex(p => p.CodCobrador, "IxCobradorId")
-                .IsUnique();
+            //modelBuilder.Entity<Cobrador>()
+                //.HasIndex(p => p.CodCobrador, "IxCobradorId")
+                //.IsUnique();
         
-
             //modelBuilder.Entity<Cobrador>().ToTable(name: "TablaCobradores", schema: "PRUEBA");
 
             //modelBuilder.Entity<CondicionPago>()
@@ -108,7 +128,6 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.Asiento, "IxAsientoId")
             //    .IsUnique();
 
-
             //modelBuilder.Entity<DocTributario>()
             //    .HasIndex(p => p.CodDocTributario, "IxDocTributarioId")
             //    .IsUnique();
@@ -117,20 +136,22 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodEntidadFinanciera, "IxEntidadFinancieraId")
             //    .IsUnique();
 
-            modelBuilder.Entity<Impuesto>()
-                .HasIndex(p => p.CodImpuesto, "IxImpuestoId")
-                .IsUnique();
+            //modelBuilder.Entity<Impuesto>()
+                //.HasIndex(p => p.CodImpuesto, "IxImpuestoId")
+                //.IsUnique();
+            
+            //modelBuilder.Entity<PaqueteContable>()
+                //.HasIndex(p => p.CodPaquete, "IxPaqueteId")
+                //.IsUnique();
 
             //modelBuilder.Entity<Pais>()
               //  .HasOne(p => p.CodPais)
                 //.WithMany <DivGeografica1>
                 //.HasForeignKey(p => p.Pais);
 
-
            // modelBuilder.Entity<DivGeografica1>()
             //    .HasAlternateKey(p => p.CodDivGeografica1)
                 
-
             //modelBuilder.Entity<MayorEnc>()
             //    .HasIndex(p => p.Asiento, "IxAsientoId")
             //    .IsUnique();
@@ -155,9 +176,9 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodRuta, "IxRutaId")
             //    .IsUnique();
 
-            modelBuilder.Entity<Sucursal>()
-                .HasAlternateKey(p => p.CodSucursal)
-                .HasName("AKCodSucursal");
+            //modelBuilder.Entity<Sucursal>()
+                // .HasAlternateKey(p => p.CodSucursal)
+                //.HasName("AKCodSucursal");
 
             //modelBuilder.Entity<DivGeografica1>()
             //   .HasKey(c => new { c.Pais, c.CodDivGeografica1 });
@@ -170,21 +191,13 @@ namespace StatusERP.DataAccess
             //    .HasIndex(p => p.CodUnidadMedida, "IxUnidadMedidaId")
             //    .IsUnique();
 
-            //modelBuilder.Entity<Pais>()
-            //    .h
-
-            //modelBuilder.Entity<NivelPrecio>()
-
-
-            modelBuilder.Entity<Vendedor>()
-                .HasIndex(p => p.CodVendedor, "IxVendedorId")
-                .IsUnique();
+            //modelBuilder.Entity<Vendedor>()
+                //.HasIndex(p => p.CodVendedor, "IxVendedorId")
+                //.IsUnique();
 
             //modelBuilder.Entity<Zona>()
             //    .HasIndex(p => p.CodZona, "IxZonaId")
             //    .IsUnique();
         }
-
-        
     }
 }

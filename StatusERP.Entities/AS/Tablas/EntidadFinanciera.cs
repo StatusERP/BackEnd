@@ -11,8 +11,8 @@ namespace StatusERP.Entities.AS.Tablas
         public string CodEntidadFinanciera { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar No. de Documento Tributario de la Entidad Financiera.")]
-        [StringLength(20)]
-        public string NIT { get; set; }
+        public int DocTributarioId { get; set; }
+        public DocTributario DocTributario { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar descripción de la Entidad Financiera.")]
         [StringLength(40)]

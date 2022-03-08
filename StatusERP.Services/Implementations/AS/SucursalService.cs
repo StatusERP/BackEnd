@@ -60,7 +60,7 @@ public class SucursalService:ISucursalService
         {
             response.Result = await _repository.CreateAsync(new Sucursal
             {
-                CodSucursal = request.CodSucrusal,
+                CodSucursal = request.CodSucursal,
                 Descripcion = request.Nombre,
                 Activa = true,
                 Updatedby = userId,
@@ -88,7 +88,7 @@ public class SucursalService:ISucursalService
             response.Result = await _repository.UpdateAsync(new Sucursal
             {
                 Id = id,
-                CodSucursal = request.CodSucrusal,
+                CodSucursal = request.CodSucursal,
                 Descripcion = request.Nombre,
                 Activa = request.Activa,
                 Updatedby = userId,
