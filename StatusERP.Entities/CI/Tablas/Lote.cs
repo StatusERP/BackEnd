@@ -1,10 +1,51 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CI.Tablas
 {
+    [Table("Lotes", Schema = Constants.Conjunto)]
     public class Lote:EntityBase
     {
-        public int ConjuntoId { get; set; }
-        public Conjunto Conjunto { get; set; }
+        [Required(ErrorMessage = "Se requiere especificar un código de lote.")]
+        [StringLength(15)]
+        public string CodLote { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar un código de articulo.")]
+        [StringLength(20)]
+        public string Articulo { get; set; }
+        
+        [StringLength(20)]
+        public string Proveedor { get; set; }
+        
+        [StringLength(15)]
+        public string LoteProveedor { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar la fecha de entrada del lote.")]
+        public DateTime FechaEntrada { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar fecha de vencimiento.")]
+        public DateTime FechaVencimiento { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar fecha de cuarentena.")]
+        public DateTime FechaCuarentena { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar la cantidad ingresada.")]
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal CantidadIngresada { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar el estado del lote.")]
+        [StringLength(1)]
+        public string Estado { get; set; }
+        
+        [Required(ErrorMessage = "Se requiere especificar el tipo de ingreso.")]
+        [StringLength(1)]
+        public string TipoIngreso { get; set; }
+        
+        public string Notas{ get; set; }
+        
+        [Required(ErrorMessage = "Se requiere indicar el último ingreso.")]
+        public int UltimoIngreso { get; set; }
+        
+        public DateTime FechaFabricacion { get; set; }
     }
 }
