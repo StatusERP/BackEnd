@@ -11,6 +11,7 @@ using StatusERP.Services.Implementations.ERPADMIN;
 using StatusERP.Services.Interfaces.AS;
 using StatusERP.Services.Interfaces.ERPADMIN;
 using System.Text;
+using StatusERP.DataAccess.Repositories.AS.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -42,7 +43,8 @@ builder.Services.AddScoped<IRutaRepository, RutaRepository>();
 builder.Services.AddScoped<IRutaService, RutaService>();
 builder.Services.AddScoped<IBodegaRepository, BodegaRepository>();
 builder.Services.AddScoped<IBodegaService, BodegaService>();
-
+builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
+builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
 
 builder.Services.AddControllers();
 

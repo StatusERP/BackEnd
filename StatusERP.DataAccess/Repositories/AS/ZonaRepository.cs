@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using StatusERP.Entities.AS.Tablas;
+using StatusERP.DataAccess.Repositories.AS.Interfaces;
 
 namespace StatusERP.DataAccess.Repositories.AS;
 
