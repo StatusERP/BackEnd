@@ -40,6 +40,8 @@ builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
 builder.Services.AddScoped<IZonaService, ZonaService>();
 builder.Services.AddScoped<IRutaRepository, RutaRepository>();
 builder.Services.AddScoped<IRutaService, RutaService>();
+builder.Services.AddScoped<IBodegaRepository, BodegaRepository>();
+builder.Services.AddScoped<IBodegaService, BodegaService>();
 
 
 builder.Services.AddControllers();
