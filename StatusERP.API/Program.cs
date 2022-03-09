@@ -45,6 +45,8 @@ builder.Services.AddScoped<IBodegaRepository, BodegaRepository>();
 builder.Services.AddScoped<IBodegaService, BodegaService>();
 builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
 builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
+builder.Services.AddScoped<IDocTributarioRepository, DocTributarioRepository>();
+builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
 
 builder.Services.AddControllers();
 
