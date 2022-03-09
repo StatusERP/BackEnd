@@ -47,6 +47,12 @@ builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
 builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
 builder.Services.AddScoped<IDocTributarioRepository, DocTributarioRepository>();
 builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
+builder.Services.AddScoped<IEntidadFinacieraRepository, EntidadFinacieraRepository>();
+builder.Services.AddScoped<IEntidadFinacieraService, EntidadFinacieraService>();
+builder.Services.AddScoped<IConsecutivoGlobalRepository, ConsecutivoGlobalRepository>();
+builder.Services.AddScoped<IConsecutivoGlobalService, ConsecutivoGlobalService>();
+builder.Services.AddScoped<IConsecutivoUsuarioRepository, ConsecutivoUsuarioRepository>();
+builder.Services.AddScoped<IConsecutivoUsuarioService, ConsecutivoUsuarioService>();
 
 builder.Services.AddControllers();
 
