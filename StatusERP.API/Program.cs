@@ -11,6 +11,7 @@ using StatusERP.Services.Implementations.ERPADMIN;
 using StatusERP.Services.Interfaces.AS;
 using StatusERP.Services.Interfaces.ERPADMIN;
 using System.Text;
+using StatusERP.DataAccess.Repositories.AS.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,7 +35,24 @@ builder.Services.AddScoped<IVendedorService, VendedorService>();
 builder.Services.AddScoped<ICobradorRepository, CobradorRepository>();
 builder.Services.AddScoped<ICobradorService, CobradorService>();
 builder.Services.AddScoped<IUserService, UserService>();
-
+builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
+builder.Services.AddScoped<ISucursalService, SucursalService>();
+builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
+builder.Services.AddScoped<IZonaService, ZonaService>();
+builder.Services.AddScoped<IRutaRepository, RutaRepository>();
+builder.Services.AddScoped<IRutaService, RutaService>();
+builder.Services.AddScoped<IBodegaRepository, BodegaRepository>();
+builder.Services.AddScoped<IBodegaService, BodegaService>();
+builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
+builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
+builder.Services.AddScoped<IDocTributarioRepository, DocTributarioRepository>();
+builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
+builder.Services.AddScoped<IEntidadFinacieraRepository, EntidadFinacieraRepository>();
+builder.Services.AddScoped<IEntidadFinacieraService, EntidadFinacieraService>();
+builder.Services.AddScoped<IConsecutivoGlobalRepository, ConsecutivoGlobalRepository>();
+builder.Services.AddScoped<IConsecutivoGlobalService, ConsecutivoGlobalService>();
+builder.Services.AddScoped<IConsecutivoUsuarioRepository, ConsecutivoUsuarioRepository>();
+builder.Services.AddScoped<IConsecutivoUsuarioService, ConsecutivoUsuarioService>();
 
 builder.Services.AddControllers();
 
