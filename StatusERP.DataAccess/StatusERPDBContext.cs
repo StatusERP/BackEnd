@@ -74,6 +74,8 @@ namespace StatusERP.DataAccess
         
         // Para tablas de CI
         public DbSet<Lote> Lotes { get; set; }
+        public DbSet<Articulo> Articulos { get; set; }
+        public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
