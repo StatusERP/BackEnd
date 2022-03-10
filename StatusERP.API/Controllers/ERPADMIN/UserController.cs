@@ -8,7 +8,7 @@ using StatusERP.Services.Interfaces.ERPADMIN;
 namespace StatusERP.API.Controllers.ERPADMIN
 {
     [ApiController]
-    [Route("api/[controller]/[action]")]
+    [Route("api/ERPADMIN/[controller]/[action]")]
     public class UserController : ControllerBase   
     {
         private readonly IUserService service;

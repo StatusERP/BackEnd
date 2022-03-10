@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 namespace StatusERP.Entities.ERPADMIN.Tablas
 {
     [Table("Conjuntos", Schema = "ERPADMIN")]
-    public class Conjunto
+    public class Conjunto :EntityBase
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        
         [Column("Conjunto")]
         [Required(ErrorMessage = "Se requiere código para la Compañía.")]
         [StringLength(10)]
@@ -96,20 +94,9 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
 
         [Required(ErrorMessage = "Se requiere fecha de vencimiento.")]
         public DateTime FechaVence { get; set; }
-
-        public bool IsDeleted { get; set; }
-        [StringLength(250)]
-
-        [Required]
-        public string Createdby { get; set; }
-        [Required]
-        public DateTime CreateDate { get; set; }
-        [StringLength(250)]
         
-        [Required]
-        public string Updatedby { get; set; }
-        
-        [Required]
-        public DateTime UpdateDate { get; set; }
+        public bool Activa { get; set; }
+
+   
     }
 }

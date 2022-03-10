@@ -1,0 +1,3 @@
+﻿namespace StatusERP.Dto.Request.ERPADMIN;
+
+public record DtoConjunto(string Conjunto,string Nombre,string Direccion,string Telefono,string logo,bool DobleMoneda, bool DobleContabilidad,bool UsaLotes,bool UsaCentroCosto,string UsuarioUltMod,DateTime FechaUltMod,string Notas,string VersionDB,string UsuarioModBd,string VersionInstalada,string DocTributario,string Pais,bool UsaSucrusales,string MascaraSucrusal,string DireccionWeb,string CoreoDocEletronico,string NumeroRegistro,string ActividadComercial,bool AgentePercepcion,bool CalPercepVentas,bool AgenteRetencion , int MembresiaId,DateTime FechaVencimiento,bool Activa);

@@ -12,6 +12,8 @@ using StatusERP.Services.Interfaces.AS;
 using StatusERP.Services.Interfaces.ERPADMIN;
 using System.Text;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
+using StatusERP.DataAccess.Repositories.ERPADMIN;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -53,6 +55,12 @@ builder.Services.AddScoped<IConsecutivoGlobalRepository, ConsecutivoGlobalReposi
 builder.Services.AddScoped<IConsecutivoGlobalService, ConsecutivoGlobalService>();
 builder.Services.AddScoped<IConsecutivoUsuarioRepository, ConsecutivoUsuarioRepository>();
 builder.Services.AddScoped<IConsecutivoUsuarioService, ConsecutivoUsuarioService>();
+builder.Services.AddScoped<IDivGeografica1Repository, DivGeografica1Repository>();
+builder.Services.AddScoped<IDivGeografica1Service, DivGeografica1Service>();
+builder.Services.AddScoped<IDivGeografica2Repository, DivGeografica2Repository>();
+builder.Services.AddScoped<IDivGeografica2Service, DivGeografica2Service>();
+builder.Services.AddScoped<IMembresiaRepository, MembresiaRepository>();
+builder.Services.AddScoped<IMenbresiaService, MenbresiaService>();
 
 builder.Services.AddControllers();
 
