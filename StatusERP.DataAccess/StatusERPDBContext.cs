@@ -73,10 +73,15 @@ namespace StatusERP.DataAccess
         public DbSet<UsuarioPaquete> UsuarioPaquete { get; set; }
         
         // Para tablas de CI
-        public DbSet<Lote> Lotes { get; set; }
-        public DbSet<Articulo> Articulos { get; set; }
-        public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
-        
+        //public DbSet<Lote> Lotes { get; set; }
+        //public DbSet<Articulo> Articulos { get; set; }
+        //public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
+        //public DbSet<IngresoLote> IngresosLotes { get; set; }
+        //public DbSet<ExistenciaLote> ExistenciaLotes { get; set; }
+        //public DbSet<ClasificacionInv> ClasificacionesInv { get; set; }
+        //public DbSet<ConsecutivoInv> ConsecutivosInv { get; set; }
+        //public DbSet<ConsecutivoInvUsuario> ConsecutivosInvUsuarios { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

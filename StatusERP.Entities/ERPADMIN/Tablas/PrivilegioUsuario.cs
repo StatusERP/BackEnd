@@ -6,18 +6,17 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
     [Table("PrivilegioUsuario", Schema = "ERPADMIN")]
     public class PrivilegioUsuario:EntityBase
     {
-
         [Required(ErrorMessage = "Codigo de Usuario es requerido.")]
-        [StringLength(25)]
-        public string Usuario { get; set; }
-
+        [StringLength(36)]
+        public string UsuarioId { get; set; }
+        
         [Required(ErrorMessage = "Conjunto es requerido.")]
-        [StringLength(10)]
-        public string Conjunto { get; set; }
-
+        public int ConjuntoId { get; set; }
+        public Conjunto Conjunto { get; set; }
 
         [Required(ErrorMessage = "Codigo de Acción es requerido.")]
-        public int Accion { get; set; }
+        public int AccionId { get; set; }
+        public Accion Accion { get; set; }
 
         public bool Activo { get; set; }
     }

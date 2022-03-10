@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220310174818_CorrecPrivilegioUsuario")]
+    partial class CorrecPrivilegioUsuario
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4201,16 +4203,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<string>("UsuarioId")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<int>("Usuario")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccionId");
-
-                    b.HasIndex("ConjuntoId");
 
                     b.ToTable("PrivilegioUsuario", "ERPADMIN");
                 });
@@ -4314,25 +4310,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Membresia");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.PrivilegioUsuario", b =>
-                {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Accion", "Accion")
-                        .WithMany()
-                        .HasForeignKey("AccionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
-                        .WithMany()
-                        .HasForeignKey("ConjuntoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Accion");
-
-                    b.Navigation("Conjunto");
                 });
 #pragma warning restore 612, 618
         }
