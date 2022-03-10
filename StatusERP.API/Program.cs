@@ -61,6 +61,8 @@ builder.Services.AddScoped<IDivGeografica2Repository, DivGeografica2Repository>(
 builder.Services.AddScoped<IDivGeografica2Service, DivGeografica2Service>();
 builder.Services.AddScoped<IMembresiaRepository, MembresiaRepository>();
 builder.Services.AddScoped<IMenbresiaService, MenbresiaService>();
+builder.Services.AddScoped<IAccionRepository, AccionRepository>();
+builder.Services.AddScoped<IAccionService, AccionService>();
 
 builder.Services.AddControllers();
 
