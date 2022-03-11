@@ -6,9 +6,9 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
     [Table("Parentesco", Schema = "ERPADMIN")]
     public class Parentesco:EntityBase
     {
-        [Required(ErrorMessage = "Codigo de Acción es requerido.")]
-        public int Accion { get; set; }
-
+        public int AccionId { get; set; }
+        public Accion Accion { get; set; }
+        
         [Required(ErrorMessage = "Codigo Padre es requerido.")]
         public int Padre { get; set; }
 
