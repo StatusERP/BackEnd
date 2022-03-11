@@ -10,7 +10,7 @@ using StatusERP.Services.Interfaces.ERPADMIN;
 namespace StatusERP.API.Controllers.ERPADMIN;
 [ApiController]
 [Route("api/ERPADMIN/[controller]")]
-[Authorize]
+//[Authorize]
 public class AccionController : Controller
 {
     private readonly IAccionService _service;
