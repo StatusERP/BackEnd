@@ -63,6 +63,9 @@ builder.Services.AddScoped<IMembresiaRepository, MembresiaRepository>();
 builder.Services.AddScoped<IMenbresiaService, MenbresiaService>();
 builder.Services.AddScoped<IAccionRepository, AccionRepository>();
 builder.Services.AddScoped<IAccionService, AccionService>();
+builder.Services.AddScoped<IParentescoRepository, ParentescoRepository>();
+builder.Services.AddScoped<IParentescoService, ParentescoService>();
+
 
 builder.Services.AddControllers();
 
