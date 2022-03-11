@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220310213457_AjusteSubTipo")]
+    partial class AjusteSubTipo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -4173,7 +4175,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AccionId")
+                    b.Property<int>("Accion")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
@@ -4202,8 +4204,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AccionId");
 
                     b.ToTable("Parentesco", "ERPADMIN");
                 });
@@ -4357,17 +4357,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Membresia");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Parentesco", b =>
-                {
-                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Accion", "Accion")
-                        .WithMany()
-                        .HasForeignKey("AccionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Accion");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.PrivilegioUsuario", b =>
