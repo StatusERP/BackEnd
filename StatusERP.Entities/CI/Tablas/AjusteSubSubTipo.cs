@@ -7,8 +7,8 @@ namespace StatusERP.Entities.CI.Tablas
 
     public class AjusteSubSubTipo:EntityBase
     {
-        [Required(ErrorMessage = "El Id del AjusteConfig es requerido")]
-        public int AjusteConfigId { get; set; }
+        [Required(ErrorMessage = "AjusteConfig es requerido")]
+        public int AjusteConfig { get; set; }
         
         [Required(ErrorMessage = "El código del SubSubtipo es requerido")]
         public int SubSubtipoId { get; set; }

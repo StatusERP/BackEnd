@@ -25,7 +25,11 @@ namespace StatusERP.DataAccess
         public DbSet<Membresia> Membresia { get; set; }
         public DbSet<Parentesco> Parentesco { get; set; }
         public DbSet<PrivilegioUsuario> PrivilegioUsuario { get; set; }
-
+        public DbSet<BitacoraProceso> BitacoraProceso { get; set; }
+        public DbSet<Favoritos> Favoritos { get; set; }
+        public DbSet<Locks> Locks { get; set; }
+        public DbSet<ModuloInstalado> ModuloInstalado { get; set; }
+        
         // Para tablas de AS
         public DbSet<Bodega> Bodegas { get; set; }
         public DbSet<CategoriaCliente> CategoriasCliente { get; set; }
@@ -88,8 +92,8 @@ namespace StatusERP.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<AjusteSubTipo>()
-                .HasKey(p => new {p.Id, p.Subtipo});
+            //modelBuilder.Entity<AjusteSubTipo>()
+                //.HasKey(p => new {p.AjusteConfig, p.Subtipo});
 
             //modelBuilder.Entity<Bodega>()
             //  .HasIndex(p => p.CodBodega, "IxBodegaId")
