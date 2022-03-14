@@ -7,4 +7,8 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = StatusERP.DataAccess
+<<<<<<< HEAD
 build_property.ProjectDir = C:\proyectos\StatusERP\StatusERP.DataAccess\
+=======
+build_property.ProjectDir = C:\Dev\StatusERP\StatusERP.DataAccess\
+>>>>>>> f2fa7883be321cf3ced83fc22a141973c93113ff
