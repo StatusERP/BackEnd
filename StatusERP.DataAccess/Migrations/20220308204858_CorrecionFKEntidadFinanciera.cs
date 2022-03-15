@@ -10,12 +10,12 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "NIT",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras");
 
             migrationBuilder.AddColumn<int>(
                 name: "DocTributarioId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras",
                 type: "int",
                 nullable: false,
@@ -23,16 +23,16 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_EntidadesFinancieras_DocTributarioId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras",
                 column: "DocTributarioId");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_EntidadesFinancieras_DocTributarios_DocTributarioId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras",
                 column: "DocTributarioId",
-                principalSchema: "H2C",
+                principalSchema: "DEMO",
                 principalTable: "DocTributarios",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -42,22 +42,22 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_EntidadesFinancieras_DocTributarios_DocTributarioId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras");
 
             migrationBuilder.DropIndex(
                 name: "IX_EntidadesFinancieras_DocTributarioId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras");
 
             migrationBuilder.DropColumn(
                 name: "DocTributarioId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras");
 
             migrationBuilder.AddColumn<string>(
                 name: "NIT",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "EntidadesFinancieras",
                 type: "nvarchar(20)",
                 maxLength: 20,

@@ -86,7 +86,11 @@ namespace StatusERP.DataAccess
         //public DbSet<ConsecutivoInv> ConsecutivosInv { get; set; }
         //public DbSet<ConsecutivoInvUsuario> ConsecutivosInvUsuarios { get; set; }
         //public DbSet<AjusteConfig> AjustesConfig { get; set; }
-        public DbSet<AjusteSubTipo> AjustesSubTipo { get; set; }
+        //public DbSet<AjusteSubTipo> AjustesSubTipo { get; set; }
+        public DbSet<PaqueteInv> PaquetesInv { get; set; }
+        public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
+        public DbSet<ExistenciaBodega> ExistenciaBodega { get; set; }
+        public DbSet<GlobalesCI>  GlobalesCI { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

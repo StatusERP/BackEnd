@@ -11,42 +11,42 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Articulos",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CategoriasArticulos",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "ClasificacionesInv",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "ConsecutivosInv",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "ConsecutivosInvUsuarios",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "ExistenciaLotes",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "IngresosLotes",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Lotes",
-                schema: "H2C");
+                schema: "DEMO");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "Articulos",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -147,7 +147,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CategoriasArticulos",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -252,7 +252,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ClasificacionesInv",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -278,7 +278,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ConsecutivosInv",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -309,7 +309,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ConsecutivosInvUsuarios",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -329,7 +329,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ExistenciaLotes",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -358,7 +358,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "IngresosLotes",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -381,7 +381,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Lotes",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)

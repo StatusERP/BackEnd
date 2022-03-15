@@ -13,7 +13,7 @@ namespace StatusERP.DataAccess.Migrations
                 name: "ERPADMIN");
 
             migrationBuilder.EnsureSchema(
-                name: "H2C");
+                name: "DEMO");
 
             migrationBuilder.CreateTable(
                 name: "Accion",
@@ -89,7 +89,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CategoriasProveedor",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -131,7 +131,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CentroCuenta",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -152,7 +152,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CentrosCosto",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -174,7 +174,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Cobradores",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -196,7 +196,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CondicionesPago",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -222,7 +222,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ConsecutivosGlobales",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -254,7 +254,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ConsecutivoUsuario",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -274,7 +274,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CuadreAuxiliar",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -303,7 +303,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CuadreConta",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -338,7 +338,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CuadresCG",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -366,7 +366,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CuentaContable",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -397,7 +397,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "DiarioDet",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -426,7 +426,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "DiarioEnc",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -463,7 +463,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Diferido",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -535,7 +535,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "DivGeograficas1",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -556,7 +556,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "DivGeograficas2",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -578,7 +578,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "DocTributarios",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -611,7 +611,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "EntidadesFinancieras",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -633,7 +633,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "GlobalesAS",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -664,7 +664,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "GlobalesCG",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -746,7 +746,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Impuestos",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -800,7 +800,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Localizaciones",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -823,7 +823,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Lotes",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -854,7 +854,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "MayorAuditoria",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -875,7 +875,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "MayorDet",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -909,7 +909,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "MayorEnc",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -964,7 +964,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Monedas",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -985,7 +985,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "NivelesPrecios",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1009,7 +1009,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Paises",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1104,7 +1104,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "PaquetesContables",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1151,7 +1151,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "PeriodosContables",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1196,7 +1196,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Rutas",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1217,7 +1217,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "SaldoCuentas",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1250,7 +1250,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Sucursales",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1271,7 +1271,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "TiposCambio",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1291,7 +1291,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "TiposPartida",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1311,7 +1311,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UnidadesMedida",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1331,7 +1331,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UsuarioBodega",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1351,7 +1351,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "UsuarioPaquete",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1376,7 +1376,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Vendedores",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1398,7 +1398,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Zonas",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1525,7 +1525,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CategoriasClientes",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1596,14 +1596,14 @@ namespace StatusERP.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_CategoriasClientes_CentrosCosto_CentroCostoId",
                         column: x => x.CentroCostoId,
-                        principalSchema: "H2C",
+                        principalSchema: "DEMO",
                         principalTable: "CentrosCosto",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_CategoriasClientes_CuentaContable_CuentaContableId",
                         column: x => x.CuentaContableId,
-                        principalSchema: "H2C",
+                        principalSchema: "DEMO",
                         principalTable: "CuentaContable",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -1665,7 +1665,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Bodegas",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -1690,7 +1690,7 @@ namespace StatusERP.DataAccess.Migrations
                     table.ForeignKey(
                         name: "FK_Bodegas_Sucursales_SucursalId",
                         column: x => x.SucursalId,
-                        principalSchema: "H2C",
+                        principalSchema: "DEMO",
                         principalTable: "Sucursales",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -1737,19 +1737,19 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Bodegas_SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas",
                 column: "SucursalId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoriasClientes_CentroCostoId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "CategoriasClientes",
                 column: "CentroCostoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CategoriasClientes_CuentaContableId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "CategoriasClientes",
                 column: "CuentaContableId");
 
@@ -1783,27 +1783,27 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Bodegas",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CategoriasClientes",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CategoriasProveedor",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CentroCuenta",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Cobradores",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CondicionesPago",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Conjuntos",
@@ -1811,59 +1811,59 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "ConsecutivosGlobales",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "ConsecutivoUsuario",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CuadreAuxiliar",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CuadreConta",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CuadresCG",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "DiarioDet",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "DiarioEnc",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Diferido",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "DivGeograficas1",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "DivGeograficas2",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "DocTributarios",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "EntidadesFinancieras",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "GlobalesAS",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "GlobalesCG",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "GrupoUsuario",
@@ -1871,43 +1871,43 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Impuestos",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Localizaciones",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Lotes",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "MayorAuditoria",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "MayorDet",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "MayorEnc",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Monedas",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "NivelesPrecios",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Paises",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "PaquetesContables",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Parentesco",
@@ -1915,7 +1915,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "PeriodosContables",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "PrivilegioUsuario",
@@ -1923,39 +1923,39 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Rutas",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "SaldoCuentas",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "TiposCambio",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "TiposPartida",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "UnidadesMedida",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "UsuarioBodega",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "UsuarioPaquete",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Vendedores",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Zonas",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -1965,15 +1965,15 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Sucursales",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CentrosCosto",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CuentaContable",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "Membresia",
