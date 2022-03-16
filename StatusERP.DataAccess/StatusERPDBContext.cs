@@ -96,12 +96,12 @@ namespace StatusERP.DataAccess
         {
             base.OnModelCreating(modelBuilder);
 
-            //modelBuilder.Entity<AjusteSubTipo>()
-                //.HasKey(p => new {p.AjusteConfig, p.Subtipo});
-
             //modelBuilder.Entity<Bodega>()
             //  .HasIndex(p => p.CodBodega, "IxBodegaId")
             //.IsUnique();
+
+            modelBuilder.Entity<Parentesco>()
+                .HasIndex(p => p.Padre, "IxPadre");
 
             //modelBuilder.Entity<CategoriaCliente>()
             //    .HasIndex(p => p.CodCategoriaCliente, "IxCategoriaClienteId")
