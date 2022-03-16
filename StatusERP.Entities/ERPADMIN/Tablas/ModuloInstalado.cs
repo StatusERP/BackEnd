@@ -8,11 +8,12 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
     public class ModuloInstalado:EntityBase
 
     {
-        [Required(ErrorMessage = "El conjunto es requerido.")]
-        [StringLength(10)]
-        public string Conjunto { get; set; }
+        [Required(ErrorMessage = "Debe especificar un conjunto.")]
+        public int ConjuntoId { get; set; }
+        public Conjunto Conjunto { get; set; }
         
-        [Required(ErrorMessage = "La accion es requerida.")]
-        public int Accion { get; set; }
+        [Required(ErrorMessage = "La acción es requerida.")]
+        public int AccionId { get; set; }
+        public Accion Accion { get; set; }
     }
 }

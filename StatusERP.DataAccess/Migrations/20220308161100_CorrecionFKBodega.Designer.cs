@@ -303,7 +303,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("SucursalId");
 
-                    b.ToTable("Bodegas", "H2C");
+                    b.ToTable("Bodegas", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.CategoriaCliente", b =>
@@ -555,7 +555,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("CuentaContableId");
 
-                    b.ToTable("CategoriasClientes", "H2C");
+                    b.ToTable("CategoriasClientes", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.CategoriaProveedor", b =>
@@ -685,7 +685,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoriasProveedor", "H2C");
+                    b.ToTable("CategoriasProveedor", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.CentroCosto", b =>
@@ -735,7 +735,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CentrosCosto", "H2C");
+                    b.ToTable("CentrosCosto", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Cobrador", b =>
@@ -784,7 +784,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Cobradores", "H2C");
+                    b.ToTable("Cobradores", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.CondicionPago", b =>
@@ -846,7 +846,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CondicionesPago", "H2C");
+                    b.ToTable("CondicionesPago", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.ConsecutivoGlobal", b =>
@@ -939,7 +939,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConsecutivosGlobales", "H2C");
+                    b.ToTable("ConsecutivosGlobales", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.ConsecutivoUsuario", b =>
@@ -981,7 +981,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ConsecutivoUsuario", "H2C");
+                    b.ToTable("ConsecutivoUsuario", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DivGeografica1", b =>
@@ -1028,7 +1028,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DivGeograficas1", "H2C");
+                    b.ToTable("DivGeograficas1", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DivGeografica2", b =>
@@ -1080,7 +1080,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DivGeograficas2", "H2C");
+                    b.ToTable("DivGeograficas2", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DocTributario", b =>
@@ -1170,7 +1170,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DocTributarios", "H2C");
+                    b.ToTable("DocTributarios", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.EntidadFinanciera", b =>
@@ -1221,7 +1221,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("EntidadesFinancieras", "H2C");
+                    b.ToTable("EntidadesFinancieras", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.GlobalesAS", b =>
@@ -1310,7 +1310,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GlobalesAS", "H2C");
+                    b.ToTable("GlobalesAS", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Impuesto", b =>
@@ -1484,7 +1484,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Impuestos", "H2C");
+                    b.ToTable("Impuestos", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Localizacion", b =>
@@ -1537,7 +1537,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Localizaciones", "H2C");
+                    b.ToTable("Localizaciones", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Moneda", b =>
@@ -1583,7 +1583,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Monedas", "H2C");
+                    b.ToTable("Monedas", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.NivelPrecio", b =>
@@ -1640,7 +1640,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("NivelesPrecios", "H2C");
+                    b.ToTable("NivelesPrecios", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Pais", b =>
@@ -1982,7 +1982,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Paises", "H2C");
+                    b.ToTable("Paises", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.PeriodoContable", b =>
@@ -2033,7 +2033,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PeriodosContables", "H2C");
+                    b.ToTable("PeriodosContables", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Ruta", b =>
@@ -2078,7 +2078,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rutas", "H2C");
+                    b.ToTable("Rutas", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Sucursal", b =>
@@ -2123,7 +2123,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sucursales", "H2C");
+                    b.ToTable("Sucursales", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.TipoCambio", b =>
@@ -2165,7 +2165,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TiposCambio", "H2C");
+                    b.ToTable("TiposCambio", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.UnidadMedida", b =>
@@ -2207,7 +2207,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UnidadesMedida", "H2C");
+                    b.ToTable("UnidadesMedida", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.UsuarioBodega", b =>
@@ -2249,7 +2249,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UsuarioBodega", "H2C");
+                    b.ToTable("UsuarioBodega", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Vendedor", b =>
@@ -2299,7 +2299,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vendedores", "H2C");
+                    b.ToTable("Vendedores", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Zona", b =>
@@ -2344,7 +2344,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Zonas", "H2C");
+                    b.ToTable("Zonas", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CentroCuenta", b =>
@@ -2389,7 +2389,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CentroCuenta", "H2C");
+                    b.ToTable("CentroCuenta", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CuadreAuxiliar", b =>
@@ -2462,7 +2462,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CuadreAuxiliar", "H2C");
+                    b.ToTable("CuadreAuxiliar", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CuadreCG", b =>
@@ -2533,7 +2533,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CuadresCG", "H2C");
+                    b.ToTable("CuadresCG", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CuadreConta", b =>
@@ -2634,7 +2634,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CuadreConta", "H2C");
+                    b.ToTable("CuadreConta", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CuentaContable", b =>
@@ -2721,7 +2721,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CuentaContable", "H2C");
+                    b.ToTable("CuentaContable", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.DiarioDet", b =>
@@ -2796,7 +2796,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DiarioDet", "H2C");
+                    b.ToTable("DiarioDet", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.DiarioEnc", b =>
@@ -2901,7 +2901,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("DiarioEnc", "H2C");
+                    b.ToTable("DiarioEnc", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.Diferido", b =>
@@ -3137,7 +3137,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Diferido", "H2C");
+                    b.ToTable("Diferido", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.GlobalesCG", b =>
@@ -3331,7 +3331,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GlobalesCG", "H2C");
+                    b.ToTable("GlobalesCG", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.MayorAuditoria", b =>
@@ -3376,7 +3376,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MayorAuditoria", "H2C");
+                    b.ToTable("MayorAuditoria", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.MayorDet", b =>
@@ -3474,7 +3474,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MayorDet", "H2C");
+                    b.ToTable("MayorDet", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.MayorEnc", b =>
@@ -3570,7 +3570,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("MayorEnc", "H2C");
+                    b.ToTable("MayorEnc", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.PaqueteContable", b =>
@@ -3637,7 +3637,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaquetesContables", "H2C");
+                    b.ToTable("PaquetesContables", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.SaldoCuenta", b =>
@@ -3718,7 +3718,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SaldoCuentas", "H2C");
+                    b.ToTable("SaldoCuentas", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.TipoPartida", b =>
@@ -3760,7 +3760,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TiposPartida", "H2C");
+                    b.ToTable("TiposPartida", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.UsuarioPaquete", b =>
@@ -3817,7 +3817,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UsuarioPaquete", "H2C");
+                    b.ToTable("UsuarioPaquete", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Lote", b =>
@@ -3901,7 +3901,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Lotes", "H2C");
+                    b.ToTable("Lotes", "DEMO");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Accion", b =>

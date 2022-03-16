@@ -12,8 +12,8 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    [Migration("20220314165227_ComplementoTablasERPADMIN")]
-    partial class ComplementoTablasERPADMIN
+    [Migration("20220315230335_Resumen15MarzoTry3")]
+    partial class Resumen15MarzoTry3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -3820,7 +3820,221 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("UsuarioPaquete", "H2C");
                 });
 
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.AjusteSubTipo", b =>
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaBodega", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Articulo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("BloqueaTrans")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Bodega")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal>("CantDisponible")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantNoAprobada")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantPedida")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantProduccion")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantRemitida")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantReservada")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantTransito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CantVencida")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("Congelado")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("CostoUntPromedioDol")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("CostoUntPromedioLoc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<decimal>("ExistenciaMaxima")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("ExistenciaMinima")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime?>("FechaCong")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaDescong")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("PuntoDeOrden")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ExistenciaBodega", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("AjustarConteo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Costo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CostoIngrDefault")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<short>("CostosDec")
+                        .HasColumnType("smallint");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<short>("ExistenciasDec")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MaxAuditoria")
+                        .HasColumnType("int");
+
+                    b.Property<short>("PesosDec")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("UnidadPeso")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UnidadVolumen")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("UsaLocalizacion")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GlobalesCI", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.PaqueteInv", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<DateTime>("FechaUltAceso")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PaqueteInventario")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("UltimoUsuario")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreador")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PaqueteInv", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.UsuarioAjusteInv", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -3844,11 +4058,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("SubTipo")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
@@ -3857,9 +4066,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
+                    b.Property<string>("Usuario")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("AjustesSubTipo", "H2C");
+                    b.ToTable("UsuarioAjusteInv", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Accion", b =>
@@ -4346,13 +4560,11 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Accion")
+                    b.Property<int>("AccionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Conjunto")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<int>("ConjuntoId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -4374,6 +4586,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccionId");
+
+                    b.HasIndex("ConjuntoId");
 
                     b.ToTable("ModuloInstalado", "ERPADMIN");
                 });
@@ -4570,6 +4786,25 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Membresia");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.ModuloInstalado", b =>
+                {
+                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Accion", "Accion")
+                        .WithMany()
+                        .HasForeignKey("AccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", "Conjunto")
+                        .WithMany()
+                        .HasForeignKey("ConjuntoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Accion");
+
+                    b.Navigation("Conjunto");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Parentesco", b =>

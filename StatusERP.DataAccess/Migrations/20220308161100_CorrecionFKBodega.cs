@@ -10,17 +10,17 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Bodegas_Sucursales_SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas");
 
             migrationBuilder.DropColumn(
                 name: "CodSucursal",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas");
 
             migrationBuilder.AlterColumn<int>(
                 name: "SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas",
                 type: "int",
                 nullable: true,
@@ -29,10 +29,10 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Bodegas_Sucursales_SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas",
                 column: "SucursalId",
-                principalSchema: "H2C",
+                principalSchema: "DEMO",
                 principalTable: "Sucursales",
                 principalColumn: "Id");
         }
@@ -41,12 +41,12 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Bodegas_Sucursales_SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas");
 
             migrationBuilder.AlterColumn<int>(
                 name: "SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas",
                 type: "int",
                 nullable: false,
@@ -57,17 +57,17 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.AddColumn<int>(
                 name: "CodSucursal",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas",
                 type: "int",
                 nullable: true);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Bodegas_Sucursales_SucursalId",
-                schema: "H2C",
+                schema: "DEMO",
                 table: "Bodegas",
                 column: "SucursalId",
-                principalSchema: "H2C",
+                principalSchema: "DEMO",
                 principalTable: "Sucursales",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);

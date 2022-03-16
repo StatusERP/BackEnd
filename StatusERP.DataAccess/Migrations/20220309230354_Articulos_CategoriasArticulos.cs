@@ -11,7 +11,7 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.CreateTable(
                 name: "Articulos",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -112,7 +112,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CategoriasArticulos",
-                schema: "H2C",
+                schema: "DEMO",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -220,11 +220,11 @@ namespace StatusERP.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Articulos",
-                schema: "H2C");
+                schema: "DEMO");
 
             migrationBuilder.DropTable(
                 name: "CategoriasArticulos",
-                schema: "H2C");
+                schema: "DEMO");
         }
     }
 }
