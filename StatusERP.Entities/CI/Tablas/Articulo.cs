@@ -75,11 +75,11 @@ namespace StatusERP.Entities.CI.Tablas
 
         [Required(ErrorMessage = "Debe ingresar la categoría del artículo.")]
         [StringLength(4)]
-        public decimal CategoriaArticulo { get; set; }
+        public string CategoriaArticulo { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el impuesto.")]
         [StringLength(4)]
-        public decimal Impuesto { get; set; }
+        public string Impuesto { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el factor de empaque.")]
         [Column(TypeName = "decimal(28,8)")]

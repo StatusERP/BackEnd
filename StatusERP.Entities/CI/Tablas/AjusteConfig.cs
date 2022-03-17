@@ -12,7 +12,7 @@ namespace StatusERP.Entities.CI.Tablas
         
         [Required(ErrorMessage = "La descripción es requerida.")]
         [StringLength(15)]
-        public string Descripción { get; set; }
+        public string Descripcion { get; set; }
         
         [Required(ErrorMessage = "Se requiere especificar el tipo de ajuste base.")]
         [StringLength(1)]

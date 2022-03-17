@@ -75,25 +75,27 @@ namespace StatusERP.DataAccess
         public DbSet<SaldoCuenta> SaldosCuentas { get; set; }
         public DbSet<TipoPartida> TiposPartidas { get; set; }
         public DbSet<UsuarioPaquete> UsuarioPaquete { get; set; }
-        
+
         // Para tablas de CI
-        public DbSet<Lote> Lotes { get; set; }
+        public DbSet<AjusteConfig> AjustesConfig { get; set; }
+        public DbSet<AjusteSubTipo> AjustesSubTipo { get; set; }
+        public DbSet<AjusteSubSubTipo> AjustesSubSubTipo { get; set; }
         public DbSet<Articulo> Articulos { get; set; }
         public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
-        public DbSet<IngresoLote> IngresosLotes { get; set; }
-        public DbSet<ExistenciaLote> ExistenciaLotes { get; set; }
         public DbSet<ClasificacionInv> ClasificacionesInv { get; set; }
         public DbSet<ConsecutivoInv> ConsecutivosInv { get; set; }
         public DbSet<ConsecutivoInvUsuario> ConsecutivosInvUsuarios { get; set; }
-        //public DbSet<AjusteConfig> AjustesConfig { get; set; }
-        //public DbSet<AjusteSubTipo> AjustesSubTipo { get; set; }
+        public DbSet<DocumentoInvDet> DocumentosInvDet { get; set; }
+        public DbSet<DocumentoInvEnc> DocumentosInvEnc { get; set; }
+        public DbSet<ExistenciaBodega> ExistenciaBodega { get; set; }
+        public DbSet<ExistenciaLote> ExistenciaLotes { get; set; }
+        public DbSet<GlobalesCI> GlobalesCI { get; set; }
+        public DbSet<IngresoLote> IngresosLotes { get; set; }
+        public DbSet<Lote> Lotes { get; set; }
+        public DbSet<MovInventarioDet> MovsInventarioDet { get; set; }
+        public DbSet<MovInventarioEnc> MovsInventarioEnc { get; set; }
         public DbSet<PaqueteInv> PaquetesInv { get; set; }
         public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
-        public DbSet<ExistenciaBodega> ExistenciaBodega { get; set; }
-        public DbSet<GlobalesCI>  GlobalesCI { get; set; }
-        public DbSet<MovInventarioEnc> MovsInventarioEnc { get; set; }
-        public DbSet<MovInventarioDet> MovsInventarioDet { get; set; }
-        public DbSet<DocumentoInvEnc> DocumentosInvEnc { get; set; }
 
 
 
