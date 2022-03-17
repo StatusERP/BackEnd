@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using StatusERP.Entities.ERPADMIN.Tablas;
+
 
 namespace StatusERP.Entities.CI.Tablas
 {
@@ -20,7 +20,7 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(6)]
         public string UnidadPeso { get; set; }
 
-        [Required(ErrorMessage = "Debe especificarse la cantidad de volumen.")]
+        [Required(ErrorMessage = "Debe especificarse la unidad de volumen.")]
         [StringLength(6)]
         public string UnidadVolumen { get; set; }
         
@@ -28,16 +28,16 @@ namespace StatusERP.Entities.CI.Tablas
         
         public bool AjustarConteo { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse el valor de MaxAuditoria.")]
+        [Required(ErrorMessage = "Maximo número de auditoría agregado en las transacciones de inventario.")]
         public int MaxAuditoria { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse la fecha del último proceso de vencimiento.")]
+        [Required(ErrorMessage = "Fecha en que se ejecutó por última vez el proceso de vencimiento.")]
         public DateTime FchUltProcVcto { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse la fecha del último proceso de aprobación.")]
+        [Required(ErrorMessage = "Fecha en que se ejecutó por última vez el proceso de aprobación.")]
         public DateTime FchUltProcAprob { get; set; }
 
-        [Required(ErrorMessage = "Debe especificarse la fecha de inicio de transacciones.")]
+        [Required(ErrorMessage = "Fecha de inicio de las transacciones de CI.")]
         public DateTime FechaInicioTrans { get; set; }
         
         [Required(ErrorMessage = "Debe especificarse un nombre para la clasificación 1.")]
@@ -90,16 +90,51 @@ namespace StatusERP.Entities.CI.Tablas
         
         public bool CtrEnTransaccion { get; set; }
         
-        [Required(ErrorMessage = "Debe indicarse las existencias en Totales." )]
+        [Required(ErrorMessage = "Debe indicarse lOS totales en las consultas de existencias." )]
         [StringLength(10)]
         public string ExistEnTotales { get; set; }
         
+        public bool TransacXUsuario { get; set; }
         
+        public bool UsaConsecutivos { get; set; }
         
+        [StringLength(1)]
+        public string ? ModalidadUso { get; set; }
         
+        public bool UsarNumerosSerie { get; set; }
         
+        public bool CntrlSeriesEntr { get; set; }
+        
+        public bool UsaCodigoBarras { get; set; }
+        
+        public bool UsaUnidadesDist { get; set; }
+        
+        public bool AsistenciaAutomat { get; set; }
+        
+        public bool UsaCodigoEAN13 { get; set; }
+        
+        public bool UsaCodigoEAN8 { get; set; }
 
-        
+        public bool UsaCodigoUCC12 { get; set; }
 
-    }
+        public bool UsaCodigoUCC8 { get; set; }
+
+        [StringLength(18)]
+        public string ? EAN13ReglaLocal { get; set; }
+
+        [StringLength(3)]
+        public string ? EAN8ReglaLocal { get; set; }
+
+        [StringLength(6)]
+        public string ? UCC12ReglaLocal { get; set; }
+
+        [StringLength(1)]
+        public string ? PrioridadBusqueda { get; set; }
+
+        public bool UsaCodigoGeneric { get; set; }
+
+        public int ? LineasMaxTrans { get; set; }
+
+        public bool UsarAprobacion { get; set; }
+     }
 }

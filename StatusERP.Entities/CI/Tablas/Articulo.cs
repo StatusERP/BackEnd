@@ -266,5 +266,8 @@ namespace StatusERP.Entities.CI.Tablas
         
         [Column(TypeName = "decimal(28,8)")]
         public decimal ? PorcPercep { get; set; }
+        
+        
+        
     }
 }
