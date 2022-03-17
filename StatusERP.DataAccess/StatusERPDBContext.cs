@@ -77,20 +77,25 @@ namespace StatusERP.DataAccess
         public DbSet<UsuarioPaquete> UsuarioPaquete { get; set; }
         
         // Para tablas de CI
-        //public DbSet<Lote> Lotes { get; set; }
-        //public DbSet<Articulo> Articulos { get; set; }
-        //public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
-        //public DbSet<IngresoLote> IngresosLotes { get; set; }
-        //public DbSet<ExistenciaLote> ExistenciaLotes { get; set; }
-        //public DbSet<ClasificacionInv> ClasificacionesInv { get; set; }
-        //public DbSet<ConsecutivoInv> ConsecutivosInv { get; set; }
-        //public DbSet<ConsecutivoInvUsuario> ConsecutivosInvUsuarios { get; set; }
+        public DbSet<Lote> Lotes { get; set; }
+        public DbSet<Articulo> Articulos { get; set; }
+        public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
+        public DbSet<IngresoLote> IngresosLotes { get; set; }
+        public DbSet<ExistenciaLote> ExistenciaLotes { get; set; }
+        public DbSet<ClasificacionInv> ClasificacionesInv { get; set; }
+        public DbSet<ConsecutivoInv> ConsecutivosInv { get; set; }
+        public DbSet<ConsecutivoInvUsuario> ConsecutivosInvUsuarios { get; set; }
         //public DbSet<AjusteConfig> AjustesConfig { get; set; }
         //public DbSet<AjusteSubTipo> AjustesSubTipo { get; set; }
         public DbSet<PaqueteInv> PaquetesInv { get; set; }
         public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
         public DbSet<ExistenciaBodega> ExistenciaBodega { get; set; }
         public DbSet<GlobalesCI>  GlobalesCI { get; set; }
+        public DbSet<MovInventarioEnc> MovsInventarioEnc { get; set; }
+        public DbSet<MovInventarioDet> MovsInventarioDet { get; set; }
+        public DbSet<DocumentoInvEnc> DocumentosInvEnc { get; set; }
+
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -102,6 +107,9 @@ namespace StatusERP.DataAccess
 
             modelBuilder.Entity<Parentesco>()
                 .HasIndex(p => p.Padre, "IxPadre");
+
+            modelBuilder.Entity<PrivilegioUsuario>()
+                .HasIndex(p => p.UsuarioId, "IxUsuarioId");
 
             //modelBuilder.Entity<CategoriaCliente>()
             //    .HasIndex(p => p.CodCategoriaCliente, "IxCategoriaClienteId")
