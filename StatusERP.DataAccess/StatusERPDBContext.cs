@@ -104,6 +104,12 @@ namespace StatusERP.DataAccess
         public DbSet<TipoFactura> TiposFactura { get; set; }
         public DbSet<ConsecutivoFA> ConsecutivosFA { get; set; }
         public DbSet<ArticuloPrecio> ArticuloPrecios { get; set; }
+        public DbSet<VersionNivelPrecio> VersionesNivelPrecio { get; set; }
+        public DbSet<ConsecuFAUsuario> ConsecuFAUsuarios { get; set; }
+        public DbSet<GlobalesFA> GlobalesFA { get; set; }
+        public DbSet<PaqueteDescuento> PaquetesDescuento { get; set; }
+        public DbSet<ReglaDescuento> ReglasDescuento { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
