@@ -10,8 +10,8 @@ using StatusERP.Services.Interfaces.ERPADMIN;
 namespace StatusERP.API.Controllers.ERPADMIN;
 [ApiController]
 [Route("api/ERPADMIN/[controller]")]
-//[Authorize]
-public class AccionController : Controller
+[Authorize]
+public class AccionController : ControllerBase
 {
     private readonly IAccionService _service;
     private readonly ILogger<AccionService> _logger;

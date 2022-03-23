@@ -669,6 +669,16 @@
           }
         }
       },
+      "StatusERP.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/StatusERP.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StatusERP.Dto.dll": {}
+        }
+      },
       "StatusERP.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1953,6 +1963,11 @@
         "version.txt"
       ]
     },
+    "StatusERP.Dto/1.0.0": {
+      "type": "project",
+      "path": "../StatusERP.Dto/StatusERP.Dto.csproj",
+      "msbuildProject": "../StatusERP.Dto/StatusERP.Dto.csproj"
+    },
     "StatusERP.Entities/1.0.0": {
       "type": "project",
       "path": "../StatusERP.Entities/StatusERP.Entities.csproj",
@@ -1966,6 +1981,7 @@
       "Microsoft.EntityFrameworkCore >= 6.0.2",
       "Microsoft.EntityFrameworkCore.Relational >= 6.0.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.2",
+      "StatusERP.Dto >= 1.0.0",
       "StatusERP.Entities >= 1.0.0"
     ]
   },
@@ -1976,11 +1992,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+      "projectUniqueName": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
       "projectName": "StatusERP.DataAccess",
-      "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+      "projectPath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\obj\\",
+      "outputPath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2001,8 +2017,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-              "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
+            "C:\\Dev\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
+              "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
+            },
+            "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
+              "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
             }
           }
         }

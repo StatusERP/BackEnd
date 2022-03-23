@@ -65,7 +65,22 @@ builder.Services.AddScoped<IAccionRepository, AccionRepository>();
 builder.Services.AddScoped<IAccionService, AccionService>();
 builder.Services.AddScoped<IParentescoRepository, ParentescoRepository>();
 builder.Services.AddScoped<IParentescoService, ParentescoService>();
-
+builder.Services.AddScoped<IModuloInstaladoRepository, ModuloInstaladoRepository>();
+builder.Services.AddScoped<IModuloInstaladoService, ModuloInstaladoService>();
+builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
+builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
+builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
+builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
+builder.Services.AddScoped<IMonedaRepository, ModenaRepository>();
+builder.Services.AddScoped<IMonedaService, MonedaService>();
+builder.Services.AddScoped<INivelPrecioRepository ,NivelPrecioRepository>();
+builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
+builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
+builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
+builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
+builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
+builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
+builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
 
 builder.Services.AddControllers();
 
