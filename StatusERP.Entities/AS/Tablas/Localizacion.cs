@@ -9,7 +9,8 @@ namespace StatusERP.Entities.AS.Tablas
     {
         [Required(ErrorMessage = "Se requiere especificar el código de Bodega.")]
         [StringLength(4)]
-        public string CodBodega { get; set; }
+        public int BodegaId { get; set; }
+        public Bodega Bodega { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el código de la Localización.")]
         [StringLength(4)]
@@ -26,5 +27,7 @@ namespace StatusERP.Entities.AS.Tablas
         [Required(ErrorMessage = "Se requiere ingresar el peso máximo de la Localización.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal PesoMaximo { get; set; }
+        
+        public bool Activa { get; set; }
     }
 }

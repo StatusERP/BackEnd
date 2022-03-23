@@ -139,6 +139,20 @@ namespace StatusERP.Entities.FA.Tablas
 
         public decimal PorcIntCte { get; set; }
 
+        public bool DescuentoCascada { get; set; }
+
+        public string DireccionFactura { get; set; }
+
+        public decimal TipoCambio { get; set; }
+
+        public bool FijarTipoCambio { get; set; }
+
+        public string OrigenPedido { get; set; }
+
+
+
+
+
 
 
 
