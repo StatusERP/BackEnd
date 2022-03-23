@@ -75,7 +75,8 @@ builder.Services.AddScoped<IMonedaRepository, ModenaRepository>();
 builder.Services.AddScoped<IMonedaService, MonedaService>();
 builder.Services.AddScoped<INivelPrecioRepository ,NivelPrecioRepository>();
 builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
-
+builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
+builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
 
 builder.Services.AddControllers();
 
