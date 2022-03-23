@@ -79,6 +79,9 @@ builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepositor
 builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
 builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
 builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
+builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
+builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
+
 builder.Services.AddControllers();
 
 
