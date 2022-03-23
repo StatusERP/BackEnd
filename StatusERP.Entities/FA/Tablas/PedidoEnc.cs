@@ -6,8 +6,10 @@ namespace StatusERP.Entities.FA.Tablas
     [Table("PedidoEncs", Schema = Constants.Conjunto)]
     public class PedidoEnc:EntityBase
     {
+        [StringLength(50) ]
         public string Pedido { get; set; }
 
+        [StringLength(1)]
         public string Estado { get; set; }
 
         public DateTime FechaPedido { get; set; }
@@ -20,14 +22,18 @@ namespace StatusERP.Entities.FA.Tablas
 
         public DateTime FechaUltCancelac { get; set; }
 
+        [StringLength(30)]
         public string OrdenCompra { get; set; }
 
         public DateTime FechaOrden { get; set; }
 
+        [StringLength(20)]
         public string TarjetaCredito { get; set; }
 
+        [StringLength(160)]
         public string EmbarcarA { get; set; }
 
+        [StringLength(8)]
         public string DirecEmbarque { get; set; }
 
         [StringLength (50)]
@@ -47,6 +53,7 @@ namespace StatusERP.Entities.FA.Tablas
 
         public string Observaciones { get; set; }
 
+        [StringLength(40)]
         public string ComentarioCXC { get; set; }
 
         public decimal TotalMercaderia { get; set; }
@@ -57,13 +64,15 @@ namespace StatusERP.Entities.FA.Tablas
 
         public decimal MontoSeguro { get; set; }
 
+        [StringLength(1)]
         public string TipoDescuento1 { get; set; }
 
+        [StringLength(1)]
         public string TipoDescuento2 { get; set; }
 
-        public string MontoDescuento1 { get; set; }
+        public decimal MontoDescuento1 { get; set; }
 
-        public string MontoDescuento2 { get; set; }
+        public decimal MontoDescuento2 { get; set; }
 
         public decimal PorcDescuento1 { get; set; }
 
@@ -90,27 +99,37 @@ namespace StatusERP.Entities.FA.Tablas
 
         public decimal DescuentoVolumen { get; set; }
 
+        [StringLength(1)]
         public string TipoPedido { get; set; }
 
+        [StringLength(1)]
         public string MonedaPedido { get; set; }
 
         public int VersionNP { get; set; }
 
         public bool Autorizado { get; set; }
 
+        [StringLength(1)]
         public string DocAGenerar { get; set; }
 
+        [StringLength(1)]
         public string ClasePedido { get; set; }
 
+        [StringLength(1)]
         public string Moneda { get; set; }
 
+        [StringLength(12)]
         public string NivelPrecio { get; set; }
 
+        [StringLength(4)]
         public string Cobrador { get; set; }
 
+        [StringLength(4)]
         public string Ruta { get; set; }
 
+        [StringLength(25)]
         public string Usuario { get; set; }
+
 
         public string CondicionPago { get; set; }
 
@@ -193,29 +212,90 @@ namespace StatusERP.Entities.FA.Tablas
         
         public string UsrNoAprueba { get; set; }
         
+        public DateTime FechaNoAprueba { get; set; }
         
+        public string RazonDesaprueba { get; set; }
         
+        public string Modulo { get; set; }
         
+        public string CorreosEnvio { get; set; }
+        
+        public string FormaPago { get; set; }
+        
+        public string ClaveReferenciaDE { get; set; }
+        
+        public DateTime FechaReferenciaDE { get; set; }  
+        
+        public string Incoterms { get; set; }
+        
+        public string UADWMNumeroVendedor { get; set; }
+        
+        public string UADWMEnviarGLN { get; set; }
+        
+        public string UADWMNumeroRecepcion { get; set; }
+        
+        public string UADWMNumeroReclamo { get; set; }
+        
+        public string UADWMFechaReclamo { get; set; }
+        
+        public string UADPCNumeroVendedor { get; set; }
+        
+        public string UADPCEnviarGLN { get; set; }
+        
+        public string UADGSNumeroVendedor { get; set; }
+        
+        public string UADGSEnviarGLN { get; set; }
 
+        public string UADGSNumeroRecepcion { get; set; }
 
+        public string UADGSFechaRecepcion { get; set; }
 
+        public string UADAMNumeroProveedor { get; set; }
 
+        public string UADAMEnviarGLN { get; set; }
 
+        public string UADAMNumeroRecepcion { get; set; }
 
+        public string UADAMNumeroReclamo { get; set; }
 
+        public string UADAMFechaRecepcion { get; set; }
 
+        public string TipoOperacion { get; set; }
 
+        public string UADCCRemision { get; set; }
 
+        public string UADCCFechaConsumo { get; set; }
 
+        public string UADCCHojaEntrada { get; set; }
 
+        public string ActividadComercial { get; set; }
 
+        public decimal MontoOtroCargo { get; set; }
 
+        public string CodigoReferenciaDE { get; set; }
 
+        public string TipoReferenciaDE { get; set; }
 
+        public bool TieneRelacionados { get; set; }
 
+        public bool EsFacturaReemplazo { get; set; }
 
+        public string FacturaOriginalReemplazo { get; set; }
 
+        public string ConsecutivoFTC { get; set; }
 
+        public string NITTransportador { get; set; }
 
+        public string NumOCExenta { get; set; }
+
+        public string NumConsRegExo { get; set; }
+
+        public string NumIRSEdeAgrGan { get; set; }
+
+        public string TipoPago { get; set; }
+
+        public string TipoDescuentoGlobal { get; set; }
+
+        public string TipoFactura { get; set; }
     }
 }

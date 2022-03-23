@@ -8,10 +8,11 @@ namespace StatusERP.Entities.AS.Tablas
     {
         [Required(ErrorMessage = "Se requiere especificar el código de la Bodega.")]
         [StringLength(4)]
-        public string Bodega { get; set; }
+        public int BodegaId { get; set; }
+        public Bodega Bodega { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el código del Usuario.")]
-        [StringLength(25)]
+        [StringLength(450)]
         public string Usuario { get; set; }
     }
 }
