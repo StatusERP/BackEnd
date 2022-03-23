@@ -71,6 +71,11 @@ builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
 builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
 builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
 builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
+builder.Services.AddScoped<IMonedaRepository, ModenaRepository>();
+builder.Services.AddScoped<IMonedaService, MonedaService>();
+builder.Services.AddScoped<INivelPrecioRepository ,NivelPrecioRepository>();
+builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
+
 
 builder.Services.AddControllers();
 
