@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.CG.Tablas;
 using StatusERP.Entities.CI.Tablas;
+using StatusERP.Entities.FA.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -96,6 +97,18 @@ namespace StatusERP.DataAccess
         public DbSet<MovInventarioEnc> MovsInventarioEnc { get; set; }
         public DbSet<PaqueteInv> PaquetesInv { get; set; }
         public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
+
+
+        // Para tablas de FA
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<TipoFactura> TiposFactura { get; set; }
+        public DbSet<ConsecutivoFA> ConsecutivosFA { get; set; }
+        public DbSet<ArticuloPrecio> ArticuloPrecios { get; set; }
+        public DbSet<VersionNivelPrecio> VersionesNivelPrecio { get; set; }
+        public DbSet<ConsecuFAUsuario> ConsecuFAUsuarios { get; set; }
+        public DbSet<GlobalesFA> GlobalesFA { get; set; }
+        public DbSet<PaqueteDescuento> PaquetesDescuento { get; set; }
+        public DbSet<ReglaDescuento> ReglasDescuento { get; set; }
 
 
 
