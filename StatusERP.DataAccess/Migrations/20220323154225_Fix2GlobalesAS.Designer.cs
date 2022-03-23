@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220323154225_Fix2GlobalesAS")]
+    partial class Fix2GlobalesAS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1494,12 +1496,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("Activa")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("BodegaId")
+                    b.Property<string>("CodBodega")
+                        .IsRequired()
                         .HasMaxLength(4)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("CodLocalizacion")
                         .IsRequired()
@@ -1537,8 +1537,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("decimal(28,8)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("BodegaId");
 
                     b.ToTable("Localizaciones", "H2C");
                 });
@@ -8655,17 +8653,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Pais");
 
                     b.Navigation("TipoCambio");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Localizacion", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.Bodega", "Bodega")
-                        .WithMany()
-                        .HasForeignKey("BodegaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Bodega");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", b =>
