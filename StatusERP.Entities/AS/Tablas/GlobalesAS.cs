@@ -55,6 +55,9 @@ namespace StatusERP.Entities.AS.Tablas
         [Required(ErrorMessage = "Se requiere especificar el patrón de los Centros de Costos.")]
         [StringLength(25)]
         public string PatronCeCo { get; set; }
+        
+        
+        
 
 
     }

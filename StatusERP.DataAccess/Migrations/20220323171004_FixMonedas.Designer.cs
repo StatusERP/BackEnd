@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220323171004_FixMonedas")]
+    partial class FixMonedas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1601,16 +1603,14 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
-
                     b.Property<string>("CodNivelPrecio")
                         .IsRequired()
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
 
-                    b.Property<int?>("CondicionPagoId")
-                        .HasColumnType("int");
+                    b.Property<string>("CondicionPago")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -1631,8 +1631,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MonedaId")
-                        .HasColumnType("int");
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
 
                     b.Property<bool>("SugerirDescuento")
                         .HasColumnType("bit");
@@ -1646,10 +1648,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CondicionPagoId");
-
-                    b.HasIndex("MonedaId");
 
                     b.ToTable("NivelesPrecios", "H2C");
                 });
@@ -8674,23 +8672,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("Bodega");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.NivelPrecio", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.CondicionPago", "CondicionPago")
-                        .WithMany()
-                        .HasForeignKey("CondicionPagoId");
-
-                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "Moneda")
-                        .WithMany()
-                        .HasForeignKey("MonedaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CondicionPago");
-
-                    b.Navigation("Moneda");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", b =>

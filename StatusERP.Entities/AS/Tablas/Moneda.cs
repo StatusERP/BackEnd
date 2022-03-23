@@ -16,5 +16,7 @@ namespace StatusERP.Entities.AS.Tablas
 
         [StringLength(4)]
         public string ? CodigoISO { get; set; }
+        
+        public bool Activa { get; set; }
     }
 }
