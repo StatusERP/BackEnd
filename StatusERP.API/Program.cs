@@ -69,7 +69,8 @@ builder.Services.AddScoped<IModuloInstaladoRepository, ModuloInstaladoRepository
 builder.Services.AddScoped<IModuloInstaladoService, ModuloInstaladoService>();
 builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
 builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
-
+builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
+builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
 
 builder.Services.AddControllers();
 

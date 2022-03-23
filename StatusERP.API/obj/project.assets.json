@@ -2399,19 +2399,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Dev\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
       "projectName": "StatusERP.API",
       "projectPath": "C:\\Dev\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\StatusERP\\StatusERP.API\\obj\\",
-=======
-      "projectUniqueName": "C:\\Proyectos\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
-      "projectName": "StatusERP.API",
-      "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\StatusERP\\StatusERP.API\\obj\\",
->>>>>>> fcb6525ae50b1d41c55507fad37b1e5e07e32fce
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -2432,7 +2424,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-<<<<<<< HEAD
             "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
               "projectPath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
             },
@@ -2444,19 +2435,6 @@
             },
             "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {
               "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj"
-=======
-            "C:\\Proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
-              "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
-            },
-            "C:\\Proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-              "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
-            },
-            "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-              "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
-            },
-            "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {
-              "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj"
->>>>>>> fcb6525ae50b1d41c55507fad37b1e5e07e32fce
             }
           }
         }
@@ -2523,13 +2501,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Dev\\StatusERP\\StatusERP.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }
