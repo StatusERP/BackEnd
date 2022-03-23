@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\StatusERP.Dto\StatusERP.Dto.csproj" />
     <ProjectReference Include="..\StatusERP.Entities\StatusERP.Entities.csproj" />
   </ItemGroup>
 

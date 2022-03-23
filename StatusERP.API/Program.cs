@@ -65,6 +65,8 @@ builder.Services.AddScoped<IAccionRepository, AccionRepository>();
 builder.Services.AddScoped<IAccionService, AccionService>();
 builder.Services.AddScoped<IParentescoRepository, ParentescoRepository>();
 builder.Services.AddScoped<IParentescoService, ParentescoService>();
+builder.Services.AddScoped<IModuloInstaladoRepository, ModuloInstaladoRepository>();
+builder.Services.AddScoped<IModuloInstaladoService, ModuloInstaladoService>();
 
 
 builder.Services.AddControllers();

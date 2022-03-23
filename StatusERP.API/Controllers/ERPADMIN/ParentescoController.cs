@@ -11,7 +11,7 @@ namespace StatusERP.API.Controllers.ERPADMIN;
 [ApiController]
 [Route("api/ERPADMIN/[controller]")]
 [Authorize]
-public class ParentescoController : Controller
+public class ParentescoController : ControllerBase
 {
     private readonly IParentescoService _service;
     private readonly ILogger<ParentescoService> _logger;

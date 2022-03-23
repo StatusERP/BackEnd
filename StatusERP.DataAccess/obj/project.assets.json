@@ -669,6 +669,16 @@
           }
         }
       },
+      "StatusERP.Dto/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/StatusERP.Dto.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/StatusERP.Dto.dll": {}
+        }
+      },
       "StatusERP.Entities/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1953,6 +1963,11 @@
         "version.txt"
       ]
     },
+    "StatusERP.Dto/1.0.0": {
+      "type": "project",
+      "path": "../StatusERP.Dto/StatusERP.Dto.csproj",
+      "msbuildProject": "../StatusERP.Dto/StatusERP.Dto.csproj"
+    },
     "StatusERP.Entities/1.0.0": {
       "type": "project",
       "path": "../StatusERP.Entities/StatusERP.Entities.csproj",
@@ -1966,6 +1981,7 @@
       "Microsoft.EntityFrameworkCore >= 6.0.2",
       "Microsoft.EntityFrameworkCore.Relational >= 6.0.2",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.2",
+      "StatusERP.Dto >= 1.0.0",
       "StatusERP.Entities >= 1.0.0"
     ]
   },
@@ -2001,6 +2017,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "C:\\Dev\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
+              "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
+            },
             "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
               "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
             }

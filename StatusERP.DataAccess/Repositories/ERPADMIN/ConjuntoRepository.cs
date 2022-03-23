@@ -22,7 +22,9 @@ public class ConjuntoRepository:StatusERPContextBase<Conjunto> ,IConjuntoReposit
 
     public async Task<int> CreateAsync(Conjunto conjunto)
     {
-        return await _dbContext.InsertAsync(conjunto);
+      
+            return await _dbContext.InsertAsync(conjunto);
+      
     }
 
     public  async Task<int> UpdateAsync(Conjunto conjunto)
