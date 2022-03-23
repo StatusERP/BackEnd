@@ -77,7 +77,8 @@ builder.Services.AddScoped<INivelPrecioRepository ,NivelPrecioRepository>();
 builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
 builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
 builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
-
+builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
+builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
 builder.Services.AddControllers();
 
 
