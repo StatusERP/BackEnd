@@ -149,6 +149,22 @@ namespace StatusERP.Entities.FA.Tablas
 
         public string OrigenPedido { get; set; }
 
+        public string DescDirecEmbarque { get; set; }
+
+        public string DivisionGeografica1 { get; set; }
+
+        public string DivisionGeografica2 { get; set; }
+
+        public decimal BaseImpuesto1 { get; set; }
+
+        public decimal BaseImpuesto2 { get; set; }
+
+        public string NombreCliente { get; set; }
+
+        public DateTime FechaProyectada { get; set; }
+
+
+
 
 
 
