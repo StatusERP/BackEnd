@@ -109,7 +109,11 @@ namespace StatusERP.DataAccess
         public DbSet<GlobalesFA> GlobalesFA { get; set; }
         public DbSet<PaqueteDescuento> PaquetesDescuento { get; set; }
         public DbSet<ReglaDescuento> ReglasDescuento { get; set; }
-
+        public DbSet<EscalaBonif> EscalasBonif { get; set; }
+        public DbSet<BonifArtXCli> BonifsArtXCli { get; set; }
+        public DbSet<BonifClasXCli> BonifsClasXCli { get; set; }
+        public DbSet<DesBonEscalaBonificacion>  DesBonEscalaBonificacion { get; set; }
+        public DbSet<EscalaDcto> EscalasDcto { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

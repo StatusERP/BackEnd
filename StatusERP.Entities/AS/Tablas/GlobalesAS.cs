@@ -35,8 +35,7 @@ namespace StatusERP.Entities.AS.Tablas
         public string Impuesto2Desc { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el País Local.")]
-        [StringLength(4)]
-        public string PaisLocal { get; set; }
+        public int PaisLocal { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar la Moneda Local.")]
         [StringLength(4)]
@@ -47,11 +46,12 @@ namespace StatusERP.Entities.AS.Tablas
         public string MonedaDolar { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el Tipo de Cambio Dólar.")]
-        [StringLength(4)]
-        public string TipoCambioDolar { get; set; }
+        public int TipoCambioDolar { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el patrón de los Centros de Costos.")]
         [StringLength(25)]
         public string PatronCeCo { get; set; }
+
+
     }
 }
