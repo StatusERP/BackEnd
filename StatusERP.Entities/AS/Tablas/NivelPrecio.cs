@@ -11,12 +11,11 @@ namespace StatusERP.Entities.AS.Tablas
         public string CodNivelPrecio { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el código de la Moneda.")]
-        [StringLength(1)]
-        public string Moneda { get; set; }
+        public int MonedaId { get; set; }
+        public Moneda Moneda { get; set; }
 
-        [StringLength(4)]
-        public string ? CondicionPago { get; set; }
-        //public CondicionPago CondicionPago { get; set; }
+        public int ? CondicionPagoId { get; set; }
+        public CondicionPago CondicionPago { get; set; }
 
         [Required(ErrorMessage = "Se requiere seleccionar el Esquema de Trabajo.")]
         [StringLength(1)]
@@ -25,5 +24,7 @@ namespace StatusERP.Entities.AS.Tablas
         public bool Descuentos { get; set; }
 
         public bool SugerirDescuento { get; set; }
+        
+        public bool Activo { get; set; }
     }
 }

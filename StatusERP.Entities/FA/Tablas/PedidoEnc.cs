@@ -149,6 +149,56 @@ namespace StatusERP.Entities.FA.Tablas
 
         public string OrigenPedido { get; set; }
 
+        public string DescDirecEmbarque { get; set; }
+
+        public string DivisionGeografica1 { get; set; }
+
+        public string DivisionGeografica2 { get; set; }
+
+        public decimal BaseImpuesto1 { get; set; }
+
+        public decimal BaseImpuesto2 { get; set; }
+
+        public string NombreCliente { get; set; }
+
+        public DateTime FechaProyectada { get; set; }
+        
+        public DateTime FechaAprobacion { get; set; }
+        
+        public string TipoDocumento { get; set; }
+        
+        public string VersionCotizacion { get; set; }
+        
+        public string RazonCancelaCoti { get; set; }
+        
+        public string DesCancelaCoti { get; set; }
+        
+        public string CambiosCoti { get; set; }
+        
+        public string CotizacionPadre { get; set; }
+        
+        public string TasaImpositiva { get; set; }
+        
+        public decimal TasaImpositivaPorc { get; set; }
+        
+        public string TasaCree1 { get; set; }
+        
+        public decimal TasaCree1Porc { get; set; }
+        
+        public string TasaCree2 { get; set; }
+        
+        public decimal TasaCree2Porc { get; set; }
+        
+        public decimal TasaGanOcasionalPorc { get; set; }
+        
+        public string UsrNoAprueba { get; set; }
+        
+        
+        
+        
+
+
+
 
 
 

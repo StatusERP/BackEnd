@@ -41,7 +41,7 @@ namespace StatusERP.Entities.AS.Tablas
 
         [Required(ErrorMessage = "Se requiere especificar la Moneda Local.")]
         [StringLength(4)]
-        public int Moneda { get; set; }
+        public string MonedaLocal { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar la Moneda Dólar.")]
         [StringLength(4)]
@@ -55,6 +55,9 @@ namespace StatusERP.Entities.AS.Tablas
         [Required(ErrorMessage = "Se requiere especificar el patrón de los Centros de Costos.")]
         [StringLength(25)]
         public string PatronCeCo { get; set; }
+        
+        
+        
 
 
     }
