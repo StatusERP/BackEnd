@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220324224320_FixDivisionesGeograficas")]
+    partial class FixDivisionesGeograficas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1064,7 +1066,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(40)");
 
                     b.Property<int>("PaisId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("Pais");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");

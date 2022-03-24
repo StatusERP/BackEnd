@@ -34,3 +34,5 @@ C:\Dev\StatusERP\StatusERP.DataAccess\obj\Debug\net6.0\refint\StatusERP.DataAcce
 C:\Dev\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.dll
 C:\Dev\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb
 >>>>>>> 45abd77487ae1ec8997f64c3793fe6faf1323532
+C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.dll
+C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb

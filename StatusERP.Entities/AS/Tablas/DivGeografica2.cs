@@ -6,13 +6,12 @@ namespace StatusERP.Entities.AS.Tablas
     [Table("DivGeograficas2", Schema = Constants.Conjunto)]
     public class DivGeografica2:EntityBase
     {
-        [Required(ErrorMessage = "Se requiere especificar código de País.")]
-        [StringLength(4)]
-        public string Pais { get; set; }
+        public int PaisId { get; set; }
+        public Pais Pais { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar código de División Geográfica 1.")]
-        [StringLength(12)]
-        public string CodDivGeografica1 { get; set; }
+        [Column("DivGeografica1")]
+        public int DivGeografica1Id { get; set; }
+        public DivGeografica1 DivGeografica1 { set; get; }
 
         [Required(ErrorMessage = "Se requiere especificar código de División Geográfica 2.")]
         [StringLength(12)]
