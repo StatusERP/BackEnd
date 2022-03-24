@@ -81,6 +81,8 @@ builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
 builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
 builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
+builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
+builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
 
 builder.Services.AddControllers();
 
