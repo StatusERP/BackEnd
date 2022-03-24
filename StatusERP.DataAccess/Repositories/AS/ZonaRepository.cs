@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 
@@ -19,6 +20,13 @@ public class ZonaRepository :StatusERPContextBase<Zona> ,IZonaRepository
     public async Task<Zona?> GetByIdAsync(int id)
     {
         return await _dbContext.SelectAsync<Zona>(id);
+    }
+
+    public async Task<Zona?> BuscarCodZonaAsync(string codZona)
+    {
+        return await _dbContext.Zonas
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodZona == codZona );
     }
 
     public  async Task<int> CreateAsync(Zona zona)

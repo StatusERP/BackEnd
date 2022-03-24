@@ -37,7 +37,7 @@ public class DivGeografica2Controller : Controller
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value);
+        var response = await _service.CreateAsync(request, userId.Value,request.CodDivGeografica1);
         HttpContext.Response.Headers.Add("location",$"/api/AS/divgeografica2/{response.Result}");
         return Ok(response);
     }

@@ -9,4 +9,5 @@ public interface IConsecutivoGlobalRepository
     Task<int> CreateAsync(ConsecutivoGlobal consecutivoGlobal);
     Task<int> UpdateAsync(ConsecutivoGlobal consecutivoGlobal);
     Task<int> DeleteAsync(int id,string userId);
+    Task<ConsecutivoGlobal?> BuscarCodConsecutivoGlobalesAsync(string codConsecutivoGlobales);
 }

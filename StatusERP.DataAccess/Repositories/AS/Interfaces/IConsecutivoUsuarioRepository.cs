@@ -9,4 +9,5 @@ public interface IConsecutivoUsuarioRepository
     Task<int> CreateAsync(ConsecutivoUsuario consecutivoUsuario);
     Task<int> UpdateAsync(ConsecutivoUsuario consecutivoUsuario);
     Task<int> DeleteAsync(int id,string userId);
+    Task<ConsecutivoUsuario?> BuscarCodConsecutivoUsuarioAsync(string codConsecutivoUsuario);
 }

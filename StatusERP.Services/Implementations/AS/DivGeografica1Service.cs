@@ -53,11 +53,16 @@ public class DivGeografica1Service : IDivGeografica1Service
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDivGeografica1 request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDivGeografica1 request, string userId, string codDivGeografica)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodDivGeografica = await _repository.BuscarCodDivGeografica1Async(codDivGeografica);
+            if (buscarCodDivGeografica != null)
+            {
+                throw new Exception($"El codigo de Division Geografica {buscarCodDivGeografica.CodDivGeografica1} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new DivGeografica1
             {
                 Pais = request.Pais,

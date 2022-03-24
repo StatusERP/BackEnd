@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.DataAccess.Repositories.AS;
@@ -38,5 +39,12 @@ public class RutaRepository:StatusERPContextBase<Ruta>,IRutaRepository
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<Ruta?> BuscarCodRutaAsync(string codRuta)
+    {
+        return await _dbContext.Rutas
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodRuta == codRuta );
     }
 }

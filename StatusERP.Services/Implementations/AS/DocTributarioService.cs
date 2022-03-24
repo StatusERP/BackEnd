@@ -51,11 +51,16 @@ public class DocTributarioService:IDocTributarioService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocTributario request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocTributario request, string userId, string codDocTributario)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodDocTributario = await _repository.BuscarDocTributarioAsync(codDocTributario);
+            if (buscarCodDocTributario != null)
+            {
+                throw new Exception($"El codigo de Documento Tributario {buscarCodDocTributario.CodDocTributario} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new DocTributario
             {
                 CodDocTributario = request.CodDocTributario,

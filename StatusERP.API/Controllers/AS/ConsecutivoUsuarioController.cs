@@ -1,4 +1,5 @@
-﻿using System.Security.Claims;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StatusERP.Dto.Request.AS;
@@ -38,7 +39,7 @@ public class ConsecutivoUsuarioController : ControllerBase
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value);
+        var response = await _service.CreateAsync(request, userId.Value,request.CodConsecutivo);
         HttpContext.Response.Headers.Add("location",$"/api/AS/consecutivoUsuario/{response.Result}");
         return Ok(response);
     }

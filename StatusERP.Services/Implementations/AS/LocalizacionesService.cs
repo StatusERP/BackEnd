@@ -54,11 +54,16 @@ public class LocalizacionesService:ILocalizacionesService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoLocalizaciones request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoLocalizaciones request, string userId, string codLocalizacion)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodLocalizacion = await _repository.BuscarCodLocalizacionAsync(codLocalizacion);
+            if (buscarCodLocalizacion != null)
+            {
+                throw new Exception($"El codigo de Localizacion {buscarCodLocalizacion.CodLocalizacion} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new Localizacion
             {
                 CodLocalizacion = request.CodLocalizacion,

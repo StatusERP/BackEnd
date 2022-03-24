@@ -53,11 +53,16 @@ public class TipoCambioService:ITipoCambioService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoTipoCambio request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoTipoCambio request, string userId, string codTipoCambio)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodTipoCambio = await _repository.BuscarCodTipoCambioAsync(codTipoCambio);
+            if (buscarCodTipoCambio != null)
+            {
+                throw new Exception($"El codigo de Tipo cambio {buscarCodTipoCambio.CodTipoCambio} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new TipoCambio
             {
                 CodTipoCambio = request.CodTipoCambio,

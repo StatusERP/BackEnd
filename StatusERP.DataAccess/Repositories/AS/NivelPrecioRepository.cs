@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class NivelPrecioRepository:StatusERPContextBase<NivelPrecio>,INivelPreci
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<NivelPrecio?> BuscarCodNivelPrecioAsync(string codNivelPrecio)
+    {
+        return await _dbContext.NivelesPrecio
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodNivelPrecio == codNivelPrecio );
     }
 }

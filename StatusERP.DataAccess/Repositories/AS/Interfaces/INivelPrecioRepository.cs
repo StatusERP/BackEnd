@@ -9,4 +9,5 @@ public interface INivelPrecioRepository
     Task<int> CreateAsync(NivelPrecio nivelPrecio);
     Task<int> UpdateAsync(NivelPrecio nivelPrecio);
     Task<int> DeleteAsync(int id,string userId);
+    Task<NivelPrecio?> BuscarCodNivelPrecioAsync(string codNivelPrecio);
 }

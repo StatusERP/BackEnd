@@ -9,4 +9,5 @@ public interface ICondicionPagoRepository
     Task<int> CreateAsync(CondicionPago condicionPago);
     Task<int> UpdateAsync(CondicionPago condicionPago);
     Task<int> DeleteAsync(int id,string userId);
+    Task<CondicionPago?> BuscarCodCondicionPagoAsync(string codCondicionPago);
 }

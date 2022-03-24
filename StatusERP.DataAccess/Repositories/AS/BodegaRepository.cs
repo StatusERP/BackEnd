@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -19,11 +20,22 @@ public class BodegaRepository:StatusERPContextBase<Bodega>,IBodegaRepository
     {
         return await _dbContext.SelectAsync<Bodega>(id);
     }
+    
+    public  async Task<Bodega?> BuscarCodBodegaAsync(string codBodega)
+    {
+       
+        return await _dbContext.Bodegas
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodBodega == codBodega );
+    }
 
+    
     public async Task<int> CreateAsync(Bodega bodega)
     {
         return await _dbContext.InsertAsync(bodega);
     }
+
+    
 
     public async Task<int> UpdateAsync(Bodega bodega)
     {

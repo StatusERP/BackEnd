@@ -9,4 +9,5 @@ public interface IEntidadFinacieraRepository
     Task<int> CreateAsync(EntidadFinanciera entidadFinanciera);
     Task<int> UpdateAsync(EntidadFinanciera entidadFinanciera);
     Task<int> DeleteAsync(int id,string userId);
+    Task<EntidadFinanciera?> BuscarCodEntidadFinacieraAsync(string codEntFinaciera);
 }

@@ -9,4 +9,5 @@ public interface IUsuarioBodegaRepository
     Task<int> CreateAsync(UsuarioBodega usuarioBodega);
     Task<int> UpdateAsync(UsuarioBodega usuarioBodega);
     Task<int> DeleteAsync(int id,string userId);
+    Task<UsuarioBodega?> BuscarUsuarioBodegaAsync(string usuario,int bodegaId);
 }

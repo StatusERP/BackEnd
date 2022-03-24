@@ -18,11 +18,16 @@ namespace StatusERP.Services.Implementations.AS
             _repository = repository;
             _logger = logger;   
         }
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId, string codVendedor)
         {
             var response =new BaseResponseGeneric<int>();
             try
             {
+                var buscarCodBodega = await _repository.BuscarCodVendedorAsync(codVendedor);
+                if (buscarCodBodega != null)
+                {
+                    throw new Exception($"El codigo de Vendedor {buscarCodBodega.CodVendedor} ya Existe");
+                }
                 response.Result = await _repository.CreateAsync(new Vendedor
                 {
                     CodVendedor = request.CodVendedor,

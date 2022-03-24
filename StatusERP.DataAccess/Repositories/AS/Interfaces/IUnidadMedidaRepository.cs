@@ -9,4 +9,5 @@ public interface IUnidadMedidaRepository
     Task<int> CreateAsync(UnidadMedida unidadMedida);
     Task<int> UpdateAsync(UnidadMedida unidadMedida );
     Task<int> DeleteAsync(int id,string userId);
+    Task<UnidadMedida?> BuscarCodUnidadMedidaAsync(string codUnidadMedida);
 }

@@ -53,16 +53,23 @@ public class SucursalService:ISucursalService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoSucursal request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoSucursal request, string userId,string codSucursal)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodSucursal = await _repository.BuscarCodSucursalAsync(codSucursal);
+            if (buscarCodSucursal != null)
+            {
+                throw new Exception($"El codigo de Sucursal {buscarCodSucursal.CodSucursal} ya Existe");
+            }
+            
             response.Result = await _repository.CreateAsync(new Sucursal
             {
                 CodSucursal = request.CodSucursal,
                 Descripcion = request.Nombre,
                 Activa = true,
+               // IsDeleted = false,
                 Updatedby = userId,
                 CreateDate = DateTime.Now,
                 UpdateDate = DateTime.Now,

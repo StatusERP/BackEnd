@@ -53,11 +53,16 @@ public class UnidadMedidaService:IUnidadMedidaService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoUnidadMedida request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoUnidadMedida request, string userId,string codUnidadMedida)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodUnidadMedida = await _repository.BuscarCodUnidadMedidaAsync(codUnidadMedida);
+            if (buscarCodUnidadMedida != null)
+            {
+                throw new Exception($"El codigo de Unidad de Medida {buscarCodUnidadMedida.CodUnidadMedida} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new UnidadMedida
             {
                 CodUnidadMedida = request.CodUnidadMedida,

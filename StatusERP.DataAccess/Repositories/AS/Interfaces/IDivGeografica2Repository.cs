@@ -9,4 +9,5 @@ public interface IDivGeografica2Repository
     Task<int> CreateAsync(DivGeografica2 divGeografica2);
     Task<int> UpdateAsync(DivGeografica2 divGeografica2);
     Task<int> DeleteAsync(int id,string userId);
+    Task<DivGeografica2?> BuscarCodDivGeografica2Async(string codDivGeografica);
 }

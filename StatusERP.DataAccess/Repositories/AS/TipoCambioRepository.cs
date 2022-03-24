@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class TipoCambioRepository:StatusERPContextBase<TipoCambio>,ITipoCambioRe
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<TipoCambio?> BuscarCodTipoCambioAsync(string codTipoCambio)
+    {
+        return await _dbContext.TiposCambio
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodTipoCambio == codTipoCambio );
     }
 }

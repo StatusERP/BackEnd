@@ -39,7 +39,7 @@ public class UnidadMedidaController : ControllerBase
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value);
+        var response = await _service.CreateAsync(request, userId.Value,request.CodUnidadMedida);
         HttpContext.Response.Headers.Add("location",$"/api/AS/unidadMedida/{response.Result}");
         return Ok(response);
     }

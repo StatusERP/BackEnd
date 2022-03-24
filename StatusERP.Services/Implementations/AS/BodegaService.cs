@@ -51,11 +51,17 @@ public class BodegaService:IBodegaService
         return response;
     }
 
-    public  async Task<BaseResponseGeneric<int>> CreateAsync(DtoBodega request, string userId)
+    public  async Task<BaseResponseGeneric<int>> CreateAsync(DtoBodega request, string userId,string codBodega)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodBodega = await _repository.BuscarCodBodegaAsync(codBodega);
+            if (buscarCodBodega != null)
+            {
+                throw new Exception($"El codigo de Bodega {buscarCodBodega.CodBodega} ya Existe");
+            }
+            
             response.Result = await _repository.CreateAsync(new Bodega
             {
                 CodBodega = request.CodBodega,
@@ -81,6 +87,8 @@ public class BodegaService:IBodegaService
         }
         return response;
     }
+
+    
 
     public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoBodega request, string userId)
     {

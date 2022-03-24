@@ -38,7 +38,7 @@ public class ConsecutivoGlobalController : ControllerBase
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value);
+        var response = await _service.CreateAsync(request, userId.Value,request.CodConsecutivoGlobal);
         HttpContext.Response.Headers.Add("location",$"/api/AS/ConsecutivoGlobal/{response.Result}");
         return Ok(response);
     }

@@ -53,11 +53,16 @@ public class MonedaService:IMonedaService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMoneda request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMoneda request, string userId , string codMoneda)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodMoneda = await _repository.BuscarCodMonedaAsync(codMoneda);
+            if (buscarCodMoneda != null)
+            {
+                throw new Exception($"El codigo de Moneda {buscarCodMoneda.CodMoneda} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new Moneda
             {
                 CodMoneda = request.CodMoneda,

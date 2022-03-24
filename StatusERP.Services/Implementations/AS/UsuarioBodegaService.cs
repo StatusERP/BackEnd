@@ -53,11 +53,16 @@ public class UsuarioBodegaService:IUsuarioBodegaService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoUsuarioBodega request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoUsuarioBodega request, string userId, int bodegaId)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarUsuarioBodega = await _repository.BuscarUsuarioBodegaAsync(userId,bodegaId);
+            if (buscarUsuarioBodega != null)
+            {
+                throw new Exception($"El Usuario y Bodega  ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new UsuarioBodega
             {
                 Usuario = request.Usuario,

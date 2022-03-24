@@ -53,11 +53,16 @@ public class ConsecutivoUsuarioService:IConsecutivoUsuarioService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoConsecutivoUsuario request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoConsecutivoUsuario request, string userId,string codConsecutivoUsuario)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodConsecutivoUsuario = await _repository.BuscarCodConsecutivoUsuarioAsync(codConsecutivoUsuario);
+            if (buscarCodConsecutivoUsuario != null)
+            {
+                throw new Exception($"El codigo de Consecutivo  Usuario {buscarCodConsecutivoUsuario.CodConsecutivo} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new ConsecutivoUsuario
             {
                 CodConsecutivo = request.CodConsecutivo,

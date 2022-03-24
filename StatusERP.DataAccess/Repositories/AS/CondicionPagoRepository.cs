@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class CondicionPagoRepository:StatusERPContextBase<CondicionPago>,ICondic
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<CondicionPago?> BuscarCodCondicionPagoAsync(string codCondicionPago)
+    {
+        return await _dbContext.CondicionesPago
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodCondicionPago == codCondicionPago );
     }
 }

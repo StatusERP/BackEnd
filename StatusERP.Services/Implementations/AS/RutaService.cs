@@ -52,11 +52,16 @@ public class RutaService:IRutaService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoRuta request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoRuta request, string userId,string codRuta)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodRuta = await _repository.BuscarCodRutaAsync(codRuta);
+            if (buscarCodRuta != null)
+            {
+                throw new Exception($"El codigo de Sucursal {buscarCodRuta.CodRuta} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new Ruta
             {
                 CodRuta = request.CodRuta,

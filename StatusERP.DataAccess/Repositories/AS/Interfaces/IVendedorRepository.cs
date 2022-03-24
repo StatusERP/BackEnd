@@ -9,6 +9,7 @@ namespace StatusERP.DataAccess.Repositories.AS
         Task<int> CreateAsync(Vendedor vendedor);
         Task<int> UpdateAsync(Vendedor vendedor);
         Task<int> DeleteAsync(int id,string userId);
+        Task<Vendedor?> BuscarCodVendedorAsync(string codVendedor);
 
     }
 }
