@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusERP.API", "StatusERP.API\StatusERP.API.csproj", "{18205561-0E6B-4B0F-A3CE-D2788BF100A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusERP.API", "StatusERP.API\StatusERP.API.csproj", "{18205561-0E6B-4B0F-A3CE-D2788BF100A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Acesso a Datos", "02-Acesso a Datos", "{138F6AC9-9DB4-43D8-8CC3-E1C3D5AF6F8C}"
 EndProject
@@ -17,15 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Logica Negocio", "03-Log
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Entidades", "01-Entidades", "{1ED77452-D606-48B0-86A7-CE612C170771}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusERP.Entities", "StatusERP.Entities\StatusERP.Entities.csproj", "{4175968E-DF5A-4F0F-B24D-BC5D5453F5BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusERP.Entities", "StatusERP.Entities\StatusERP.Entities.csproj", "{4175968E-DF5A-4F0F-B24D-BC5D5453F5BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusERP.DataAccess", "StatusERP.DataAccess\StatusERP.DataAccess.csproj", "{1DE475CD-56FB-4770-A34C-4287B4DC0071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusERP.DataAccess", "StatusERP.DataAccess\StatusERP.DataAccess.csproj", "{1DE475CD-56FB-4770-A34C-4287B4DC0071}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusERP.Dto", "StatusERP.Dto\StatusERP.Dto.csproj", "{AC1B7EBC-A78F-43D6-8A9C-E1B09D12F021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusERP.Dto", "StatusERP.Dto\StatusERP.Dto.csproj", "{AC1B7EBC-A78F-43D6-8A9C-E1B09D12F021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusERP.Services", "StatusERP.Services\StatusERP.Services.csproj", "{D3A8EF0A-EF36-4024-9965-87FA76C1CDEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusERP.Services", "StatusERP.Services\StatusERP.Services.csproj", "{D3A8EF0A-EF36-4024-9965-87FA76C1CDEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusERP.UnitTest", "StatusERP.UnitTest\StatusERP.UnitTest.csproj", "{36B4470B-6A12-4F35-B3CC-F83D28DEB129}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusERP.UnitTest", "StatusERP.UnitTest\StatusERP.UnitTest.csproj", "{36B4470B-6A12-4F35-B3CC-F83D28DEB129}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -60,7 +60,7 @@ public class DivGeografica1Service : IDivGeografica1Service
         {
             response.Result = await _repository.CreateAsync(new DivGeografica1
             {
-                Pais = request.Pais,
+                PaisId = request.PaisId,
                 CodDivGeografica1 = request.CodDivGeografica1,
                 Nombre= request.Nombre,
                 Updatedby = userId,
@@ -88,7 +88,7 @@ public class DivGeografica1Service : IDivGeografica1Service
             response.Result = await _repository.UpdateAsync(new DivGeografica1
             {
                 Id = id,
-                Pais = request.Pais,
+                PaisId = request.PaisId,
                 CodDivGeografica1 = request.CodDivGeografica1,
                 Nombre = request.Nombre,
                 Updatedby = userId,

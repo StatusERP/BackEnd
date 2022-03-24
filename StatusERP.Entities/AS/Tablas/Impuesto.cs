@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StatusERP.Entities.CG.Tablas;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace StatusERP.Entities.AS.Tablas
+
 {
     [Table("Impuestos", Schema = Constants.Conjunto)]
     public class Impuesto:EntityBase
@@ -43,11 +46,9 @@ namespace StatusERP.Entities.AS.Tablas
 
         public bool ContabDevImp2 { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrImp1Gen { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaImp1Gen { get; set; }
+        [Column("CtroCtaImp1")] 
+        public int CentroCuentaId { get; set; }
+        public CentroCuenta CentroCuenta { get; set; }
 
         [StringLength(25)]
         public string ? CtrImp2Gen { get; set; }

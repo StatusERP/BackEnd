@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220324205732_Cambio1Impuesto")]
+    partial class Cambio1Impuesto
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1011,9 +1013,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("PaisId")
-                        .HasColumnType("int")
-                        .HasColumnName("Pais");
+                    b.Property<string>("Pais")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -1025,8 +1028,6 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PaisId");
-
                     b.ToTable("DivGeograficas1", "H2C");
                 });
 
@@ -1037,6 +1038,11 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CodDivGeografica1")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("CodDivGeografica2")
                         .IsRequired()
@@ -1051,10 +1057,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<int>("DivGeografica1Id")
-                        .HasColumnType("int")
-                        .HasColumnName("DivGeografica1");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -1063,8 +1065,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int>("PaisId")
-                        .HasColumnType("int");
+                    b.Property<string>("Pais")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -1075,10 +1079,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DivGeografica1Id");
-
-                    b.HasIndex("PaisId");
 
                     b.ToTable("DivGeograficas2", "H2C");
                 });
@@ -9604,36 +9604,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CentroCosto");
 
                     b.Navigation("CuentaContable");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DivGeografica1", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
-                        .WithMany()
-                        .HasForeignKey("PaisId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Pais");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DivGeografica2", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.DivGeografica1", "DivGeografica1")
-                        .WithMany()
-                        .HasForeignKey("DivGeografica1Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
-                        .WithMany()
-                        .HasForeignKey("PaisId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("DivGeografica1");
-
-                    b.Navigation("Pais");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.EntidadFinanciera", b =>

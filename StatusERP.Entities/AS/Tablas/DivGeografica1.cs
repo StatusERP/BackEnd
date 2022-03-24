@@ -7,8 +7,9 @@ namespace StatusERP.Entities.AS.Tablas
     public class DivGeografica1:EntityBase
     {
         [Required(ErrorMessage = "Se requiere especificar código de País.")]
-        [StringLength(4)]
-        public string Pais { get; set; }
+        [Column("Pais")]
+        public int PaisId { get; set; }
+        public Pais Pais { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar código de División Geográfica 1.")]
         [StringLength(12)]
