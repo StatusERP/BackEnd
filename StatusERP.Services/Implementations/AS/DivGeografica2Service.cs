@@ -61,7 +61,7 @@ public class DivGeografica2Service:IDivGeografica2Service
             var buscarCodDivGeografica = await _repository.BuscarCodDivGeografica2Async(codDivGeografica);
             if (buscarCodDivGeografica != null)
             {
-                throw new Exception($"El codigo de Division Geografica {buscarCodDivGeografica.CodDivGeografica1} ya Existe");
+                throw new Exception($"El codigo de Division Geografica {buscarCodDivGeografica.CodDivGeografica2} ya Existe");
             }
             response.Result = await _repository.CreateAsync(new DivGeografica2
             {

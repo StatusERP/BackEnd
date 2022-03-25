@@ -91,6 +91,7 @@ C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\StatusERP.API.exe
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\StatusERP.API.deps.json
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\StatusERP.API.runtimeconfig.json
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\StatusERP.API.dll
+C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\ref\StatusERP.API.dll
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\StatusERP.API.pdb
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\AutoMapper.dll
 C:\Dev\StatusERP\StatusERP.API\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
@@ -151,4 +152,3 @@ C:\Dev\StatusERP\StatusERP.API\obj\Debug\net6.0\staticwebassets.development.json
 C:\Dev\StatusERP\StatusERP.API\obj\Debug\net6.0\scopedcss\bundle\StatusERP.API.styles.css
 C:\Dev\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CopyComplete
 C:\Dev\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.genruntimeconfig.cache
-C:\Dev\StatusERP\StatusERP.API\obj\Debug\net6.0\refint\StatusERP.API.dll

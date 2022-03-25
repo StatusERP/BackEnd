@@ -46,6 +46,6 @@ public class DivGeografica2Repository : StatusERPContextBase<DivGeografica2> ,ID
     {
         return await _dbContext.DivGeograficas2
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.CodDivGeografica1 == codDivGeografica );
+            .FirstOrDefaultAsync(t => t.CodDivGeografica2 == codDivGeografica );
     }
 }
