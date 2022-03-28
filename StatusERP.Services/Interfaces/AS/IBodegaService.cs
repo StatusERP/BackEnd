@@ -14,4 +14,6 @@ public interface IBodegaService
     Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoBodega request , string userId);
 
     Task<BaseResponseGeneric<int>> DeleteAsync(int id,string userId);
+    Task<BaseResponseGeneric<int>> DesactivarAsync(int id, string userId);
+
 }

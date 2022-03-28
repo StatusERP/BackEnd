@@ -11,11 +11,13 @@ public class BodegaService:IBodegaService
 {
     private readonly IBodegaRepository _repository;
     private readonly ILogger<BodegaService> _logger;
+    private readonly ISucursalesRepository _sucursalesRepository;
 
-    public BodegaService(IBodegaRepository repository,ILogger<BodegaService> logger)
+    public BodegaService(IBodegaRepository repository,ILogger<BodegaService> logger ,ISucursalesRepository sucursalesRepository)
     {
         _repository = repository;
         _logger = logger;
+        _sucursalesRepository = sucursalesRepository;
     }
     public async Task<BaseResponseGeneric<ICollection<Bodega>>> GetAsync(int page, int rows)
     {
@@ -56,10 +58,22 @@ public class BodegaService:IBodegaService
         var response = new BaseResponseGeneric<int>();
         try
         {
+
+            var buscarSucursal = await _sucursalesRepository.GetByIdAsync(request.SucursalId);
+            if (buscarSucursal==null)
+            {
+                response.Errors.Add($"La Sucursal No existe");
+                response.Success = false;
+                return response;
+            }
             var buscarCodBodega = await _repository.BuscarCodBodegaAsync(codBodega);
             if (buscarCodBodega != null)
             {
-                throw new Exception($"El codigo de Bodega {buscarCodBodega.CodBodega} ya Existe");
+                response.Errors.Add($"El codigo de Bodega {buscarCodBodega.CodBodega} ya Existe");
+                response.Success = false;
+                return response;
+
+              
             }
             
             response.Result = await _repository.CreateAsync(new Bodega
@@ -135,5 +149,23 @@ public class BodegaService:IBodegaService
         }
         return response;
         
+    }
+
+    public async Task<BaseResponseGeneric<int>> DesactivarAsync(int id, string userId)
+    {
+         var response = new BaseResponseGeneric<int>();
+        try
+        {
+            await _repository.DesActivarAsync(id, userId);
+            response.Success = true;
+            response.Result = id;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+        return response;
     }
 }

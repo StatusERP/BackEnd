@@ -14,6 +14,8 @@ using System.Text;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.DataAccess.Repositories.ERPADMIN;
 using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
+using StatusERP.DataAccess.Repositories.CG;
+using StatusERP.Services.Implementations.CG;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -83,6 +85,8 @@ builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
 builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
+builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidadRepository>();
+builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
 
 builder.Services.AddControllers();
 

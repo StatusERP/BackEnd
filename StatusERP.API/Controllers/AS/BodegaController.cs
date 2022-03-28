@@ -54,6 +54,7 @@ public class BodegaController : ControllerBase
     public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
     {
         var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
         var response = await _service.DeleteAsync(id,userId.Value);
         return Ok(response);
            
