@@ -119,6 +119,7 @@ namespace StatusERP.DataAccess
         public DbSet<PedidoEnc> PedidoEncs { get; set; }
         public DbSet<PedidoDet> PedidoDets { get; set; }
         public DbSet<FacturaDet> FacturaDets { get; set; }
+        public DbSet<FacturaEnc> FacturaEncs { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
