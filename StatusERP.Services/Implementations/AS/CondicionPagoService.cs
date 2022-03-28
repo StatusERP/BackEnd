@@ -50,11 +50,16 @@ public class CondicionPagoService:ICondicionPagoService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoCondicionPago request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoCondicionPago request, string userId,string codCodicionPago)
     {
         var response = new BaseCollectionResponse<int>();
         try
         {
+            var buscarCodCondicionPago = await _repository.BuscarCodCondicionPagoAsync(codCodicionPago);
+            if (buscarCodCondicionPago != null)
+            {
+                throw new Exception($"El codigo de Condicion de Pago {buscarCodCondicionPago.CodCondicionPago} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new CondicionPago
             {
                 CodCondicionPago = request.CodCondiconPago,

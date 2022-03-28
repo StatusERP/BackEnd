@@ -67,11 +67,12 @@ namespace StatusERP.DataAccess
             {
                 var registro = await context.Set<TEntityBase>()
             .AsNoTracking()
-            .SingleOrDefaultAsync(x => x.Id == entity.Id);
+            .SingleOrDefaultAsync(x => x.Id == entity.Id && !x.IsDeleted);
                 if (registro == null) return;
 
                 registro.IsDeleted = true;
                 registro.UpdateDate = DateTime.Now;
+                registro.Updatedby = entity.Updatedby;
 
 
                 context.Set<TEntityBase>().Attach(registro);

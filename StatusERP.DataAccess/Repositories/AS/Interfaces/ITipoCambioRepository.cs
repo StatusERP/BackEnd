@@ -9,4 +9,5 @@ public interface ITipoCambioRepository
     Task<int> CreateAsync(TipoCambio tipoCambio);
     Task<int> UpdateAsync(TipoCambio tipoCambio);
     Task<int> DeleteAsync(int id,string userId);
+    Task<TipoCambio?> BuscarCodTipoCambioAsync(string codTipoCambio);
 }

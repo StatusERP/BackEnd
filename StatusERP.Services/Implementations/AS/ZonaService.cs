@@ -54,11 +54,16 @@ public class ZonaService:IZonaService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoZona request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoZona request, string userId,string codZona)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodBodega = await _repository.BuscarCodZonaAsync(codZona);
+            if (buscarCodBodega != null)
+            {
+                throw new Exception($"El codigo de Zona {buscarCodBodega.CodZona} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new Zona
             {
                 CodZona = request.CodZona,
@@ -86,6 +91,7 @@ public class ZonaService:IZonaService
         var response = new BaseResponseGeneric<int>();
         try
         {
+           
             response.Result = await _repository.UpdateAsync(new Zona
             {
                 Id = id,

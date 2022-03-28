@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -41,5 +42,10 @@ public class UsuarioBodegaRepository:StatusERPContextBase<UsuarioBodega>,IUsuari
         return id;
     }
 
-
+    public async Task<UsuarioBodega?> BuscarUsuarioBodegaAsync(string usuario, int bodegaId)
+    {
+        return await _dbContext.UsuarioBodega
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.Usuario == usuario && t.BodegaId==bodegaId );
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class DocTributarioRepository:StatusERPContextBase<DocTributario>,IDocTri
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<DocTributario?> BuscarDocTributarioAsync(string codDocTributario)
+    {
+        return await _dbContext.DocTributarios
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodDocTributario == codDocTributario );
     }
 }

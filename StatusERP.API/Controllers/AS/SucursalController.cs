@@ -41,7 +41,7 @@ namespace StatusERP.API.Controllers.AS;
     {
         var userid = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userid == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userid.Value);
+        var response = await _service.CreateAsync(request, userid.Value,request.CodSucursal);
         HttpContext.Response.Headers.Add("location", $"/api/AS/cobrador/{response.Result}");
         return Ok(response);
         

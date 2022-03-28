@@ -9,5 +9,6 @@ namespace StatusERP.DataAccess.Repositories.AS
         Task<int> CreateAsync(Cobrador cobrador);
         Task<int> UpdateAsync(Cobrador cobrador);
         Task<int> DeleteAsync(int id,string userId);
+        Task<Cobrador?> BuscarCodCobradorAsync(string codCobrador);
     }
 }

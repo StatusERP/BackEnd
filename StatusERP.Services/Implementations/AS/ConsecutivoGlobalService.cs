@@ -51,11 +51,16 @@ public class ConsecutivoGlobalService:IConsecutivoGlobalService
         return response;
     }
 
-    public  async Task<BaseResponseGeneric<int>> CreateAsync(DtoConsecutivoGlobal request, string userId)
+    public  async Task<BaseResponseGeneric<int>> CreateAsync(DtoConsecutivoGlobal request, string userId,string codConsecutivoGlobal)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodConsecutivoGlobal = await _repository.BuscarCodConsecutivoGlobalesAsync(codConsecutivoGlobal);
+            if (buscarCodConsecutivoGlobal != null)
+            {
+                throw new Exception($"El codigo de Consecutivo Global {buscarCodConsecutivoGlobal.CodConsecutivoGlobal} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new ConsecutivoGlobal
             {
                 CodConsecutivoGlobal = request.CodConsecutivoGlobal,

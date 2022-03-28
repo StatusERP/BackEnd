@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.DataAccess.Repositories.AS
@@ -24,6 +25,13 @@ namespace StatusERP.DataAccess.Repositories.AS
             return id;
         }
 
+        public  async Task<Cobrador?> BuscarCodCobradorAsync(string codCobrador)
+        {
+       
+            return await _dbContext.Cobradores
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.CodCobrador == codCobrador );
+        }
         public async Task<Cobrador?> GetByIdAsync(int id)
         {
             return await _dbContext.SelectAsync<Cobrador>(id);

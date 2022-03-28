@@ -53,11 +53,16 @@ public class NivelPrecioService:INivelPrecioService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoNivelprecio request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoNivelprecio request, string userId, string codNivelPrecio)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodNivelPrecio = await _repository.BuscarCodNivelPrecioAsync(codNivelPrecio);
+            if (buscarCodNivelPrecio != null)
+            {
+                throw new Exception($"El codigo de Nivel de Precio {buscarCodNivelPrecio.CodNivelPrecio} ya Existe");
+            }
             response.Result = await _repository.CreateAsync(new NivelPrecio
             {
                 CodNivelPrecio = request.CodNivelPrecio,

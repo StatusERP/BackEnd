@@ -52,11 +52,17 @@ public class EntidadFinacieraService:IEntidadFinacieraService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoEntidadFinaciera request, string userId)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoEntidadFinaciera request, string userId,string codEntFinaciera)
     {
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarCodDocTributario = await _repository.BuscarCodEntidadFinacieraAsync(codEntFinaciera);
+            if (buscarCodDocTributario != null)
+            {
+                throw new Exception($"El codigo de Entidad Finaciera {buscarCodDocTributario.CodEntidadFinanciera} ya Existe");
+            }
+            
             response.Result = await _repository.CreateAsync(new EntidadFinanciera
             {
                 CodEntidadFinanciera = request.CodEntidadFinaciera,

@@ -6,6 +6,7 @@ namespace StatusERP.DataAccess.Repositories.AS
     {
         Task<ICollection<Zona>> GetCollectionAsync(int page, int rows); 
         Task<Zona?> GetByIdAsync(int id);
+        Task<Zona?> BuscarCodZonaAsync(string codZona);
         Task<int> CreateAsync(Zona zona);
         Task<int> UpdateAsync(Zona zona);
         Task<int> DeleteAsync(int id,string userId);

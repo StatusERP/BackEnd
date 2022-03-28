@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class UnidadMedidaRepository:StatusERPContextBase<UnidadMedida>,IUnidadMe
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<UnidadMedida?> BuscarCodUnidadMedidaAsync(string codUnidadMedida)
+    {
+        return await _dbContext.UnidadesMedida
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodUnidadMedida == codUnidadMedida );
     }
 }

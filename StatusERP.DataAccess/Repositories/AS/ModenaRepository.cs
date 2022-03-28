@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class ModenaRepository: StatusERPContextBase<Moneda>, IMonedaRepository
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<Moneda?> BuscarCodMonedaAsync(string codMoneda)
+    {
+        return await _dbContext.Monedas
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodMoneda == codMoneda );
     }
 }

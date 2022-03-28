@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class EntidadFinacieraRepository:StatusERPContextBase<EntidadFinanciera>,
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<EntidadFinanciera?> BuscarCodEntidadFinacieraAsync(string codEntFinaciera)
+    {
+        return await _dbContext.EntidadesFinancieras
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodEntidadFinanciera == codEntFinaciera );
     }
 }

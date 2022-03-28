@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
@@ -39,5 +40,12 @@ public class DivGeografica2Repository : StatusERPContextBase<DivGeografica2> ,ID
             Updatedby = userId
         });
         return id;
+    }
+
+    public async Task<DivGeografica2?> BuscarCodDivGeografica2Async(string codDivGeografica)
+    {
+        return await _dbContext.DivGeograficas2
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodDivGeografica2 == codDivGeografica );
     }
 }

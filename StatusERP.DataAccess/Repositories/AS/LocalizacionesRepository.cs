@@ -1,6 +1,7 @@
 ﻿using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace StatusERP.DataAccess.Repositories.AS
 {
@@ -24,6 +25,13 @@ namespace StatusERP.DataAccess.Repositories.AS
                 Updatedby = userId
             });
             return id;
+        }
+
+        public async Task<Localizacion?> BuscarCodLocalizacionAsync(string codLocalizacion)
+        {
+            return await _dbContext.Localizaciones
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.CodLocalizacion == codLocalizacion );
         }
 
         public async Task<Localizacion?> GetByIdAsync(int id)

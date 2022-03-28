@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.DataAccess.Repositories.AS;
@@ -19,11 +20,20 @@ public class SucursalesRepository:StatusERPContextBase<Sucursal> ,ISucursalesRep
         return await _dbContext.SelectAsync<Sucursal>(id);
     }
 
+    public async Task<Sucursal?> BuscarCodSucursalAsync(string codSucursal)
+    {
+        return await _dbContext.Sucursales
+            .AsNoTracking()
+            .FirstOrDefaultAsync(t => t.CodSucursal == codSucursal );
+    }
+
+
     public async Task<int> CreateAsync(Sucursal sucursal)
     {
         return await _dbContext.InsertAsync(sucursal);
     }
 
+  
     public async Task<int> UpdateAsync(Sucursal sucursal)
     {
         await _dbContext.UpdateAsync(sucursal, Mapper);

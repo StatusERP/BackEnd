@@ -1,5 +1,7 @@
 ﻿using StatusERP.Entities.AS.Tablas;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+
 namespace StatusERP.DataAccess.Repositories.AS
 {
     public class VendedorRepository :StatusERPContextBase<Vendedor> , IVendedorRepository
@@ -24,6 +26,12 @@ namespace StatusERP.DataAccess.Repositories.AS
             return await _dbContext.InsertAsync(vendedor);   
         }
 
+        public async Task<Vendedor?> BuscarCodVendedorAsync(string codVendedor)
+        {
+            return await _dbContext.Vendedores
+                .AsNoTracking()
+                .FirstOrDefaultAsync(t => t.CodVendedor == codVendedor );
+        }
         public  async Task<int> DeleteAsync(int id,string userId)
         {
             await _dbContext.DeleteAsync(new Vendedor

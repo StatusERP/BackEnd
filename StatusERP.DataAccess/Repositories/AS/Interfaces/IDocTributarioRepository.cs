@@ -9,4 +9,5 @@ public interface IDocTributarioRepository
     Task<int> CreateAsync(DocTributario  docTributario);
     Task<int> UpdateAsync(DocTributario docTributario);
     Task<int> DeleteAsync(int id,string userId);
+    Task<DocTributario?> BuscarDocTributarioAsync(string codDocTributario);
 }

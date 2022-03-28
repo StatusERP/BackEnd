@@ -9,4 +9,5 @@ public interface IMonedaRepository
     Task<int> CreateAsync(Moneda moneda );
     Task<int> UpdateAsync(Moneda moneda);
     Task<int> DeleteAsync(int id,string userId);
+    Task<Moneda?> BuscarCodMonedaAsync(string codMoneda);
 }
