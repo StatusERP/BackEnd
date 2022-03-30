@@ -4,6 +4,7 @@ using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.CG.Tablas;
 using StatusERP.Entities.CI.Tablas;
 using StatusERP.Entities.FA.Tablas;
+using StatusERP.Entities.CC.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -120,6 +121,16 @@ namespace StatusERP.DataAccess
         public DbSet<PedidoDet> PedidoDets { get; set; }
         public DbSet<FacturaDet> FacturaDets { get; set; }
         public DbSet<FacturaEnc> FacturaEncs { get; set; }
+
+
+        // Para tablas de CC
+        public DbSet<RetencionesDocCC> RetencionesDocCC { get; set; }
+        public DbSet<SaldoCliente> SaldosClientes { get; set; }
+        public DbSet<SubTipoDocCC> SubTiposDocCC { get; set; }
+        public DbSet<ClienteRetencion> ClientesRetenciones { get; set; }
+        public DbSet<AuxiliarCC> AuxiliarCC { get; set; }
+        public DbSet<DocumentosCC> DocumentosCC { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
