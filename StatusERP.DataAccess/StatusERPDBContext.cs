@@ -130,7 +130,7 @@ namespace StatusERP.DataAccess
         public DbSet<ClienteRetencion> ClientesRetenciones { get; set; }
         public DbSet<AuxiliarCC> AuxiliarCC { get; set; }
         public DbSet<DocumentosCC> DocumentosCC { get; set; }
-
+        public DbSet<GlobalesCC> GlobalesCC { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
