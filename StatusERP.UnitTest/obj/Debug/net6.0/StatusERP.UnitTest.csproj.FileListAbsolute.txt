@@ -27,3 +27,15 @@ C:\Dev\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\refint\StatusERP.UnitTest.d
 >>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
 C:\Proyectos\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
 C:\Dev\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.deps.json
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.dll
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.pdb
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.AssemblyReference.cache
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.AssemblyInfoInputs.cache
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.AssemblyInfo.cs
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.CoreCompileInputs.cache
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dll
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
+C:\Dev\statusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb

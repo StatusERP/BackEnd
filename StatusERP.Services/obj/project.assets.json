@@ -2008,33 +2008,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
+      "projectUniqueName": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj",
       "projectName": "StatusERP.Services",
-      "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.Services\\obj\\",
-=======
-      "projectUniqueName": "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
-      "projectName": "StatusERP.Services",
-      "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\StatusERP\\StatusERP.Services\\obj\\",
->>>>>>> 2e5564807fa191ed7a92dfcaa195da6a91546ac6
+      "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj",
+      "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\CarlosVelasquez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -2047,25 +2044,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-<<<<<<< HEAD
-            "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
-              "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
+            "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
+              "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
             },
-            "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-              "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
+            "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {
+              "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj"
             },
-            "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-              "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
-=======
-            "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
-              "projectPath": "C:\\Dev\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
-            },
-            "C:\\Dev\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-              "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
-            },
-            "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-              "projectPath": "C:\\Dev\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
->>>>>>> 2e5564807fa191ed7a92dfcaa195da6a91546ac6
+            "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj": {
+              "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj"
             }
           }
         }
@@ -2104,7 +2090,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
