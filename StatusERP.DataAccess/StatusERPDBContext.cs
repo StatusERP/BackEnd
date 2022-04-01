@@ -5,6 +5,7 @@ using StatusERP.Entities.CG.Tablas;
 using StatusERP.Entities.CI.Tablas;
 using StatusERP.Entities.FA.Tablas;
 using StatusERP.Entities.CC.Tablas;
+using StatusERP.Entities.CP.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -31,7 +32,7 @@ namespace StatusERP.DataAccess
         public DbSet<Favoritos> Favoritos { get; set; }
         public DbSet<Locks> Locks { get; set; }
         public DbSet<ModuloInstalado> ModuloInstalado { get; set; }
-        
+
         // Para tablas de AS
         public DbSet<Bodega> Bodegas { get; set; }
         public DbSet<CategoriaCliente> CategoriasCliente { get; set; }
@@ -70,7 +71,7 @@ namespace StatusERP.DataAccess
         public DbSet<DiarioDet> DiaroDet { get; set; }
         public DbSet<DiarioEnc> DiarioEnc { get; set; }
         public DbSet<Diferido> Diferidos { get; set; }
-        public DbSet<GlobalesCG> GlobalesCG  { get; set; }
+        public DbSet<GlobalesCG> GlobalesCG { get; set; }
         public DbSet<MayorAuditoria> MayorAuditoria { get; set; }
         public DbSet<MayorDet> MayorDet { get; set; }
         public DbSet<MayorEnc> MayorEnc { get; set; }
@@ -115,7 +116,7 @@ namespace StatusERP.DataAccess
         public DbSet<EscalaBonif> EscalasBonif { get; set; }
         public DbSet<BonifArtXCli> BonifsArtXCli { get; set; }
         public DbSet<BonifClasXCli> BonifsClasXCli { get; set; }
-        public DbSet<DesBonEscalaBonificacion>  DesBonEscalaBonificacion { get; set; }
+        public DbSet<DesBonEscalaBonificacion> DesBonEscalaBonificacion { get; set; }
         public DbSet<EscalaDcto> EscalasDcto { get; set; }
         public DbSet<PedidoEnc> PedidoEncs { get; set; }
         public DbSet<PedidoDet> PedidoDets { get; set; }
@@ -131,6 +132,19 @@ namespace StatusERP.DataAccess
         public DbSet<AuxiliarCC> AuxiliarCC { get; set; }
         public DbSet<DocumentosCC> DocumentosCC { get; set; }
         public DbSet<GlobalesCC> GlobalesCC { get; set; }
+
+
+        // Para tablas de CP
+        public DbSet<SubTipoDocCP> SubTipoDocCP { get; set; }
+        public DbSet<HistoricoDifCambiarioCP> HistoricoDifCambiarioCP { get; set; }
+        public DbSet<AuxiliarCP> AuxiliarCP { get; set; }
+        public DbSet<Quedan> Quedans { get; set; }
+        public DbSet<DocumentoCP> DocumentosCP { get; set; }
+        public DbSet<GlobalesCP> GlobalesCP { get; set; }
+        public DbSet<DetalleRetencion> DetalleRetencion { get; set; }
+        public DbSet<Proveedor> Proveedores { get; set; }
+        public DbSet<ProveedorEntidad> ProveedorEntidades { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
