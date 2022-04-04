@@ -6,6 +6,7 @@ using StatusERP.Entities.CI.Tablas;
 using StatusERP.Entities.FA.Tablas;
 using StatusERP.Entities.CC.Tablas;
 using StatusERP.Entities.CP.Tablas;
+using StatusERP.Entities.CB.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -144,6 +145,21 @@ namespace StatusERP.DataAccess
         public DbSet<DetalleRetencion> DetalleRetencion { get; set; }
         public DbSet<Proveedor> Proveedores { get; set; }
         public DbSet<ProveedorEntidad> ProveedorEntidades { get; set; }
+
+
+        // Para tablas de CB
+        public DbSet<CuentaBancaria> CuentasBancarias { get; set; }   
+        public DbSet<TipoCuentaBanco>   TiposCuentasBancos { get; set; }
+        public DbSet<SubTipoDocCB> SubTiposDocCB { get; set; }
+        public DbSet<AsientoCheque> AsientosCheques { get; set; }
+        public DbSet<GlobalesCB> GlobalesCB { get; set; }
+        public DbSet<ConciliacionBancaria> ConciliacionesBancarias { get; set; }
+        public DbSet<Cheque> Cheques { get; set; }
+        public DbSet<TransferenciaCB> TransferenciasCB { get; set;}
+        public DbSet<DetTransCB> DetTransCB { get; set; }
+        public DbSet<MovReportados> MovReportados { get; set; }
+        public DbSet<MovProcesados> MovProcesados { get; set; }
+        public DbSet<MovBancos> MovBancos { get; set; }
 
 
 
