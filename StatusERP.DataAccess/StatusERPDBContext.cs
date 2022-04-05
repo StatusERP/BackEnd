@@ -7,6 +7,7 @@ using StatusERP.Entities.FA.Tablas;
 using StatusERP.Entities.CC.Tablas;
 using StatusERP.Entities.CP.Tablas;
 using StatusERP.Entities.CB.Tablas;
+using StatusERP.Entities.FC.Tablas;
 using StatusERP.Entities.ERPADMIN.Tablas;
 
 namespace StatusERP.DataAccess
@@ -160,6 +161,23 @@ namespace StatusERP.DataAccess
         public DbSet<MovReportados> MovReportados { get; set; }
         public DbSet<MovProcesados> MovProcesados { get; set; }
         public DbSet<MovBancos> MovBancos { get; set; }
+
+        // Para Tablas de FC
+        public DbSet<CalculoFC> CalculosFC { get; set; }
+        public DbSet<ChequeRubroFC> ChequesRubroFC { get; set; }
+        public DbSet<DetalleFC> DetallesFC { get; set; }
+        public DbSet<DetalleFCEjecuta> DetallesFCEjecuta { get; set; }
+        public DbSet<DetalleInversion> DetallesInversiones { get; set; }
+        public DbSet<DetalleProyeccion> DetallesProyecciones { get; set; }
+        public DbSet<FCCuentaBanco> FCCuentasBancos { get; set; }
+        public DbSet<FlujoCaja> FlujosCaja { get; set; }
+        public DbSet<GlobalesFC> GlobalesFC { get; set; }
+        public DbSet<Inversion> Inversiones { get; set; }
+        public DbSet<MovBancosRubroFC> MovBancosRubroFC { get; set; }
+        public DbSet<PeriodoFC> PeriodosFC { get; set; }
+        public DbSet<Proyeccion> Proyecciones { get; set; }
+        public DbSet<RubroFC> RubrosFC { get; set; }
+        public DbSet<VersionFC> VersionesFC { get; set; }
 
 
 
