@@ -11,7 +11,7 @@ namespace StatusERP.DataAccess.Repositories.CG
     {
         Task<ICollection<TipoPartida>> GetCollectionAsync(int page, int rows);
         Task<TipoPartida?> GetByIdAsync(int id);
-        Task<TipoPartida?> BuscarCodTipoPartidadAsync(string codTipoPartida);
+        Task<TipoPartida?> BuscarCodTipoPartidaAsync(string codTipoPartida);
         Task<int> CreateAsync(TipoPartida tipoPartida);
         Task<int> UpdateAsync(TipoPartida tipoPartida);
         Task<int> DeleteAsync(int id, string userId);

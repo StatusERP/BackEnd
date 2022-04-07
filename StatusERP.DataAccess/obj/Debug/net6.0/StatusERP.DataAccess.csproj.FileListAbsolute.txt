@@ -37,3 +37,4 @@ C:\Dev\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Dev\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\ref\StatusERP.DataAccess.dll
+C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\ref\StatusERP.DataAccess.dll
