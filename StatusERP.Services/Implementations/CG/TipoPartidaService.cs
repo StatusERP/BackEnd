@@ -28,7 +28,7 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarCodTipoPartida = await _repository.BuscarCodTipoPartidadAsync(codTipoPartida);
+                var buscarCodTipoPartida = await _repository.BuscarCodTipoPartidaAsync(codTipoPartida);
                 if (buscarCodTipoPartida != null)
                 {
                     throw new Exception($"El codigo de Tipo Partida {buscarCodTipoPartida.CodTipoPartida} ya Existe");

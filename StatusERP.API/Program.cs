@@ -96,7 +96,7 @@ builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
 builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
-builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidadRepository>();
+builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();
 builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
 
 builder.Services.AddControllers();

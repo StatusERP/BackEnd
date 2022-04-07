@@ -7,4 +7,8 @@ build_property.InvariantGlobalization =
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = StatusERP.Services
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Dev\StatusERP\BackEnd\StatusERP.Services\
+=======
+build_property.ProjectDir = C:\Proyectos\StatusERP\StatusERP.Services\
+>>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474

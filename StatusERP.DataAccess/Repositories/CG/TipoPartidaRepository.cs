@@ -1,24 +1,18 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using StatusERP.Entities.AS.Tablas;
 using StatusERP.Entities.CG.Tablas;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StatusERP.DataAccess.Repositories.CG
 {
-    public class TipoPartidadRepository : StatusERPContextBase<TipoPartida>, ITipoPartidaRepository
+    public class TipoPartidaRepository : StatusERPContextBase<TipoPartida>, ITipoPartidaRepository
     {
 
-        public TipoPartidadRepository(StatusERPDBContext context ,IMapper mapper):base(context,mapper)
+        public TipoPartidaRepository(StatusERPDBContext context ,IMapper mapper):base(context,mapper)
         {
 
         }
 
-        public async Task<TipoPartida?> BuscarCodTipoPartidadAsync(string codTipoPartida)
+        public async Task<TipoPartida?> BuscarCodTipoPartidaAsync(string codTipoPartida)
         {
             return await _dbContext.TiposPartidas
             .AsNoTracking()
