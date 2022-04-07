@@ -1,11 +1,7 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.API\\StatusERP.API.csproj": {}
-=======
-    "C:\\proyectos\\StatusERP\\StatusERP.API\\StatusERP.API.csproj": {}
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
   },
   "projects": {
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.API\\StatusERP.API.csproj": {
@@ -13,15 +9,9 @@
       "restore": {
         "projectUniqueName": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.API\\StatusERP.API.csproj",
         "projectName": "StatusERP.API",
-<<<<<<< HEAD
         "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.API\\StatusERP.API.csproj",
         "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.API\\obj\\",
-=======
-        "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.API\\StatusERP.API.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.API\\obj\\",
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -45,30 +35,17 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
-=======
-              "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
-              },
-              "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
               },
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj"
               },
-<<<<<<< HEAD
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj"
               },
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj"
-=======
-              "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj"
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
               }
             }
           }
@@ -136,7 +113,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -145,16 +121,6 @@
         "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
         "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\obj\\",
-=======
-    "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
-        "projectName": "StatusERP.DataAccess",
-        "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\obj\\",
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -178,19 +144,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj"
               },
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj"
-=======
-              "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
-              },
-              "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
               }
             }
           }
@@ -245,24 +203,14 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-=======
-    "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
         "projectName": "StatusERP.Dto",
-<<<<<<< HEAD
         "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
         "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\obj\\",
-=======
-        "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.Dto\\obj\\",
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -316,7 +264,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -325,16 +272,6 @@
         "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj",
         "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\obj\\",
-=======
-    "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
-        "projectName": "StatusERP.Entities",
-        "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\obj\\",
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -394,24 +331,14 @@
         }
       }
     },
-<<<<<<< HEAD
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj": {
-=======
-    "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj": {
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj",
         "projectName": "StatusERP.Services",
-<<<<<<< HEAD
         "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj",
         "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\obj\\",
-=======
-        "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\proyectos\\StatusERP\\StatusERP.Services\\obj\\",
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -435,7 +362,6 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-<<<<<<< HEAD
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
               },
@@ -444,16 +370,6 @@
               },
               "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj": {
                 "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj"
-=======
-              "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj"
-              },
-              "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Dto\\StatusERP.Dto.csproj"
-              },
-              "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj": {
-                "projectPath": "C:\\proyectos\\StatusERP\\StatusERP.Entities\\StatusERP.Entities.csproj"
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
               }
             }
           }

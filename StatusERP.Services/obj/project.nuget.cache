@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "pq/bvSo8UxYyhMQutlcDDZF4frQSUOX+rcTcPzKDU1N3LWDib3nY06THCQxCOCclN1IF/KHFARKgiPSHkLEB/g==",
   "success": true,
   "projectFilePath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj",
-=======
-  "dgSpecHash": "HZUtloxWIEa90hQtp/bspJ+EV2x2WTc6e9S3ui78lxiHmfbPefCEFEDPxWnTkW0O9Og/TsME5vKhdVJ1HzNcbg==",
-  "success": true,
-  "projectFilePath": "C:\\proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
->>>>>>> 73a5174b64f1495659bb7ed6237396b144a67fe6
   "expectedPackageFiles": [
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.2\\microsoft.aspnetcore.cryptography.internal.6.0.2.nupkg.sha512",
@@ -57,5 +51,12 @@
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Dev\\statusERP\\BackEnd\\StatusERP.Services\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
