@@ -2359,6 +2359,1645 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("Zonas", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.AsientoCheque", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<decimal?>("Credito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("CtaContable")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrContable")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<decimal?>("Debito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Referencia")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("TipoAsiento")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AsientosCheques", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.Cheque", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Aprobado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ChequeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Concepto")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocTributarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DocumentoGlobal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraModific")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraUltAplic")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MetodoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("OrigenSolicitud")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("PagaderoA")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("Recurrente")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Referencia")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("ResponsableSolic")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("Seleccionado")
+                        .HasColumnType("bit");
+
+                    b.Property<short?>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Tipo")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModific")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioUltAplic")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.ToTable("Cheques", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.ConciliacionBancaria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Conciliacion")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<decimal?>("CreditosAclaraCB")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosAclaraEF")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosAclarar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosAjustes")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosConAjust")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosConcil")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosLiquidar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosSinDinf")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("CreditosTransito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("DebitosAclaraCB")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosAclaraEF")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosAclarar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosAjustes")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosConAjust")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosConcil")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosLiquidad")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosSinDif")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("DebitosTransito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("FechaFinal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraAprobacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraModific")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicial")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("SaldoBancos")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("SaldoLibros")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioAprobacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModific")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.ToTable("ConciliacionesBancarias", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.CuentaBancaria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activa")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("ConseCheque")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ConseTEF")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Contacto")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("CtaAjusteCred")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaAjusteDeb")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaCierreCred")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaCierreDeb")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaContable")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaDocGP")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaElectronica")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CtaGastoTransf")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaLiquidarCred")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaLiquidarDeb")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtaTransfIC")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrAjusteCred")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrAjusteDeb")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrCierreCred")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrCierreDeb")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrContable")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrDocGP")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrGastoTransf")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrLiquidarCred")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrLiquidarDeb")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CtrTransfIC")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasMaxLength(90)
+                        .HasColumnType("nvarchar(90)");
+
+                    b.Property<int>("EntidadFinancieraId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FchHoraModific")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaUltMov")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Formato")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<string>("IdiomaMonLetras")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("LimiteSobregiro")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("ModoConciliar")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("NumCuentaBancaria")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("ParticipaFlujoCaja")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PermiteDocGP")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PermiteSobregiro")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PermiteTransfIC")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("PosicionDeCaja")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Rubro10CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro1CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro2CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro3CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro4CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro5CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro6CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro7CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro8CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro9CtaBanco")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<decimal>("Saldo")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoAnterior")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoBancos")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTrans")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTransDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTransLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<short?>("SubTipoCredAjust")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("SubTipoDebAjust")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Telefono1")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Telefono2")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<decimal>("TipoCambioDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambioLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TipoCredAjuste")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoCuenta")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("TipoDebAjuste")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<int?>("UltimaConcil")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("UltimaNotaCR")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal>("UltimaNotaDB")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal>("UltimaTEFCR")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal?>("UltimaTEFDB")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("UltimoCheque")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("UltimoDeposito")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal>("UltimoOtroCR")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal>("UltimoOtroDB")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModific")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntidadFinancieraId");
+
+                    b.ToTable("CuentasBancarias", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.DetTransCB", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Beneficiario")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("CentroCostoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CompaniaDestino")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("Concepto")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("Consecutivo")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int?>("CtaCierreTerceros")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCierreTercerosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuentaContableId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CuentaDestino")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("CuentaOrigenId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocTributarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("EntidadFinacieraId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EntidadFinancieraId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MetodoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int?>("MonedaId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("MontoComision")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoDestino")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoOrigen")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("NumeroDestino")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal>("NumeroOrigen")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<string>("Rubro10DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro1DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro2DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro3DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro4DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro5DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro6DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro7DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro8DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro9DetTrans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal?>("TipoCambio")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TipoDestino")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoMov")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("TipoOrigen")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CentroCostoId");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.HasIndex("CuentaContableId");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.HasIndex("EntidadFinancieraId");
+
+                    b.HasIndex("MonedaId");
+
+                    b.ToTable("DetTransCB", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.GlobalesCB", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("AsientoCHQ")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoDep")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoNCR")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoNDB")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoOCR")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoODB")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoTEFCR")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoTEFDB")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CantLineasAsnt")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcilNoEntregado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("ConseLote")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("CopiarNotasEnAsnt")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("DefDocEntregado")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("FecAsientoCheq")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaUltDifCamb")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("ImpCheqPantalla")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ImprimirMontoMon")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IntegracionConta")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<short>("ModAplicAsiento")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("MostrarChqSug")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Paquete")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("PausarEnCheques")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Rubro10CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro1CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro2CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro3CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro4CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro5CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro6CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro7CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro8CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("Rubro9CtaBanco")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("TipoAsiento")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("UsaRubrosCtaBanco")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("ValidarDocAsnt")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("VerCtasInactivas")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GlobalesCB", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.MovBancos", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("AclaradaDif")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Aprobado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ClaseDif")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("ClaseDocumento")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("CodImpuesto1")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<int?>("ConcilAclaracionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConciliacionBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ConciliacionId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Confirmado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuentaBancoId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("DependienteGP")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Detalle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DocAjuste")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocReportado")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocTributarioId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DocumentoFiscal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DocumentoGlobal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaAprobacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaContable")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraAnulado")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal?>("Imp1NoDes")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("Impreso")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("Impuesto1")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Liquidado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MetodoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ModoRegistro")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoAnulado")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoReportado")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("Numero")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<decimal?>("NumeroDocAjuste")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<string>("Origen")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("PagaderoA")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<int>("PaqueteContableId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PaqueteId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Referencia")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("ReferenciaAnulado")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<short?>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("TipoAsiento")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoCF")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<decimal>("TipoCambioDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambioLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TipoDocAjuste")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioAnulado")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioAprobacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModific")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConcilAclaracionId");
+
+                    b.HasIndex("ConciliacionBancariaId");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.HasIndex("PaqueteContableId");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("MovBancos", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.MovProcesados", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ArchivoTXT")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaGenerado")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaProcesa")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Numero")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<string>("TipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioProcesa")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.ToTable("MovProcesados", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.MovReportados", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Compensado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ConciliacionBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ConciliacionId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int?>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DocCompensac")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocReportado")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraModific")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModoRegistro")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Numero")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<string>("TipoCF")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModific")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ConciliacionBancariaId");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.ToTable("MovReportados", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.SubTipoDocCB", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CentroCosto")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("CuentaContable")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("DocumentoGlobal")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("FlujoCaja")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NaturalezaCF")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Paquete")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("RubroCF")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<short>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoAsiento")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoServicio")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubTiposDocCB", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.TipoCuentaBanco", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CodTipoCuentaBanco")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TiposCuentasBancos", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.TransferenciaCB", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuentaOrigenId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("DocumentoFiscal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DocumentoGlobal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime?>("FechaAplicacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraModific")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MetodoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<decimal?>("MontoComision")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoOrigen")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("NumeroOrigen")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<string>("Rubro10Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro1Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro2Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro3Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro4Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro5Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro6Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro7Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro8Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Rubro9Trans")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("TipoOrigen")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModific")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.ToTable("TransferenciasCB", "H2C");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.CC.Tablas.AuxiliarCC", b =>
                 {
                     b.Property<int>("Id")
@@ -3131,6 +4770,327 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasIndex("VendedorId");
 
                     b.ToTable("DocumentosCC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CC.Tablas.GlobalesCC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<short?>("AntPeriodo1")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo2")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo3")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo4")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo5")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo6")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("AsientoDEP")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("AsientoDet")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoFac")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoInt")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoIntC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoLC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoNC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoND")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoOC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoOD")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("AsientoPer")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoREC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("AsientoRed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool?>("AsientoRet")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoTEF")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientosCtaPais")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsocObligContFact")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsociacionDeDocs")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ConsecutivoDE")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ConsecutivoGL")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("CopiarNotasEnAsnt")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("DetalleObligat")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DocProntoPago")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime?>("FechaUltComprime")
+                        .IsRequired()
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaUltDifCamb")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImpPorOmision")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("IntegracionConta")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IntroFacturas")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LimpiarAplicacion")
+                        .HasColumnType("bit");
+
+                    b.Property<short>("ModAplicAsiento")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("NitDuplicado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NomRubro11Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro12Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro13Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro14Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro15Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro1Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro2Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro3Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro4Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro5Cli")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("PaqueteCre")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("PaqueteDeb")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("RefrescaAuto")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Rubro1CliNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro1Nombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro2CliNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro2Nombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro3CliNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro4CliNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro5CliNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<short?>("RubrosDiasRev")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("SubTipoProntoPago")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("TipoAsientoCre")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoAsientoDeb")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("UltDeposito")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltFactura")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltInteresCte")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltInteresMora")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltLetraCambio")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltNotaCredito")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltNotaDebito")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltOtroCredito")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltOtroDebito")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltReciboDinero")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltRetDebito")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UltRetencion")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UltTEF")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("UsarRubros")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsarRubrosCli")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsarRubrosVal")
+                        .HasColumnType("bit");
+
+                    b.Property<short?>("VencPeriodo1")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo2")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo3")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo4")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo5")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo6")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GlobalesCC", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CC.Tablas.RetencionesDocCC", b =>
@@ -6918,6 +8878,1776 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UsuarioAjusteInv", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.AuxiliarCP", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("AsientoDifCambMR")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CodigoRetPago")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Credito")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Debito")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DocDocIntCte")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DocumentoDocPPago")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FolioSATCredito")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("FolioSATDebito")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("MonedaCredito")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("MonedaDebito")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal>("MontoCredito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoDebito")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoProv")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoTotalRetPago")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Proveedor")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<decimal?>("TipoCambioAplica")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TipoCredito")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoDebito")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoDocIntCte")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoDocPPago")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AuxiliarCP", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("Autoretenedora")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("Base")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("ClaseDocES")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("CodigoRetencion")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("ControlInterno")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Documento")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime?>("FechaContable")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaDocumento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaRige")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("Pagada")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Resolucion")
+                        .HasMaxLength(22)
+                        .HasColumnType("nvarchar(22)");
+
+                    b.Property<string>("Retencion")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<decimal?>("SaldoCancelar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Serie")
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<string>("SerieNumero")
+                        .HasMaxLength(22)
+                        .HasColumnType("nvarchar(22)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoApliCancelar")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("DetalleRetencion", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DocumentoCP", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ActDetrac")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("ActividadComercial")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<decimal?>("AdValorem")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Aduana")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<int?>("AnioDua")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Anulado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Aplicacion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("Aprobado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("AsientoPendiente")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("AudFechaAnul")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("AudUsuarioAnul")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("BaseImpuesto1")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("BaseImpuesto2")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("CAI")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ChequeCuenta")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("ChequeImpreso")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ClaseDocES")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("ClaseDocumento")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Clasificacion")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("ClaveDE")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("ClaveReferencia")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CodigoImpuesto")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("CodigoReferencia")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("ConceptoME")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("CondicionPago")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("Congelado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ConsecutivoDoc")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ControlInterno")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("CuentaBanco")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<decimal?>("DeducCostoEnajena")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("Dependiente")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("DependienteGP")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Descuento")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("DestinoITBis")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("DivGeografica1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DivGeografica2Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DivisionGeografica1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DivisionGeografica2Id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Documento")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("DocumentoEmbarque")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("DocumentoFiscal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("DocumentoGlobal")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("EmbarqueAprobado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("EstadoEnvio")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Etiqueta")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaAnul")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaAprobacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaCAI")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaDocumento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaEmisionReferencia")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaProyectada")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaRevision")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaUltCredito")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaUltMod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaVence")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("GeneDocDetrac")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("GeneraDocFE")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("Imp1AsumidoDesc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("Imp1AsumidoNoDesc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("Imp1RetenidoDesc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("Imp1RetenidoNoDesc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("Impuesto1")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("Impuesto2")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ItemHacienda")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("LiquidacCompra")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("MetodoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("ModalidadServicio")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoNoGravado")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoPago")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoProporcionalidad")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoProv")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoReferencia")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoRetencion")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoTotalGastoAplicable")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("MontoTotalImpuestoAcreditar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("NCFModificado")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<short>("NumParcialidades")
+                        .HasColumnType("smallint");
+
+                    b.Property<int?>("PaisId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Paquete")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal?>("PorcAfectacionIVA")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("PorcDetrac")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("PorcIntCte")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("QuedanId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RazonReferencia")
+                        .HasMaxLength(180)
+                        .HasColumnType("nvarchar(180)");
+
+                    b.Property<decimal?>("RentaNeta")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Resolucion")
+                        .HasMaxLength(22)
+                        .HasColumnType("nvarchar(22)");
+
+                    b.Property<decimal>("Rubro1")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("Rubro2")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("Saldo")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoProv")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoRetencion")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTrans")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTransDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTransLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Seleccionado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Serie")
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<string>("SerieNumero")
+                        .HasMaxLength(22)
+                        .HasColumnType("nvarchar(22)");
+
+                    b.Property<short?>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("SubTotalBienes")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("SubTotalServicios")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TasaCre1")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal?>("TasaCre1Porc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TasaCre2")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal?>("TasaCre2Porc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("TasaGanOcasionalPorc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TasaImpositiva")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal?>("TasaImpositivaPorc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoAfectacionIVA")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoAsiento")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal>("TipoCambActDol")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambActLoc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambActProv")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("TipoCambLiqDol")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("TipoCambLiqLoc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("TipoCambio")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambioDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambioMoneda")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TipoCambioProv")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TipoDetrac")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoDocReferencia")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoEmbarque")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("TipoImpuesto1")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoImpuesto2")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoImpuestoAfectacion")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("TipoProrrateo")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoRenta")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoTarifa1")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoTarifa2")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoTarifaAfectacion")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Usuario")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioAprobacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioUltMod")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal?>("ValorAduana")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DivGeografica1Id");
+
+                    b.HasIndex("DivGeografica2Id");
+
+                    b.HasIndex("PaisId");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.HasIndex("QuedanId");
+
+                    b.ToTable("DocumentosCP", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.GlobalesCP", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<short?>("AntPeriodo1")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo2")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo3")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("AntPeriodo4")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("AsientoChq")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoDet")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoFac")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoInt")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("AsientoIntCorriente")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<bool>("AsientoLC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoNC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoND")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoOC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoOD")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoPer")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoRed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoRet")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientoTEF")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsientosCtaPais")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsignarMismaEntidad")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AsocObligContFact")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CopiarNotasEnAsnt")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("DetalleObligat")
+                        .HasColumnType("bit");
+
+                    b.Property<short?>("DiasContables")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("DocProntoPago")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("FechaUltComprime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaUltDifCamb")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ImpuestoPorOmision")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("IntegracionConta")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LimpiarAplicacion")
+                        .HasColumnType("bit");
+
+                    b.Property<short>("ModAplicAsiento")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("NITDuplicado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NomRubro10Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro1Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro2Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro3Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro4Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro5Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro6Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro7Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro8Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NomRubro9Pro")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NumLimiteRet")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("PagoOtraMoneda")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("PaqueteCre")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("PaqueteDeb")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("RefrescaAuto")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Rubro1Nombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro1ProvNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro2Nombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro2ProvNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro3ProvNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro4ProvNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<string>("Rubro5ProvNombre")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<short?>("RubrosDiasRev")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("TipoAsientoCre")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoAsientoDeb")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("UltimoCh")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoFac")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoInt")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoLC")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoNC")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoND")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoOC")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoOD")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoQuedan")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("UltimoRed")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("UltimoRet")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("UsaFechaCont")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsarRubros")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsarRubrosProv")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UsarRubrosVal")
+                        .HasColumnType("bit");
+
+                    b.Property<short?>("VencPeriodo1")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo2")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo3")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("VencPeriodo4")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GlobalesCP", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.HistoricoDifCambiarioCP", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AsientoProc")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CentroCosto")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("CuentaContable")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<decimal>("DifCamDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("DifCamLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Documento")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("FechaAuditoria")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaProc")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NotasRev")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("TCambDolDocAct")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TCambDolDocAnt")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TCambLocDocAct")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TCambLocDocAnt")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<decimal>("TipoCambioProc")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioAuditoria")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("HistoricoDifCambiarioCP", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.Proveedor", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("AgenteRetencion")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Alias")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<bool>("Autoretenedor")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("BuenContribuyente")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CURP")
+                        .HasMaxLength(18)
+                        .HasColumnType("nvarchar(18)");
+
+                    b.Property<string>("Cargo")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("CategoriaProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodProveedor")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("CodigoImpuesto")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("CondicionPago")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("Congelado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Contacto")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<bool>("Convenio")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<decimal>("Descuento")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<int?>("DetalleDireccion")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DivGeografica1Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DivGeografica2Id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DocTributarioId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Domiciliado")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("EMail")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("ExoneracionOper")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Fax")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime?>("FechaHoraCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHoraUltMod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaIngreso")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaUltMov")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("GLN")
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<decimal?>("ImpCategoria")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("ImpNacional")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("ImpPrivado")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<bool>("Impuesto1Incluido")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Internaciones")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ItemHaciendaCompra")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("Local")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModeloRetencion")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("Multimoneda")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumIdentFiscBenef")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("NumIdentNoDomic")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<decimal>("OrdenMinima")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<int>("PaisId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("ParticipaFlujoCaja")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("PermiteDocGP")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal?>("PorcTarifa")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("RegimenTrib")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<string>("Rubro10Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro1Prov")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Rubro1Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro2Prov")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Rubro2Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro3Prov")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Rubro3Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro4Prov")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Rubro4Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro5Prov")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Rubro5Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro6Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro7Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro8Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("Rubro9Proveedor")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<decimal>("Saldo")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTrans")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTransDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("SaldoTransLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("SistemaPensiones")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<decimal?>("TasaInteresMora")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("TasaRetencion")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Telefono1")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Telefono2")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("TipificacionProveedor")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoCF")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoContribuyente")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("TipoImpuesto")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoTarifa")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<string>("TipoVinculacion")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Ubicacion")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("UsaPlame")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioUltMod")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("XSLTPersonalizado")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoriaProveedorId");
+
+                    b.HasIndex("DivGeografica1Id");
+
+                    b.HasIndex("DivGeografica2Id");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.HasIndex("PaisId");
+
+                    b.ToTable("Proveedores", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.ProveedorEntidad", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("CtaDefault")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CtaElectronica")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("CuentaBanco")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("EntidadFinancieraId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TipoCuenta")
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EntidadFinancieraId");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("ProveedorEntidades", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.Quedan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CondicionPago")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<bool>("Congelado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Estado")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime?>("FechaEmision")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaRige")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaUltMod")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaVence")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumQuedan")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioUltMod")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("Quedans", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.SubTipoDocCP", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CentroCosto")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CodigoHacienda")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("CuentaContable")
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("DocumentoGlobal")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Paquete")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<short>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("SubTipoCB")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("Tipo")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoAsiento")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("TipoCB")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("TipoPago")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("TipoServicio")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SubTipoDocCP", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Accion", b =>
@@ -11227,6 +14957,1058 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("VersionesNivelPrecio", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.CalculoFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ConsecutivoPeriodo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("Editado")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoTotalDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoTotalDolarEje")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoTotalLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoTotalLocalEje")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("RubroHijo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("TipoCalculo")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("CalculosFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.ChequeRubroFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ChequeInterno")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuentaBancoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Referencia")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("RubroHijo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<short>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("TipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("ChequesRubroFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.DetalleFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConsecutivoPeriodo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Documento")
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("Origen")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<string>("Propietario")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("RubroHijo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Tipo")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("DetallesFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.DetalleFCEjecuta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ConsecutivoPeriodo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Referencia")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("RubroHijo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<short>("SubTipo")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("TipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("DetallesFCEjecuta", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.DetalleInversion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("FechaInversion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Inversion")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DetallesInversiones", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.DetalleProyeccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("FechaProyeccion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal?>("PorcRecuperacion")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Proyeccion")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DetallesProyecciones", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.FCCuentaBanco", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CuentaBancoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaId");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("FCCuentasBancos", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.FlujoCaja", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaFinal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicial")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FlujoCajaCod")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Notas")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TipoPeriodo")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FlujosCaja", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.GlobalesFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("IntegracionCC")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IntegracionCO")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IntegracionCP")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IntegracionFA")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("GlobalesFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.Inversion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CodInversion")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int?>("DocTributarioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoTotalDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoTotalLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<decimal?>("TipoCambio")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.ToTable("Inversiones", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.MovBancosRubroFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("CuentaBancariaid")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("Monto")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<decimal>("Numero")
+                        .HasColumnType("decimal(28,0)");
+
+                    b.Property<string>("Referencia")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("RubroHijo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("SubTipo")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<decimal>("TCDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("TCLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("TipoDocumento")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CuentaBancariaid");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("MovBancosRubroFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.PeriodoFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Consecutivo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("FechaFinal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicial")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TipoPeriodo")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("PeriodosFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.Proyeccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Asiento")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("CodProyeccion")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int?>("DocTributarioId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<decimal>("MontoTotalDolar")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<decimal>("MontoTotalLocal")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Origen")
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<decimal?>("TipoCambio")
+                        .HasColumnType("decimal(28,8)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.ToTable("Proyecciones", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.RubroFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Formula")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FormulaTXT")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Naturaleza")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
+
+                    b.Property<string>("RubroHijo")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("RubroPadre")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("TipoRubro")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("RubrosFC", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.VersionFC", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime?>("FechaCalculo")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaCreacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaFinal")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaHistorico")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("FechaInicial")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("FechaModificacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("FlujoCajaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("UsuarioCalculo")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioCreacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioHistorico")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UsuarioModificacion")
+                        .IsRequired()
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("Version")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FlujoCajaId");
+
+                    b.ToTable("VersionesFC", "H2C");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -11416,6 +16198,176 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Bodega");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.Cheque", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId");
+
+                    b.Navigation("CuentaBancaria");
+
+                    b.Navigation("DocTributario");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.ConciliacionBancaria", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuentaBancaria");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.CuentaBancaria", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.EntidadFinanciera", "EntidadFinanciera")
+                        .WithMany()
+                        .HasForeignKey("EntidadFinancieraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EntidadFinanciera");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.DetTransCB", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.CentroCosto", "CentroCosto")
+                        .WithMany()
+                        .HasForeignKey("CentroCostoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CuentaContable", "CuentaContable")
+                        .WithMany()
+                        .HasForeignKey("CuentaContableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.EntidadFinanciera", "EntidadFinanciera")
+                        .WithMany()
+                        .HasForeignKey("EntidadFinancieraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "Moneda")
+                        .WithMany()
+                        .HasForeignKey("MonedaId");
+
+                    b.Navigation("CentroCosto");
+
+                    b.Navigation("CuentaBancaria");
+
+                    b.Navigation("CuentaContable");
+
+                    b.Navigation("DocTributario");
+
+                    b.Navigation("EntidadFinanciera");
+
+                    b.Navigation("Moneda");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.MovBancos", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.ConciliacionBancaria", "ConcilAclaracion")
+                        .WithMany()
+                        .HasForeignKey("ConcilAclaracionId");
+
+                    b.HasOne("StatusERP.Entities.CB.Tablas.ConciliacionBancaria", "ConciliacionBancaria")
+                        .WithMany()
+                        .HasForeignKey("ConciliacionBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.PaqueteContable", "PaqueteContable")
+                        .WithMany()
+                        .HasForeignKey("PaqueteContableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId");
+
+                    b.Navigation("ConcilAclaracion");
+
+                    b.Navigation("ConciliacionBancaria");
+
+                    b.Navigation("CuentaBancaria");
+
+                    b.Navigation("DocTributario");
+
+                    b.Navigation("PaqueteContable");
+
+                    b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.MovProcesados", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuentaBancaria");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.MovReportados", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.ConciliacionBancaria", "ConciliacionBancaria")
+                        .WithMany()
+                        .HasForeignKey("ConciliacionBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId");
+
+                    b.Navigation("ConciliacionBancaria");
+
+                    b.Navigation("CuentaBancaria");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.TransferenciaCB", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuentaBancaria");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.CC.Tablas.DocumentosCC", b =>
                 {
                     b.HasOne("StatusERP.Entities.FA.Tablas.Cliente", "Cliente")
@@ -11465,6 +16417,136 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Pais");
 
                     b.Navigation("Vendedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DocumentoCP", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DivGeografica1", "DivGeografica1")
+                        .WithMany()
+                        .HasForeignKey("DivGeografica1Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DivGeografica2", "DivGeografica2")
+                        .WithMany()
+                        .HasForeignKey("DivGeografica2Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
+                        .WithMany()
+                        .HasForeignKey("PaisId");
+
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Quedan", "Quedan")
+                        .WithMany()
+                        .HasForeignKey("QuedanId");
+
+                    b.Navigation("DivGeografica1");
+
+                    b.Navigation("DivGeografica2");
+
+                    b.Navigation("Pais");
+
+                    b.Navigation("Proveedor");
+
+                    b.Navigation("Quedan");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.HistoricoDifCambiarioCP", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.Proveedor", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.CategoriaProveedor", "CategoriaProveedor")
+                        .WithMany()
+                        .HasForeignKey("CategoriaProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DivGeografica1", "DivGeografica1")
+                        .WithMany()
+                        .HasForeignKey("DivGeografica1Id");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DivGeografica2", "DivGeografica2")
+                        .WithMany()
+                        .HasForeignKey("DivGeografica2Id");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
+                        .WithMany()
+                        .HasForeignKey("PaisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CategoriaProveedor");
+
+                    b.Navigation("DivGeografica1");
+
+                    b.Navigation("DivGeografica2");
+
+                    b.Navigation("DocTributario");
+
+                    b.Navigation("Pais");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.ProveedorEntidad", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.EntidadFinanciera", "EntidadFinanciera")
+                        .WithMany()
+                        .HasForeignKey("EntidadFinancieraId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EntidadFinanciera");
+
+                    b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CP.Tablas.Quedan", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proveedor");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.ERPADMIN.Tablas.Conjunto", b =>
@@ -11592,6 +16674,147 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Vendedor");
 
                     b.Navigation("Zona");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.CalculoFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.ChequeRubroFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuentaBancaria");
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.DetalleFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.DetalleFCEjecuta", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.FCCuentaBanco", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuentaBancaria");
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.Inversion", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId");
+
+                    b.Navigation("DocTributario");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.MovBancosRubroFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CB.Tablas.CuentaBancaria", "CuentaBancaria")
+                        .WithMany()
+                        .HasForeignKey("CuentaBancariaid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CuentaBancaria");
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.PeriodoFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.Proyeccion", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId");
+
+                    b.Navigation("DocTributario");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.RubroFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FC.Tablas.VersionFC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FC.Tablas.FlujoCaja", "FlujoCaja")
+                        .WithMany()
+                        .HasForeignKey("FlujoCajaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FlujoCaja");
                 });
 #pragma warning restore 612, 618
         }

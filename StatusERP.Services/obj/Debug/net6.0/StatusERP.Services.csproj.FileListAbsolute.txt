@@ -40,6 +40,7 @@ C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Serv
 C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
 >>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
+<<<<<<< HEAD
 C:\Dev\statusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Dev\statusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
@@ -59,3 +60,6 @@ C:\Dev\statusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.
 C:\Dev\statusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
+=======
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
+>>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474
