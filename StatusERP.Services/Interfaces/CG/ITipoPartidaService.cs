@@ -13,10 +13,11 @@ namespace StatusERP.Services.Implementations.CG
     {
         Task<BaseResponseGeneric<ICollection<TipoPartida>>> GetAsync(int page, int rows);
         Task<BaseResponseGeneric<TipoPartida>> GetByIdAsync(int id);
-
+       
         Task<BaseResponseGeneric<int>> CreateAsync(DtoTipoPartida request, string userId, string codTipoPartida);
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoTipoPartida request, string userId);
 
         Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId);
     }
 }
+

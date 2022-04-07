@@ -23,6 +23,7 @@ namespace StatusERP.DataAccess
                 .AsNoTracking()
                 .FirstOrDefaultAsync(t => t.Id == id &&  !t.IsDeleted);
         }
+        
         public static async Task<int> InsertAsync<TEntityBase>(this DbContext context, TEntityBase entity)
             where TEntityBase : EntityBase
         {
