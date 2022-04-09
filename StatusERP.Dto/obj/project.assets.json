@@ -16,11 +16,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< HEAD
       "projectUniqueName": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
       "projectName": "StatusERP.Dto",
       "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
       "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\obj\\",
+=======
+      "projectUniqueName": "C:\\Dev\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
+      "projectName": "StatusERP.Dto",
+      "projectPath": "C:\\Dev\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Dev\\StatusERP\\BackEnd\\StatusERP.Dto\\obj\\",
+>>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -79,7 +87,11 @@
       "code": "Undefined",
       "level": "Warning",
       "warningLevel": 1,
+<<<<<<< HEAD
       "message": "Problema al leer el archivo de caché C:\\Dev\\statusERP\\BackEnd\\StatusERP.Dto\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+=======
+      "message": "Problem reading the cache file C:\\Dev\\StatusERP\\BackEnd\\StatusERP.Dto\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+>>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
     }
   ]
 }
