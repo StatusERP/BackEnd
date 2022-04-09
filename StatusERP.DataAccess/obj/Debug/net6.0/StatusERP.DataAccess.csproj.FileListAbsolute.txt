@@ -37,7 +37,6 @@ C:\Dev\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Dev\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\ref\StatusERP.DataAccess.dll
-<<<<<<< HEAD
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.DataAccess.deps.json
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\ref\StatusERP.DataAccess.dll
@@ -55,6 +54,5 @@ C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAcc
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\ref\StatusERP.DataAccess.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.pdb
-=======
 C:\Proyectos\StatusERP\StatusERP.DataAccess\bin\Debug\net6.0\ref\StatusERP.DataAccess.dll
 >>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474

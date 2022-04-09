@@ -26,7 +26,6 @@ C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Enti
 C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Entities.dll
 >>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
 C:\Dev\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
-<<<<<<< HEAD
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.deps.json
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
@@ -39,6 +38,5 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
-=======
 C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
 >>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474
