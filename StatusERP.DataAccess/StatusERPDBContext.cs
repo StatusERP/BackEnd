@@ -79,6 +79,7 @@ namespace StatusERP.DataAccess
         public DbSet<MayorEnc> MayorEnc { get; set; }
         public DbSet<PaqueteContable> PaquetesContables { get; set; }
         public DbSet<SaldoCuenta> SaldosCuentas { get; set; }
+        public DbSet<SeccionCuenta> SeccionesCuentas { get; set; }
         public DbSet<TipoPartida> TiposPartidas { get; set; }
         public DbSet<UsuarioPaquete> UsuarioPaquete { get; set; }
 

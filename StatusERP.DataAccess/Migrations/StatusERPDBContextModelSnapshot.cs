@@ -5367,7 +5367,15 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CentroCosto")
+                    b.Property<int>("CentroCostoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CodCentroCosto")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CodCuentaContable")
                         .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
@@ -5380,10 +5388,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<string>("CuentaContable")
-                        .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int>("CuentaContableId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -5397,6 +5403,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CentroCostoId");
+
+                    b.HasIndex("CuentaContableId");
 
                     b.ToTable("CentroCuenta", "H2C");
                 });
@@ -5730,7 +5740,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CuentaContable", "H2C");
+                    b.ToTable("CuentasContables", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.DiarioDet", b =>
@@ -6617,10 +6627,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("Marcado")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UltimoAsientoCorp")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
                     b.Property<string>("UltimoAsientoFiscal")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -6728,6 +6734,60 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("SaldoCuentas", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CG.Tablas.SeccionCuenta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Acumulado")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<string>("CodSeccionCuenta")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<short>("Secuencia")
+                        .HasColumnType("smallint");
+
+                    b.Property<string>("TipoSeccion")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SeccionesCuentas", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.TipoPartida", b =>
@@ -16417,6 +16477,25 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Pais");
 
                     b.Navigation("Vendedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CentroCuenta", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.CentroCosto", "CentroCosto")
+                        .WithMany()
+                        .HasForeignKey("CentroCostoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CuentaContable", "CuentaContable")
+                        .WithMany()
+                        .HasForeignKey("CuentaContableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CentroCosto");
+
+                    b.Navigation("CuentaContable");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>
