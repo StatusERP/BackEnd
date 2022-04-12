@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IArticuloService
     {
-        Task<BaseResponseGeneric<ICollection<Articulo>>> GetAsync(int page, int rows);
+        Task<BaseResponseGeneric<ICollection<Articulo>>> GetAsync(int page, int rows, string userId);
 
         Task<BaseResponseGeneric<Articulo>> GetByIdAsync(int id);
 

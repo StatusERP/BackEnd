@@ -7093,7 +7093,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("CodigoBarrasVent")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 

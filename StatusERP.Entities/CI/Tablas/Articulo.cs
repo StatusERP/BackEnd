@@ -137,7 +137,7 @@ namespace StatusERP.Entities.CI.Tablas
         public Int16 FrecuenciaConteo { get; set; }
         
         [StringLength(20)]
-        public string CodigoBarrasVent { get; set; }
+        public string ? CodigoBarrasVent { get; set; }
         
         [StringLength(20)]
         public string? CodigoBarrasInvt { get; set; }

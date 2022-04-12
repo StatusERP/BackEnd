@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.CI;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.CI;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.CI.Tablas;
@@ -11,11 +12,13 @@ namespace StatusERP.Services.Implementations.CI
     {
         private readonly IArticuloRepository _repository;
         private readonly ILogger<ArticuloService> _logger;
+        private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-        public ArticuloService(IArticuloRepository repository, ILogger<ArticuloService> logger)
+        public ArticuloService(IArticuloRepository repository, ILogger<ArticuloService> logger,IPrivilegioUsuarioRepository privilegioUsuarioRepository)
         {
             _repository = repository;
             _logger = logger;
+            _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoArticulo request, string userId, string codArticulo)
@@ -23,6 +26,15 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ARTICULOADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para crear artículos.");
+                    response.Success = false;
+                    return response;
+                }
+
                 var buscarCodArticulo = await _repository.BuscarCodArticuloAsync(codArticulo);
                 if (buscarCodArticulo != null)
                 {
@@ -133,9 +145,20 @@ namespace StatusERP.Services.Implementations.CI
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
+      
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ARTICULODEL", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {      
+                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Success = false;
+                    return response;
+                }
+
+
                 await _repository.DeleteAsync(id, userId);
                 response.Success = true;
                 response.Result = id;
@@ -150,11 +173,21 @@ namespace StatusERP.Services.Implementations.CI
             return response;
         }
 
-        public async Task<BaseResponseGeneric<ICollection<Articulo>>> GetAsync(int page, int rows)
+        public async Task<BaseResponseGeneric<ICollection<Articulo>>> GetAsync(int page, int rows, string userId)
         {
             var response = new BaseResponseGeneric<ICollection<Articulo>>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ARTICULO", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Success = false;
+                    return response;
+                }
+
+
                 response.Result = await _repository.GetCollectionAsync(page, rows);
                 response.Success = true;
             }
@@ -191,6 +224,15 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ARTICULOMOD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Success = false;
+                    return response;
+                }
+
 
                 response.Result = await _repository.UpdateAsync(new Articulo
                 {
