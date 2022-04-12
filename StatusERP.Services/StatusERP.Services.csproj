@@ -20,7 +20,6 @@
   <ItemGroup>
     <Folder Include="Implementations\CB\" />
     <Folder Include="Implementations\CC\" />
-    <Folder Include="Implementations\CI\" />
     <Folder Include="Implementations\CP\" />
     <Folder Include="Implementations\ERPADMIN\" />
     <Folder Include="Implementations\FA\" />
