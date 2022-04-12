@@ -11,6 +11,17 @@ C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
 C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
 C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Entities.dll
 C:\Dev\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.deps.json
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.pdb
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.AssemblyInfoInputs.cache
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.AssemblyInfo.cs
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.CoreCompileInputs.cache
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
 C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.deps.json
 C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.dll
 C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
@@ -23,6 +34,7 @@ C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.cs
 C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.dll
 C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
 C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 >>>>>>> 783352cb65b9e2d50a6b2faccc3380a00308fc0f
@@ -41,3 +53,5 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.
 >>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474
 >>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.AssemblyReference.cache
+=======
+>>>>>>> 343e921f8bd3599af8b7c54480f909b21c51bdf7

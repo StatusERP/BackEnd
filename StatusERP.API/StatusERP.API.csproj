@@ -33,7 +33,6 @@
   <ItemGroup>
     <Folder Include="Controllers\FA\" />
     <Folder Include="Controllers\CC\" />
-    <Folder Include="Controllers\CI\" />
   </ItemGroup>
 
 </Project>

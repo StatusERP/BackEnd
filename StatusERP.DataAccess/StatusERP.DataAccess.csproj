@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Repositories\CB\" />
     <Folder Include="Repositories\CC\" />
-    <Folder Include="Repositories\CI\" />
     <Folder Include="Repositories\CP\" />
     <Folder Include="Repositories\FA\" />
     <Folder Include="Repositories\FC\" />

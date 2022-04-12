@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StatusERP.Entities.CI.Tablas
+namespace StatusERP.Dto.Request.CI
 {
-    [Table("Articulos", Schema = Constants.Conjunto)]
-    public class Articulo : EntityBase
+    public class DtoArticulo
     {
         [Required(ErrorMessage = "El código del artículo es requerido.")]
         [StringLength(20)]
@@ -14,40 +13,40 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(250)]
         public string Descripcion { get; set; }
 
-        [StringLength(12)] 
-        public string ? Clasificacion1 { get; set; }
+        [StringLength(12)]
+        public string? Clasificacion1 { get; set; }
 
-        [StringLength(12)] 
-        public string ? Clasificacion2 { get; set; }
+        [StringLength(12)]
+        public string? Clasificacion2 { get; set; }
 
-        [StringLength(12)] 
+        [StringLength(12)]
         public string? Clasificacion3 { get; set; }
 
-        [StringLength(12)] 
+        [StringLength(12)]
         public string? Clasificacion4 { get; set; }
 
-        [StringLength(12)] 
+        [StringLength(12)]
         public string? Clasificacion5 { get; set; }
 
-        [StringLength(12)] 
+        [StringLength(12)]
         public string? Clasificacion6 { get; set; }
 
-        [Column(TypeName = "decimal(28,8)")] 
-        public decimal ?FactorConver1 { get; set; }
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal? FactorConver1 { get; set; }
 
-        [Column(TypeName = "decimal(28,8)")] 
+        [Column(TypeName = "decimal(28,8)")]
         public decimal? FactorConver2 { get; set; }
 
-        [Column(TypeName = "decimal(28,8)")] 
+        [Column(TypeName = "decimal(28,8)")]
         public decimal? FactorConver3 { get; set; }
 
-        [Column(TypeName = "decimal(28,8)")] 
+        [Column(TypeName = "decimal(28,8)")]
         public decimal? FactorConver4 { get; set; }
 
-        [Column(TypeName = "decimal(28,8)")] 
+        [Column(TypeName = "decimal(28,8)")]
         public decimal? FactorConver5 { get; set; }
 
-        [Column(TypeName = "decimal(28,8)")] 
+        [Column(TypeName = "decimal(28,8)")]
         public decimal? FactorConver6 { get; set; }
 
         [Required(ErrorMessage = "El tipo es requerido.")]
@@ -119,155 +118,152 @@ namespace StatusERP.Entities.CI.Tablas
 
         [Required(ErrorMessage = "La fecha de la última salida es requerida.")]
         public DateTime UltimaSalida { get; set; }
-        
+
         [Required(ErrorMessage = "La fecha del último movimiento es requerida.")]
         public DateTime UltimoMovimiento { get; set; }
-        
+
         [Required(ErrorMessage = "La fecha del último ingreso es requerida.")]
         public DateTime UltimoIngreso { get; set; }
-        
+
         [Required(ErrorMessage = "La fecha del último inventario es requerida.")]
         public DateTime UltimoInventario { get; set; }
-        
+
         [Required(ErrorMessage = "La clase ABC es requerida.")]
         [StringLength(1)]
         public string ClaseABC { get; set; }
-        
+
         [Required(ErrorMessage = "La frecuencia de conteo es requerida.")]
         public Int16 FrecuenciaConteo { get; set; }
-        
+
         [StringLength(20)]
         public string ? CodigoBarrasVent { get; set; }
-        
+
         [StringLength(20)]
         public string? CodigoBarrasInvt { get; set; }
-        
+
         public bool? Activo { get; set; }
-        
+
         public bool UsaLotes { get; set; }
-        
+
         public bool ObligaCuarentena { get; set; }
-        
+
         [Required(ErrorMessage = "Se debe ingresar el Mínimo de Vida Compra.")]
         public Int16 MinVidaCompra { get; set; }
-        
+
         [Required(ErrorMessage = "Se debe ingresar el Mínimo de Vida Consumo.")]
         public Int16 MinVidaConsumo { get; set; }
-        
+
         [Required(ErrorMessage = "Se debe ingresar el Mínimo de Vida Venta.")]
         public Int16 MinVidaVenta { get; set; }
-        
+
         [Required(ErrorMessage = "Se debe ingresar la Vida Util Promedio.")]
         public Int16 VidaUtilPromedio { get; set; }
-        
+
         [Required(ErrorMessage = "Se debe ingresar los días cuarentena.")]
         public Int16 DiasCuarentena { get; set; }
-        
+
         [StringLength(20)]
         public string? Proveedor { get; set; }
-        
+
         [StringLength(30)]
         public string? ArticuloDelProv { get; set; }
-        
+
         [Required(ErrorMessage = "Debe ingresar la orden mínima.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal OrdenMinima { get; set; }
-        
+
         [Required(ErrorMessage = "Debe ingresar el plazo de reabastecimiento.")]
         public Int16 PlazoReabast { get; set; }
-        
+
         [Required(ErrorMessage = "Debe ingresar el valor de Lote Múltiplo.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal LoteMultiplo { get; set; }
-        
-        public string ? Notas { get; set; }
-        
+
+        public string? Notas { get; set; }
+
         [StringLength(25)]
-        public string ? UsuarioCreacion { get; set; }
-        
-        public DateTime ? FechaHoraCreacion { get; set; }
-        
+        public string? UsuarioCreacion { get; set; }
+
+        public DateTime? FechaHoraCreacion { get; set; }
+
         [StringLength(25)]
-        public string ?  UsuarioUltModif { get; set; }
-        
-        public DateTime ? FechaHoraUltModif { get; set; }
-        
+        public string? UsuarioUltModif { get; set; }
+
+        public DateTime? FechaHoraUltModif { get; set; }
+
         public bool UsaNumerosSerie { get; set; }
-        
+
         [StringLength((1))]
-        public string ? ModalidadInvFis { get; set; }
-        
+        public string? ModalidadInvFis { get; set; }
+
         [StringLength(1)]
-        public string ?  TipoCodBarraDet { get; set; }
-        
+        public string? TipoCodBarraDet { get; set; }
+
         [StringLength(1)]
-        public string ?  TipoCodBarraAlm { get; set; }
-        
+        public string? TipoCodBarraAlm { get; set; }
+
         public bool UsaReglasLocales { get; set; }
-        
+
         [Required(ErrorMessage = "Debe indicarse la unidad de almacén.")]
         [StringLength(6)]
-        public string  UnidadAlmacen { get; set; }
-        
+        public string UnidadAlmacen { get; set; }
+
         [Required(ErrorMessage = "Debe indicarse la unidad de empaque.")]
         [StringLength(6)]
-        public string  UnidadEmpaque { get; set; }
-        
+        public string UnidadEmpaque { get; set; }
+
         [Required(ErrorMessage = "Debe indicarse la unidad de venta.")]
         [StringLength(6)]
         public string UnidadVenta { get; set; }
-        
+
         public bool Perecedero { get; set; }
-        
+
         [StringLength(35)]
-        public string ? Manufacturador { get; set; }
-        
+        public string? Manufacturador { get; set; }
+
         [StringLength(4)]
-        public string ? CodigoRetencion { get; set; }
-        
+        public string? CodigoRetencion { get; set; }
+
         [StringLength(4)]
-        public string ? RetencionVenta { get; set; }
-        
+        public string? RetencionVenta { get; set; }
+
         [StringLength(4)]
-        public string ? RetencionCompra { get; set; }
-        
+        public string? RetencionCompra { get; set; }
+
         [StringLength(4)]
-        public string ? ModeloRetencion { get; set; }
-        
+        public string? ModeloRetencion { get; set; }
+
         [StringLength(5)]
-        public string ? Estilo { get; set; }
-        
+        public string? Estilo { get; set; }
+
         [StringLength(5)]
-        public string ? Talla { get; set; }
-        
+        public string? Talla { get; set; }
+
         [StringLength(5)]
-        public string ? Color { get; set; }
-        
+        public string? Color { get; set; }
+
         [Required(ErrorMessage = "Debe indicar un tipo de costo.")]
         [StringLength(1)]
         public string TipoCosto { get; set; }
-        
+
         [Required(ErrorMessage = "Debe ingresar el valor del costo promedio último en moneda local.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CostoPromUltimoLoc { get; set; }
-        
+
         [Required(ErrorMessage = "Debe ingresar el valor del costo promedio último en dólares.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CostoPromUltimoDol { get; set; }
-        
+
         public bool EsImpuesto { get; set; }
-        
+
         [StringLength(2)]
-        public string ?  TipoDocIVA { get; set; }
-        
+        public string? TipoDocIVA { get; set; }
+
         public bool SugiereMin { get; set; }
-        
+
         public bool CalculaPercep { get; set; }
-        
+
         [Column(TypeName = "decimal(28,8)")]
-        public decimal ? PorcPercep { get; set; }
-        
-        
-        
+        public decimal? PorcPercep { get; set; }
     }
 }
