@@ -103,6 +103,10 @@ builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
 
 builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();
 builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
+builder.Services.AddScoped<IPrivilegioUsuarioRepository, PrivilegoUsuarioRepository>();
+builder.Services.AddScoped<IPrivilegioUsuarioService,PrivilegioUsuarioService>();
+
+
 
 //builder.Services.AddScoped<ICentroCuentaRepository, CentroCuentaRepository>();
 //builder.Services.AddScoped<ICentroCuentaService, CentroCuentaService>();

@@ -20,7 +20,7 @@ namespace StatusERP.Entities.ERPADMIN.Tablas
 
         [Required(ErrorMessage = "Se requiere especificar un nombre de constante.")]
         [StringLength(18)]
-        public string NombreConstante { get; set; }
+        public string  NombreConstante { get; set; }
 
         public bool EsModulo { get; set; }
 

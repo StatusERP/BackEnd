@@ -35,16 +35,18 @@ C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.As
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
 =======
 <<<<<<< HEAD
+>>>>>>> 783352cb65b9e2d50a6b2faccc3380a00308fc0f
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
-=======
 C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
->>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
@@ -64,6 +66,9 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
+<<<<<<< HEAD
+=======
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
 >>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474
 >>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
+>>>>>>> 783352cb65b9e2d50a6b2faccc3380a00308fc0f
