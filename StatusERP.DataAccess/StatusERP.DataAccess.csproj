@@ -24,7 +24,6 @@
     <Folder Include="Repositories\CC\" />
     <Folder Include="Repositories\CI\" />
     <Folder Include="Repositories\CP\" />
-    <Folder Include="Repositories\ERPADMIN\" />
     <Folder Include="Repositories\FA\" />
     <Folder Include="Repositories\FC\" />
   </ItemGroup>
