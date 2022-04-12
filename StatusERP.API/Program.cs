@@ -20,8 +20,19 @@ using StatusERP.Services.Interfaces.CG;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var corsConfiguration = "StatusERPApi";
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+builder.Services.AddCors(setup =>
+{
+    setup.AddPolicy(corsConfiguration, x =>
+    {
+        x.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -163,6 +174,8 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+//Habilitamos el Cors 
+app.UseCors(corsConfiguration);
 
 
 app.MapControllers();

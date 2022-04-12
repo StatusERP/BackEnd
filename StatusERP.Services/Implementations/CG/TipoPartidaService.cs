@@ -20,6 +20,7 @@ namespace StatusERP.Services.Implementations.CG
 
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoTipoPartida request, string userId, string codTipoPartida)
         {
+            
             var response = new BaseResponseGeneric<int>();
             try
             {

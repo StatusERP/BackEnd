@@ -86,6 +86,7 @@ namespace StatusERP.Services.Implementations.ERPADMIN
 
             var token = new JwtSecurityToken(header, payload);
             response.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            response.Success = true;
             return response;
 
         }
