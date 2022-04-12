@@ -9,8 +9,11 @@ C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CoreCompile
 C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
+C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
+C:\Dev\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.deps.json
 C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.dll
+C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.AssemblyReference.cache
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.GeneratedMSBuildEditorConfig.editorconfig
@@ -20,6 +23,12 @@ C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CoreC
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 783352cb65b9e2d50a6b2faccc3380a00308fc0f
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
 C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
 C:\Dev\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
@@ -35,3 +44,9 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.Cor
 C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
+<<<<<<< HEAD
+=======
+C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
+>>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474
+>>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
+>>>>>>> 783352cb65b9e2d50a6b2faccc3380a00308fc0f

@@ -16,6 +16,7 @@ using StatusERP.DataAccess.Repositories.ERPADMIN;
 using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Services.Implementations.CG;
+using StatusERP.Services.Interfaces.CG;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -96,10 +97,25 @@ builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
 builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
+
+
+// Entidades Módulo CG
+
 builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();
 builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
 builder.Services.AddScoped<IPrivilegioUsuarioRepository, PrivilegoUsuarioRepository>();
 builder.Services.AddScoped<IPrivilegioUsuarioService,PrivilegioUsuarioService>();
+
+
+
+//builder.Services.AddScoped<ICentroCuentaRepository, CentroCuentaRepository>();
+//builder.Services.AddScoped<ICentroCuentaService, CentroCuentaService>();
+
+builder.Services.AddScoped<ICuentaContableService, CuentaContableService>();
+builder.Services.AddScoped<ICuentaContableRepository, CuentaContableRepository>();
+
+builder.Services.AddScoped<ISeccionCuentaService, SeccionCuentaService>();
+builder.Services.AddScoped<ISeccionCuentaRepository, SeccionCuentaRepository>();
 
 
 

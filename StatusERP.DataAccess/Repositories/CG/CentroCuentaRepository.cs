@@ -12,11 +12,11 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         }
 
-        public async Task<CentroCuenta?> BuscarCodCentroCuentaAsync(string CodCentroCosto, string CodCentroCuenta)
+        public async Task<CentroCuenta?> BuscarCodCentroCuentaAsync(int CentroCostoId, int CentroCuentaId)
         {
             return await _dbContext.CentroCuenta
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.CentroCosto == CodCentroCosto && t.CuentaContable == CodCentroCuenta);
+            .FirstOrDefaultAsync(t => t.CentroCostoId == CentroCostoId && t.CuentaContableId == CentroCuentaId);
         }
 
         public async Task<int> CreateAsync(CentroCuenta CentroCuenta)

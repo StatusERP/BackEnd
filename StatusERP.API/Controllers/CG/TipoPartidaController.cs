@@ -4,6 +4,7 @@ using StatusERP.Dto.Request.CG;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.CG.Tablas;
 using StatusERP.Services.Implementations.CG;
+using StatusERP.Services.Interfaces.CG;
 using System.Security.Claims;
 
 namespace StatusERP.API.Controllers.CG
