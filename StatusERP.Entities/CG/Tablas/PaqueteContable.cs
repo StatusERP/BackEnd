@@ -29,8 +29,6 @@ namespace StatusERP.Entities.CG.Tablas
         [StringLength(10)]
         public string UltimoAsientoFiscal { get; set; }
 
-        [StringLength(10)]
-        public string ? UltimoAsientoCorp { get; set; }
 
         [Required]
         public bool Marcado { get; set; }

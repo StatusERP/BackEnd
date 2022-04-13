@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06-Pruebas Unitarias", "06-
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-Api Rest", "05-Api Rest", "{75AFCB53-8E11-4FF4-9847-4A45AD2F229A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Data Tranfert Object", "04-Data Tranfert Object", "{16402F9E-0BAE-49D2-9A9D-D5A50E570D8D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Data Transfer Object", "04-Data Transfer Object", "{16402F9E-0BAE-49D2-9A9D-D5A50E570D8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Logica Negocio", "03-Logica Negocio", "{F59BEDCD-8FF5-48A6-9500-B3B3CC2FD6B9}"
 EndProject

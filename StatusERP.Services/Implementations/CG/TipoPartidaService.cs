@@ -3,11 +3,7 @@ using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Dto.Request.CG;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.CG.Tablas;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StatusERP.Services.Interfaces.CG;
 
 namespace StatusERP.Services.Implementations.CG
 {

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CG.Tablas
 {
-    [Table("CuentaContable", Schema = Constants.Conjunto)]
+    [Table("CuentasContables", Schema = Constants.Conjunto)]
     public class CuentaContable : EntityBase
     {
         [Required(ErrorMessage = "El código de cuenta contable es requerido.")]

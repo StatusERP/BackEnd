@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
@@ -12,12 +13,14 @@ public class BodegaService:IBodegaService
     private readonly IBodegaRepository _repository;
     private readonly ILogger<BodegaService> _logger;
     private readonly ISucursalesRepository _sucursalesRepository;
+    private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-    public BodegaService(IBodegaRepository repository,ILogger<BodegaService> logger ,ISucursalesRepository sucursalesRepository)
+    public BodegaService(IBodegaRepository repository,ILogger<BodegaService> logger ,ISucursalesRepository sucursalesRepository,IPrivilegioUsuarioRepository privilegioUsuarioRepository)
     {
         _repository = repository;
         _logger = logger;
         _sucursalesRepository = sucursalesRepository;
+        _privilegioUsuarioRepository = privilegioUsuarioRepository;
     }
     public async Task<BaseResponseGeneric<ICollection<Bodega>>> GetAsync(int page, int rows)
     {
@@ -55,9 +58,23 @@ public class BodegaService:IBodegaService
 
     public  async Task<BaseResponseGeneric<int>> CreateAsync(DtoBodega request, string userId,string codBodega)
     {
+        //Constante de Accion para su validacion de privilegios 
+
         var response = new BaseResponseGeneric<int>();
         try
         {
+
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9,  userId);
+            
+           
+            
+            
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para Crear Bodega");
+                response.Success = false;
+                return response;
+            }
 
             var buscarSucursal = await _sucursalesRepository.GetByIdAsync(request.SucursalId);
             if (buscarSucursal==null)

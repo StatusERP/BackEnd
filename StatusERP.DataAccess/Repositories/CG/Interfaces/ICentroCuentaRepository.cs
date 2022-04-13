@@ -6,9 +6,9 @@ namespace StatusERP.DataAccess.Repositories.CG
     {
         Task<ICollection<CentroCuenta>> GetCollectionAsync(int page, int rows);
         Task<CentroCuenta?> GetByIdAsync(int id);
-        Task<CentroCuenta?> BuscarCodCentroCuentaAsync(string CodCentroCosto, string codCentroCuenta);
-        Task<int> CreateAsync(CentroCuenta CentroCuenta);
-        Task<int> UpdateAsync(CentroCuenta CentroCuenta);
+        Task<CentroCuenta?> BuscarCodCentroCuentaAsync(int CentroCostoId, int codCentroCuentaId);
+        Task<int> CreateAsync(CentroCuenta centroCuenta);
+        Task<int> UpdateAsync(CentroCuenta centroCuenta);
         Task<int> DeleteAsync(int id, string userId);
     }
 }
