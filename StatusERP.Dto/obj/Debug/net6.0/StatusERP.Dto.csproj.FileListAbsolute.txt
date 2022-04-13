@@ -20,14 +20,10 @@ C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CoreC
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
-<<<<<<< HEAD
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
-=======
 C:\Dev\StatusERP\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
->>>>>>> 367d5bfd2dd8a6fcb0717b84e01d722f0042f593
 C:\Dev\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
-<<<<<<< HEAD
-<<<<<<< HEAD
+C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.deps.json
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
@@ -40,20 +36,3 @@ C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.Cor
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
-=======
-=======
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.deps.json
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.dll
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.pdb
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.AssemblyReference.cache
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.GeneratedMSBuildEditorConfig.editorconfig
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.AssemblyInfoInputs.cache
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.AssemblyInfo.cs
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CoreCompileInputs.cache
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
-C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
->>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
-C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
->>>>>>> 10a5243f9298987c51e227e7c3182f80be72d474
