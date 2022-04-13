@@ -130,6 +130,8 @@ builder.Services.AddScoped<ISeccionCuentaRepository, SeccionCuentaRepository>();
 builder.Services.AddScoped<IArticuloService, ArticuloService>();
 builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
 
+builder.Services.AddScoped<IClasificacionInvService, ClasificacionInvService>();
+builder.Services.AddScoped<IClasificacionInvRepository, ClasificacionInvRepository>();
 
 
 

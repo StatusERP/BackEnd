@@ -182,7 +182,7 @@ namespace StatusERP.Services.Implementations.CI
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Errors.Add($"No tiene privilegios para consultar artículos.");
                     response.Success = false;
                     return response;
                 }
@@ -228,7 +228,7 @@ namespace StatusERP.Services.Implementations.CI
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Errors.Add($"No tiene privilegios para modificar artículos.");
                     response.Success = false;
                     return response;
                 }
