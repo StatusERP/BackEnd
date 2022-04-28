@@ -17,17 +17,14 @@ namespace StatusERP.Dto.Request.CI
 
         public bool UsaNumerosSerie { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar una Plantilla de Serie.")]
         [StringLength(4)]
-        public string PlantillaSerie { get; set; }
+        public string ? PlantillaSerie { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el aporte en dígitos del código de barras.")]
         [StringLength(5)]
-        public string AporteCodigo { get; set; }
+        public string ? AporteCodigo { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el tipo de Código de Barras.")]
         [StringLength(1)]
-        public string TipoCodigoBarras { get; set; }
+        public string ? TipoCodigoBarras { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar la unidad de medida.")]
         [StringLength(6)]

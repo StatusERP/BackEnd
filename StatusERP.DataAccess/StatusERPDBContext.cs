@@ -191,6 +191,232 @@ namespace StatusERP.DataAccess
 
             modelBuilder.Entity<PrivilegioUsuario>()
                 .HasIndex(p => p.UsuarioId, "IxUsuarioId");
+
+            modelBuilder.Entity<Articulo>()
+                .HasIndex(p => new { p.CodArticulo }).IsUnique();
+
+
+            //CI - CategoriaArticulo
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCInventario)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaInventarioId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCVentasLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaVentasLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCVentasExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaVentasExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+               .HasOne(x => x.CCCompraLoc)
+               .WithMany()
+               .HasForeignKey(x => x.CtrCtaCompraLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+               .HasOne(x => x.CCCompraImp)
+               .WithMany()
+               .HasForeignKey(x => x.CtrCtaCompraImpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+               .HasOne(x => x.CCDescVentaLoc)
+               .WithMany()
+               .HasForeignKey(x => x.CtrCtaDescVentaLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+               .HasOne(x => x.CCDescVentaExp)
+               .WithMany()
+               .HasForeignKey(x => x.CtrCtaDescVentaExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+               .HasOne(x => x.CCCostVentaLoc)
+               .WithMany()
+               .HasForeignKey(x => x.CtrCtaCostVentaLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+               .HasOne(x => x.CCCostVentaLoc)
+               .WithMany()
+               .HasForeignKey(x => x.CtrCtaCostVentaLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCCostVentaExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaCostVentaExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCComsVentaLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaComsVentaLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCComsVentaExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaComsVentaExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCComsCobroLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaComsCobroLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCComsCobroExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaComsCobroExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCDescLineaLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaDescLineaLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCDescLineaExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaDescLineaExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCCostoDescLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaCostDescLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCCostDescExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaCostDescExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCSobrInventFis)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaSobrInventFisId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCFaltInventFis)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaFaltInventFisId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCVariaCosto)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaVariaCostoId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCVencimiento)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaVencimientoId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCSobranteRemis)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaSobranteRemisId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCFaltanteRemis)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaFaltanteRemisId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCInvRemitido)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaInvRemitidoId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCMatProceso)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaMatProcesoId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCConsNormal)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaConsNormalId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCConsRetrabajo)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaConsRetrabajoId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCConsGasto)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaConsGastoId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCConsDesperdic)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaConsDesperdicId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCDescBonifLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaDescBonifLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCDescBonifExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaDescBonifExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCDevVentasLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaDevVentasLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCDevVentasExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaDevVentasExpId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCRetAsum)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaRetAsumId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCAju)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaAjuId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCAjuCMV)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaAjuCMVId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCCPGar)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaCPGarId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCPuGar)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaPuGarId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCIngDevoluc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaIngDevolucId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCPerdDevoluc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaPerdDevolucId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCMatAplicados)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaMatAplicadosId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCVentasExenLoc)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaVentasExenLocId);
+
+            modelBuilder.Entity<CategoriaArticulo>()
+                .HasOne(x => x.CCVentasExenExp)
+                .WithMany()
+                .HasForeignKey(x => x.CtrCtaVentasExenExpId);
         }
     }
 }

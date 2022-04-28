@@ -22,14 +22,3 @@ C:\Dev\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.
 C:\Dev\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
-C:\Proyectos\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.deps.json
-C:\Proyectos\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.dll
-C:\Proyectos\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
-C:\Proyectos\StatusERP\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.pdb
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.AssemblyInfoInputs.cache
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.AssemblyInfo.cs
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.CoreCompileInputs.cache
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dll
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
-C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb

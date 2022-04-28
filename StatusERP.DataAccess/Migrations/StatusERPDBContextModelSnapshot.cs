@@ -7059,29 +7059,23 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("Clasificacion1")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("Clasificacion1Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Clasificacion2")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("Clasificacion2Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Clasificacion3")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("Clasificacion3Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Clasificacion4")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("Clasificacion4Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Clasificacion5")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("Clasificacion5Id")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Clasificacion6")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("Clasificacion6Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("CodArticulo")
                         .IsRequired()
@@ -7178,10 +7172,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<short>("FrecuenciaConteo")
                         .HasColumnType("smallint");
 
-                    b.Property<string>("Impuesto")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("ImpuestoId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -7299,20 +7291,14 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<DateTime>("UltimoMovimiento")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UnidadAlmacen")
-                        .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                    b.Property<int>("UnidadAlmacenId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("UnidadEmpaque")
-                        .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                    b.Property<int>("UnidadEmpaqueId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("UnidadVenta")
-                        .IsRequired()
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                    b.Property<int>("UnidadVentaId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -7350,6 +7336,29 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Clasificacion1Id");
+
+                    b.HasIndex("Clasificacion2Id");
+
+                    b.HasIndex("Clasificacion3Id");
+
+                    b.HasIndex("Clasificacion4Id");
+
+                    b.HasIndex("Clasificacion5Id");
+
+                    b.HasIndex("Clasificacion6Id");
+
+                    b.HasIndex("CodArticulo")
+                        .IsUnique();
+
+                    b.HasIndex("ImpuestoId");
+
+                    b.HasIndex("UnidadAlmacenId");
+
+                    b.HasIndex("UnidadEmpaqueId");
+
+                    b.HasIndex("UnidadVentaId");
+
                     b.ToTable("Articulos", "H2C");
                 });
 
@@ -7374,347 +7383,136 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<string>("CtaCompraImp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCompraLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaComsCobroExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaComsCobroLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaComsVentaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaComsVentaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaConsDesperdic")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaConsGasto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaConsNormal")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaConsRetrabajo")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCostDescExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCostDescLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCostVentaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbAju")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbAjuCMV")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbCPGar")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbIngDevoluc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbMatAplicados")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbPerdDevoluc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbPuGar")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaCtbRetAsum")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescBonifExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescBonifLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescLineaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescLineaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescVentaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDescVentaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDevVentasExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaDevVentasLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaFaltInventFis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaFaltanteRemis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaInvRemitido")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaInventario")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaMatProceso")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaSobrInventFis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaSobranteRemis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVariaCosto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVencimiento")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVentasExenExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVentasExenLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVentasExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtaVentasLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCompraImp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCompraLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrComsCobroExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrComsCobroLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrComsVentaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrComsVentaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrConsDesperdic")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrConsGasto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrConsNormal")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrConsRetrabajo")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCostDescExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCostDescLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCostVentaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCostVentaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoAju")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoAjuCMV")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoCPGar")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoIngDevoluc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoMatAplicados")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoPerdDevoluc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoPuGar")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrCtoRetAsum")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescBonifExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescBonifLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescLineaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescLineaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescVentaExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDescVentaLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDevVentasExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrDevVentasLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrFaltInventFis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrFaltanteRemis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrInvRemitido")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrInventario")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrMatProceso")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrSobrInventFis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrSobranteRemis")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVariaCosto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVencimiento")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVentasExenExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVentasExenLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVentasExp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrVentasLoc")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("Descripción")
+                    b.Property<int?>("CtrCtaAjuCMVId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaAjuId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCPGarId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCompraImpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCompraLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaComsCobroExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaComsCobroLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaComsVentaExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaComsVentaLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaConsDesperdicId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaConsGastoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaConsNormalId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaConsRetrabajoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCostDescExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCostDescLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCostVentaExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaCostVentaLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDescBonifExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDescBonifLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDescLineaExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDescLineaLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDescVentaExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDescVentaLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDevVentasExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaDevVentasLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaFaltInventFisId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaFaltanteRemisId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaIngDevolucId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaInvRemitidoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaInventarioId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaMatAplicadosId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaMatProcesoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaPerdDevolucId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaPuGarId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaRetAsumId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaSobrInventFisId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaSobranteRemisId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaVariaCostoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaVencimientoId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaVentasExenExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaVentasExenLocId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaVentasExpId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaVentasLocId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Descripcion")
                         .IsRequired()
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
@@ -7732,6 +7530,92 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CtrCtaAjuCMVId");
+
+                    b.HasIndex("CtrCtaAjuId");
+
+                    b.HasIndex("CtrCtaCPGarId");
+
+                    b.HasIndex("CtrCtaCompraImpId");
+
+                    b.HasIndex("CtrCtaCompraLocId");
+
+                    b.HasIndex("CtrCtaComsCobroExpId");
+
+                    b.HasIndex("CtrCtaComsCobroLocId");
+
+                    b.HasIndex("CtrCtaComsVentaExpId");
+
+                    b.HasIndex("CtrCtaComsVentaLocId");
+
+                    b.HasIndex("CtrCtaConsDesperdicId");
+
+                    b.HasIndex("CtrCtaConsGastoId");
+
+                    b.HasIndex("CtrCtaConsNormalId");
+
+                    b.HasIndex("CtrCtaConsRetrabajoId");
+
+                    b.HasIndex("CtrCtaCostDescExpId");
+
+                    b.HasIndex("CtrCtaCostDescLocId");
+
+                    b.HasIndex("CtrCtaCostVentaExpId");
+
+                    b.HasIndex("CtrCtaCostVentaLocId");
+
+                    b.HasIndex("CtrCtaDescBonifExpId");
+
+                    b.HasIndex("CtrCtaDescBonifLocId");
+
+                    b.HasIndex("CtrCtaDescLineaExpId");
+
+                    b.HasIndex("CtrCtaDescLineaLocId");
+
+                    b.HasIndex("CtrCtaDescVentaExpId");
+
+                    b.HasIndex("CtrCtaDescVentaLocId");
+
+                    b.HasIndex("CtrCtaDevVentasExpId");
+
+                    b.HasIndex("CtrCtaDevVentasLocId");
+
+                    b.HasIndex("CtrCtaFaltInventFisId");
+
+                    b.HasIndex("CtrCtaFaltanteRemisId");
+
+                    b.HasIndex("CtrCtaIngDevolucId");
+
+                    b.HasIndex("CtrCtaInvRemitidoId");
+
+                    b.HasIndex("CtrCtaInventarioId");
+
+                    b.HasIndex("CtrCtaMatAplicadosId");
+
+                    b.HasIndex("CtrCtaMatProcesoId");
+
+                    b.HasIndex("CtrCtaPerdDevolucId");
+
+                    b.HasIndex("CtrCtaPuGarId");
+
+                    b.HasIndex("CtrCtaRetAsumId");
+
+                    b.HasIndex("CtrCtaSobrInventFisId");
+
+                    b.HasIndex("CtrCtaSobranteRemisId");
+
+                    b.HasIndex("CtrCtaVariaCostoId");
+
+                    b.HasIndex("CtrCtaVencimientoId");
+
+                    b.HasIndex("CtrCtaVentasExenExpId");
+
+                    b.HasIndex("CtrCtaVentasExenLocId");
+
+                    b.HasIndex("CtrCtaVentasExpId");
+
+                    b.HasIndex("CtrCtaVentasLocId");
+
                     b.ToTable("CategoriasArticulos", "H2C");
                 });
 
@@ -7747,7 +7631,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("smallint");
 
                     b.Property<string>("AporteCodigo")
-                        .IsRequired()
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
@@ -7773,12 +7656,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("PlantillaSerie")
-                        .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("TipoCodigoBarras")
-                        .IsRequired()
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
@@ -16495,6 +16376,338 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CentroCosto");
 
                     b.Navigation("CuentaContable");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Articulo", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion1")
+                        .WithMany()
+                        .HasForeignKey("Clasificacion1Id");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion2")
+                        .WithMany()
+                        .HasForeignKey("Clasificacion2Id");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion3")
+                        .WithMany()
+                        .HasForeignKey("Clasificacion3Id");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion4")
+                        .WithMany()
+                        .HasForeignKey("Clasificacion4Id");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion5")
+                        .WithMany()
+                        .HasForeignKey("Clasificacion5Id");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion6")
+                        .WithMany()
+                        .HasForeignKey("Clasificacion6Id");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Impuesto", "Impuesto")
+                        .WithMany()
+                        .HasForeignKey("ImpuestoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "UnidadAlmacen")
+                        .WithMany()
+                        .HasForeignKey("UnidadAlmacenId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "UnidadEmpaque")
+                        .WithMany()
+                        .HasForeignKey("UnidadEmpaqueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "UnidadVenta")
+                        .WithMany()
+                        .HasForeignKey("UnidadVentaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Clasificacion1");
+
+                    b.Navigation("Clasificacion2");
+
+                    b.Navigation("Clasificacion3");
+
+                    b.Navigation("Clasificacion4");
+
+                    b.Navigation("Clasificacion5");
+
+                    b.Navigation("Clasificacion6");
+
+                    b.Navigation("Impuesto");
+
+                    b.Navigation("UnidadAlmacen");
+
+                    b.Navigation("UnidadEmpaque");
+
+                    b.Navigation("UnidadVenta");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.CategoriaArticulo", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCAjuCMV")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaAjuCMVId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCAju")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaAjuId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCPGar")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCPGarId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCompraImp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCompraImpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCompraLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCompraLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCComsCobroExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaComsCobroExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCComsCobroLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaComsCobroLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCComsVentaExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaComsVentaExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCComsVentaLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaComsVentaLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCConsDesperdic")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaConsDesperdicId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCConsGasto")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaConsGastoId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCConsNormal")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaConsNormalId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCConsRetrabajo")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaConsRetrabajoId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCostDescExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCostDescExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCostoDescLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCostDescLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCostVentaExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCostVentaExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCCostVentaLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaCostVentaLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDescBonifExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDescBonifExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDescBonifLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDescBonifLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDescLineaExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDescLineaExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDescLineaLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDescLineaLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDescVentaExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDescVentaExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDescVentaLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDescVentaLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDevVentasExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDevVentasExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCDevVentasLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaDevVentasLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCFaltInventFis")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaFaltInventFisId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCFaltanteRemis")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaFaltanteRemisId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCIngDevoluc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaIngDevolucId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCInvRemitido")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaInvRemitidoId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCInventario")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaInventarioId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCMatAplicados")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaMatAplicadosId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCMatProceso")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaMatProcesoId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCPerdDevoluc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaPerdDevolucId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCPuGar")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaPuGarId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCRetAsum")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaRetAsumId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCSobrInventFis")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaSobrInventFisId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCSobranteRemis")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaSobranteRemisId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCVariaCosto")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaVariaCostoId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCVencimiento")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaVencimientoId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCVentasExenExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaVentasExenExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCVentasExenLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaVentasExenLocId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCVentasExp")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaVentasExpId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCVentasLoc")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaVentasLocId");
+
+                    b.Navigation("CCAju");
+
+                    b.Navigation("CCAjuCMV");
+
+                    b.Navigation("CCCPGar");
+
+                    b.Navigation("CCCompraImp");
+
+                    b.Navigation("CCCompraLoc");
+
+                    b.Navigation("CCComsCobroExp");
+
+                    b.Navigation("CCComsCobroLoc");
+
+                    b.Navigation("CCComsVentaExp");
+
+                    b.Navigation("CCComsVentaLoc");
+
+                    b.Navigation("CCConsDesperdic");
+
+                    b.Navigation("CCConsGasto");
+
+                    b.Navigation("CCConsNormal");
+
+                    b.Navigation("CCConsRetrabajo");
+
+                    b.Navigation("CCCostDescExp");
+
+                    b.Navigation("CCCostVentaExp");
+
+                    b.Navigation("CCCostVentaLoc");
+
+                    b.Navigation("CCCostoDescLoc");
+
+                    b.Navigation("CCDescBonifExp");
+
+                    b.Navigation("CCDescBonifLoc");
+
+                    b.Navigation("CCDescLineaExp");
+
+                    b.Navigation("CCDescLineaLoc");
+
+                    b.Navigation("CCDescVentaExp");
+
+                    b.Navigation("CCDescVentaLoc");
+
+                    b.Navigation("CCDevVentasExp");
+
+                    b.Navigation("CCDevVentasLoc");
+
+                    b.Navigation("CCFaltInventFis");
+
+                    b.Navigation("CCFaltanteRemis");
+
+                    b.Navigation("CCIngDevoluc");
+
+                    b.Navigation("CCInvRemitido");
+
+                    b.Navigation("CCInventario");
+
+                    b.Navigation("CCMatAplicados");
+
+                    b.Navigation("CCMatProceso");
+
+                    b.Navigation("CCPerdDevoluc");
+
+                    b.Navigation("CCPuGar");
+
+                    b.Navigation("CCRetAsum");
+
+                    b.Navigation("CCSobrInventFis");
+
+                    b.Navigation("CCSobranteRemis");
+
+                    b.Navigation("CCVariaCosto");
+
+                    b.Navigation("CCVencimiento");
+
+                    b.Navigation("CCVentasExenExp");
+
+                    b.Navigation("CCVentasExenLoc");
+
+                    b.Navigation("CCVentasExp");
+
+                    b.Navigation("CCVentasLoc");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>
