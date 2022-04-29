@@ -39,7 +39,6 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Servi
 C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
-C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.pdb
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.dll
@@ -56,3 +55,4 @@ C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.cs
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
+using StatusERP.Dto.Request.AS;
 using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.DataAccess.Repositories.AS;
@@ -29,7 +31,15 @@ public class GlobalesASRepository:StatusERPContextBase<GlobalesAS>,IGlobalesAsRe
     {
         await _dbContext.UpdateAsync(globalesAs,Mapper);
         return globalesAs.Id;
+
     }
 
-    
+    public async Task<ICollection<GlobalesAS>> GetAllAsync()
+    {
+
+        return await _dbContext.Set<GlobalesAS>()
+               .Where(p => !p.IsDeleted)
+               .AsNoTracking()
+               .ToListAsync();
+    }
 }

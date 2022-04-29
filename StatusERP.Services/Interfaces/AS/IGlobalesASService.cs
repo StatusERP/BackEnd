@@ -8,7 +8,7 @@ public interface IGlobalesASService
 {
     Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAsync( int page, int rows);
     Task<BaseResponseGeneric<GlobalesAS>> GetByIdAsync(int id);
-
+    Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAllAsync();
     Task<BaseResponseGeneric<int>> CreateAsync(DtoGlobalesAS request,string userId);
     Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoGlobalesAS request , string userId);
 }

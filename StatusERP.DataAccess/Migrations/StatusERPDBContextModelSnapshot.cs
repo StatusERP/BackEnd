@@ -1265,15 +1265,13 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("MonedaDolar")
-                        .IsRequired()
+                    b.Property<int>("MonedaDolarId")
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                        .HasColumnType("int");
 
-                    b.Property<string>("MonedaLocal")
-                        .IsRequired()
+                    b.Property<int>("MonedaLocalId")
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                        .HasColumnType("int");
 
                     b.Property<string>("NombreMoneda")
                         .IsRequired()
@@ -1307,6 +1305,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MonedaDolarId");
+
+                    b.HasIndex("MonedaLocalId");
 
                     b.HasIndex("PaisId");
 
@@ -8308,9 +8310,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Paquete")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("PaqueteId")
+                        .HasColumnType("int");
 
                     b.Property<short>("PesosDec")
                         .HasColumnType("smallint");
@@ -8319,9 +8320,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("TipoAsiento")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("TipoAsiento")
+                        .HasColumnType("int");
 
                     b.Property<bool>("TransacXUsuario")
                         .HasColumnType("bit");
@@ -8381,7 +8381,17 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("UsarNumerosSerie")
                         .HasColumnType("bit");
 
+                    b.Property<int>("paqueteContableId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("tipoPartidaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("paqueteContableId");
+
+                    b.HasIndex("tipoPartidaId");
 
                     b.ToTable("GlobalesCI", "H2C");
                 });
@@ -16071,6 +16081,18 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.GlobalesAS", b =>
                 {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "MonedaDolar")
+                        .WithMany()
+                        .HasForeignKey("MonedaDolarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "MonedaLocal")
+                        .WithMany()
+                        .HasForeignKey("MonedaLocalId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
                         .WithMany()
                         .HasForeignKey("PaisId")
@@ -16082,6 +16104,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasForeignKey("TipoCambioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("MonedaDolar");
+
+                    b.Navigation("MonedaLocal");
 
                     b.Navigation("Pais");
 
@@ -16708,6 +16734,25 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentasExp");
 
                     b.Navigation("CCVentasLoc");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CG.Tablas.PaqueteContable", "paqueteContable")
+                        .WithMany()
+                        .HasForeignKey("paqueteContableId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.TipoPartida", "tipoPartida")
+                        .WithMany()
+                        .HasForeignKey("tipoPartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("paqueteContable");
+
+                    b.Navigation("tipoPartida");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>

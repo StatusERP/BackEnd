@@ -41,11 +41,13 @@ namespace StatusERP.Entities.AS.Tablas
 
         [Required(ErrorMessage = "Se requiere especificar la Moneda Local.")]
         [StringLength(4)]
-        public string MonedaLocal { get; set; }
+        public int MonedaLocalId { get; set; }
+        public Moneda MonedaLocal { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar la Moneda Dólar.")]
         [StringLength(4)]
-        public string MonedaDolar { get; set; }
+        public int MonedaDolarId { get; set; }
+        public Moneda MonedaDolar { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar el Tipo de Cambio Dólar.")]
         [Column("TipoCambioDolar")]
