@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
@@ -11,18 +12,30 @@ public class LocalizacionesService:ILocalizacionesService
 {
     private readonly ILocalizacionesRepository _repository;
     private readonly ILogger<LocalizacionesService> _logger;
+    private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-
-    public LocalizacionesService(ILocalizacionesRepository repository,ILogger<LocalizacionesService> logger)
+    public LocalizacionesService(ILocalizacionesRepository repository,ILogger<LocalizacionesService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
     {
         _repository = repository;
         _logger = logger;
+        _privilegioUsuarioRepository = privilegioUsuarioRepository;
     }
-    public async Task<BaseResponseGeneric<ICollection<Localizacion>>> GetAsync(int page, int rows)
+    public async Task<BaseResponseGeneric<ICollection<Localizacion>>> GetAsync(int page, int rows,string userId)
     {
         var response = new BaseResponseGeneric<ICollection<Localizacion>>();
         try
         {
+
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_LOCAL", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para ver Localizaciones");
+                response.Success = false;
+                return response;
+            }
+
             response.Result = await _repository.GetCollectionAsync(page, rows);
             response.Success = true;
         }
@@ -59,6 +72,16 @@ public class LocalizacionesService:ILocalizacionesService
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_LOCALADD", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para ver Localizaciones");
+                response.Success = false;
+                return response;
+            }
+
             var buscarCodLocalizacion = await _repository.BuscarCodLocalizacionAsync(codLocalizacion);
             if (buscarCodLocalizacion != null)
             {
@@ -95,6 +118,15 @@ public class LocalizacionesService:ILocalizacionesService
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_LOCALMOD", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para modificar Localizaciones");
+                response.Success = false;
+                return response;
+            }
             response.Result = await _repository.UpdateAsync(new Localizacion
             {
                 Id = id,
@@ -123,9 +155,46 @@ public class LocalizacionesService:ILocalizacionesService
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_LOCALDEL", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para Modificar Localizaciones");
+                response.Success = false;
+                return response;
+            }
             await _repository.DeleteAsync(id, userId);
             response.Success = true;
             response.Result = id;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+
+        return response;
+    }
+
+    public async Task<BaseResponseGeneric<ICollection<Localizacion>>> GetByIdBodegaAsync(int id,string userId)
+    {
+        var response = new BaseResponseGeneric<ICollection< Localizacion>>();
+        try
+        {
+
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_LOCAL", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para ver Localizaciones");
+                response.Success = false;
+                return response;
+            }
+            response.Result = await _repository.GetByIdBodegaAsync(id);
+            response.Success = true;
         }
         catch (Exception ex)
         {

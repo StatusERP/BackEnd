@@ -49,5 +49,12 @@ namespace StatusERP.DataAccess.Repositories.AS
             await _dbContext.UpdateAsync(localizacion,Mapper);
             return localizacion.Id;
         }
+
+        public async Task<ICollection<Localizacion>> GetByIdBodegaAsync(int id)
+        {
+            return await _dbContext.Localizaciones.Where(p => p.BodegaId == id).ToListAsync();
+
+            
+        }
     }
 }

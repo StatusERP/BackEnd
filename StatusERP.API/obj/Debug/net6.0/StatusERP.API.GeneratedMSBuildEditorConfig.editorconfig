@@ -8,9 +8,17 @@ build_property.PlatformNeutralAssembly =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = StatusERP.API
 build_property.RootNamespace = StatusERP.API
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Dev\statusERP\BackEnd\StatusERP.API\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Dev\statusERP\BackEnd\StatusERP.API
+=======
+build_property.ProjectDir = C:\Dev\StatusERP\BackEnd\StatusERP.API\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Dev\StatusERP\BackEnd\StatusERP.API
+>>>>>>> 359b5dcf4af0da3b66de0eed47de7ac8a22ce974
 build_property._RazorSourceGeneratorDebug = 

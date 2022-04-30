@@ -62,7 +62,10 @@ public class ZonaService:IZonaService
             var buscarCodBodega = await _repository.BuscarCodZonaAsync(codZona);
             if (buscarCodBodega != null)
             {
-                throw new Exception($"El codigo de Zona {buscarCodBodega.CodZona} ya Existe");
+              
+                response.Errors.Add($"El codigo de Zona {buscarCodBodega.CodZona} ya Existe");
+                response.Success = false;
+                return response;
             }
             response.Result = await _repository.CreateAsync(new Zona
             {

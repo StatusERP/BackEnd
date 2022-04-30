@@ -26,8 +26,7 @@ namespace StatusERP.Entities.AS.Tablas
         [StringLength(250)]
         public string ? Direccion { get; set; }
 
-        public int ? SucursalId  { get; set; }
-        public Sucursal Sucursal { get; set; }  
+       
     }
 }
  

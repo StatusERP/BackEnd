@@ -45,7 +45,7 @@ namespace StatusERP.Services.Implementations.ERPADMIN
             if (identity == null)
             {
                 response.Success = false;
-                response.Errors.Add("El Usuario no Existe");
+                response.Errors.Add("El Correo no Existe");
                 return response;
             }
 
