@@ -23,7 +23,7 @@ namespace StatusERP.Services.Implementations.CI
 
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoArticulo request, string userId, string codArticulo)
         {
-            var response = new BaseResponseGeneric<int>();
+            var response = new BaseResponseGeneric<int>(); 
             try
             {
                 var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ARTICULOADD", 9, userId);
@@ -38,93 +38,17 @@ namespace StatusERP.Services.Implementations.CI
                 var buscarCodArticulo = await _repository.BuscarCodArticuloAsync(codArticulo);
                 if (buscarCodArticulo != null)
                 {
-                    throw new Exception($"El codigo de artículo {buscarCodArticulo.CodArticulo} ya existe");
+                    response.Errors.Add($"El codigo de artículo {buscarCodArticulo.CodArticulo} ya existe");
+                    response.Success = false;
+                    return response;
                 }
                 response.Result = await _repository.CreateAsync(new Articulo
                 {
                     CodArticulo  = request.CodArticulo,
                     Descripcion = request.Descripcion,
-                    Clasificacion1 = request.Clasificacion1,
-                    Clasificacion2 = request.Clasificacion2,
-                    Clasificacion3 = request.Clasificacion3,
-                    Clasificacion4 = request.Clasificacion4,
-                    Clasificacion5 = request.Clasificacion5,
-                    Clasificacion6 = request.Clasificacion6,
-                    FactorConver1 = request.FactorConver1,
-                    FactorConver2 = request.FactorConver2,
-                    FactorConver3 = request.FactorConver3,
-                    FactorConver4 = request.FactorConver4,
-                    FactorConver5 = request.FactorConver5,
-                    FactorConver6 = request.FactorConver6,
                     Tipo = request.Tipo,
-                    TiendaEnLinea = request.TiendaEnLinea,
-                    VentaTarjetaCredito = request.VentaTarjetaCredito,
-                    PesoNeto = request.PesoNeto,
-                    PesoBruto = request.PesoBruto,
-                    Volumen = request.Volumen,
-                    Bultos = request.Bultos,
-                    CategoriaArticulo = request.CategoriaArticulo,
-                    Impuesto = request.Impuesto,
-                    FactorEmpaque = request.FactorEmpaque,
-                    FactorVenta = request.FactorVenta,
-                    ExistenciaMínima = request.ExistenciaMínima,
-                    ExistenciaMáxima = request.ExistenciaMáxima,
-                    PuntoDeOrden = request.PuntoDeOrden,
-                    CostoLoc = request.CostoLoc,
-                    CostoDol = request.CostoDol,
-                    PrecioBaseLocal = request.PrecioBaseLocal,
-                    PrecioBaseDol = request.PrecioBaseDol,
-                    UltimaSalida = request.UltimaSalida,
-                    UltimoMovimiento = request.UltimoMovimiento,
-                    UltimoIngreso= request.UltimoIngreso,
-                    UltimoInventario= request.UltimoInventario,
-                    ClaseABC=request.ClaseABC,
-                    FrecuenciaConteo= request.FrecuenciaConteo,
-                    CodigoBarrasVent= request.CodigoBarrasVent,
-                    CodigoBarrasInvt= request.CodigoBarrasInvt,
-                    Activo= request.Activo,
-                    UsaLotes= request.UsaLotes,
-                    ObligaCuarentena= request.ObligaCuarentena,
-                    MinVidaCompra= request.MinVidaCompra,
-                    MinVidaConsumo= request.MinVidaConsumo,
-                    MinVidaVenta= request.MinVidaVenta,
-                    VidaUtilPromedio= request.VidaUtilPromedio,
-                    DiasCuarentena= request.DiasCuarentena,
-                    Proveedor= request.Proveedor,
-                    ArticuloDelProv= request.ArticuloDelProv,
-                    OrdenMinima= request.OrdenMinima,
-                    PlazoReabast= request.PlazoReabast,
-                    LoteMultiplo= request.LoteMultiplo,
-                    UsuarioCreacion= request.UsuarioCreacion,
-                    FechaHoraCreacion=request.FechaHoraCreacion,
-                    UsuarioUltModif= request.UsuarioUltModif,
-                    FechaHoraUltModif= request.FechaHoraUltModif,  
-                    UsaNumerosSerie= request.UsaNumerosSerie,
-                    ModalidadInvFis= request.ModalidadInvFis,
-                    TipoCodBarraDet= request.TipoCodBarraDet,
-                    TipoCodBarraAlm= request.TipoCodBarraAlm,
-                    UsaReglasLocales= request.UsaReglasLocales,
-                    UnidadAlmacen= request.UnidadAlmacen,
-                    UnidadEmpaque= request.UnidadEmpaque,
-                    UnidadVenta= request.UnidadVenta,
-                    Perecedero= request.Perecedero,
-                    Manufacturador= request.Manufacturador,
-                    CodigoRetencion= request.CodigoRetencion,
-                    RetencionVenta= request.RetencionVenta,
-                    RetencionCompra= request.RetencionCompra,
-                    ModeloRetencion= request.ModeloRetencion,
-                    Estilo= request.Estilo,
-                    Talla= request.Talla,
-                    Color= request.Color,
-                    TipoCosto= request.TipoCosto,
-                    CostoPromUltimoLoc= request.CostoPromUltimoLoc,
-                    CostoPromUltimoDol= request.CostoPromUltimoDol,
-                    EsImpuesto= request.EsImpuesto, 
-                    TipoDocIVA= request.TipoDocIVA, 
-                    SugiereMin= request.SugiereMin,
-                    CalculaPercep= request.CalculaPercep,
-                    PorcPercep= request.PorcPercep,
-                    Notas = request.Notas,
+                    ClaseABC = request.ClaseABC,
+                    TipoCosto = request.TipoCosto,
                     IsDeleted = false,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now,
@@ -142,6 +66,88 @@ namespace StatusERP.Services.Implementations.CI
 
             return response;
         }
+
+
+        //Clasificacion1Id = request.Clasificacion1Id,
+        //Clasificacion2Id = request.Clasificacion2Id,
+        //Clasificacion3Id = request.Clasificacion3Id,
+        //Clasificacion4Id = request.Clasificacion4Id,
+        //Clasificacion5Id = request.Clasificacion5Id,
+        //Clasificacion6Id = request.Clasificacion6Id,
+        //FactorConver1 = request.FactorConver1,
+        //FactorConver2 = request.FactorConver2,
+        //FactorConver3 = request.FactorConver3,
+        //FactorConver4 = request.FactorConver4,
+        //FactorConver5 = request.FactorConver5,
+        //FactorConver6 = request.FactorConver6,
+        //TiendaEnLinea = request.TiendaEnLinea,
+        //VentaTarjetaCredito = request.VentaTarjetaCredito,
+        //PesoNeto = request.PesoNeto,
+        //PesoBruto = request.PesoBruto,
+        //Volumen = request.Volumen,
+        //Bultos = request.Bultos,
+        //CategoriaArticulo = request.CategoriaArticulo,
+        //ImpuestoId = request.ImpuestoId,
+        //FactorEmpaque = request.FactorEmpaque,
+        //FactorVenta = request.FactorVenta,
+        //ExistenciaMínima = request.ExistenciaMínima,
+        //ExistenciaMáxima = request.ExistenciaMáxima,
+        //PuntoDeOrden = request.PuntoDeOrden,
+        //CostoLoc = request.CostoLoc,
+        //CostoDol = request.CostoDol,
+        //PrecioBaseLocal = request.PrecioBaseLocal,
+        //PrecioBaseDol = request.PrecioBaseDol,
+        //UltimaSalida = request.UltimaSalida,
+        //UltimoMovimiento = request.UltimoMovimiento,
+        //UltimoIngreso= request.UltimoIngreso,
+        //UltimoInventario= request.UltimoInventario,
+
+        //FrecuenciaConteo= request.FrecuenciaConteo,
+        //CodigoBarrasVent= request.CodigoBarrasVent,
+        //CodigoBarrasInvt= request.CodigoBarrasInvt,
+        //Activo= request.Activo,
+        //UsaLotes= request.UsaLotes,
+        //ObligaCuarentena= request.ObligaCuarentena,
+        //MinVidaCompra= request.MinVidaCompra,
+        //MinVidaConsumo= request.MinVidaConsumo,
+        //MinVidaVenta= request.MinVidaVenta,
+        //VidaUtilPromedio= request.VidaUtilPromedio,
+        //DiasCuarentena= request.DiasCuarentena,
+        //Proveedor= request.Proveedor,
+        //ArticuloDelProv= request.ArticuloDelProv,
+        //OrdenMinima= request.OrdenMinima,
+        //PlazoReabast= request.PlazoReabast,
+        //LoteMultiplo= request.LoteMultiplo,
+        //UsuarioCreacion= request.UsuarioCreacion,
+        //FechaHoraCreacion=request.FechaHoraCreacion,
+        //UsuarioUltModif= request.UsuarioUltModif,
+        //FechaHoraUltModif= request.FechaHoraUltModif,  
+        //UsaNumerosSerie= request.UsaNumerosSerie,
+        //ModalidadInvFis= request.ModalidadInvFis,
+        //TipoCodBarraDet= request.TipoCodBarraDet,
+        //TipoCodBarraAlm= request.TipoCodBarraAlm,
+        //UsaReglasLocales= request.UsaReglasLocales,
+        //UnidadAlmacenId = request.UnidadAlmacenId,
+        //UnidadEmpaqueId= request.UnidadEmpaqueId,
+        //UnidadVentaId = request.UnidadVentaId,
+        //Perecedero= request.Perecedero,
+        //Manufacturador= request.Manufacturador,
+        //CodigoRetencion= request.CodigoRetencion,
+        //RetencionVenta= request.RetencionVenta,
+        //RetencionCompra= request.RetencionCompra,
+        //ModeloRetencion= request.ModeloRetencion,
+        //Estilo= request.Estilo,
+        //Talla= request.Talla,
+        //Color= request.Color,
+
+        //CostoPromUltimoLoc= request.CostoPromUltimoLoc,
+        //CostoPromUltimoDol= request.CostoPromUltimoDol,
+        //EsImpuesto= request.EsImpuesto, 
+        //TipoDocIVA= request.TipoDocIVA, 
+        //SugiereMin= request.SugiereMin,
+        //CalculaPercep= request.CalculaPercep,
+        //PorcPercep= request.PorcPercep,
+        //Notas = request.Notas,
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
@@ -182,7 +188,7 @@ namespace StatusERP.Services.Implementations.CI
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Errors.Add($"No tiene privilegios para consultar artículos.");
                     response.Success = false;
                     return response;
                 }
@@ -228,7 +234,7 @@ namespace StatusERP.Services.Implementations.CI
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para eliminar artículos.");
+                    response.Errors.Add($"No tiene privilegios para modificar artículos.");
                     response.Success = false;
                     return response;
                 }
@@ -239,12 +245,12 @@ namespace StatusERP.Services.Implementations.CI
                     Id = id,
                     CodArticulo = request.CodArticulo,
                     Descripcion = request.Descripcion,
-                    Clasificacion1 = request.Clasificacion1,
-                    Clasificacion2 = request.Clasificacion2,
-                    Clasificacion3 = request.Clasificacion3,
-                    Clasificacion4 = request.Clasificacion4,
-                    Clasificacion5 = request.Clasificacion5,
-                    Clasificacion6 = request.Clasificacion6,
+                    Clasificacion1Id = request.Clasificacion1Id,
+                    Clasificacion2Id = request.Clasificacion2Id,
+                    Clasificacion3Id = request.Clasificacion3Id,
+                    Clasificacion4Id = request.Clasificacion4Id,
+                    Clasificacion5Id = request.Clasificacion5Id,
+                    Clasificacion6Id = request.Clasificacion6Id,
                     FactorConver1 = request.FactorConver1,
                     FactorConver2 = request.FactorConver2,
                     FactorConver3 = request.FactorConver3,
@@ -259,7 +265,7 @@ namespace StatusERP.Services.Implementations.CI
                     Volumen = request.Volumen,
                     Bultos = request.Bultos,
                     CategoriaArticulo = request.CategoriaArticulo,
-                    Impuesto = request.Impuesto,
+                    ImpuestoId = request.ImpuestoId,
                     FactorEmpaque = request.FactorEmpaque,
                     FactorVenta = request.FactorVenta,
                     ExistenciaMínima = request.ExistenciaMínima,
@@ -299,9 +305,9 @@ namespace StatusERP.Services.Implementations.CI
                     TipoCodBarraDet = request.TipoCodBarraDet,
                     TipoCodBarraAlm = request.TipoCodBarraAlm,
                     UsaReglasLocales = request.UsaReglasLocales,
-                    UnidadAlmacen = request.UnidadAlmacen,
-                    UnidadEmpaque = request.UnidadEmpaque,
-                    UnidadVenta = request.UnidadVenta,
+                    UnidadAlmacenId = request.UnidadAlmacenId,
+                    UnidadEmpaqueId = request.UnidadEmpaqueId,
+                    UnidadVentaId = request.UnidadVentaId,
                     Perecedero = request.Perecedero,
                     Manufacturador = request.Manufacturador,
                     CodigoRetencion = request.CodigoRetencion,

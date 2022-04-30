@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.CG.Tablas;
 
 
 namespace StatusERP.Entities.CI.Tablas
@@ -61,11 +62,11 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(10)]
         public string ? NombreClasif6 { get; set; }
         
-        [StringLength(4)]
-        public string ? TipoAsiento { get; set; }
+        public int ? TipoAsiento { get; set; }
+        public TipoPartida tipoPartida { get; set; }
         
-        [StringLength(4)]
-        public string ? Paquete { get; set; }
+        public int ? PaqueteId { get; set; }
+        public PaqueteContable paqueteContable { get; set; }
         
         public bool AsntAjuVenta { get; set; }
         

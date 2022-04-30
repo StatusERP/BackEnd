@@ -69,8 +69,8 @@ public class GlobalesASService:IGlobalesASService
                 Impuesto1Desc = request.Imp1,
                 Impuesto2Desc = request.Imp2,
                 PaisId = request.PaisLocal,
-                MonedaDolar = request.MonedaDolar,
-                MonedaLocal = request.MonedaLocal,
+                MonedaDolarId = request.MonedaDolarId,
+                MonedaLocalId = request.MonedaLocalId,
                 TipoCambioId = request.TipoCambioDolar,
                 PatronCeCo = request.PatronCeCo,
                 IsDeleted = false,
@@ -108,8 +108,8 @@ public class GlobalesASService:IGlobalesASService
                 Impuesto1Desc = request.Imp1,
                 Impuesto2Desc = request.Imp2,
                 PaisId = request.PaisLocal,
-                MonedaDolar = request.MonedaDolar,
-                MonedaLocal = request.MonedaLocal,
+                MonedaDolarId = request.MonedaDolarId,
+                MonedaLocalId = request.MonedaLocalId,
                 TipoCambioId = request.TipoCambioDolar,
                 PatronCeCo = request.PatronCeCo,
                 IsDeleted = false,
@@ -124,6 +124,24 @@ public class GlobalesASService:IGlobalesASService
             response.Success = false;
             response.Errors.Add(ex.Message);
         }
+        return response;
+    }
+
+    public async Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAllAsync()
+    {
+        var response = new BaseResponseGeneric<ICollection<GlobalesAS>>();
+        try
+        {
+            response.Result = await _repository.GetAllAsync();
+            response.Success = true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+
         return response;
     }
 }
