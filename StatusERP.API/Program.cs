@@ -24,6 +24,8 @@ using StatusERP.Services.Interfaces.CG;
 using StatusERP.Services.Interfaces.CI;
 using StatusERP.DataAccess.Repositories.CI;
 using StatusERP.Services.Implementations.CI;
+using StatusERP.Dto.Request.AS;
+using StatusERP.Services.Profile.AS;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +47,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(options =>
 {
-    options.AddMaps(typeof(Vendedor));
+    options.AddProfile(new AutoMapperProfileBodega());
    // options.AddMaps(typeof(Concert));
    // options.AddProfile<SaleProfile>();
 });

@@ -77,7 +77,8 @@ namespace StatusERP.DataAccess
 
 
                 context.Set<TEntityBase>().Attach(registro);
-                context.Entry(registro).State = EntityState.Modified;
+                //    context.Entry(registro).State = EntityState.Modified;
+                context.Entry(registro).State = EntityState.Deleted;
                 await context.SaveChangesAsync();
             }
             catch (Exception ex)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS;
 using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
@@ -14,19 +15,32 @@ public class BodegaService:IBodegaService
     private readonly ILogger<BodegaService> _logger;
     private readonly ISucursalesRepository _sucursalesRepository;
     private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
+    private readonly IMapper _mapper;
 
-    public BodegaService(IBodegaRepository repository,ILogger<BodegaService> logger ,ISucursalesRepository sucursalesRepository,IPrivilegioUsuarioRepository privilegioUsuarioRepository)
+    public BodegaService(IBodegaRepository repository,ILogger<BodegaService> logger ,ISucursalesRepository sucursalesRepository,IPrivilegioUsuarioRepository privilegioUsuarioRepository,IMapper mapper)
     {
         _repository = repository;
         _logger = logger;
         _sucursalesRepository = sucursalesRepository;
         _privilegioUsuarioRepository = privilegioUsuarioRepository;
+        _mapper = mapper;
     }
-    public async Task<BaseResponseGeneric<ICollection<Bodega>>> GetAsync(int page, int rows)
+    public async Task<BaseResponseGeneric<ICollection<Bodega>>> GetAsync(int page, int rows, string userId)
     {
         var response = new BaseResponseGeneric<ICollection<Bodega>>();
         try
         {
+
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAS", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para ver Bodegas");
+                response.Success = false;
+                return response;
+            }
+
             response.Result = await _repository.GetCollectionAsync(page, rows);
             response.Success = true;
         }
@@ -44,6 +58,9 @@ public class BodegaService:IBodegaService
         var response = new BaseResponseGeneric<Bodega>();
         try
         {
+           
+
+
             response.Result = await _repository.GetByIdAsync(id) ?? new Bodega();
             response.Success = true;
         }
@@ -76,13 +93,7 @@ public class BodegaService:IBodegaService
                 return response;
             }
 
-            var buscarSucursal = await _sucursalesRepository.GetByIdAsync(request.SucursalId);
-            if (buscarSucursal==null)
-            {
-                response.Errors.Add($"La Sucursal No existe");
-                response.Success = false;
-                return response;
-            }
+           
             var buscarCodBodega = await _repository.BuscarCodBodegaAsync(codBodega);
             if (buscarCodBodega != null)
             {
@@ -101,7 +112,6 @@ public class BodegaService:IBodegaService
                 Activa = true,
                 Telefono = request.Telefono,
                 Direccion = request.Direccion,
-                SucursalId = request.SucursalId,
                 Createdby = userId,
                 CreateDate = DateTime.Now,
                 Updatedby = userId,
@@ -121,25 +131,39 @@ public class BodegaService:IBodegaService
 
     
 
-    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoBodega request, string userId)
+    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id,DtoBodega request, string userId)
     {
         var response = new BaseResponseGeneric<int>();
+
         try
         {
-            response.Result = await _repository.UpdateAsync(new Bodega
+
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAMOD", 9, userId);
+
+
+
+
+            if (buscarPrivilegio == null)
             {
-                Id = id,
-                CodBodega = request.CodBodega,
-                Nombre = request.Nombre,
-                Tipo = request.Tipo,
-                Activa = request.Activa,
-                Direccion = request.Direccion,
-                SucursalId = request.SucursalId,
-                Updatedby = userId,
-                UpdateDate = DateTime.Now
-            });
-            response.Success = true;
+                response.Errors.Add($"No tiene Privilegios para Modificar Bodega");
+                response.Success = false;
+                return response;
+            }
+
+           // response.Result = await _repository.UpdateAsync(_mapper.Map<Bodega>(request));
+             response.Success=true;
+            //{
+            //    Id = id,
+            //    CodBodega = request.CodBodega,
+            //    Nombre = request.Nombre,
+            //    Tipo = request.Tipo,
+            //    Activa = request.Activa,
+            //    Direccion = request.Direccion,
+            //    Updatedby = userId,
+            //    UpdateDate = DateTime.Now
+            //});
         }
+
         catch (Exception ex)
         {
             _logger.LogCritical(ex.StackTrace);
