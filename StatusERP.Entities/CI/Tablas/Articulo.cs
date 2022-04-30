@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StatusERP.Entities.AS.Tablas;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.CI.Tablas
@@ -14,23 +15,23 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(250)]
         public string Descripcion { get; set; }
 
-        [StringLength(12)] 
-        public string ? Clasificacion1 { get; set; }
+        public int ? Clasificacion1Id { get; set; }
+        public ClasificacionInv Clasificacion1 { get; set; }
 
-        [StringLength(12)] 
-        public string ? Clasificacion2 { get; set; }
+        public int? Clasificacion2Id { get; set; }
+        public ClasificacionInv Clasificacion2 { get; set; }
 
-        [StringLength(12)] 
-        public string? Clasificacion3 { get; set; }
+        public int? Clasificacion3Id { get; set; }
+        public ClasificacionInv Clasificacion3 { get; set; }
 
-        [StringLength(12)] 
-        public string? Clasificacion4 { get; set; }
+        public int? Clasificacion4Id { get; set; }
+        public ClasificacionInv Clasificacion4 { get; set; }
 
-        [StringLength(12)] 
-        public string? Clasificacion5 { get; set; }
+        public int? Clasificacion5Id { get; set; }
+        public ClasificacionInv Clasificacion5 { get; set; }
 
-        [StringLength(12)] 
-        public string? Clasificacion6 { get; set; }
+        public int? Clasificacion6Id { get; set; }
+        public ClasificacionInv Clasificacion6 { get; set; }
 
         [Column(TypeName = "decimal(28,8)")] 
         public decimal ?FactorConver1 { get; set; }
@@ -78,8 +79,8 @@ namespace StatusERP.Entities.CI.Tablas
         public string CategoriaArticulo { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el impuesto.")]
-        [StringLength(4)]
-        public string Impuesto { get; set; }
+        public int ImpuestoId { get; set; }
+        public Impuesto Impuesto { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el factor de empaque.")]
         [Column(TypeName = "decimal(28,8)")]
@@ -206,17 +207,17 @@ namespace StatusERP.Entities.CI.Tablas
         public bool UsaReglasLocales { get; set; }
         
         [Required(ErrorMessage = "Debe indicarse la unidad de almacén.")]
-        [StringLength(6)]
-        public string  UnidadAlmacen { get; set; }
-        
+        public int UnidadAlmacenId { get; set; }
+        public UnidadMedida UnidadAlmacen { get; set; }
+
         [Required(ErrorMessage = "Debe indicarse la unidad de empaque.")]
-        [StringLength(6)]
-        public string  UnidadEmpaque { get; set; }
-        
+        public int UnidadEmpaqueId { get; set; }
+        public UnidadMedida UnidadEmpaque { get; set; }
+
         [Required(ErrorMessage = "Debe indicarse la unidad de venta.")]
-        [StringLength(6)]
-        public string UnidadVenta { get; set; }
-        
+        public int UnidadVentaId { get; set; }
+        public UnidadMedida UnidadVenta { get; set; }
+       
         public bool Perecedero { get; set; }
         
         [StringLength(35)]
@@ -266,8 +267,5 @@ namespace StatusERP.Entities.CI.Tablas
         
         [Column(TypeName = "decimal(28,8)")]
         public decimal ? PorcPercep { get; set; }
-        
-        
-        
     }
 }

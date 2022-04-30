@@ -19,9 +19,33 @@ C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.C
 C:\Dev\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
 C:\Dev\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
+=======
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.pdb
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.pdb
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.pdb
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.pdb
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.AssemblyReference.cache
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfoInputs.cache
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfo.cs
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
+C:\Dev\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
+>>>>>>> ecccf0a19246c7fdcf8a17940ca6d82865dfa51d
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.pdb
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.dll
@@ -35,6 +59,7 @@ C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.As
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfo.cs
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Dev\statusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
@@ -65,3 +90,9 @@ C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pd
 >>>>>>> 1e95b26df6b7338992bd5a05cdc071dcf0db56e2
 >>>>>>> 6734c38e99ce33eea3282df050f11c17c64b6394
 C:\Dev\statusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
+=======
+C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
+C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
+C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
+C:\Proyectos\StatusERP\StatusERP.Services\bin\Debug\net6.0\ref\StatusERP.Services.dll
+>>>>>>> ecccf0a19246c7fdcf8a17940ca6d82865dfa51d

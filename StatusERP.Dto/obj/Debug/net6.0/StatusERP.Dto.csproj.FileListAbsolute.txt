@@ -22,9 +22,9 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.Cor
 C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
+C:\Dev\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.AssemblyReference.cache
 C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.deps.json
 C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.dll
-C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.AssemblyReference.cache
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.GeneratedMSBuildEditorConfig.editorconfig
@@ -35,6 +35,7 @@ C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.AssemblyReference.cache
 =======
@@ -44,3 +45,6 @@ C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.Ass
 >>>>>>> 343e921f8bd3599af8b7c54480f909b21c51bdf7
 >>>>>>> 6734c38e99ce33eea3282df050f11c17c64b6394
 C:\Dev\statusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
+=======
+C:\Proyectos\StatusERP\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
+>>>>>>> ecccf0a19246c7fdcf8a17940ca6d82865dfa51d

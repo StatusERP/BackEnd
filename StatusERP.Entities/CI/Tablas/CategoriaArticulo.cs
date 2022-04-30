@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.CG.Tablas;
+
 
 namespace StatusERP.Entities.CI.Tablas
 {
@@ -12,261 +14,135 @@ namespace StatusERP.Entities.CI.Tablas
         
         [Required(ErrorMessage = "Se requiere especificar la descripción para la Categoría de Artículo")]
         [StringLength(40)]
-        public string Descripción { get; set; }
+        public string Descripcion { get; set; }
         
-        [StringLength(25)]
-        public string ? CtrInventario { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaInventario { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrVentasLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaVentasLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrVentasExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaVentasExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCompraLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCompraLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCompraImp { get; set; }
+        public int? CtrCtaInventarioId { get; set; }
+        public CentroCuenta CCInventario { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaCompraImp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDescVentaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDescVentaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDescVentaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDescVentaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCostVentaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCostVentaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCostVentaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrComsVentaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaComsVentaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrComsVentaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaComsVentaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrComsCobroLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaComsCobroLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrComsCobroExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaComsCobroExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDescLineaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDescLineaLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDescLineaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDescLineaExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCostDescLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCostDescLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCostDescExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCostDescExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrSobrInventFis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaSobrInventFis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrFaltInventFis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaFaltInventFis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrVariaCosto { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaVariaCosto { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrVencimiento { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaVencimiento { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrSobranteRemis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaSobranteRemis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrFaltanteRemis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaFaltanteRemis { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrInvRemitido { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaInvRemitido { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrMatProceso { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaMatProceso { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrConsNormal { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaConsNormal { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrConsRetrabajo { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaConsRetrabajo { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrConsGasto { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaConsGasto { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrConsDesperdic { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaConsDesperdic { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDescBonifLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDescBonifLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDescBonifExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDescBonifExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDevVentasLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDevVentasLoc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrDevVentasExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaDevVentasExp { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoRetAsum{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbRetAsum{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoAju{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbAju { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoAjuCMV { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbAjuCMV { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoCPGar { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbCPGar { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoPuGar { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbPuGar { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoIngDevoluc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbIngDevoluc { get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoPerdDevoluc{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbPerdDevoluc{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrCtoMatAplicados{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaCtbMatAplicados{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrVentasExenLoc{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaVentasExenLoc{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtrVentasExenExp{ get; set; }
-        
-        [StringLength(25)]
-        public string ? CtaVentasExenExp{ get; set; }
+        public int? CtrCtaVentasLocId { get; set; }
+        public CentroCuenta CCVentasLoc { get; set; }
+
+        public int? CtrCtaVentasExpId { get; set; }
+        public CentroCuenta CCVentasExp { get; set; }
+
+        public int? CtrCtaCompraLocId { get; set; }
+        public CentroCuenta CCCompraLoc { get; set; }
+
+        public int? CtrCtaCompraImpId { get; set; }
+        public CentroCuenta CCCompraImp { get; set; }
+
+        public int? CtrCtaDescVentaLocId { get; set; }
+        public CentroCuenta CCDescVentaLoc { get; set; }
+
+        public int? CtrCtaDescVentaExpId { get; set; }
+        public CentroCuenta CCDescVentaExp { get; set; }
+
+        public int? CtrCtaCostVentaLocId { get; set; }
+        public CentroCuenta CCCostVentaLoc { get; set; }
+
+        public int? CtrCtaCostVentaExpId { get; set; }
+        public CentroCuenta CCCostVentaExp { get; set; }
+
+        public int? CtrCtaComsVentaLocId { get; set; }
+        public CentroCuenta CCComsVentaLoc { get; set; }
+
+        public int? CtrCtaComsVentaExpId { get; set; }
+        public CentroCuenta CCComsVentaExp { get; set; }
+
+        public int? CtrCtaComsCobroLocId { get; set; }
+        public CentroCuenta CCComsCobroLoc { get; set; }
+
+        public int? CtrCtaComsCobroExpId { get; set; }
+        public CentroCuenta CCComsCobroExp { get; set; }
+
+        public int? CtrCtaDescLineaLocId { get; set; }
+        public CentroCuenta CCDescLineaLoc { get; set; }
+
+        public int? CtrCtaDescLineaExpId { get; set; }
+        public CentroCuenta CCDescLineaExp { get; set; }
+
+        public int? CtrCtaCostDescLocId { get; set; }
+        public CentroCuenta CCCostoDescLoc { get; set; }
+
+        public int? CtrCtaCostDescExpId { get; set; }
+        public CentroCuenta CCCostDescExp { get; set; }
+
+        public int ? CtrCtaSobrInventFisId { get; set; }
+        public CentroCuenta CCSobrInventFis { get; set; }
+
+        public int? CtrCtaFaltInventFisId { get; set; }
+        public CentroCuenta CCFaltInventFis { get; set; }
+
+        public int? CtrCtaVariaCostoId { get; set; }
+        public CentroCuenta CCVariaCosto { get; set; }
+
+        public int? CtrCtaVencimientoId { get; set; }
+        public CentroCuenta CCVencimiento { get; set; }
+
+        public int? CtrCtaSobranteRemisId { get; set; }
+        public CentroCuenta CCSobranteRemis { get; set; }
+
+        public int? CtrCtaFaltanteRemisId { get; set; }
+        public CentroCuenta CCFaltanteRemis { get; set; }
+
+        public int? CtrCtaInvRemitidoId { get; set; }
+        public CentroCuenta CCInvRemitido { get; set; }
+
+        public int? CtrCtaMatProcesoId { get; set; }
+        public CentroCuenta CCMatProceso { get; set; }
+
+        public int? CtrCtaConsNormalId { get; set; }
+        public CentroCuenta CCConsNormal { get; set; }
+
+        public int? CtrCtaConsRetrabajoId { get; set; }
+        public CentroCuenta CCConsRetrabajo { get; set; }
+
+        public int? CtrCtaConsGastoId { get; set; }
+        public CentroCuenta CCConsGasto { get; set; }
+
+        public int? CtrCtaConsDesperdicId { get; set; }
+        public CentroCuenta CCConsDesperdic { get; set; }
+
+        public int? CtrCtaDescBonifLocId { get; set; }
+        public CentroCuenta CCDescBonifLoc { get; set; }
+
+        public int? CtrCtaDescBonifExpId { get; set; }
+        public CentroCuenta CCDescBonifExp { get; set; }
+
+        public int? CtrCtaDevVentasLocId { get; set; }
+        public CentroCuenta CCDevVentasLoc { get; set; }
+
+        public int? CtrCtaDevVentasExpId { get; set; }
+        public CentroCuenta CCDevVentasExp { get; set; }
+
+        public int? CtrCtaRetAsumId { get; set; }
+        public CentroCuenta CCRetAsum { get; set; }
+
+        public int? CtrCtaAjuId { get; set; }
+        public CentroCuenta CCAju { get; set; }
+
+        public int? CtrCtaAjuCMVId { get; set; }
+        public CentroCuenta CCAjuCMV { get; set; }
+
+        public int? CtrCtaCPGarId { get; set; }
+        public CentroCuenta CCCPGar { get; set; }
+
+        public int? CtrCtaPuGarId { get; set; }
+        public CentroCuenta CCPuGar { get; set; }
+
+        public int? CtrCtaIngDevolucId { get; set; }
+        public CentroCuenta CCIngDevoluc { get; set; }
+
+        public int? CtrCtaPerdDevolucId { get; set; }
+        public CentroCuenta CCPerdDevoluc { get; set; }
+
+        public int? CtrCtaMatAplicadosId { get; set; }
+        public CentroCuenta CCMatAplicados { get; set; }
+
+        public int? CtrCtaVentasExenLocId { get; set; }
+        public CentroCuenta CCVentasExenLoc { get; set; }
+
+        public int? CtrCtaVentasExenExpId { get; set; }
+        public CentroCuenta CCVentasExenExp { get; set; }
     }
 }

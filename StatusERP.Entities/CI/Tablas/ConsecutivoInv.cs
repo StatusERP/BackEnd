@@ -23,7 +23,7 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(50)]
         public string Mascara { get; set; }
         
-        [Required(ErrorMessage = "La máscara es requerida.")]
+        [Required(ErrorMessage = "El siguiente consecutivo es requerido.")]
         [StringLength(50)]
         public string SiguienteConsec { get; set; }
         

@@ -23,9 +23,9 @@ public class GlobalesASController : ControllerBase
         _logger = logger;
     }
     [HttpGet]
-    public async Task<ActionResult<BaseResponseGeneric<ICollection<GlobalesAS>>>> Get(int page, int rows)
+    public async Task<ActionResult<BaseResponseGeneric<ICollection<GlobalesAS>>>> Get()
     {
-        return Ok(await _service.GetAsync(page, rows));
+        return Ok(await _service.GetAllAsync());
     }
 
     [HttpGet("{id:int}")]
