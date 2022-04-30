@@ -1,14 +1,8 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "0SAbRzqIKWfIbfuhxFX2eg+HpQavO5oJI30ZiczbqARoJw/T1Xc8A5mChoexATrCfHKDSNWPUiYTULASXwY0pw==",
-  "success": true,
-  "projectFilePath": "C:\\Dev\\StatusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj",
-=======
   "dgSpecHash": "nS413QtW3ulUObjS9CcAula9Li5LxI878FNhA/UbSNm2YbyEAWxRh8fDgbM0uV7+0ibSBwnJnlrQevOzu8j8Vg==",
   "success": true,
   "projectFilePath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj",
->>>>>>> 00f5247893139259dc62439a7a7ef3d79fd58845
   "expectedPackageFiles": [
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.2\\microsoft.entityframeworkcore.6.0.2.nupkg.sha512",
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.2\\microsoft.entityframeworkcore.abstractions.6.0.2.nupkg.sha512",
@@ -27,5 +21,12 @@
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema al leer el archivo de caché C:\\Dev\\statusERP\\BackEnd\\StatusERP.Entities\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
