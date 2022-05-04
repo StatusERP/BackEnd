@@ -138,6 +138,11 @@ builder.Services.AddScoped<IClasificacionInvRepository, ClasificacionInvReposito
 builder.Services.AddScoped<ICategoriaArticuloService, CategoriaArticuloService>();
 builder.Services.AddScoped<ICategoriaArticuloRepository, CategoriaArticuloRepository>();
 
+builder.Services.AddScoped<IGlobalesCIService, GlobalesCIService>();
+builder.Services.AddScoped<IGlobalesCIRepository, GlobalesCIRepository>();
+
+builder.Services.AddScoped<ILoteService, LoteService>();
+builder.Services.AddScoped<ILoteRepository, LoteRepository>();
 
 
 builder.Services.AddControllers();
