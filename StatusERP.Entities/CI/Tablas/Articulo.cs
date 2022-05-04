@@ -1,4 +1,5 @@
 ﻿using StatusERP.Entities.AS.Tablas;
+using StatusERP.Entities.CP.Tablas;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -76,7 +77,8 @@ namespace StatusERP.Entities.CI.Tablas
 
         [Required(ErrorMessage = "Debe ingresar la categoría del artículo.")]
         [StringLength(4)]
-        public string CategoriaArticulo { get; set; }
+        public int CategoriaArticuloId { get; set; }
+        public CategoriaArticulo CategoriaArticulo { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el impuesto.")]
         public int ImpuestoId { get; set; }
@@ -164,8 +166,9 @@ namespace StatusERP.Entities.CI.Tablas
         [Required(ErrorMessage = "Se debe ingresar los días cuarentena.")]
         public Int16 DiasCuarentena { get; set; }
         
-        [StringLength(20)]
-        public string? Proveedor { get; set; }
+    
+        public int? ProveedorId { get; set; }
+        public Proveedor Proveedor { get; set; }
         
         [StringLength(30)]
         public string? ArticuloDelProv { get; set; }
@@ -267,7 +270,8 @@ namespace StatusERP.Entities.CI.Tablas
         
         [Column(TypeName = "decimal(28,8)")]
         public decimal ? PorcPercep { get; set; }
-
+        [StringLength(250)]
+        public string? urlimagen { get; set; }
         //[InverseProperty("ArtEnLote")]
         //public List<Lote> LoteArticulo { get; set; }
     }
