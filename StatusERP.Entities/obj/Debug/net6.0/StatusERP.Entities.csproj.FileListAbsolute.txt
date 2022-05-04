@@ -11,22 +11,6 @@ C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
 C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
 C:\Dev\StatusERP\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Entities.dll
 C:\Dev\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
-C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.deps.json
-C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.dll
-C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.pdb
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.AssemblyInfoInputs.cache
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.AssemblyInfo.cs
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.CoreCompileInputs.cache
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.dll
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
-<<<<<<< HEAD
-C:\proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.AssemblyReference.cache
-=======
-C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Entities.dll
->>>>>>> 3a259e6db4acc4f19770e22c359b709fda3e1199
-C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.deps.json
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.pdb
@@ -39,3 +23,15 @@ C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Entities.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
 C:\Dev\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
+C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.deps.json
+C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.dll
+C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\StatusERP.Entities.pdb
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.AssemblyInfoInputs.cache
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.AssemblyInfo.cs
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.CoreCompileInputs.cache
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.dll
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
+C:\Proyectos\StatusERP\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.AssemblyReference.cache
+C:\Proyectos\StatusERP\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll

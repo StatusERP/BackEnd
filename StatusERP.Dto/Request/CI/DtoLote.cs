@@ -15,7 +15,7 @@ namespace StatusERP.Dto.Request.CI
         public int? ProveedorId { get; set; }
 
         [StringLength(15)]
-        public string LoteProveedor { get; set; }
+        public string ? LoteProveedor { get; set; }
 
         [Required(ErrorMessage = "Se requiere especificar la fecha de entrada del lote.")]
         public DateTime FechaEntrada { get; set; }

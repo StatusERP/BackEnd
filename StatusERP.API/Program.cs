@@ -148,6 +148,8 @@ builder.Services.AddScoped<IGlobalesCIRepository, GlobalesCIRepository>();
 builder.Services.AddScoped<ILoteService, LoteService>();
 builder.Services.AddScoped<ILoteRepository, LoteRepository>();
 
+builder.Services.AddScoped<IPaqueteInvService, PaqueteInvService>();
+builder.Services.AddScoped<IPaqueteInvRepository, PaqueteInvRepository>();
 
 builder.Services.AddControllers();
 
