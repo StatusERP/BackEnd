@@ -277,6 +277,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<int?>("SucursalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Telefono")
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
@@ -295,6 +298,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SucursalId");
 
                     b.ToTable("Bodegas", "H2C");
                 });
@@ -15991,6 +15996,15 @@ namespace StatusERP.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Bodega", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Sucursal", "Sucursal")
+                        .WithMany()
+                        .HasForeignKey("SucursalId");
+
+                    b.Navigation("Sucursal");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.CategoriaCliente", b =>
