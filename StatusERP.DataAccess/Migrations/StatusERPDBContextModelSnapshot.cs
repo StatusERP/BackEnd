@@ -277,9 +277,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<int?>("SucursalId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Telefono")
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
@@ -298,8 +295,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("SucursalId");
 
                     b.ToTable("Bodegas", "H2C");
                 });
@@ -7049,10 +7044,9 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("CalculaPercep")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CategoriaArticulo")
-                        .IsRequired()
+                    b.Property<int>("CategoriaArticuloId")
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaseABC")
                         .IsRequired()
@@ -7232,9 +7226,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal>("PrecioBaseLocal")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<string>("Proveedor")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("ProveedorId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("PuntoDeOrden")
                         .HasColumnType("decimal(28,8)");
@@ -7334,7 +7327,13 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal>("Volumen")
                         .HasColumnType("decimal(28,8)");
 
+                    b.Property<string>("urlimagen")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriaArticuloId");
 
                     b.HasIndex("Clasificacion1Id");
 
@@ -7352,6 +7351,8 @@ namespace StatusERP.DataAccess.Migrations
                         .IsUnique();
 
                     b.HasIndex("ImpuestoId");
+
+                    b.HasIndex("ProveedorId");
 
                     b.HasIndex("UnidadAlmacenId");
 
@@ -15998,15 +15999,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Bodega", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.Sucursal", "Sucursal")
-                        .WithMany()
-                        .HasForeignKey("SucursalId");
-
-                    b.Navigation("Sucursal");
-                });
-
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.CategoriaCliente", b =>
                 {
                     b.HasOne("StatusERP.Entities.AS.Tablas.CentroCosto", "CentroCosto")
@@ -16403,6 +16395,12 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Articulo", b =>
                 {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.CategoriaArticulo", "CategoriaArticulo")
+                        .WithMany()
+                        .HasForeignKey("CategoriaArticuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion1")
                         .WithMany()
                         .HasForeignKey("Clasificacion1Id");
@@ -16433,6 +16431,10 @@ namespace StatusERP.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId");
+
                     b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "UnidadAlmacen")
                         .WithMany()
                         .HasForeignKey("UnidadAlmacenId")
@@ -16451,6 +16453,8 @@ namespace StatusERP.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CategoriaArticulo");
+
                     b.Navigation("Clasificacion1");
 
                     b.Navigation("Clasificacion2");
@@ -16464,6 +16468,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Clasificacion6");
 
                     b.Navigation("Impuesto");
+
+                    b.Navigation("Proveedor");
 
                     b.Navigation("UnidadAlmacen");
 
