@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS;
 
 public interface IBodegaService
 {
-    Task<BaseResponseGeneric<ICollection<Bodega>>> GetAsync( int page, int rows);
+    Task<BaseResponseGeneric<ICollection<Bodega>>> GetAsync( int page, int rows, string userId);
     Task<BaseResponseGeneric<Bodega>> GetByIdAsync(int id);
 
     Task<BaseResponseGeneric<int>> CreateAsync(DtoBodega request,string userId,string codBodega);

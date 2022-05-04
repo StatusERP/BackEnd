@@ -1,11 +1,11 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Interfaces.AS;
+using System.Security.Claims;
 
 namespace StatusERP.API.Controllers.AS;
 [ApiController]
@@ -14,9 +14,9 @@ namespace StatusERP.API.Controllers.AS;
 public class BodegaController : ControllerBase
 {
     private readonly IBodegaService _service;
-    private readonly ILogger<BodegaService> _logger;
+    private readonly ILogger<PaisService> _logger;
 
-    public BodegaController( IBodegaService service,ILogger<BodegaService> logger)
+    public BodegaController( IBodegaService service,ILogger<PaisService> logger)
     {
         _service = service;
         _logger = logger;
@@ -24,7 +24,9 @@ public class BodegaController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<BaseResponseGeneric<ICollection<Bodega>>>> Get(int page, int rows)
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
+        return Ok(await _service.GetAsync(page, rows,userId.Value));
     }
 
     [HttpGet("{id:int}")]

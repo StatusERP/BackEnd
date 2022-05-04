@@ -24,13 +24,24 @@ public class LocalizacionesController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<BaseResponseGeneric<ICollection<Localizacion>>>> Get(int page, int rows)
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
+        return Ok(await _service.GetAsync(page, rows,userId.Value));
     }
-
+    /*
     [HttpGet("{id:int}")]
     public async Task<ActionResult<BaseResponseGeneric<Localizacion>>> Get(int id)
     {
         return Ok(await _service.GetByIdAsync(id));
+    }
+    */
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<BaseResponseGeneric<Localizacion>>> GetBodega(int id)
+    {
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
+        return Ok(await _service.GetByIdBodegaAsync(id,userId.Value));
     }
 
     [HttpPost]

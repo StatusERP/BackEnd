@@ -24,6 +24,8 @@ using StatusERP.Services.Interfaces.CG;
 using StatusERP.Services.Interfaces.CI;
 using StatusERP.DataAccess.Repositories.CI;
 using StatusERP.Services.Implementations.CI;
+using StatusERP.Dto.Request.AS;
+using StatusERP.Services.Profile.AS;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +47,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(options =>
 {
-    options.AddMaps(typeof(Vendedor));
+    options.AddProfile(new AutoMapperProfileBodega());
    // options.AddMaps(typeof(Concert));
    // options.AddProfile<SaleProfile>();
 });
@@ -106,6 +108,8 @@ builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
+builder.Services.AddScoped<IPaisRepository, PaisRepository>();
+builder.Services.AddScoped<IPaisService, PaisService>();
 
 
 // Entidades Módulo CG
