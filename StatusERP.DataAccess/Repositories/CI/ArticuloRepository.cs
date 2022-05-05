@@ -19,9 +19,9 @@ namespace StatusERP.DataAccess.Repositories.CI
             .FirstOrDefaultAsync(t => t.CodArticulo == CodArticulo);
         }
 
-        public async Task<int> CreateAsync(Articulo Articulo)
+        public async Task<int> CreateAsync(Articulo articulo)
         {
-            return await _dbContext.InsertAsync(Articulo);
+            return await _dbContext.InsertAsync(articulo);
         }
 
         public async Task<int> DeleteAsync(int id, string userId)

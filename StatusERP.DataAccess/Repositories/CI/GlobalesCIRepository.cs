@@ -18,25 +18,6 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.InsertAsync(GlobalesCI);
         }
 
-        public async Task<int> DeleteAsync(int id, string userId)
-        {
-            await _dbContext.DeleteAsync(new GlobalesCI
-            {
-                Id = id,
-                Updatedby = userId
-            });
-            return id;
-        }
-
-        public async Task<GlobalesCI?> GetByIdAsync(int id)
-        {
-            return await _dbContext.SelectAsync<GlobalesCI>(id);
-        }
-
-        public async Task<ICollection<GlobalesCI>> GetCollectionAsync(int page, int rows)
-        {
-            return await _dbContext.SelectAsync<GlobalesCI>(page, rows);
-        }
 
         public async Task<int> UpdateAsync(GlobalesCI GlobalesCI)
         {

@@ -72,12 +72,9 @@ namespace StatusERP.Dto.Request.CI
         [Required(ErrorMessage = "Debe ingresar los bultos.")]
         public Int16 Bultos { get; set; }
 
-        [Required(ErrorMessage = "Debe ingresar la categoría del artículo.")]
-        [StringLength(4)]
-        public string CategoriaArticulo { get; set; }
+        public int CategoriaArticuloId1 { get; set; }
 
-        [Required(ErrorMessage = "Debe ingresar el impuesto.")]
-        public int ImpuestoId { get; set; }
+        
 
         [Required(ErrorMessage = "Debe ingresar el factor de empaque.")]
         [Column(TypeName = "decimal(28,8)")]
@@ -161,9 +158,6 @@ namespace StatusERP.Dto.Request.CI
         [Required(ErrorMessage = "Se debe ingresar los días cuarentena.")]
         public Int16 DiasCuarentena { get; set; }
 
-        [StringLength(20)]
-        public string? Proveedor { get; set; }
-
         [StringLength(30)]
         public string? ArticuloDelProv { get; set; }
 
@@ -206,11 +200,12 @@ namespace StatusERP.Dto.Request.CI
         [Required(ErrorMessage = "Debe indicarse la unidad de almacén.")]
         public int UnidadAlmacenId { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la unidad de empaque.")]
-        public int UnidadEmpaqueId { get; set; }
 
         [Required(ErrorMessage = "Debe indicarse la unidad de venta.")]
         public int UnidadVentaId { get; set; }
+
+        
+       
 
         public bool Perecedero { get; set; }
 
@@ -261,5 +256,14 @@ namespace StatusERP.Dto.Request.CI
 
         [Column(TypeName = "decimal(28,8)")]
         public decimal? PorcPercep { get; set; }
+      
+        public int ImpuestoId { get; set; }
+
+        [Required(ErrorMessage = "Debe indicarse la unidad de empaque.")]
+        public int UnidadEmpaqueId { get; set; }
+
+        public int ProveedorId { get; set; }
+
+        public string? urlimagen { get; set; }
     }
 }

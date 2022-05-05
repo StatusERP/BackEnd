@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.CP.Tablas;
 
 namespace StatusERP.Entities.CI.Tablas
 {
@@ -11,14 +12,14 @@ namespace StatusERP.Entities.CI.Tablas
         public string CodLote { get; set; }
         
         [Required(ErrorMessage = "Se requiere especificar un código de articulo.")]
-        [StringLength(20)]
-        public string Articulo { get; set; }
-        
-        [StringLength(20)]
-        public string Proveedor { get; set; }
+        public int ArticuloId { get; set; }
+        public Articulo Articulo { get; set; }
+
+        public int ? ProveedorId { get; set; }
+        public Proveedor Proveedor { get; set; }
         
         [StringLength(15)]
-        public string LoteProveedor { get; set; }
+        public string ? LoteProveedor { get; set; }
         
         [Required(ErrorMessage = "Se requiere especificar la fecha de entrada del lote.")]
         public DateTime FechaEntrada { get; set; }

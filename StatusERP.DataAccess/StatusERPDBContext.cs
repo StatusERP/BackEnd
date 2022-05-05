@@ -417,6 +417,29 @@ namespace StatusERP.DataAccess
                 .HasOne(x => x.CCVentasExenExp)
                 .WithMany()
                 .HasForeignKey(x => x.CtrCtaVentasExenExpId);
+
+
+            //CI - GlobalesCI
+
+            modelBuilder.Entity<GlobalesCI>()
+                .HasOne(x => x.PqtContable)
+                .WithOne()
+                .HasForeignKey<PaqueteContable>(y => y.Id);
+
+            //modelBuilder.Entity<GlobalesCI>()
+            //    .HasOne(x => x.TPartida)
+            //    .WithOne()
+            //    .HasForeignKey<TipoPartida>(y => y.Id
+            
+
+
+            //CI - Lotes
+
+            //modelBuilder.Entity<Lote>()
+            //    .HasOne(x => x.ArtEnLote)
+            //    .WithMany()
+            //    .HasForeignKey(y => y.Id);
+
         }
     }
 }

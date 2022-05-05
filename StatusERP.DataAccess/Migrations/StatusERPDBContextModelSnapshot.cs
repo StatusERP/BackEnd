@@ -6595,8 +6595,6 @@ namespace StatusERP.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("CodPaquete")
                         .IsRequired()
                         .HasMaxLength(4)
@@ -7046,10 +7044,9 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("CalculaPercep")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CategoriaArticulo")
-                        .IsRequired()
+                    b.Property<int>("CategoriaArticuloId")
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaseABC")
                         .IsRequired()
@@ -7229,9 +7226,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal>("PrecioBaseLocal")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<string>("Proveedor")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("ProveedorId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("PuntoDeOrden")
                         .HasColumnType("decimal(28,8)");
@@ -7331,7 +7327,13 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal>("Volumen")
                         .HasColumnType("decimal(28,8)");
 
+                    b.Property<string>("urlimagen")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriaArticuloId");
 
                     b.HasIndex("Clasificacion1Id");
 
@@ -7349,6 +7351,8 @@ namespace StatusERP.DataAccess.Migrations
                         .IsUnique();
 
                     b.HasIndex("ImpuestoId");
+
+                    b.HasIndex("ProveedorId");
 
                     b.HasIndex("UnidadAlmacenId");
 
@@ -8305,7 +8309,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int?>("PaqueteId")
+                    b.Property<int?>("PaqueteContableId")
                         .HasColumnType("int");
 
                     b.Property<short>("PesosDec")
@@ -8315,7 +8319,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int?>("TipoAsiento")
+                    b.Property<int?>("TipoPartidaId")
                         .HasColumnType("int");
 
                     b.Property<bool>("TransacXUsuario")
@@ -8376,17 +8380,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("UsarNumerosSerie")
                         .HasColumnType("bit");
 
-                    b.Property<int>("paqueteContableId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("tipoPartidaId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("paqueteContableId");
-
-                    b.HasIndex("tipoPartidaId");
 
                     b.ToTable("GlobalesCI", "H2C");
                 });
@@ -8446,10 +8440,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Articulo")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("CantidadIngresada")
                         .HasColumnType("decimal(28,8)");
@@ -8488,7 +8480,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LoteProveedor")
-                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -8496,10 +8487,8 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Proveedor")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("ProveedorId")
+                        .HasColumnType("int");
 
                     b.Property<string>("TipoIngreso")
                         .IsRequired()
@@ -8518,6 +8507,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ArticuloId");
+
+                    b.HasIndex("ProveedorId");
 
                     b.ToTable("Lotes", "H2C");
                 });
@@ -8736,6 +8729,11 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("CodPaqueteInv")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -8755,10 +8753,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PaqueteInventario")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("NumPaquete")
+                        .HasColumnType("int");
 
                     b.Property<string>("UltimoUsuario")
                         .IsRequired()
@@ -8780,7 +8776,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaqueteInv", "H2C");
+                    b.ToTable("PaquetesInv", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.UsuarioAjusteInv", b =>
@@ -16390,8 +16386,23 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CuentaContable");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.CG.Tablas.PaqueteContable", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.GlobalesCI", null)
+                        .WithOne("PqtContable")
+                        .HasForeignKey("StatusERP.Entities.CG.Tablas.PaqueteContable", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Articulo", b =>
                 {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.CategoriaArticulo", "CategoriaArticulo")
+                        .WithMany()
+                        .HasForeignKey("CategoriaArticuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("StatusERP.Entities.CI.Tablas.ClasificacionInv", "Clasificacion1")
                         .WithMany()
                         .HasForeignKey("Clasificacion1Id");
@@ -16422,6 +16433,10 @@ namespace StatusERP.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId");
+
                     b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "UnidadAlmacen")
                         .WithMany()
                         .HasForeignKey("UnidadAlmacenId")
@@ -16440,6 +16455,8 @@ namespace StatusERP.DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("CategoriaArticulo");
+
                     b.Navigation("Clasificacion1");
 
                     b.Navigation("Clasificacion2");
@@ -16453,6 +16470,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Clasificacion6");
 
                     b.Navigation("Impuesto");
+
+                    b.Navigation("Proveedor");
 
                     b.Navigation("UnidadAlmacen");
 
@@ -16722,23 +16741,21 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentasLoc");
                 });
 
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Lote", b =>
                 {
-                    b.HasOne("StatusERP.Entities.CG.Tablas.PaqueteContable", "paqueteContable")
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "Articulo")
                         .WithMany()
-                        .HasForeignKey("paqueteContableId")
+                        .HasForeignKey("ArticuloId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("StatusERP.Entities.CG.Tablas.TipoPartida", "tipoPartida")
+                    b.HasOne("StatusERP.Entities.CP.Tablas.Proveedor", "Proveedor")
                         .WithMany()
-                        .HasForeignKey("tipoPartidaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProveedorId");
 
-                    b.Navigation("paqueteContable");
+                    b.Navigation("Articulo");
 
-                    b.Navigation("tipoPartida");
+                    b.Navigation("Proveedor");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>
@@ -17137,6 +17154,12 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
+                {
+                    b.Navigation("PqtContable")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
