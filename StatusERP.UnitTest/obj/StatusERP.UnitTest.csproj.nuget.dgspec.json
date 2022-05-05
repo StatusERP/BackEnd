@@ -1,7 +1,6 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
     "C:\\Dev\\statusERP\\BackEnd\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj": {}
   },
   "projects": {
@@ -13,27 +12,17 @@
         "projectPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
         "packagesPath": "C:\\Users\\CarlosVelasquez\\.nuget\\packages\\",
         "outputPath": "C:\\Dev\\statusERP\\BackEnd\\StatusERP.UnitTest\\obj\\",
-=======
-    "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj": {}
-  },
-  "projects": {
-    "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
-        "projectName": "StatusERP.UnitTest",
-        "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\obj\\",
->>>>>>> 63e358e0d4ead3a12456fcd64d1e54c8b372c8d3
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\CarlosVelasquez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -72,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
