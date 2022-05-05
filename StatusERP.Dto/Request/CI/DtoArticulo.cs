@@ -256,12 +256,12 @@ namespace StatusERP.Dto.Request.CI
 
         [Column(TypeName = "decimal(28,8)")]
         public decimal? PorcPercep { get; set; }
-      
+        [Required(ErrorMessage = "Debe ingresar el Codigo Impuesto.")]
         public int ImpuestoId { get; set; }
 
         [Required(ErrorMessage = "Debe indicarse la unidad de empaque.")]
         public int UnidadEmpaqueId { get; set; }
-
+        [Required(ErrorMessage = "Debe ingresar el Codigo Proveedor.")]
         public int ProveedorId { get; set; }
 
         public string? urlimagen { get; set; }
