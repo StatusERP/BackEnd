@@ -8480,6 +8480,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LoteProveedor")
+                        .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
@@ -8729,11 +8730,6 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CodPaqueteInv")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -8753,8 +8749,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("NumPaquete")
-                        .HasColumnType("int");
+                    b.Property<string>("PaqueteInventario")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("UltimoUsuario")
                         .IsRequired()
@@ -8776,7 +8774,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PaquetesInv", "H2C");
+                    b.ToTable("PaqueteInv", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.UsuarioAjusteInv", b =>

@@ -421,10 +421,10 @@ namespace StatusERP.DataAccess
 
             //CI - GlobalesCI
 
-            modelBuilder.Entity<GlobalesCI>()
-                .HasOne(x => x.PqtContable)
-                .WithOne()
-                .HasForeignKey<PaqueteContable>(y => y.Id);
+            //modelBuilder.Entity<GlobalesCI>()
+            //    .HasOne(x => x.PqtContable)
+            //    .WithOne()
+            //    .HasForeignKey<PaqueteContable>(y => y.Id);
 
             //modelBuilder.Entity<GlobalesCI>()
             //    .HasOne(x => x.TPartida)

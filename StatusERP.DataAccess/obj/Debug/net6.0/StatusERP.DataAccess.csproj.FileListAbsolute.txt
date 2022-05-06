@@ -54,4 +54,3 @@ C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAcc
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\refint\StatusERP.DataAccess.dll
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.pdb
 C:\Dev\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\ref\StatusERP.DataAccess.dll
-C:\Dev\statusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\ref\StatusERP.DataAccess.dll

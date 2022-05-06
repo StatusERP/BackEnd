@@ -63,10 +63,10 @@ namespace StatusERP.Entities.CI.Tablas
         public string ? NombreClasif6 { get; set; }
         
         public int ? TipoPartidaId { get; set; }
-        ////public TipoPartida TPartida { get; set; }
+        public TipoPartida tipoPartida { get; set; }
         
         public int ? PaqueteContableId { get; set; }
-        public PaqueteContable PqtContable { get; set; }
+        public PaqueteContable paqueteContable { get; set; }
         
         public bool AsntAjuVenta { get; set; }
         
