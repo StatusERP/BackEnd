@@ -57,9 +57,9 @@ namespace StatusERP.Dto.Request.CI
 
         [StringLength(10)]
         public string? NombreClasif6 { get; set; }
-
+        [Required(ErrorMessage = "Debe especificarse Tipo Partidad")]
         public int ? TipoPartidaId { get; set; }
-
+        [Required(ErrorMessage = "Debe especificarse Paquete Contable")]
         public int ? PaqueteContableId { get; set; }
 
         public bool AsntAjuVenta { get; set; }

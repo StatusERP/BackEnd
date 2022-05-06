@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IGlobalesCIService
     {
-        Task<BaseResponseGeneric<ICollection<GlobalesCI>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<GlobalesCI>>> GetAsync( string userId);
 
         Task<BaseResponseGeneric<int>> CreateAsync(DtoGlobalesCI request, string userId);
 

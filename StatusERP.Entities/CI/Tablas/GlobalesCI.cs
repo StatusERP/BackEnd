@@ -8,48 +8,47 @@ namespace StatusERP.Entities.CI.Tablas
     [Table("GlobalesCI", Schema = Constants.Conjunto)]
     public class GlobalesCI : EntityBase
     {
-        [Required(ErrorMessage = "Debe especificarse la cantidad de decimales en costos.")]
+  
         public Int16 CostosDec { get; set; }
 
-        [Required(ErrorMessage = "Debe especificarse la cantidad de decimales en existencias.")]
+  
         public Int16 ExistenciasDec { get; set; }
 
-        [Required(ErrorMessage = "Debe especificarse la cantidad de decimales en pesos.")]
+
         public Int16 PesosDec { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse la unidad de peso.")]
+  
         [StringLength(6)]
         public string UnidadPeso { get; set; }
 
-        [Required(ErrorMessage = "Debe especificarse la unidad de volumen.")]
+  
         [StringLength(6)]
         public string UnidadVolumen { get; set; }
         
         public bool UsaLocalizacion { get; set; }
         
         public bool AjustarConteo { get; set; }
-        
-        [Required(ErrorMessage = "Maximo número de auditoría agregado en las transacciones de inventario.")]
+       
         public int MaxAuditoria { get; set; }
         
-        [Required(ErrorMessage = "Fecha en que se ejecutó por última vez el proceso de vencimiento.")]
+   
         public DateTime FchUltProcVcto { get; set; }
         
-        [Required(ErrorMessage = "Fecha en que se ejecutó por última vez el proceso de aprobación.")]
+  
         public DateTime FchUltProcAprob { get; set; }
 
-        [Required(ErrorMessage = "Fecha de inicio de las transacciones de CI.")]
+     
         public DateTime FechaInicioTrans { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse un nombre para la clasificación 1.")]
+    
         [StringLength(10)]
         public string NombreClasif1 { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse un nombre para la clasificación 2.")]
+
         [StringLength(10)]
         public string NombreClasif2 { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse un nombre para la clasificación 3.")]
+
         [StringLength(10)]
         public string NombreClasif3 { get; set; }
         
@@ -63,10 +62,10 @@ namespace StatusERP.Entities.CI.Tablas
         public string ? NombreClasif6 { get; set; }
         
         public int ? TipoPartidaId { get; set; }
-        ////public TipoPartida TPartida { get; set; }
+        public TipoPartida TipoPartida { get; set; }
         
         public int ? PaqueteContableId { get; set; }
-        public PaqueteContable PqtContable { get; set; }
+        public PaqueteContable PaqueteContable { get; set; }
         
         public bool AsntAjuVenta { get; set; }
         
@@ -84,14 +83,13 @@ namespace StatusERP.Entities.CI.Tablas
         
         public bool AsntAjuCosto { get; set; }
         
-        [Required(ErrorMessage = "Debe indicarse el modo de generación para los asientos contables" )]
+       
         public Int16 ModAplicAsiento { get; set; }
         
         public bool IntegracionConta { get; set; }
         
         public bool CtrEnTransaccion { get; set; }
-        
-        [Required(ErrorMessage = "Debe indicarse lOS totales en las consultas de existencias." )]
+   
         [StringLength(10)]
         public string ExistEnTotales { get; set; }
         
