@@ -422,7 +422,7 @@ namespace StatusERP.DataAccess
             //CI - GlobalesCI
 
             //modelBuilder.Entity<GlobalesCI>()
-            //    .HasOne(x => x.PqtContable)
+            //    .HasOne(x => x.PaqueteContableId)
             //    .WithOne()
             //    .HasForeignKey<PaqueteContable>(y => y.Id);
 
