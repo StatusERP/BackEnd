@@ -31,6 +31,7 @@ namespace StatusERP.Entities.CI.Tablas
         
         [Required(ErrorMessage = "Se requiere especificar la unidad de medida.")]
         [StringLength(6)]
-        public string UnidadMedida { get; set; }
+        public int UnidadMedidaId { get; set; }
+        public AS.Tablas.UnidadMedida unidadMedida { get; set; }
     }
 }
