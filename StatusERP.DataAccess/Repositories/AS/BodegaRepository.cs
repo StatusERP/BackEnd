@@ -40,7 +40,7 @@ public class BodegaRepository:StatusERPContextBase<Bodega>,IBodegaRepository
 
     public async Task<int> UpdateAsync(Bodega bodega)
     {
-        await _dbContext.UpdateAsync(bodega, Mapper);
+        await _dbContext.UpdateAsync(bodega);
         return bodega.Id;
     }
 

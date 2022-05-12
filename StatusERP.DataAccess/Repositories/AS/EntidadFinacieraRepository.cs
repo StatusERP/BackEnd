@@ -28,7 +28,7 @@ public class EntidadFinacieraRepository:StatusERPContextBase<EntidadFinanciera>,
 
     public async Task<int> UpdateAsync(EntidadFinanciera entidadFinanciera)
     {
-        await _dbContext.UpdateAsync(entidadFinanciera, Mapper);
+        await _dbContext.UpdateAsync(entidadFinanciera);
         return entidadFinanciera.Id;
     }
 

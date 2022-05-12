@@ -27,7 +27,7 @@ public class AccionRepository:StatusERPContextBase<Accion>,IAccionRepository
 
     public async Task<int> UpdateAsync(Accion accion)
     {
-        await _dbContext.UpdateAsync(accion,Mapper);
+        await _dbContext.UpdateAsync(accion);
         return accion.Id;
     }
 

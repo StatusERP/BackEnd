@@ -28,7 +28,7 @@ public class ConsecutivoUsuarioRepository : StatusERPContextBase<ConsecutivoUsua
 
     public async Task<int> UpdateAsync(ConsecutivoUsuario consecutivoUsuario)
     {
-        await _dbContext.UpdateAsync(consecutivoUsuario, Mapper);
+        await _dbContext.UpdateAsync(consecutivoUsuario);
         return consecutivoUsuario.Id;
     }
 

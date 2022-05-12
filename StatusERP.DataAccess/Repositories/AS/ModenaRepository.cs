@@ -28,7 +28,7 @@ public class ModenaRepository: StatusERPContextBase<Moneda>, IMonedaRepository
 
     public async Task<int> UpdateAsync(Moneda moneda)
     {
-        await _dbContext.UpdateAsync(moneda,Mapper);
+        await _dbContext.UpdateAsync(moneda);
         return moneda.Id;
     }
 

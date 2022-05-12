@@ -27,7 +27,7 @@ public class RutaRepository:StatusERPContextBase<Ruta>,IRutaRepository
 
     public async Task<int> UpdateAsync(Ruta ruta)
     {
-        await _dbContext.UpdateAsync(ruta, Mapper);
+        await _dbContext.UpdateAsync(ruta);
         return ruta.Id;
     }
 

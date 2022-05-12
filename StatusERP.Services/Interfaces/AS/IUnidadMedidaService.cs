@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS;
 
 public interface IUnidadMedidaService
 {
-    Task<BaseResponseGeneric<ICollection<UnidadMedida>>> GetAsync( int page, int rows);
+    Task<BaseResponseGeneric<ICollection<UnidadMedida>>> GetAsync( int page, int rows, string userId);
     Task<BaseResponseGeneric<UnidadMedida>> GetByIdAsync(int id);
 
     Task<BaseResponseGeneric<int>> CreateAsync(DtoUnidadMedida request,string userId,string codUnidadMedida);

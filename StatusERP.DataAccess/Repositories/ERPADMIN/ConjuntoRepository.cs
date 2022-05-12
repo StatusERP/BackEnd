@@ -29,7 +29,7 @@ public class ConjuntoRepository:StatusERPContextBase<Conjunto> ,IConjuntoReposit
 
     public  async Task<int> UpdateAsync(Conjunto conjunto)
     {
-        await _dbContext.UpdateAsync(conjunto,Mapper);
+        await _dbContext.UpdateAsync(conjunto);
         return conjunto.Id;
     }
 

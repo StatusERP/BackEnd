@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
@@ -11,17 +12,29 @@ public class UnidadMedidaService:IUnidadMedidaService
 {
     private readonly IUnidadMedidaRepository _repository;
     private readonly ILogger<UnidadMedidaService> _logger;
+    private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-    public UnidadMedidaService(IUnidadMedidaRepository repository,ILogger<UnidadMedidaService> logger)
+    public UnidadMedidaService(IUnidadMedidaRepository repository,ILogger<UnidadMedidaService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
     {
         _repository = repository;
         _logger = logger;
+        _privilegioUsuarioRepository = privilegioUsuarioRepository;
     }
-    public async Task<BaseResponseGeneric<ICollection<UnidadMedida>>> GetAsync(int page, int rows)
+    public async Task<BaseResponseGeneric<ICollection<UnidadMedida>>> GetAsync(int page, int rows, string userId)
     {
         var response = new BaseResponseGeneric<ICollection<UnidadMedida>>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ADMIN_UNIMED", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para ver Unidades de Medida");
+                response.Success = false;
+                return response;
+            }
+
             response.Result = await _repository.GetCollectionAsync(page, rows);
             response.Success = true;
         }
@@ -40,6 +53,7 @@ public class UnidadMedidaService:IUnidadMedidaService
         var response = new BaseResponseGeneric<UnidadMedida>();
         try
         {
+
             response.Result = await _repository.GetByIdAsync(id) ?? new UnidadMedida();
             response.Success = true;
         }
@@ -63,10 +77,21 @@ public class UnidadMedidaService:IUnidadMedidaService
             {
                 throw new Exception($"El codigo de Unidad de Medida {buscarCodUnidadMedida.CodUnidadMedida} ya Existe");
             }
+
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ADMIN_UNIMEDADD", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para Crear Unidades de Medida");
+                response.Success = false;
+                return response;
+            }
+
             response.Result = await _repository.CreateAsync(new UnidadMedida
             {
-                CodUnidadMedida = request.CodUnidadMedida,
-                Descripcion = request.Descripcion,
+                CodUnidadMedida = request.CodUnidadMedida.ToUpper(),
+                Descripcion =  request.Descripcion,
                 IsDeleted = false,
                 Updatedby = userId,
                 UpdateDate = DateTime.Now,
@@ -90,6 +115,16 @@ public class UnidadMedidaService:IUnidadMedidaService
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ADMIN_UNIMEDMOD", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para Modificar Unidades de Medida");
+                response.Success = false;
+                return response;
+            }
+
             response.Result = await _repository.UpdateAsync(new UnidadMedida
             {
                 Id = id,
@@ -114,6 +149,15 @@ public class UnidadMedidaService:IUnidadMedidaService
         var response = new BaseResponseGeneric<int>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_ADMIN_UNIMEDDEL", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para Eliminar Unidades de Medida");
+                response.Success = false;
+                return response;
+            }
             await _repository.DeleteAsync(id, userId);
             response.Success = true;
             response.Result = id;

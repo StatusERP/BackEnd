@@ -16737,7 +16737,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentasLoc");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaBodega", b =>
                 {
                     b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "articulo")
@@ -16755,7 +16754,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("articulo");
 
                     b.Navigation("bodega");
-=======
+                });
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ClasificacionInv", b =>
                 {
                     b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "unidadMedida")
@@ -16780,7 +16779,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("PaqueteContable");
 
                     b.Navigation("TipoPartida");
->>>>>>> a3e58ebcb830bc58418d2938c2e0e1771a2e288f
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Lote", b =>
@@ -17198,6 +17196,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("FlujoCaja");
                 });
 #pragma warning restore 612, 618
+
         }
     }
 }

@@ -25,7 +25,9 @@ public class UnidadMedidaController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<BaseResponseGeneric<ICollection<UnidadMedida>>>> Get(int page, int rows)
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
+        return Ok(await _service.GetAsync(page, rows,userId.Value));
     }
 
     [HttpGet("{id:int}")]
