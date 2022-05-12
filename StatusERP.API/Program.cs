@@ -160,6 +160,10 @@ builder.Services.AddScoped<IExistenciaLoteRepository, ExistenciaLoteRepository>(
 builder.Services.AddScoped<IMovInventarioEncService, MovInventarioEncService>();
 builder.Services.AddScoped<IMovInventarioEncRepository, MovInventarioEncRepository>();
 
+builder.Services.AddScoped<ITipoPagoService, TipoPagoService>();
+builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
+
+
 builder.Services.AddControllers();
 
 

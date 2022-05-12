@@ -8,7 +8,6 @@ namespace StatusERP.Entities.CI.Tablas
     [Table("MovsInventarioDet", Schema = Constants.Conjunto)]
     public class MovInventarioDet:EntityBase
     {
-
         public int Consecutivo { get; set; }
         public DateTime ? FechaHoraTransac {get; set; }
         public int ? DocTributarioId { get; set; }

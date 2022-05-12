@@ -109,7 +109,7 @@ namespace StatusERP.DataAccess
         public DbSet<MovInventarioEnc> MovsInventarioEnc { get; set; }
         public DbSet<PaqueteInv> PaquetesInv { get; set; }
         public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
-
+        public DbSet<TipoPago> TiposPago { get; set; }
 
         // Para tablas de FA
         public DbSet<Cliente> Clientes { get; set; }
@@ -223,20 +223,10 @@ namespace StatusERP.DataAccess
 
           
 
+            //CI - TipoPago
 
-            //CI - GlobalesCI
-
-            //modelBuilder.Entity<GlobalesCI>()
-            //    .HasOne(x => x.PaqueteContableId)
-            //    .WithOne()
-            //    .HasForeignKey<PaqueteContable>(y => y.Id);
-
-            //modelBuilder.Entity<GlobalesCI>()
-            //    .HasOne(x => x.TPartida)
-            //    .WithOne()
-            //    .HasForeignKey<TipoPartida>(y => y.Id
-            
-
+            modelBuilder.Entity<TipoPago>()
+                .HasIndex(p => p.CodTipoPago , "IxCodTipoPago");
 
             //CI - Lotes
 
