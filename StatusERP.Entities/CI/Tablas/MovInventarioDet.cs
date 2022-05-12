@@ -1,4 +1,5 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using StatusERP.Entities.AS.Tablas;
+using StatusERP.Entities.CG.Tablas;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,29 +8,21 @@ namespace StatusERP.Entities.CI.Tablas
     [Table("MovsInventarioDet", Schema = Constants.Conjunto)]
     public class MovInventarioDet:EntityBase
     {
-        [Required(ErrorMessage = "El consecutivo es requerido.")]
+
         public int Consecutivo { get; set; }
-
         public DateTime ? FechaHoraTransac {get; set; }
-
-        [StringLength(20)]
-        public string ? DocTributario { get; set; }
-
-        [StringLength(4)]
-        public string ? AjusteConfig { get; set; }
-
-        [Required(ErrorMessage = "El artículo es requerido.")]
-        [StringLength(20)]
-        public string Articulo { get; set; }
-
-        [StringLength(4)]
-        public string ? Bodega { get; set; }
-
-        [StringLength(8)]
-        public string ? Localizacion { get; set;}
-
-        [StringLength(15)]
-        public string ? Lote { get; set; }
+        public int ? DocTributarioId { get; set; }
+        public DocTributario docTributario { get; set; }
+        public int ? AjusteConfigId { get; set; }
+        public AjusteConfig ajusteConfig { get; set; }
+        public int ArticuloId { get; set; }
+        public Articulo articulo { get; set; }
+        public int ? BodegaId { get; set; }
+        public Bodega bodega { get; set; }
+        public int ? LocalizacionId { get; set;}
+        public Localizacion localizacion { get; set; }
+        public int ? LoteId { get; set; }
+        public Lote lote { get; set; }
 
         [Required(ErrorMessage = "El tipo es requerido.")]
         [StringLength(1)]
@@ -72,15 +65,13 @@ namespace StatusERP.Entities.CI.Tablas
         [Required(ErrorMessage = "La fecha es requerida.")]
         public DateTime Fecha { get; set; }
 
-        [StringLength(25)]
-        public string ? CentroCosto { get; set; }
+        public int ? CentroCuentaId { get; set; }
+        public CentroCuenta centroCuenta { get; set; }
 
-        [StringLength(6)]
-        public string ? UnidadDistribucion { get; set; }
+        public int ? UnidadDistribucion { get; set; }
+        public UnidadMedida unidadMedida { get; set; }
 
-        [StringLength(25)]
-        public string ? CuentaContable { get; set; }
-
+  
         [StringLength(10)]
         public string ? AsientoCardex { get; set; }
 

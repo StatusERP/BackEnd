@@ -151,6 +151,15 @@ builder.Services.AddScoped<ILoteRepository, LoteRepository>();
 builder.Services.AddScoped<IPaqueteInvService, PaqueteInvService>();
 builder.Services.AddScoped<IPaqueteInvRepository, PaqueteInvRepository>();
 
+builder.Services.AddScoped<IExistenciaBodegaService, ExistenciaBodegaService>();
+builder.Services.AddScoped<IExistenciaBodegaRepository, ExistenciaBodegaRepository>();
+
+builder.Services.AddScoped<IExistenciaLoteService, ExistenciaLoteService>();
+builder.Services.AddScoped<IExistenciaLoteRepository, ExistenciaLoteRepository>();
+
+builder.Services.AddScoped<IMovInventarioEncService, MovInventarioEncService>();
+builder.Services.AddScoped<IMovInventarioEncRepository, MovInventarioEncRepository>();
+
 builder.Services.AddControllers();
 
 

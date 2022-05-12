@@ -8033,18 +8033,14 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Articulo")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("BloqueaTrans")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Bodega")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("BodegaId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("CantDisponible")
                         .HasColumnType("decimal(28,8)");
@@ -8114,6 +8110,11 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BodegaId");
+
+                    b.HasIndex("ArticuloId", "BodegaId")
+                        .IsUnique();
 
                     b.ToTable("ExistenciaBodega", "H2C");
                 });
@@ -8747,19 +8748,16 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<DateTime>("FechaUltAceso")
+                    b.Property<DateTime>("FechaUltAcceso")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("NumPaquete")
-                        .HasColumnType("int");
-
                     b.Property<string>("UltimoUsuario")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -8771,8 +8769,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Property<string>("UsuarioCreador")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -16739,6 +16737,25 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentasExp");
 
                     b.Navigation("CCVentasLoc");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaBodega", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "articulo")
+                        .WithMany()
+                        .HasForeignKey("ArticuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Bodega", "bodega")
+                        .WithMany()
+                        .HasForeignKey("BodegaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("articulo");
+
+                    b.Navigation("bodega");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Lote", b =>

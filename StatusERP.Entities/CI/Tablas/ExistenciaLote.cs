@@ -1,48 +1,42 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.Entities.CI.Tablas
 {
     [Table("ExistenciaLotes", Schema = Constants.Conjunto)]
     public class ExistenciaLote:EntityBase
     {
-        [Required(ErrorMessage = "Se debe indicar una Bodega.")]
-        public int Bodega { get; set; }
+        public int BodegaId { get; set; }
+        public Bodega bodega { get; set; }
         
-        [Required(ErrorMessage = "Se debe indicar un código de artículo")]
-        public int Articulo { get; set; }
+        public int ArticuloId { get; set; }
+        public Articulo articulo { get; set; }
         
-        [Required(ErrorMessage = "Se debe indicar una localización")]
-        public int Localización { get; set; }
+        public int LocalizacionId { get; set; }
+        public Localizacion localizacion { get; set; }
         
-        [Required(ErrorMessage = "Se debe indicar un código de lote")]
-        public int Lote { get; set; }
+        public int LoteId { get; set; }
+        public Lote lote { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar la cantidad disponible.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantDisponible { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar la cantidad reservada.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantReservada { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar la cantidad no aprobada.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantNoAprobada { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar la cantidad vencida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantVencida { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar la cantidad remitida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantRemitida { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar el costo unitario en moneda local.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CostoUntLoc { get; set; }
         
-        [Required(ErrorMessage = "Se requiere ingresar el costo unitario en dólares.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CostoUntDol { get; set; }
     }
