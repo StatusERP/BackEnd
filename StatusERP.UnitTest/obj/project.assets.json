@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
+      "projectUniqueName": "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
       "projectName": "StatusERP.UnitTest",
-      "projectPath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
+      "projectPath": "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.UnitTest\\obj\\",
+      "outputPath": "C:\\Proyectos\\StatusERP\\StatusERP.UnitTest\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
