@@ -9,22 +9,21 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(10)]
         public string ? Consecutivo { get; set; }
         
-        [Required(ErrorMessage = "Debe indicarse el usuario.")]
+        [Required()]
         [StringLength(25)]
         public string Usuario { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la fecha.")]
         public DateTime FechaHora { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse el módulo origen.")]
+        [Required()]
         [StringLength(4)]
         public string ModuloOrigen { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la aplicación.")]
+        [Required()]
         [StringLength(250)]
         public string Aplicacion { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la referencia.")]
+        [Required()]
         [StringLength(200)]
         public string Referencia { get; set; }
 

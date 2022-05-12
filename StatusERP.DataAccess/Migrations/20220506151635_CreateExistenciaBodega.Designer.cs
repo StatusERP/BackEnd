@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220506151635_CreateExistenciaBodega")]
+    partial class CreateExistenciaBodega
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -6595,8 +6597,6 @@ namespace StatusERP.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
                     b.Property<string>("CodPaquete")
                         .IsRequired()
                         .HasMaxLength(4)
@@ -7666,9 +7666,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int>("UnidadMedidaId")
+                    b.Property<string>("UnidadMedida")
+                        .IsRequired()
                         .HasMaxLength(6)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(6)");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -7682,8 +7683,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UnidadMedidaId");
 
                     b.ToTable("ClasificacionesInv", "H2C");
                 });
@@ -8385,10 +8384,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("PaqueteContableId");
-
-                    b.HasIndex("TipoPartidaId");
 
                     b.ToTable("GlobalesCI", "H2C");
                 });
@@ -16391,6 +16386,15 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CuentaContable");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.CG.Tablas.PaqueteContable", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.GlobalesCI", null)
+                        .WithOne("PqtContable")
+                        .HasForeignKey("StatusERP.Entities.CG.Tablas.PaqueteContable", "Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Articulo", b =>
                 {
                     b.HasOne("StatusERP.Entities.CI.Tablas.CategoriaArticulo", "CategoriaArticulo")
@@ -16737,7 +16741,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentasLoc");
                 });
 
-<<<<<<< HEAD
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaBodega", b =>
                 {
                     b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "articulo")
@@ -16755,32 +16758,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("articulo");
 
                     b.Navigation("bodega");
-=======
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ClasificacionInv", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "unidadMedida")
-                        .WithMany()
-                        .HasForeignKey("UnidadMedidaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("unidadMedida");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
-                {
-                    b.HasOne("StatusERP.Entities.CG.Tablas.PaqueteContable", "PaqueteContable")
-                        .WithMany()
-                        .HasForeignKey("PaqueteContableId");
-
-                    b.HasOne("StatusERP.Entities.CG.Tablas.TipoPartida", "TipoPartida")
-                        .WithMany()
-                        .HasForeignKey("TipoPartidaId");
-
-                    b.Navigation("PaqueteContable");
-
-                    b.Navigation("TipoPartida");
->>>>>>> a3e58ebcb830bc58418d2938c2e0e1771a2e288f
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Lote", b =>
@@ -17196,6 +17173,12 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("FlujoCaja");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
+                {
+                    b.Navigation("PqtContable")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

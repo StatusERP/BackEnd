@@ -9,7 +9,6 @@ namespace StatusERP.Dto.Request.CI
         [StringLength(15)]
         public string CodLote { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar un código de articulo.")]
         public int ArticuloId { get; set; }
 
         public int? ProveedorId { get; set; }
@@ -17,16 +16,12 @@ namespace StatusERP.Dto.Request.CI
         [StringLength(15)]
         public string ? LoteProveedor { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar la fecha de entrada del lote.")]
         public DateTime FechaEntrada { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar fecha de vencimiento.")]
         public DateTime FechaVencimiento { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar fecha de cuarentena.")]
         public DateTime FechaCuarentena { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar la cantidad ingresada.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadIngresada { get; set; }
 
@@ -40,7 +35,6 @@ namespace StatusERP.Dto.Request.CI
 
         public string Notas { get; set; }
 
-        [Required(ErrorMessage = "Se requiere indicar el último ingreso.")]
         public int UltimoIngreso { get; set; }
 
         public DateTime FechaFabricacion { get; set; }
