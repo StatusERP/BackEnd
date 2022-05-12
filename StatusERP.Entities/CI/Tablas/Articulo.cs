@@ -209,15 +209,15 @@ namespace StatusERP.Entities.CI.Tablas
         
         public bool UsaReglasLocales { get; set; }
         
-        [Required(ErrorMessage = "Debe indicarse la unidad de almacén.")]
+      
         public int UnidadAlmacenId { get; set; }
         public UnidadMedida UnidadAlmacen { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la unidad de empaque.")]
+     
         public int UnidadEmpaqueId { get; set; }
         public UnidadMedida UnidadEmpaque { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la unidad de venta.")]
+      
         public int UnidadVentaId { get; set; }
         public UnidadMedida UnidadVenta { get; set; }
        
@@ -247,15 +247,15 @@ namespace StatusERP.Entities.CI.Tablas
         [StringLength(5)]
         public string ? Color { get; set; }
         
-        [Required(ErrorMessage = "Debe indicar un tipo de costo.")]
+      
         [StringLength(1)]
         public string TipoCosto { get; set; }
         
-        [Required(ErrorMessage = "Debe ingresar el valor del costo promedio último en moneda local.")]
+      
         [Column(TypeName = "decimal(28,8)")]
         public decimal CostoPromUltimoLoc { get; set; }
         
-        [Required(ErrorMessage = "Debe ingresar el valor del costo promedio último en dólares.")]
+       
         [Column(TypeName = "decimal(28,8)")]
         public decimal CostoPromUltimoDol { get; set; }
         

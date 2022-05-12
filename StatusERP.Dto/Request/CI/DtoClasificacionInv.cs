@@ -28,7 +28,7 @@ namespace StatusERP.Dto.Request.CI
 
         [Required(ErrorMessage = "Se requiere especificar la unidad de medida.")]
         [StringLength(6)]
-        public string UnidadMedida { get; set; }
+        public int UnidadMedidaId { get; set; }
     }
 }
 

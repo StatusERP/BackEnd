@@ -113,7 +113,7 @@ namespace StatusERP.Services.Implementations.CI
         }
 
         
-        public async Task<BaseResponseGeneric<ICollection<GlobalesCI>>> GetAsync(int page, int rows, string userId)
+        public async Task<BaseResponseGeneric<ICollection<GlobalesCI>>> GetAsync( string userId)
         {
             var response = new BaseResponseGeneric<ICollection<GlobalesCI>>();
             try
@@ -141,7 +141,7 @@ namespace StatusERP.Services.Implementations.CI
             return response;
         }
 
-               public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoGlobalesCI request, string userId)
+        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoGlobalesCI request, string userId)
         {
             var response = new BaseResponseGeneric<int>();
             try

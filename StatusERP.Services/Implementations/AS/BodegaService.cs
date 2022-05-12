@@ -150,18 +150,11 @@ public class BodegaService:IBodegaService
                 return response;
             }
 
-           // response.Result = await _repository.UpdateAsync(_mapper.Map<Bodega>(request));
+            Bodega bodega = _mapper.Map<Bodega>(request);
+            bodega.Id = id;
+            response.Result = await _repository.UpdateAsync(bodega);
              response.Success=true;
-            //{
-            //    Id = id,
-            //    CodBodega = request.CodBodega,
-            //    Nombre = request.Nombre,
-            //    Tipo = request.Tipo,
-            //    Activa = request.Activa,
-            //    Direccion = request.Direccion,
-            //    Updatedby = userId,
-            //    UpdateDate = DateTime.Now
-            //});
+           
         }
 
         catch (Exception ex)
