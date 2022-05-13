@@ -48,16 +48,18 @@ namespace StatusERP.DataAccess
 
             return success ? entity.Id : 0;
         }
-        public static async Task UpdateAsync<TEntityBase>(this DbContext context, TEntityBase entity)
-            where TEntityBase : EntityBase
+        public static async Task UpdateAsync<TEntityBase>(this DbContext context, TEntityBase entity, IMapper mapper)
+           where TEntityBase : EntityBase
         {
             var registro = await context.Set<TEntityBase>()
-           .AsNoTracking()
-           .FirstOrDefaultAsync(x => x.Id == entity.Id && !x.IsDeleted);
+                .AsTracking()
+                .SingleOrDefaultAsync(x => x.Id == entity.Id);
             if (registro == null) return;
-            
-            context.Set<TEntityBase>().Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
+
+            mapper.Map(entity, registro);
+
+            // context.Entry(registro).State = EntityState.Modified;
+
             await context.SaveChangesAsync();
         }
         public static async Task DeleteAsync<TEntityBase>(this DbContext context, TEntityBase entity)
