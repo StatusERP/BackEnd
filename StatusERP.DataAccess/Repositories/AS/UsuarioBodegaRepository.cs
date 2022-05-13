@@ -28,7 +28,7 @@ public class UsuarioBodegaRepository:StatusERPContextBase<UsuarioBodega>,IUsuari
 
     public async Task<int> UpdateAsync(UsuarioBodega usuarioBodega)
     {
-        await _dbContext.UpdateAsync(usuarioBodega,Mapper);
+        await _dbContext.UpdateAsync(usuarioBodega);
         return usuarioBodega.Id;
     }
 

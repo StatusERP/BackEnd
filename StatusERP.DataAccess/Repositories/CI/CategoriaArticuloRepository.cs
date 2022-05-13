@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(CategoriaArticulo CategoriaArticulo)
         {
-            await _dbContext.UpdateAsync(CategoriaArticulo, Mapper);
+            await _dbContext.UpdateAsync(CategoriaArticulo);
             return CategoriaArticulo.Id;
         }
     }

@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ExistenciaLote existenciaLote)
         {
-            await _dbContext.UpdateAsync(existenciaLote, Mapper);
+            await _dbContext.UpdateAsync(existenciaLote);
             return existenciaLote.Id;
         }
     }

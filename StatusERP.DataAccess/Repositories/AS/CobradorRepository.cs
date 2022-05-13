@@ -44,7 +44,7 @@ namespace StatusERP.DataAccess.Repositories.AS
 
         public async Task<int> UpdateAsync(Cobrador cobrador)
         {
-            await _dbContext.UpdateAsync(cobrador, Mapper);
+            await _dbContext.UpdateAsync(cobrador);
             return cobrador.Id;
         }
     }

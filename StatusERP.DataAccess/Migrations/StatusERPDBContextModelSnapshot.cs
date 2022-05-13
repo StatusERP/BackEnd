@@ -16754,7 +16754,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("articulo");
 
                     b.Navigation("bodega");
+<<<<<<< HEAD
 
+=======
+>>>>>>> aebff86be11f14b6525103a33a4584c58cecff03
                 });
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ClasificacionInv", b =>
                 {
@@ -17197,6 +17200,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("FlujoCaja");
                 });
 #pragma warning restore 612, 618
+
         }
     }
 }

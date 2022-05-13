@@ -45,10 +45,10 @@ namespace StatusERP.DataAccess.Repositories.AS
             return await _dbContext.SelectAsync<Impuesto>(page, rows);
         }
 
-        public async Task<int> UpdateAsync(Impuesto Impuesto)
+        public async Task<int> UpdateAsync(Impuesto impuesto)
         {
-            await _dbContext.UpdateAsync(Impuesto, Mapper);
-            return Impuesto.Id;
+            await _dbContext.UpdateAsync(impuesto);
+            return impuesto.Id;
         }
     }
 }

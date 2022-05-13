@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(DiarioEnc DiarioEnc)
         {
-            await _dbContext.UpdateAsync(DiarioEnc, Mapper);
+            await _dbContext.UpdateAsync(DiarioEnc);
             return DiarioEnc.Id;
         }
     }

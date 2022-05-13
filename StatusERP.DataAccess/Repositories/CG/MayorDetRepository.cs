@@ -38,7 +38,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(MayorDet MayorDet)
         {
-            await _dbContext.UpdateAsync(MayorDet, Mapper);
+            await _dbContext.UpdateAsync(MayorDet);
             return MayorDet.Id;
         }
     }

@@ -36,7 +36,7 @@ public class SucursalesRepository:StatusERPContextBase<Sucursal> ,ISucursalesRep
   
     public async Task<int> UpdateAsync(Sucursal sucursal)
     {
-        await _dbContext.UpdateAsync(sucursal, Mapper);
+        await _dbContext.UpdateAsync(sucursal);
         return sucursal.Id;
     }
 

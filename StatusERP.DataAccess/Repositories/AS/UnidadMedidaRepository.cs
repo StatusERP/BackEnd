@@ -28,13 +28,13 @@ public class UnidadMedidaRepository:StatusERPContextBase<UnidadMedida>,IUnidadMe
 
     public async Task<int> UpdateAsync(UnidadMedida unidadMedida)
     {
-        await _dbContext.UpdateAsync(unidadMedida,Mapper);
+        await _dbContext.UpdateAsync(unidadMedida);
         return unidadMedida.Id;
     }
 
     public async Task<int> DeleteAsync(int id, string userId)
     {
-        await _dbContext.DeleteAsync(new Zona
+        await _dbContext.DeleteAsync(new UnidadMedida
         {
             Id = id,
             Updatedby = userId
