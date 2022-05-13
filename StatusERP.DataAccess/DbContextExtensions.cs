@@ -51,6 +51,11 @@ namespace StatusERP.DataAccess
         public static async Task UpdateAsync<TEntityBase>(this DbContext context, TEntityBase entity)
             where TEntityBase : EntityBase
         {
+            var registro = await context.Set<TEntityBase>()
+           .AsNoTracking()
+           .FirstOrDefaultAsync(x => x.Id == entity.Id && !x.IsDeleted);
+            if (registro == null) return;
+            
             context.Set<TEntityBase>().Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
             await context.SaveChangesAsync();

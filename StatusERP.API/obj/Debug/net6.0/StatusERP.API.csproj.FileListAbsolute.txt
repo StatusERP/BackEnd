@@ -152,6 +152,12 @@ C:\Dev\statusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\ref\StatusERP.API.dll
 C:\Dev\statusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.pdb
 C:\Dev\statusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.genruntimeconfig.cache
 C:\Dev\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\refint\StatusERP.API.dll
+C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.AssemblyReference.cache
+C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfoInputs.cache
+C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
+C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
+C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.API.exe
@@ -229,9 +235,3 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\refint\StatusERP.A
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.genruntimeconfig.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\ref\StatusERP.API.dll
-C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.AssemblyReference.cache
-C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfoInputs.cache
-C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
-C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
-C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
