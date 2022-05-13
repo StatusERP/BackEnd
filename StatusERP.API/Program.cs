@@ -163,6 +163,12 @@ builder.Services.AddScoped<IMovInventarioEncRepository, MovInventarioEncReposito
 builder.Services.AddScoped<ITipoPagoService, TipoPagoService>();
 builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
 
+builder.Services.AddScoped<ITipoOperacionService, TipoOperacionService>();
+builder.Services.AddScoped<ITipoOperacionRepository, TipoOperacionRepository>();
+
+builder.Services.AddScoped<IConsecutivoInvService, ConsecutivoInvService>();
+builder.Services.AddScoped<IConsecutivoInvRepository, ConsecutivoInvRepository>();
+
 
 builder.Services.AddControllers();
 

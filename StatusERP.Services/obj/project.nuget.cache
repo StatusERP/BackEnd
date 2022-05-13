@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PBlldLiRwWi1AsN1ZDPty5eXuplW9Ydhpy5pLj+rfHfJlapKQAPkzJXK0J/VDKhsaCo9e6wWDrd6POxFc5Hz1Q==",
+  "dgSpecHash": "DKXhEMx75mqdX7eO11DA9L4laHhCa1tXIZMEvSFDeq6W+nasuYJFnEzt6aG1d5jL0+66AW5zxuvVUyWmwT/Y1g==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\StatusERP\\StatusERP.Services\\StatusERP.Services.csproj",
+  "projectFilePath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Services\\StatusERP.Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

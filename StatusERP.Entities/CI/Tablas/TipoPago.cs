@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using StatusERP.Entities.CP.Tablas;
 
 namespace StatusERP.Entities.CI.Tablas
 {

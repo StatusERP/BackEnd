@@ -105,6 +105,7 @@ namespace StatusERP.DataAccess
         public DbSet<PaqueteInv> PaquetesInv { get; set; }
         public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
         public DbSet<TipoPago> TiposPago { get; set; }
+        public DbSet<TipoOperacion> TiposOperacion { get; set; }
 
         // Para tablas de FA
         public DbSet<Cliente> Clientes { get; set; }
@@ -419,9 +420,12 @@ namespace StatusERP.DataAccess
                 .HasForeignKey(x => x.CtrCtaVentasExenExpId);
 
             //CI - TipoPago
-
             modelBuilder.Entity<TipoPago>()
                 .HasIndex(p => p.CodTipoPago , "IxCodTipoPago");
+
+            //CI - TipoPago
+            modelBuilder.Entity<TipoOperacion>()
+                .HasIndex(p => p.CodTipoOperacion, "IxCodTipoOperacion");
 
             //CI - Lotes
 
