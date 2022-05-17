@@ -6938,6 +6938,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "CodAjusteConfig" }, "IxCodAjusteConfig")
+                        .IsUnique();
+
                     b.ToTable("AjustesConfig", "H2C");
                 });
 
@@ -6965,7 +6968,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("SubsubtipoId")
+                    b.Property<string>("Subsubtipo")
                         .IsRequired()
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
@@ -6979,6 +6982,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "AjusteConfig", "Subsubtipo" }, "IxAjusteSubsubtipo")
+                        .IsUnique();
 
                     b.ToTable("AjustesSubSubTipo", "H2C");
                 });
@@ -7021,6 +7027,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "AjusteConfig", "SubTipo" }, "IxAjusteSubtipo")
+                        .IsUnique();
 
                     b.ToTable("AjustesSubTipo", "H2C");
                 });
@@ -7770,6 +7779,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "CodConsecutivo" }, "IxCodConsecutivo")
+                        .IsUnique();
+
                     b.ToTable("ConsecutivosInv", "H2C");
                 });
 
@@ -7807,6 +7819,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Consecutivo", "Usuario" }, "IxConsecutivoInvUsuario");
 
                     b.ToTable("ConsecutivosInvUsuarios", "H2C");
                 });
@@ -8130,10 +8144,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Articulo")
+                    b.Property<int>("ArticuloId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Bodega")
+                    b.Property<int>("BodegaId")
                         .HasColumnType("int");
 
                     b.Property<decimal>("CantDisponible")
@@ -8168,10 +8182,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Localización")
+                    b.Property<int>("LocalizacionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Lote")
+                    b.Property<int>("LoteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
@@ -8183,6 +8197,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ArticuloId");
+
+                    b.HasIndex("BodegaId");
+
+                    b.HasIndex("LocalizacionId");
+
+                    b.HasIndex("LoteId");
 
                     b.ToTable("ExistenciaLotes", "H2C");
                 });
@@ -8437,6 +8459,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "Articulo", "Lote", "SecuenciaLote" }, "IxArtLoteSecLote")
+                        .IsUnique();
+
                     b.ToTable("IngresosLotes", "H2C");
                 });
 
@@ -8531,29 +8556,24 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AjusteConfig")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("AjusteConfigId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Articulo")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("int");
 
                     b.Property<string>("AsientoCardex")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Bodega")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("BodegaId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Cantidad")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<string>("CentroCosto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CentroCuentaId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Consecutivo")
                         .HasColumnType("int");
@@ -8575,17 +8595,12 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<string>("CuentaContable")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
                     b.Property<string>("DocFiscal")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("DocTributario")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("DocTributarioId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
@@ -8596,13 +8611,11 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Localizacion")
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                    b.Property<int?>("LocalizacionId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Lote")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                    b.Property<int?>("LoteId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Naturaleza")
                         .IsRequired()
@@ -8638,9 +8651,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("UnidadDistribucion")
-                        .HasMaxLength(6)
-                        .HasColumnType("nvarchar(6)");
+                    b.Property<int?>("UnidadDistribucion")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -8650,7 +8662,26 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
+                    b.Property<int>("unidadMedidaId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("AjusteConfigId");
+
+                    b.HasIndex("ArticuloId");
+
+                    b.HasIndex("BodegaId");
+
+                    b.HasIndex("CentroCuentaId");
+
+                    b.HasIndex("DocTributarioId");
+
+                    b.HasIndex("LocalizacionId");
+
+                    b.HasIndex("LoteId");
+
+                    b.HasIndex("unidadMedidaId");
 
                     b.ToTable("MovsInventarioDet", "H2C");
                 });
@@ -8784,6 +8815,92 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("PaquetesInv", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.TipoOperacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CodTipoOperacion")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodTipoOperacion" }, "IxCodTipoOperacion");
+
+                    b.ToTable("TiposOperacion", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.TipoPago", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CodTipoPago")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodTipoPago" }, "IxCodTipoPago");
+
+                    b.ToTable("TiposPago", "H2C");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.UsuarioAjusteInv", b =>
                 {
                     b.Property<int>("Id")
@@ -8822,6 +8939,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "Usuario", "AjusteConfig" }, "IxUsuarioAjuste")
+                        .IsUnique();
 
                     b.ToTable("UsuarioAjusteInv", "H2C");
                 });
@@ -16737,6 +16857,17 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentasLoc");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ClasificacionInv", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "unidadMedida")
+                        .WithMany()
+                        .HasForeignKey("UnidadMedidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("unidadMedida");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaBodega", b =>
                 {
                     b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "articulo")
@@ -16754,20 +16885,41 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("articulo");
 
                     b.Navigation("bodega");
-<<<<<<< HEAD
-
-=======
->>>>>>> aebff86be11f14b6525103a33a4584c58cecff03
                 });
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ClasificacionInv", b =>
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaLote", b =>
                 {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "unidadMedida")
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "articulo")
                         .WithMany()
-                        .HasForeignKey("UnidadMedidaId")
+                        .HasForeignKey("ArticuloId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("unidadMedida");
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Bodega", "bodega")
+                        .WithMany()
+                        .HasForeignKey("BodegaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Localizacion", "localizacion")
+                        .WithMany()
+                        .HasForeignKey("LocalizacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Lote", "lote")
+                        .WithMany()
+                        .HasForeignKey("LoteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("articulo");
+
+                    b.Navigation("bodega");
+
+                    b.Navigation("localizacion");
+
+                    b.Navigation("lote");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.GlobalesCI", b =>
@@ -16800,6 +16952,61 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Articulo");
 
                     b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.MovInventarioDet", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.AjusteConfig", "ajusteConfig")
+                        .WithMany()
+                        .HasForeignKey("AjusteConfigId");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "articulo")
+                        .WithMany()
+                        .HasForeignKey("ArticuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Bodega", "bodega")
+                        .WithMany()
+                        .HasForeignKey("BodegaId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "centroCuenta")
+                        .WithMany()
+                        .HasForeignKey("CentroCuentaId");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "docTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Localizacion", "localizacion")
+                        .WithMany()
+                        .HasForeignKey("LocalizacionId");
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Lote", "lote")
+                        .WithMany()
+                        .HasForeignKey("LoteId");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.UnidadMedida", "unidadMedida")
+                        .WithMany()
+                        .HasForeignKey("unidadMedidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ajusteConfig");
+
+                    b.Navigation("articulo");
+
+                    b.Navigation("bodega");
+
+                    b.Navigation("centroCuenta");
+
+                    b.Navigation("docTributario");
+
+                    b.Navigation("localizacion");
+
+                    b.Navigation("lote");
+
+                    b.Navigation("unidadMedida");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>
@@ -17200,7 +17407,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("FlujoCaja");
                 });
 #pragma warning restore 612, 618
-
         }
     }
 }

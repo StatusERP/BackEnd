@@ -112,6 +112,7 @@ namespace StatusERP.DataAccess
         public DbSet<TipoPago> TiposPago { get; set; }
         public DbSet<TipoOperacion> TiposOperacion { get; set; }
 
+
         // Para tablas de FA
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<TipoFactura> TiposFactura { get; set; }
@@ -220,7 +221,6 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => new { p.CodArticulo }).IsUnique();
 
 
-            //CI - CategoriaArticulo
 
           
 
@@ -228,9 +228,13 @@ namespace StatusERP.DataAccess
             modelBuilder.Entity<TipoPago>()
                 .HasIndex(p => p.CodTipoPago , "IxCodTipoPago");
 
-            //CI - TipoPago
+            //CI - TipoOperacion
             modelBuilder.Entity<TipoOperacion>()
                 .HasIndex(p => p.CodTipoOperacion, "IxCodTipoOperacion");
+
+            ////CI - ConsecutivoInvUsuario
+            //modelBuilder.Entity<ConsecutivoInvUsuario>()
+            //    .HasIndex(p => p.Consecutivo, p.Usuario, "IxConsecutivoUsuario");
 
             //CI - Lotes
 

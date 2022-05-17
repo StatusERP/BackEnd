@@ -6,11 +6,11 @@ namespace StatusERP.Entities.CI.Tablas
     [Table("UsuarioAjusteInv", Schema = Constants.Conjunto)]
     public class UsuarioAjusteInv:EntityBase
     {
-        [Required(ErrorMessage = "Debe especificarse un usuario.")]
+        [Required]
         [StringLength(25)]
         public string Usuario { get; set; }
         
-        [Required(ErrorMessage = "Debe especificarse el código del ajuste.")]
+        [Required]
         [StringLength(4)]
         public string AjusteConfig { get; set; }
     }
