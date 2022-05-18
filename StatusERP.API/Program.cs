@@ -166,12 +166,14 @@ builder.Services.AddScoped<IExistenciaLoteRepository, ExistenciaLoteRepository>(
 builder.Services.AddScoped<IGlobalesCIService, GlobalesCIService>();
 builder.Services.AddScoped<IGlobalesCIRepository, GlobalesCIRepository>();
 
-
 builder.Services.AddScoped<IIngresoLoteService, IngresoLoteService>();
 builder.Services.AddScoped<IIngresoLoteRepository, IngresoLoteRepository>();
 
 builder.Services.AddScoped<ILoteService, LoteService>();
 builder.Services.AddScoped<ILoteRepository, LoteRepository>();
+
+builder.Services.AddScoped<IMovInventarioDetService, MovInventarioDetService>();
+builder.Services.AddScoped<IMovInventarioDetRepository, MovInventarioDetRepository>();
 
 builder.Services.AddScoped<IMovInventarioEncService, MovInventarioEncService>();
 builder.Services.AddScoped<IMovInventarioEncRepository, MovInventarioEncRepository>();

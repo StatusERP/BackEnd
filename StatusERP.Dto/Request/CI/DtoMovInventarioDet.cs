@@ -5,81 +5,73 @@ namespace StatusERP.Dto.Request.CI
 {
     public class DtoMovInventarioDet
     {
-        //public int Id { get; set; }
-        //public int Consecutivo { get; set; }
-        //public DateTime? FechaHoraTransac { get; set; }
+        public int MovInventarioEncId { get; set; }
 
-        //[StringLength(20)]
-        //public string? DocTributario { get; set; }
+        public int Consecutivo { get; set; }
 
-        //[StringLength(4)]
-        //public string? AjusteConfig { get; set; }
+        public DateTime? FechaHoraTransac { get; set; }
 
-        //[Required(ErrorMessage = "El artículo es requerido.")]
-        //[StringLength(20)]
-        //public string Articulo { get; set; }
+        public int? DocTributarioId { get; set; }
 
-        //[StringLength(4)]
-        //public string? Bodega { get; set; }
+        public int? AjusteConfigId { get; set; }
 
-        //[StringLength(8)]
-        //public string? Localizacion { get; set; }
+        public int ArticuloId { get; set; }
 
-        //[StringLength(15)]
-        //public string? Lote { get; set; }
+        public int? BodegaId { get; set; }
 
-        //[Required(ErrorMessage = "El tipo es requerido.")]
-        //[StringLength(1)]
-        //public string Tipo { get; set; }
+        public int? LocalizacionId { get; set; }
 
-        //[Required(ErrorMessage = "El subtipo es requerido.")]
-        //[StringLength(1)]
-        //public string Subtipo { get; set; }
+        public int? LoteId { get; set; }
 
-        //[Required(ErrorMessage = "El subsubtipo es requerido.")]
-        //[StringLength(1)]
-        //public string Subsubtipo { get; set; }
+        [Required(ErrorMessage = "El tipo es requerido.")]
+        [StringLength(1)]
+        public string Tipo { get; set; }
 
-        //[Required(ErrorMessage = "La naturaleza es requerida.")]
-        //[StringLength(1)]
-        //public string Naturaleza { get; set; }
+        [Required(ErrorMessage = "El subtipo es requerido.")]
+        [StringLength(1)]
+        public string Subtipo { get; set; }
 
-        //[Column(TypeName = "decimal(28,8)")]
-        //public decimal Cantidad { get; set; }
+        [Required(ErrorMessage = "El subsubtipo es requerido.")]
+        [StringLength(1)]
+        public string Subsubtipo { get; set; }
 
-        //[Column(TypeName = "decimal(28,8)")]
-        //public decimal CostoTotLoc { get; set; }
+        [Required(ErrorMessage = "La naturaleza es requerida.")]
+        [StringLength(1)]
+        public string Naturaleza { get; set; }
 
-        //[Column(TypeName = "decimal(28,8)")]
-        //public decimal CostoTotDol { get; set; }
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal Cantidad { get; set; }
 
-        //[Column(TypeName = "decimal(28,8)")]
-        //public decimal PrecioTotalLocal { get; set; }
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal CostoTotLoc { get; set; }
 
-        //[Column(TypeName = "decimal(28,8)")]
-        //public decimal PrecioTotalDolar { get; set; }
-        //public bool Contabilizada { get; set; }
-        //public DateTime Fecha { get; set; }
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal CostoTotDol { get; set; }
 
-        //[StringLength(25)]
-        //public string? CentroCosto { get; set; }
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal PrecioTotalLocal { get; set; }
 
-        //[StringLength(6)]
-        //public string? UnidadDistribucion { get; set; }
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal PrecioTotalDolar { get; set; }
 
-        //[StringLength(25)]
-        //public string? CuentaContable { get; set; }
+        public bool Contabilizada { get; set; }
 
-        //[StringLength(10)]
-        //public string? AsientoCardex { get; set; }
+        public DateTime Fecha { get; set; }
 
-        //[StringLength(50)]
-        //public string? DocFiscal { get; set; }
+        public int? CentroCuentaId { get; set; }
 
-        //[StringLength(4)]
-        //public string? TipoOperacion { get; set; }
+        public int? UnidadDistribucionId { get; set; }
 
-        //[StringLength(10)]
-        //public string? TipoPago { get; set; }
+        [StringLength(10)]
+        public string? AsientoCardex { get; set; }
+
+        [StringLength(50)]
+        public string? DocFiscal { get; set; }
+
+        [StringLength(4)]
+        public int? TipoOperacionId { get; set; }
+
+        [StringLength(10)]
+        public int? TipoPagoId { get; set; }
     }
 }

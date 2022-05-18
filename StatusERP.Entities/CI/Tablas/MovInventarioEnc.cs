@@ -6,9 +6,11 @@ namespace StatusERP.Entities.CI.Tablas
     [Table("MovsInventarioEnc", Schema = Constants.Conjunto)]
     public class MovInventarioEnc:EntityBase
     {
-        [StringLength(10)]
-        public string ? Consecutivo { get; set; }
-        
+
+        public int? ConsecutivoId { get; set; }
+        [ForeignKey(nameof(ConsecutivoId))]
+        public ConsecutivoInv consecutivoInv { get; set; }
+
         [Required()]
         [StringLength(25)]
         public string Usuario { get; set; }

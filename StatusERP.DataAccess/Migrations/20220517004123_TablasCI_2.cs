@@ -188,12 +188,12 @@ namespace StatusERP.DataAccess.Migrations
                     table.PrimaryKey("PK_TiposPago", x => x.Id);
                 });
 
-            migrationBuilder.CreateIndex(
-                name: "IxUsuarioAjuste",
-                schema: "H2C",
-                table: "UsuarioAjusteInv",
-                columns: new[] { "Usuario", "AjusteConfig" },
-                unique: true);
+            //migrationBuilder.CreateIndex(
+            //    name: "IxUsuarioAjuste",
+            //    schema: "H2C",
+            //    table: "UsuarioAjusteInv",
+            //    columns: new[] { "Usuario", "AjusteConfig" },
+            //    unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_MovsInventarioDet_AjusteConfigId",
@@ -348,7 +348,7 @@ namespace StatusERP.DataAccess.Migrations
                 principalSchema: "H2C",
                 principalTable: "Localizaciones",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_ExistenciaLotes_Lotes_LoteId",
@@ -432,7 +432,7 @@ namespace StatusERP.DataAccess.Migrations
                 principalSchema: "H2C",
                 principalTable: "UnidadesMedida",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.NoAction);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -505,10 +505,10 @@ namespace StatusERP.DataAccess.Migrations
                 name: "TiposPago",
                 schema: "H2C");
 
-            migrationBuilder.DropIndex(
-                name: "IxUsuarioAjuste",
-                schema: "H2C",
-                table: "UsuarioAjusteInv");
+            //migrationBuilder.DropIndex(
+            //    name: "IxUsuarioAjuste",
+            //    schema: "H2C",
+            //    table: "UsuarioAjusteInv");
 
             migrationBuilder.DropIndex(
                 name: "IX_MovsInventarioDet_AjusteConfigId",
