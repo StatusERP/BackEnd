@@ -141,7 +141,7 @@ builder.Services.AddScoped<IAjusteSubSubTipoRepository, AjusteSubSubTipoReposito
 
 builder.Services.AddScoped<IAjusteSubTipoService, AjusteSubTipoService>();
 builder.Services.AddScoped<IAjusteSubTipoRepository, AjusteSubTipoRepository>();
-
+   
 builder.Services.AddScoped<IArticuloService, ArticuloService>();
 builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
 
@@ -156,6 +156,12 @@ builder.Services.AddScoped<IConsecutivoInvRepository, ConsecutivoInvRepository>(
 
 builder.Services.AddScoped<IConsecutivoInvUsuarioService, ConsecutivoInvUsuarioService>();
 builder.Services.AddScoped<IConsecutivoInvUsuarioRepository, ConsecutivoInvUsuarioRepository>();
+
+builder.Services.AddScoped<IDocumentoInvDetService, DocumentoInvDetService>();
+builder.Services.AddScoped<IDocumentoInvDetRepository, DocumentoInvDetRepository>();
+
+builder.Services.AddScoped<IDocumentoInvEncService, DocumentoInvEncService>();
+builder.Services.AddScoped<IDocumentoInvEncRepository, DocumentoInvEncRepository>();
 
 builder.Services.AddScoped<IExistenciaBodegaService, ExistenciaBodegaService>();
 builder.Services.AddScoped<IExistenciaBodegaRepository, ExistenciaBodegaRepository>();

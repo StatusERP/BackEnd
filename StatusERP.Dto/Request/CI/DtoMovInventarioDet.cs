@@ -68,10 +68,8 @@ namespace StatusERP.Dto.Request.CI
         [StringLength(50)]
         public string? DocFiscal { get; set; }
 
-        [StringLength(4)]
         public int? TipoOperacionId { get; set; }
 
-        [StringLength(10)]
         public int? TipoPagoId { get; set; }
     }
 }
