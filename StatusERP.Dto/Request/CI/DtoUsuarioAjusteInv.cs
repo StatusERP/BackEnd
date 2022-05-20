@@ -6,11 +6,9 @@ namespace StatusERP.Dto.Request.CI
     public class DtoUsuarioAjusteInv
     {
         [Required(ErrorMessage = "Debe especificarse un usuario.")]
-        [StringLength(25)]
+        [StringLength(250)]
         public string Usuario { get; set; }
 
-        [Required(ErrorMessage = "Debe especificarse el código del ajuste.")]
-        [StringLength(4)]
-        public string AjusteConfig { get; set; }
+        public int AjusteConfig { get; set; }
     }
 }

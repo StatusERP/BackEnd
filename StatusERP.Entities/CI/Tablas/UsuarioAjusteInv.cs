@@ -7,11 +7,11 @@ namespace StatusERP.Entities.CI.Tablas
     public class UsuarioAjusteInv:EntityBase
     {
         [Required]
-        [StringLength(25)]
+        [StringLength(250)]
         public string Usuario { get; set; }
         
-        [Required]
-        [StringLength(4)]
-        public string AjusteConfig { get; set; }
+        public int AjusteConfig { get; set; }
+        public AjusteConfig ajusteConfig { get; set; }
+
     }
 }

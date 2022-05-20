@@ -188,12 +188,6 @@ namespace StatusERP.DataAccess.Migrations
                     table.PrimaryKey("PK_TiposPago", x => x.Id);
                 });
 
-            //migrationBuilder.CreateIndex(
-            //    name: "IxUsuarioAjuste",
-            //    schema: "H2C",
-            //    table: "UsuarioAjusteInv",
-            //    columns: new[] { "Usuario", "AjusteConfig" },
-            //    unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_MovsInventarioDet_AjusteConfigId",
@@ -505,10 +499,6 @@ namespace StatusERP.DataAccess.Migrations
                 name: "TiposPago",
                 schema: "H2C");
 
-            //migrationBuilder.DropIndex(
-            //    name: "IxUsuarioAjuste",
-            //    schema: "H2C",
-            //    table: "UsuarioAjusteInv");
 
             migrationBuilder.DropIndex(
                 name: "IX_MovsInventarioDet_AjusteConfigId",

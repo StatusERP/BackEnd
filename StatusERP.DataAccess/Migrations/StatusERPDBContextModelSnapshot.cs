@@ -8932,10 +8932,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("AjusteConfig")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("AjusteConfig")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -8958,12 +8956,17 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Property<string>("Usuario")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("ajusteConfigId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex(new[] { "Usuario", "AjusteConfig" }, "IxUsuarioAjuste")
+                    b.HasIndex("ajusteConfigId");
+
+                    b.HasIndex(new[] { "Usuario", "AjusteConfig" }, "IxUsuarioAjusteInv_UsAj")
                         .IsUnique();
 
                     b.ToTable("UsuarioAjusteInv", "H2C");
@@ -17153,6 +17156,17 @@ namespace StatusERP.DataAccess.Migrations
                         .HasForeignKey("ConsecutivoId");
 
                     b.Navigation("consecutivoInv");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.UsuarioAjusteInv", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.AjusteConfig", "ajusteConfig")
+                        .WithMany()
+                        .HasForeignKey("ajusteConfigId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ajusteConfig");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CP.Tablas.DetalleRetencion", b =>

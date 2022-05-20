@@ -9,7 +9,7 @@ namespace StatusERP.DataAccess.Configurations.CI
         public void Configure(EntityTypeBuilder<UsuarioAjusteInv> builder)
         {
             builder
-                .HasIndex(p => new { p.Usuario, p.AjusteConfig}, "IxUsuarioAjuste")
+                .HasIndex(p => new { p.Usuario, p.AjusteConfig}, "IxUsuarioAjusteInv_UsAj")
                 .IsUnique();
         }
     }

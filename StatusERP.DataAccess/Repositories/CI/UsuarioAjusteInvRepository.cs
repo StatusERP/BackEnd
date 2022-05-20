@@ -12,7 +12,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         }
 
-        public async Task<UsuarioAjusteInv?> BuscarUsuarioAjusteInvAsync(string usuario, string ajusteConfig)
+        public async Task<UsuarioAjusteInv?> BuscarUsuarioAjusteInvAsync(string usuario, int ajusteConfig)
         {
             return await _dbContext.UsuarioAjusteInv
             .AsNoTracking()

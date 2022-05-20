@@ -21,7 +21,7 @@ namespace StatusERP.Services.Implementations.CI
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoUsuarioAjusteInv request, string userId, string usuario, string ajusteConfig)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoUsuarioAjusteInv request, string userId, string usuario, int ajusteConfig)
         {
             var response = new BaseResponseGeneric<int>();
             try
