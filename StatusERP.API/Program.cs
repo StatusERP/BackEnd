@@ -112,6 +112,13 @@ builder.Services.AddScoped<IPaisRepository, PaisRepository>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 
 
+// Entidades Módulo AS
+
+builder.Services.AddScoped<ICategoriaClienteRepository, CategoriaClienteRepository>();
+builder.Services.AddScoped<ICategoriaClienteService, CategoriaClienteService>();
+
+
+
 // Entidades Módulo CG
 
 builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();

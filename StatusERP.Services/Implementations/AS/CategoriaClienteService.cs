@@ -31,7 +31,7 @@ public class CategoriaClienteService : ICategoriaClienteService
 
             if (buscarPrivilegio == null)
             {
-                response.Errors.Add($"No tiene privilegios para crear CategoriaClientes.");
+                response.Errors.Add($"No tiene privilegios para crear Categorías de Clientes.");
                 response.Success = false;
                 return response;
             }
@@ -44,6 +44,32 @@ public class CategoriaClienteService : ICategoriaClienteService
             response.Result = await _repository.CreateAsync(new CategoriaCliente
             {
                 CodCategoriaCliente = request.CodCategoriaCliente,
+                Descripcion = request.Descripcion,
+                CtrCtaVentasId = request.CtrCtaVentasId,
+                CtrCtaDescGralId = request.CtrCtaDescGralId,
+                CtrCtaCostVentId = request.CtrCtaCostVentId,
+                CtrCtaDescLinId = request.CtrCtaDescLinId,
+                CtrCtaCostLinId = request.CtrCtaCostLinId,
+                CtrCtaVendComId = request.CtrCtaVendComId,
+                CtrCtaCobrComId = request.CtrCtaCobrComId,
+                CtrCtaCCId = request.CtrCtaCCId,
+                CtrCtaLCId = request.CtrCtaLCId,
+                CtrCtaContadoId = request.CtrCtaContadoId,
+                CtrCtaProntoPagoCCId = request.CtrCtaProntoPagoCCId,
+                CtrCtaIntMoraCCId = request.CtrCtaIntMoraCCId,
+                CtrCtaRecibosCCId = request.CtrCtaRecibosCCId,
+                CtrCtaDebitoCCId = request.CtrCtaDebitoCCId,
+                CtrCtaCreditoCCId = request.CtrCtaCreditoCCId,
+                CtrCtaImpuesto1CCId = request.CtrCtaImpuesto1CCId,
+                CtrCtaImpuesto2CCId = request.CtrCtaImpuesto2CCId,
+                CtrCtaRubro1CCId = request.CtrCtaRubro1CCId,
+                CtrCtaRubro2CCId = request.CtrCtaRubro2CCId,
+                CtrCtaAnticipoCCId = request.CtrCtaAnticipoCCId,
+                CtrCtaDescBonifId = request.CtrCtaDescBonifId,
+                CtrCtaDevVentasId = request.CtrCtaDevVentasId,
+                CtrCtaIntCorrId = request.CtrCtaIntCorrId,
+                CtrCtaVentasExenId = request.CtrCtaVentasExenId,
+                CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
                 IsDeleted = false,
                 Updatedby = userId,
                 UpdateDate = DateTime.Now,
@@ -101,7 +127,7 @@ public class CategoriaClienteService : ICategoriaClienteService
 
             if (buscarPrivilegio == null)
             {
-                response.Errors.Add($"No tiene privilegios para consultar Categorías de Cliente.");
+                response.Errors.Add($"No tiene privilegios para consultar Categorías de Clientes.");
                 response.Success = false;
                 return response;
             }
@@ -157,6 +183,32 @@ public class CategoriaClienteService : ICategoriaClienteService
             {
                 Id = id,
                 CodCategoriaCliente = request.CodCategoriaCliente,
+                Descripcion = request.Descripcion,
+                CtrCtaVentasId = request.CtrCtaVentasId,
+                CtrCtaDescGralId = request.CtrCtaDescGralId,
+                CtrCtaCostVentId = request.CtrCtaCostVentId,
+                CtrCtaDescLinId = request.CtrCtaDescLinId,
+                CtrCtaCostLinId = request.CtrCtaCostLinId,
+                CtrCtaVendComId = request.CtrCtaVendComId,
+                CtrCtaCobrComId = request.CtrCtaCobrComId,
+                CtrCtaCCId = request.CtrCtaCCId,
+                CtrCtaLCId = request.CtrCtaLCId,
+                CtrCtaContadoId = request.CtrCtaContadoId,
+                CtrCtaProntoPagoCCId = request.CtrCtaProntoPagoCCId,
+                CtrCtaIntMoraCCId = request.CtrCtaIntMoraCCId,
+                CtrCtaRecibosCCId = request.CtrCtaRecibosCCId,
+                CtrCtaDebitoCCId = request.CtrCtaDebitoCCId,
+                CtrCtaCreditoCCId = request.CtrCtaCreditoCCId,
+                CtrCtaImpuesto1CCId = request.CtrCtaImpuesto1CCId,
+                CtrCtaImpuesto2CCId = request.CtrCtaImpuesto2CCId,
+                CtrCtaRubro1CCId = request.CtrCtaRubro1CCId,
+                CtrCtaRubro2CCId = request.CtrCtaRubro2CCId,
+                CtrCtaAnticipoCCId = request.CtrCtaAnticipoCCId,
+                CtrCtaDescBonifId = request.CtrCtaDescBonifId,
+                CtrCtaDevVentasId = request.CtrCtaDevVentasId,
+                CtrCtaIntCorrId = request.CtrCtaIntCorrId,
+                CtrCtaVentasExenId = request.CtrCtaVentasExenId,
+                CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
                 IsDeleted = false,
                 Updatedby = userId,
                 UpdateDate = DateTime.Now,
