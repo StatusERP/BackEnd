@@ -13,11 +13,9 @@ namespace StatusERP.Dto.Request.AS
         [StringLength(40)]
         public string Descripcion { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar valor del Impuesto 1")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal Impuesto1 { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar valor del Impuesto 2")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal Impuesto2 { get; set; }
 
@@ -42,67 +40,29 @@ namespace StatusERP.Dto.Request.AS
 
         public bool ContabDevImp2 { get; set; }
 
-        public int CtroCtaImp1 { get; set; }
+        public int? CtroCtaImp1GenId { get; set; }
 
-        [StringLength(25)]
-        public string? CtrImp2Gen { get; set; }
+        public int? CtroCtaImp2GenId { get; set; }
 
-        [StringLength(25)]
-        public string? CtaImp2Gen { get; set; }
+        public int? CtroCtaImp1GenVtsId { get; set; }
 
-        [StringLength(25)]
-        public string? CtrImp1GenVts { get; set; }
+        public int? CtroCtaImp2GenVtsId { get; set; }
 
-        [StringLength(25)]
-        public string? CtaImp1GenVts { get; set; }
+        public int? CtroCtaImp1DescCompId { get; set; }
 
-        [StringLength(25)]
-        public string? CtrImp2GenVts { get; set; }
+        public int? CtroCtaImp2DescCompId { get; set; }
 
-        [StringLength(25)]
-        public string? CtaImp2GenVts { get; set; }
+        public int? CtroCtaImp1DevCompId { get; set; }
 
-        [StringLength(25)]
-        public string? CtrImp1DesComp { get; set; }
+        public int? CtroCtaImp2DevCompId { get; set; }
 
-        [StringLength(25)]
-        public string? CtaImp1DesComp { get; set; }
+        public int? CtroCtaImp1DevVtsId { get; set; }
 
-        [StringLength(25)]
-        public string? CtrImp2DesComp { get; set; }
+        public int? CtroCtaImp2DevVtsId { get; set; }
 
-        [StringLength(25)]
-        public string? CtaImp2DesComp { get; set; }
+        public int? TipoImpuesto1Id { get; set; }
 
-        [StringLength(25)]
-        public string? CtrImp1DevComp { get; set; }
-
-        [StringLength(25)]
-        public string? CtaImp1DevComp { get; set; }
-
-        [StringLength(25)]
-        public string? CtrImp2DevComp { get; set; }
-
-        [StringLength(25)]
-        public string? CtaImp2DevComp { get; set; }
-
-        [StringLength(25)]
-        public string? CtrImp1DevVentas { get; set; }
-
-        [StringLength(25)]
-        public string? CtaImp1DevVentas { get; set; }
-
-        [StringLength(25)]
-        public string? CtrImp2DevVentas { get; set; }
-
-        [StringLength(25)]
-        public string? CtaImp2DevVentas { get; set; }
-
-        [StringLength(4)]
-        public string? TipoImpuesto1 { get; set; }
-
-        [StringLength(4)]
-        public string? TipoImpuesto2 { get; set; }
+        public int? TipoImpuesto2Id { get; set; }
 
         [StringLength(2)]
         public string? TipoTarifa1 { get; set; }

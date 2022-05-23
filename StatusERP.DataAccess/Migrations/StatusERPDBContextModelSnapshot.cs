@@ -1216,10 +1216,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<int>("CentroCuentaId")
-                        .HasColumnType("int")
-                        .HasColumnName("CtroCtaImp1");
-
                     b.Property<string>("CodImpuesto")
                         .IsRequired()
                         .HasMaxLength(4)
@@ -1239,77 +1235,35 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<string>("CtaImp1DesComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp1DescCompId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp1DevComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp1DevCompId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp1DevVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp1DevVtsId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp1GenVts")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp1GenId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp2DesComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp1GenVtsId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp2DevComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp2DescCompId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp2DevVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp2DevCompId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp2Gen")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp2DevVtsId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtaImp2GenVts")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp2GenId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("CtrImp1DesComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp1DevComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp1DevVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp1GenVts")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp2DesComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp2DevComp")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp2DevVentas")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp2Gen")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CtrImp2GenVts")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CtroCtaImp2GenVtsId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -1338,13 +1292,13 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("TipoImpuesto1")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("TipoImpuesto1Id")
+                        .IsRequired()
+                        .HasColumnType("int");
 
-                    b.Property<string>("TipoImpuesto2")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("TipoImpuesto2Id")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<string>("TipoTarifa1")
                         .HasMaxLength(2)
@@ -1367,7 +1321,32 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CentroCuentaId");
+                    b.HasIndex("CtroCtaImp1DescCompId");
+
+                    b.HasIndex("CtroCtaImp1DevCompId");
+
+                    b.HasIndex("CtroCtaImp1DevVtsId");
+
+                    b.HasIndex("CtroCtaImp1GenId");
+
+                    b.HasIndex("CtroCtaImp1GenVtsId");
+
+                    b.HasIndex("CtroCtaImp2DescCompId");
+
+                    b.HasIndex("CtroCtaImp2DevCompId");
+
+                    b.HasIndex("CtroCtaImp2DevVtsId");
+
+                    b.HasIndex("CtroCtaImp2GenId");
+
+                    b.HasIndex("CtroCtaImp2GenVtsId");
+
+                    b.HasIndex("TipoImpuesto1Id");
+
+                    b.HasIndex("TipoImpuesto2Id");
+
+                    b.HasIndex(new[] { "CodImpuesto" }, "IxCodImpuesto")
+                        .IsUnique();
 
                     b.ToTable("Impuestos", "H2C");
                 });
@@ -2062,6 +2041,54 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TiposCambio", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.TipoImpuesto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CodTipoImpuesto")
+                        .IsRequired()
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodTipoImpuesto" }, "IxCodTipoImpuesto")
+                        .IsUnique();
+
+                    b.ToTable("TiposImpuesto", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.UnidadMedida", b =>
@@ -16340,13 +16367,81 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Impuesto", b =>
                 {
-                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CentroCuenta")
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp1DescComp")
                         .WithMany()
-                        .HasForeignKey("CentroCuentaId")
+                        .HasForeignKey("CtroCtaImp1DescCompId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp1DevComp")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp1DevCompId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp1DevVts")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp1DevVtsId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp1Gen")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp1GenId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp1GenVts")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp1GenVtsId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp2DescComp")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp2DescCompId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp2DevComp")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp2DevCompId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp2DevVts")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp2DevVtsId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp2Gen")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp2GenId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "Imp2GenVts")
+                        .WithMany()
+                        .HasForeignKey("CtroCtaImp2GenVtsId");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.TipoImpuesto", "TipoImpuesto1")
+                        .WithMany()
+                        .HasForeignKey("TipoImpuesto1Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CentroCuenta");
+                    b.HasOne("StatusERP.Entities.AS.Tablas.TipoImpuesto", "TipoImpuesto2")
+                        .WithMany()
+                        .HasForeignKey("TipoImpuesto2Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Imp1DescComp");
+
+                    b.Navigation("Imp1DevComp");
+
+                    b.Navigation("Imp1DevVts");
+
+                    b.Navigation("Imp1Gen");
+
+                    b.Navigation("Imp1GenVts");
+
+                    b.Navigation("Imp2DescComp");
+
+                    b.Navigation("Imp2DevComp");
+
+                    b.Navigation("Imp2DevVts");
+
+                    b.Navigation("Imp2Gen");
+
+                    b.Navigation("Imp2GenVts");
+
+                    b.Navigation("TipoImpuesto1");
+
+                    b.Navigation("TipoImpuesto2");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Localizacion", b =>

@@ -106,8 +106,7 @@ builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
 builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
-builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
-builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
+
 builder.Services.AddScoped<IPaisRepository, PaisRepository>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 
@@ -119,6 +118,13 @@ builder.Services.AddScoped<ICategoriaClienteService, CategoriaClienteService>();
 
 builder.Services.AddScoped<ICategoriaProveedorRepository, CategoriaProveedorRepository>();
 builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService>();
+
+builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
+builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
+
+builder.Services.AddScoped<ITipoImpuestoRepository, TipoImpuestoRepository>();
+builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
+
 
 
 // Entidades Módulo CG
