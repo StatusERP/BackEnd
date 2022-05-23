@@ -10,7 +10,7 @@ public interface ICategoriaClienteService
 
     Task<BaseResponseGeneric<CategoriaCliente>> GetByIdAsync(int id);
 
-    Task<BaseResponseGeneric<int>> CreateAsync(DtoCategoriaCliente request, string userId, string codLote);
+    Task<BaseResponseGeneric<int>> CreateAsync(DtoCategoriaCliente request, string userId, string codCategoriaCliente);
 
     Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoCategoriaCliente request, string userId);
 

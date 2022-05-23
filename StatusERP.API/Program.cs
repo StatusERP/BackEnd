@@ -117,6 +117,8 @@ builder.Services.AddScoped<IPaisService, PaisService>();
 builder.Services.AddScoped<ICategoriaClienteRepository, CategoriaClienteRepository>();
 builder.Services.AddScoped<ICategoriaClienteService, CategoriaClienteService>();
 
+builder.Services.AddScoped<ICategoriaProveedorRepository, CategoriaProveedorRepository>();
+builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService>();
 
 
 // Entidades Módulo CG

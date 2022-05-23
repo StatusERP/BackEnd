@@ -39,7 +39,7 @@ public class CategoriaClienteService : ICategoriaClienteService
             var buscarCodCategoriaCliente = await _repository.BuscarCodCategoriaClienteAsync(codCategoriaCliente);
             if (buscarCodCategoriaCliente != null)
             {
-                throw new Exception($"El codigo de CategoriaCliente {buscarCodCategoriaCliente.CodCategoriaCliente} ya existe.");
+                throw new Exception($"El codigo de Categoría de Cliente {buscarCodCategoriaCliente.CodCategoriaCliente} ya existe.");
             }
             response.Result = await _repository.CreateAsync(new CategoriaCliente
             {
