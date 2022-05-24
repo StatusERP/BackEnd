@@ -2,65 +2,49 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
-{
+{   
     [Table("GlobalesAS", Schema = Constants.Conjunto)]
     public class GlobalesAS:EntityBase
     {
-        [Required(ErrorMessage = "Se requiere seleccionar una fecha inicial para el Periodo de Trabajo con Advertencia.")]
         public DateTime FechaAdvIni { get; set; }
 
-        [Required(ErrorMessage = "Se requiere seleccionar una fecha final para el Periodo de Trabajo con Advertencia.")]
         public DateTime FechaAdvFin { get; set; }
 
-        [Required(ErrorMessage = "Se requiere seleccionar una fecha inicial para el Periodo de Trabajo.")]
         public DateTime FechaTrabajoIni { get; set; }
 
-        [Required(ErrorMessage = "Se requiere seleccionar una fecha final para el Periodo de Trabajo.")]
         public DateTime FechaTrabajoFin { get; set; }
 
-        [Required(ErrorMessage = "Se requiere seleccionar una Moneda.")]
+        [Required]
         [StringLength(10)]
         public string NombreMoneda { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar un símbolo para la Moneda.")]
+        [Required]
         [StringLength(3)]
         public string SimboloMoneda   { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el nombre del Impuesto 1.")]
+        [Required]
         [StringLength(10)]
         public string Impuesto1Desc { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el nombre del Impuesto 2.")]
+        [Required]
         [StringLength(10)]
         public string Impuesto2Desc { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el País Local.")]
-        [Column("PaisLocal")]
-        public int PaisId { get; set; }
+        public int? PaisLocalId { get; set; }
+        [ForeignKey(nameof(PaisLocalId))]
         public Pais Pais { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar la Moneda Local.")]
-        [StringLength(4)]
         public int MonedaLocalId { get; set; }
         public Moneda MonedaLocal { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar la Moneda Dólar.")]
-        [StringLength(4)]
         public int MonedaDolarId { get; set; }
         public Moneda MonedaDolar { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el Tipo de Cambio Dólar.")]
-        [Column("TipoCambioDolar")]
         public int TipoCambioId { get; set; }
         public TipoCambio TipoCambio { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el patrón de los Centros de Costos.")]
+        [Required]
         [StringLength(25)]
         public string PatronCeCo { get; set; }
-        
-        
-        
-
-
     }
 }

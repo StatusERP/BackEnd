@@ -1149,11 +1149,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("MonedaDolarId")
-                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<int>("MonedaLocalId")
-                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<string>("NombreMoneda")
@@ -1161,9 +1159,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int>("PaisId")
-                        .HasColumnType("int")
-                        .HasColumnName("PaisLocal");
+                    b.Property<int?>("PaisLocalId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PatronCeCo")
                         .IsRequired()
@@ -1176,8 +1173,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(3)");
 
                     b.Property<int>("TipoCambioId")
-                        .HasColumnType("int")
-                        .HasColumnName("TipoCambioDolar");
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -1193,7 +1189,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("MonedaLocalId");
 
-                    b.HasIndex("PaisId");
+                    b.HasIndex("PaisLocalId");
 
                     b.HasIndex("TipoCambioId");
 
@@ -16241,9 +16237,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
                         .WithMany()
-                        .HasForeignKey("PaisId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PaisLocalId");
 
                     b.HasOne("StatusERP.Entities.AS.Tablas.TipoCambio", "TipoCambio")
                         .WithMany()
