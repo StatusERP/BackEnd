@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.AS
 
         public async Task<int> UpdateAsync(Localizacion localizacion)
         {
-            await _dbContext.UpdateAsync(localizacion);
+            await _dbContext.UpdateAsync(localizacion,Mapper);
             return localizacion.Id;
         }
 

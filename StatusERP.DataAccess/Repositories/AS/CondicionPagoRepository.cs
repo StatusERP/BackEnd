@@ -28,7 +28,7 @@ public class CondicionPagoRepository:StatusERPContextBase<CondicionPago>,ICondic
 
     public async Task<int> UpdateAsync(CondicionPago condicionPago)
     {
-        await _dbContext.UpdateAsync(condicionPago);
+        await _dbContext.UpdateAsync(condicionPago,Mapper);
         return condicionPago.Id;
     }
 

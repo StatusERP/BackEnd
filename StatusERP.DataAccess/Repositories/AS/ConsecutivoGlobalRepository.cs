@@ -28,7 +28,7 @@ public class ConsecutivoGlobalRepository:StatusERPContextBase<ConsecutivoGlobal>
 
     public async Task<int> UpdateAsync(ConsecutivoGlobal consecutivoGlobal)
     {
-        await _dbContext.UpdateAsync(consecutivoGlobal);
+        await _dbContext.UpdateAsync(consecutivoGlobal,Mapper);
         return consecutivoGlobal.Id;
     }
 

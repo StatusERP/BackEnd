@@ -27,7 +27,7 @@ public class DivGeografica1Repository :StatusERPContextBase<DivGeografica1>,IDiv
 
     public async Task<int> UpdateAsync(DivGeografica1 divGeografica1)
     {
-        await _dbContext.UpdateAsync(divGeografica1);
+        await _dbContext.UpdateAsync(divGeografica1,Mapper);
         return divGeografica1.Id;
     }
 

@@ -27,7 +27,7 @@ public class PeriodoContableRepository:StatusERPContextBase<PeriodoContable>,IPe
 
     public async Task<int> UpdateAsync(PeriodoContable periodoContable)
     {
-        await _dbContext.UpdateAsync(periodoContable);
+        await _dbContext.UpdateAsync(periodoContable,Mapper);
         return periodoContable.Id;
     }
 

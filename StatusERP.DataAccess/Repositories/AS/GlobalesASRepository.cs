@@ -29,7 +29,7 @@ public class GlobalesASRepository:StatusERPContextBase<GlobalesAS>,IGlobalesAsRe
 
     public async Task<int> UpdateAsync(GlobalesAS globalesAs)
     {
-        await _dbContext.UpdateAsync(globalesAs);
+        await _dbContext.UpdateAsync(globalesAs,Mapper);
         return globalesAs.Id;
 
     }

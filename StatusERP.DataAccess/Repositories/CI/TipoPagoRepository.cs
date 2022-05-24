@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(TipoPago tipoPago)
         {
-            await _dbContext.UpdateAsync(tipoPago);
+            await _dbContext.UpdateAsync(tipoPago,Mapper);
             return tipoPago.Id;
         }
     }

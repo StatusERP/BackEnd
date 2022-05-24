@@ -39,7 +39,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(SaldoCuenta SaldoCuenta)
         {
-            await _dbContext.UpdateAsync(SaldoCuenta);
+            await _dbContext.UpdateAsync(SaldoCuenta,Mapper);
             return SaldoCuenta.Id;
         }
     }

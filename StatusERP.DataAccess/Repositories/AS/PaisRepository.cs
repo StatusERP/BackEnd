@@ -49,7 +49,7 @@ namespace StatusERP.DataAccess.Repositories.AS
 
         public  async Task<int> UpdateAsync(Pais pais)
         {
-            await _dbContext.UpdateAsync(pais);
+            await _dbContext.UpdateAsync(pais,Mapper);
             return pais.Id;
         }
     }

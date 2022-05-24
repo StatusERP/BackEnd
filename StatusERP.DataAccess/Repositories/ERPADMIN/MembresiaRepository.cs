@@ -27,7 +27,7 @@ public class MembresiaRepository : StatusERPContextBase<Membresia>,IMembresiaRep
 
     public async Task<int> UpdateAsync(Membresia membresia)
     {
-        await _dbContext.UpdateAsync(membresia);
+        await _dbContext.UpdateAsync(membresia,Mapper);
         return membresia.Id;
     }
 

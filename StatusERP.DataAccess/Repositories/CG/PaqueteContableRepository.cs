@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(PaqueteContable PaqueteContable)
         {
-            await _dbContext.UpdateAsync(PaqueteContable);
+            await _dbContext.UpdateAsync(PaqueteContable,Mapper);
             return PaqueteContable.Id;
         }
     }

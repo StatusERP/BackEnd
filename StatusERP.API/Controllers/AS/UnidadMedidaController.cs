@@ -47,7 +47,7 @@ public class UnidadMedidaController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<ActionResult> Put(int id, DtoUnidadMedida request)
+    public async Task<ActionResult> Put(int id, DtoUpdateUnidadMedida request)
     {
         var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         var response =await _service.UpdateAsync(id, request,userId.Value);

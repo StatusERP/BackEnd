@@ -28,7 +28,7 @@ public class TipoCambioRepository:StatusERPContextBase<TipoCambio>,ITipoCambioRe
 
     public async Task<int> UpdateAsync(TipoCambio tipoCambio)
     {
-        await _dbContext.UpdateAsync(tipoCambio);
+        await _dbContext.UpdateAsync(tipoCambio,Mapper);
         return tipoCambio.Id;
     }
 

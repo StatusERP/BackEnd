@@ -39,7 +39,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(GlobalesCG GlobalesCG)
         {
-            await _dbContext.UpdateAsync(GlobalesCG);
+            await _dbContext.UpdateAsync(GlobalesCG,Mapper);
             return GlobalesCG.Id;
         }
     }
