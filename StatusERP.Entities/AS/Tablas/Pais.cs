@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using StatusERP.Entities.CG.Tablas;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace StatusERP.Entities.AS.Tablas
@@ -6,224 +7,160 @@ namespace StatusERP.Entities.AS.Tablas
     [Table("Paises", Schema = Constants.Conjunto)]
     public class Pais:EntityBase
     {
-        [Required(ErrorMessage = "Se requiere especificar el código del País.")]
+        [Required]
         [StringLength(4)]
         public string CodPais { get; set; }
 
         [StringLength(4)]
         public string ? CodigoISO { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el nombre del Nivel de Precio.")]
+        [Required]
         [StringLength(40)]
         public string Nombre { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrVentas { get; set; }
+        public int? CtrCtaVentasId { get; set; }
+        [ForeignKey(nameof(CtrCtaVentasId))]
+        public CentroCuenta CCVentas { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaVentas { get; set; }
+        public int? CtrCtaDescGralId { get; set; }
+        [ForeignKey(nameof(CtrCtaDescGralId))]
+        public CentroCuenta CCDescGral { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrDescGral { get; set; }
+        public int? CtrCtaCostoVenId { get; set; }
+        [ForeignKey(nameof(CtrCtaCostoVenId))]
+        public CentroCuenta CCCostoVen { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaDescGral { get; set; }
+        public int? CtrCtaDescLinId { get; set; }
+        [ForeignKey(nameof(CtrCtaDescLinId))]
+        public CentroCuenta CCDescLin { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrCostoVen { get; set; }
+        public int? CtrCtaCostoLinId { get; set; }
+        [ForeignKey(nameof(CtrCtaCostoLinId))]
+        public CentroCuenta CCCostoLin { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaCostoVen { get; set; }
+        public int? CtrCtaGasComId { get; set; }
+        [ForeignKey(nameof(CtrCtaGasComId))]
+        public CentroCuenta CCGasCom { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrDescLin { get; set; }
+        public int? CtrCtaContadoId { get; set; }
+        [ForeignKey(nameof(CtrCtaContadoId))]
+        public CentroCuenta CCContado { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaDescLin { get; set; }
+        public int? CtrCtaCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaCCId))]
+        public CentroCuenta CCCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrCostoLin { get; set; }
+        public int? CtrCtaLCId { get; set; }
+        [ForeignKey(nameof(CtrCtaLCId))]
+        public CentroCuenta CCLC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaCostoLin { get; set; }
+        public int? CtrCtaProntoPagoCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaProntoPagoCCId))]
+        public CentroCuenta CCProntoPagoCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrGasCom { get; set; }
+        public int? CtrCtaIntMoraCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaIntMoraCCId))]
+        public CentroCuenta CCIntMoraCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaGasCom { get; set; }
+        public int? CtrCtaRecibosCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaRecibosCCId))]
+        public CentroCuenta CCRecibosCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrContado { get; set; }
+        public int? CtrCtaDebitoCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaDebitoCCId))]
+        public CentroCuenta CCDebitoCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaContado { get; set; }
+        public int? CtrCtaCreditoCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaCreditoCCId))]
+        public CentroCuenta CCCreditoCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrCC { get; set; }
+        public int? CtrCtaImpuesto1CCId { get; set; }
+        [ForeignKey(nameof(CtrCtaImpuesto1CCId))]
+        public CentroCuenta CCImpuesto1CC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaCC { get; set; }
+        public int? CtrCtaImpuesto2CCId { get; set; }
+        [ForeignKey(nameof(CtrCtaImpuesto2CCId))]
+        public CentroCuenta CCImpuesto2CC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrLC { get; set; }
+        public int? CtrCtaRubro1CCId { get; set; }
+        [ForeignKey(nameof(CtrCtaRubro1CCId))]
+        public CentroCuenta CCRubro1CC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaLC { get; set; }
+        public int? CtrCtaRubro2CCId { get; set; }
+        [ForeignKey(nameof(CtrCtaRubro2CCId))]
+        public CentroCuenta CCRubro2CC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrProntoPagoCC { get; set; }
+        public int? CtrCtaAnticipoCCId { get; set; }
+        [ForeignKey(nameof(CtrCtaAnticipoCCId))]
+        public CentroCuenta CCAnticipoCC { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaProntoPagoCC { get; set; }
+        public int? CtrCtaLPId { get; set; }
+        [ForeignKey(nameof(CtrCtaLPId))]
+        public CentroCuenta CCLP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrIntMoraCC { get; set; }
+        public int? CtrCtaCreditoCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaCreditoCPId))]
+        public CentroCuenta CCCreditoCP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaIntMoraCC { get; set; }
+        public int? CtrCtaDebitoCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaDebitoCPId))]
+        public CentroCuenta CCDebitoCP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrRecibosCC { get; set; }
+        public int? CtrCtaCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaCPId))]
+        public CentroCuenta CCCP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaRecibosCC { get; set; }
+        public int? CtrCtaProntoPagoCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaProntoPagoCPId))]
+        public CentroCuenta CCProntoPagoCP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrDebitoCC { get; set; }
+        public int? CtrCtaComisionCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaComisionCPId))]
+        public CentroCuenta CCComisionCP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaDebitoCC { get; set; }
+        public int? CtrCtaImpuesto1CPId { get; set; }
+        [ForeignKey(nameof(CtrCtaImpuesto1CPId))]
+        public CentroCuenta CCImpuesto1CP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrCreditoCC { get; set; }
+        public int? CtrCtaImpuesto2CPId { get; set; }
+        [ForeignKey(nameof(CtrCtaImpuesto2CPId))]
+        public CentroCuenta CCImpuesto2CP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaCreditoCC { get; set; }
+        public int? CtrCtaRubro1CPId { get; set; }
+        [ForeignKey(nameof(CtrCtaRubro1CPId))]
+        public CentroCuenta CCRubro1CP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrImpuesto1CC { get; set; }
+        public int? CtrCtaRubro2CPId { get; set; }
+        [ForeignKey(nameof(CtrCtaRubro2CPId))]
+        public CentroCuenta CCRubro2CP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaImpuesto1CC { get; set; }
+        public int? CtrCtaAnticipoCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaAnticipoCPId))]
+        public CentroCuenta CCAnticipoCP { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrImpuesto2CC { get; set; }
+        public int? CtrCtaDescBonifId { get; set; }
+        [ForeignKey(nameof(CtrCtaDescBonifId))]
+        public CentroCuenta CCDescBonif { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaImpuesto2CC { get; set; }
+        public int? CtrCtaDevVentasId { get; set; }
+        [ForeignKey(nameof(CtrCtaDevVentasId))]
+        public CentroCuenta CCDevVentas { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrRubro1CC { get; set; }
+        public int? CtrCtaIntCorrienteId { get; set; }
+        [ForeignKey(nameof(CtrCtaIntCorrienteId))]
+        public CentroCuenta CCIntCorriente { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaRubro1CC { get; set; }
-        [StringLength(25)]
-        public string ? CtrRubro2CC { get; set; }
+        public int? CtrCtaVentasExenId { get; set; }
+        [ForeignKey(nameof(CtrCtaVentasExenId))]
+        public CentroCuenta CCVentasExen { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaRubro2CC { get; set; }
+        public int? CtrCtaAjusteRedondeoId { get; set; }
+        [ForeignKey(nameof(CtrCtaAjusteRedondeoId))]
+        public CentroCuenta CCAjusteRedondeo { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrAnticipoCC { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaAnticipoCC { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrLP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaLP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrCreditoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaCreditoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrDebitoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaDebitoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrProntoPagoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaProntoPagoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrComisionCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaComisionCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrImpuesto1CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaImpuesto1CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrImpuesto2CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaImpuesto2CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrRubro1CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaRubro1CP { get; set; }
-        [StringLength(25)]
-        public string ? CtrRubro2CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaRubro2CP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrAnticipoCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaAnticipoCP { get; set; }
-        [StringLength(25)]
-        public string ? CtrDescBonif { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaDescBonif { get; set; }
-        [StringLength(25)]
-        public string ? CtrDevVentas { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaDevVentas { get; set; }
-        [StringLength(25)]
-        public string ? CtrIntCorriente { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaIntCorriente { get; set; }
-        [StringLength(25)]
-        public string ? CtrVentasExen { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaVentasExen { get; set; }
-        [StringLength(25)]
-        public string ? CtrAjusteRedondeo { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaAjusteRedondeo { get; set; }
-        [StringLength(25)]
-        public string ? CtrRentaCP { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaRentaCP { get; set; }
+        public int? CtrCtaRentaCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaRentaCPId))]
+        public CentroCuenta CCRentaCP { get; set; }
 
         [StringLength(20)]
         public string ? EtiquetaDivGeo1 { get; set; }

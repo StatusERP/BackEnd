@@ -15,6 +15,7 @@ namespace StatusERP.DataAccess.Migrations
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Articulos_UnidadesMedida_UnidadEmpaqueFKId",
+              
                 schema: "H2C",
                 table: "Articulos");
 

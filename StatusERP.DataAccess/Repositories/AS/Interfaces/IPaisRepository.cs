@@ -13,7 +13,6 @@ namespace StatusERP.DataAccess.Repositories.AS.Interfaces
         Task<Pais?> GetByIdAsync(int id);
         Task<Pais?> BuscarCodPaisAsync(string codPais);
         Task<int> CreateAsync(Pais pais);
-
         Task<int> UpdateAsync(Pais pais);
         Task<int> DeleteAsync(int id, string userId);
       

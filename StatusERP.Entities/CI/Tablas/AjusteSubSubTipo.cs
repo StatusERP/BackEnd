@@ -7,13 +7,13 @@ namespace StatusERP.Entities.CI.Tablas
 
     public class AjusteSubSubTipo:EntityBase
     {
-        [Required(ErrorMessage = " El código de ajuste configurable es requerido.")]
+        [Required]
         [StringLength(4)]
         public string AjusteConfig { get; set; }
         
-        [Required(ErrorMessage = "El código del Subsubtipo es requerido")]
+        [Required]
         [StringLength(1)]
-        public string SubsubtipoId { get; set; }
+        public string Subsubtipo { get; set; }
     }
 }
 

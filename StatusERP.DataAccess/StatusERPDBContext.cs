@@ -63,6 +63,7 @@ namespace StatusERP.DataAccess
         public DbSet<Ruta> Rutas { get; set; }
         public DbSet<Sucursal> Sucursales { get; set; }
         public DbSet<TipoCambio> TiposCambio { get; set; }
+        public DbSet<TipoImpuesto> TiposImpuesto { get; set; }
         public DbSet<UnidadMedida> UnidadesMedida { get; set; }
         public DbSet<UsuarioBodega> UsuarioBodega { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; }
@@ -110,6 +111,8 @@ namespace StatusERP.DataAccess
         public DbSet<PaqueteInv> PaquetesInv { get; set; }
         public DbSet<UsuarioAjusteInv> UsuarioAjusteInv { get; set; }
         public DbSet<TipoPago> TiposPago { get; set; }
+        public DbSet<TipoOperacion> TiposOperacion { get; set; }
+
 
         // Para tablas de FA
         public DbSet<Cliente> Clientes { get; set; }
@@ -219,14 +222,20 @@ namespace StatusERP.DataAccess
                 .HasIndex(p => new { p.CodArticulo }).IsUnique();
 
 
-            //CI - CategoriaArticulo
 
           
 
             //CI - TipoPago
-
             modelBuilder.Entity<TipoPago>()
                 .HasIndex(p => p.CodTipoPago , "IxCodTipoPago");
+
+            //CI - TipoOperacion
+            modelBuilder.Entity<TipoOperacion>()
+                .HasIndex(p => p.CodTipoOperacion, "IxCodTipoOperacion");
+
+            ////CI - ConsecutivoInvUsuario
+            //modelBuilder.Entity<ConsecutivoInvUsuario>()
+            //    .HasIndex(p => p.Consecutivo, p.Usuario, "IxConsecutivoUsuario");
 
             //CI - Lotes
 

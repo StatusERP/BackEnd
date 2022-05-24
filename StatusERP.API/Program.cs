@@ -108,10 +108,25 @@ builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
 builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
+
+
+// Entidades Módulo AS
+
+builder.Services.AddScoped<ICategoriaClienteRepository, CategoriaClienteRepository>();
+builder.Services.AddScoped<ICategoriaClienteService, CategoriaClienteService>();
+
+builder.Services.AddScoped<ICategoriaProveedorRepository, CategoriaProveedorRepository>();
+builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService>();
+
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
+
 builder.Services.AddScoped<IPaisRepository, PaisRepository>();
 builder.Services.AddScoped<IPaisService, PaisService>();
+
+builder.Services.AddScoped<ITipoImpuestoRepository, TipoImpuestoRepository>();
+builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
+
 
 
 // Entidades Módulo CG
@@ -135,23 +150,35 @@ builder.Services.AddScoped<ISeccionCuentaRepository, SeccionCuentaRepository>();
 
 // Entidades Módulo CI
 
+builder.Services.AddScoped<IAjusteConfigService, AjusteConfigService>();
+builder.Services.AddScoped<IAjusteConfigRepository, AjusteConfigRepository>();
+
+builder.Services.AddScoped<IAjusteSubSubTipoService, AjusteSubSubTipoService>();
+builder.Services.AddScoped<IAjusteSubSubTipoRepository, AjusteSubSubTipoRepository>();
+
+builder.Services.AddScoped<IAjusteSubTipoService, AjusteSubTipoService>();
+builder.Services.AddScoped<IAjusteSubTipoRepository, AjusteSubTipoRepository>();
+   
 builder.Services.AddScoped<IArticuloService, ArticuloService>();
 builder.Services.AddScoped<IArticuloRepository, ArticuloRepository>();
-
-builder.Services.AddScoped<IClasificacionInvService, ClasificacionInvService>();
-builder.Services.AddScoped<IClasificacionInvRepository, ClasificacionInvRepository>();
 
 builder.Services.AddScoped<ICategoriaArticuloService, CategoriaArticuloService>();
 builder.Services.AddScoped<ICategoriaArticuloRepository, CategoriaArticuloRepository>();
 
-builder.Services.AddScoped<IGlobalesCIService, GlobalesCIService>();
-builder.Services.AddScoped<IGlobalesCIRepository, GlobalesCIRepository>();
+builder.Services.AddScoped<IClasificacionInvService, ClasificacionInvService>();
+builder.Services.AddScoped<IClasificacionInvRepository, ClasificacionInvRepository>();
 
-builder.Services.AddScoped<ILoteService, LoteService>();
-builder.Services.AddScoped<ILoteRepository, LoteRepository>();
+builder.Services.AddScoped<IConsecutivoInvService, ConsecutivoInvService>();
+builder.Services.AddScoped<IConsecutivoInvRepository, ConsecutivoInvRepository>();
 
-builder.Services.AddScoped<IPaqueteInvService, PaqueteInvService>();
-builder.Services.AddScoped<IPaqueteInvRepository, PaqueteInvRepository>();
+builder.Services.AddScoped<IConsecutivoInvUsuarioService, ConsecutivoInvUsuarioService>();
+builder.Services.AddScoped<IConsecutivoInvUsuarioRepository, ConsecutivoInvUsuarioRepository>();
+
+builder.Services.AddScoped<IDocumentoInvDetService, DocumentoInvDetService>();
+builder.Services.AddScoped<IDocumentoInvDetRepository, DocumentoInvDetRepository>();
+
+builder.Services.AddScoped<IDocumentoInvEncService, DocumentoInvEncService>();
+builder.Services.AddScoped<IDocumentoInvEncRepository, DocumentoInvEncRepository>();
 
 builder.Services.AddScoped<IExistenciaBodegaService, ExistenciaBodegaService>();
 builder.Services.AddScoped<IExistenciaBodegaRepository, ExistenciaBodegaRepository>();
@@ -159,11 +186,33 @@ builder.Services.AddScoped<IExistenciaBodegaRepository, ExistenciaBodegaReposito
 builder.Services.AddScoped<IExistenciaLoteService, ExistenciaLoteService>();
 builder.Services.AddScoped<IExistenciaLoteRepository, ExistenciaLoteRepository>();
 
+builder.Services.AddScoped<IGlobalesCIService, GlobalesCIService>();
+builder.Services.AddScoped<IGlobalesCIRepository, GlobalesCIRepository>();
+
+builder.Services.AddScoped<IIngresoLoteService, IngresoLoteService>();
+builder.Services.AddScoped<IIngresoLoteRepository, IngresoLoteRepository>();
+
+builder.Services.AddScoped<ILoteService, LoteService>();
+builder.Services.AddScoped<ILoteRepository, LoteRepository>();
+
+builder.Services.AddScoped<IMovInventarioDetService, MovInventarioDetService>();
+builder.Services.AddScoped<IMovInventarioDetRepository, MovInventarioDetRepository>();
+
 builder.Services.AddScoped<IMovInventarioEncService, MovInventarioEncService>();
 builder.Services.AddScoped<IMovInventarioEncRepository, MovInventarioEncRepository>();
 
+builder.Services.AddScoped<IPaqueteInvService, PaqueteInvService>();
+builder.Services.AddScoped<IPaqueteInvRepository, PaqueteInvRepository>();
+
+builder.Services.AddScoped<ITipoOperacionService, TipoOperacionService>();
+builder.Services.AddScoped<ITipoOperacionRepository, TipoOperacionRepository>();
+
 builder.Services.AddScoped<ITipoPagoService, TipoPagoService>();
 builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
+
+builder.Services.AddScoped<IUsuarioAjusteInvService, UsuarioAjusteInvService>();
+builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvRepository>();
+
 
 
 builder.Services.AddControllers();

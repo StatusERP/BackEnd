@@ -34,6 +34,7 @@ C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.cs
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.deps.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.pdb
@@ -46,3 +47,5 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.Uni
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\refint\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
+=======
+>>>>>>> 019b2c00e9e9a28af085de7698769cf5af1457e7

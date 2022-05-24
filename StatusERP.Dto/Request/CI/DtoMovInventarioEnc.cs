@@ -7,12 +7,12 @@ namespace StatusERP.Dto.Request.CI
     {
         public int Id { get; set; }
 
-        [StringLength(10)]
-        public string? Consecutivo { get; set; }
+        public int? ConsecutivoId { get; set; }
 
         [Required(ErrorMessage = "Debe indicarse el usuario.")]
         [StringLength(25)]
         public string Usuario { get; set; }
+
         public DateTime FechaHora { get; set; }
 
         [Required(ErrorMessage = "Debe indicarse el módulo origen.")]

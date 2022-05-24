@@ -26,7 +26,7 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_MovInventarioEncS", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_CONS_ENC", 9, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -42,7 +42,7 @@ namespace StatusERP.Services.Implementations.CI
                 }
                 response.Result = await _repository.CreateAsync(new MovInventarioEnc
                 {
-                    Consecutivo = request.Consecutivo,
+                    ConsecutivoId = request.ConsecutivoId,
                     Usuario = request.Usuario,
                     FechaHora = request.FechaHora,
                     ModuloOrigen = request.ModuloOrigen,
@@ -76,11 +76,11 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_MovInventarioEncSBORRA", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_CONS_ENC", 9, userId);
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para eliminar MovInventarioEncs.");
+                    response.Errors.Add($"No tiene privilegios para eliminar movimientos de inventario.");
                     response.Success = false;
                     return response;
                 }
@@ -105,11 +105,11 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<ICollection<MovInventarioEnc>>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_MovInventarioEncS", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_CONS_ENC", 9, userId);
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para consultar MovInventarioEncs.");
+                    response.Errors.Add($"No tiene privilegios para consultar movimientos de inventario.");
                     response.Success = false;
                     return response;
                 }
@@ -151,11 +151,11 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_MovInventarioEncSMOD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_CONS_ENC", 9, userId);
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene privilegios para modificar MovInventarioEncs.");
+                    response.Errors.Add($"No tiene privilegios para modificar movimientos de inventario.");
                     response.Success = false;
                     return response;
                 }
@@ -164,7 +164,7 @@ namespace StatusERP.Services.Implementations.CI
                 response.Result = await _repository.UpdateAsync(new MovInventarioEnc
                 {
                     Id = id,
-                    Consecutivo = request.Consecutivo,
+                    ConsecutivoId = request.ConsecutivoId,
                     Usuario = request.Usuario,
                     FechaHora = request.FechaHora,
                     ModuloOrigen = request.ModuloOrigen,

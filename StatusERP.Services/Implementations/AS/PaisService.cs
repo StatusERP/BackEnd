@@ -37,7 +37,7 @@ namespace StatusERP.Services.Implementations.AS
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene Privilegios para Crear Pais");
+                    response.Errors.Add($"No tiene Privilegios para crear países.");
                     response.Success = false;
                     return response;
                 }
@@ -46,7 +46,7 @@ namespace StatusERP.Services.Implementations.AS
                 var buscarCodBodega = await _repository.BuscarCodPaisAsync(codPais);
                 if (buscarCodBodega != null)
                 {
-                    response.Errors.Add($"El codigo de Pais {buscarCodBodega.CodPais} ya Existe");
+                    response.Errors.Add($"El código de país {buscarCodBodega.CodPais} ya existe.");
                     response.Success = false;
                     return response;
 
@@ -55,13 +55,52 @@ namespace StatusERP.Services.Implementations.AS
 
                 response.Result = await _repository.CreateAsync(new Pais
                 {
-                    CodPais = request.codPais,
-                    Nombre = request.nombre,
+                    CodPais = request.CodPais,
+                    Nombre = request.Nombre,
+                    CodigoISO = request.CodigoISO,
+                    CtrCtaVentasId = request.CtrCtaVentasId,
+                    CtrCtaDescGralId = request.CtrCtaDescGralId,
+                    CtrCtaCostoVenId = request.CtrCtaCostoVenId,
+                    CtrCtaDescLinId = request.CtrCtaDescLinId,
+                    CtrCtaCostoLinId = request.CtrCtaCostoLinId,
+                    CtrCtaGasComId = request.CtrCtaGasComId,
+                    CtrCtaContadoId  = request.CtrCtaContadoId,
+                    CtrCtaCCId = request.CtrCtaCCId,
+                    CtrCtaLCId = request.CtrCtaLCId,
+                    CtrCtaProntoPagoCCId = request.CtrCtaProntoPagoCCId,
+                    CtrCtaIntMoraCCId = request.CtrCtaIntMoraCCId,
+                    CtrCtaRecibosCCId = request.CtrCtaRecibosCCId,
+                    CtrCtaDebitoCCId = request.CtrCtaDebitoCCId,
+                    CtrCtaCreditoCCId = request.CtrCtaCreditoCCId,
+                    CtrCtaImpuesto1CCId = request.CtrCtaImpuesto1CCId,
+                    CtrCtaImpuesto2CCId = request.CtrCtaImpuesto2CCId,
+                    CtrCtaRubro1CCId = request.CtrCtaRubro1CCId,
+                    CtrCtaRubro2CCId = request.CtrCtaRubro2CCId,
+                    CtrCtaAnticipoCCId = request.CtrCtaAnticipoCCId,
+                    CtrCtaLPId = request.CtrCtaLPId,
+                    CtrCtaCreditoCPId = request.CtrCtaCreditoCPId, 
+                    CtrCtaDebitoCPId = request.CtrCtaDebitoCPId, 
+                    CtrCtaCPId = request.CtrCtaCPId,
+                    CtrCtaProntoPagoCPId = request.CtrCtaProntoPagoCPId,
+                    CtrCtaComisionCPId = request.CtrCtaComisionCPId,
+                    CtrCtaImpuesto1CPId = request.CtrCtaImpuesto1CPId,
+                    CtrCtaImpuesto2CPId = request.CtrCtaImpuesto2CPId,
+                    CtrCtaRubro1CPId = request.CtrCtaRubro1CPId, 
+                    CtrCtaRubro2CPId = request.CtrCtaRubro2CPId,
+                    CtrCtaAnticipoCPId = request.CtrCtaAnticipoCPId, 
+                    CtrCtaDescBonifId = request.CtrCtaDescBonifId,
+                    CtrCtaDevVentasId = request.CtrCtaDevVentasId,
+                    CtrCtaIntCorrienteId = request.CtrCtaIntCorrienteId,
+                    CtrCtaVentasExenId = request.CtrCtaVentasExenId,
+                    CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
+                    CtrCtaRentaCPId = request.CtrCtaRentaCPId,
+                    EtiquetaDivGeo1 = request.EtiquetaDivGeo1,
+                    EtiquetaDivGeo2 = request.EtiquetaDivGeo2,
+                    IsDeleted = false,
                     Createdby = userId,
                     CreateDate = DateTime.Now,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now
-
                 });
                 response.Success = true;
             }
@@ -73,25 +112,37 @@ namespace StatusERP.Services.Implementations.AS
             }
             return response;
         }
-    
 
-         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
-    {
-        var response = new BaseResponseGeneric<int>();
-        try
+
+        public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
-            await _repository.DeleteAsync(id, userId);
-            response.Success = true;
-            response.Result = id;
+
+            var response = new BaseResponseGeneric<int>();
+            try
+            {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISDEL", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para eliminar países.");
+                    response.Success = false;
+                    return response;
+                }
+
+
+                await _repository.DeleteAsync(id, userId);
+                response.Success = true;
+                response.Result = id;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
+
+            return response;
         }
-        catch (Exception ex)
-        {
-            _logger.LogCritical(ex.StackTrace);
-            response.Success = false;
-            response.Errors.Add(ex.Message);
-        }
-        return response;
-    }
 
         public async Task<BaseResponseGeneric<ICollection<Pais>>> GetAsync(int page, int rows, string userId)
         {
@@ -104,7 +155,7 @@ namespace StatusERP.Services.Implementations.AS
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene Privilegios para ver Paises");
+                    response.Errors.Add($"No tiene privilegios para consultar países.");
                     response.Success = false;
                     return response;
                 }
@@ -138,39 +189,71 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
+        
         public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoPais request, string userId)
         {
             var response = new BaseResponseGeneric<int>();
-
             try
             {
-
                 var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISMOD", 9, userId);
-
-
-
 
                 if (buscarPrivilegio == null)
                 {
-                    response.Errors.Add($"No tiene Privilegios para Modificar Pais");
+                    response.Errors.Add($"No tiene privilegios para modificar países.");
                     response.Success = false;
                     return response;
                 }
 
-                // response.Result = await _repository.UpdateAsync(_mapper.Map<Bodega>(request));
+                response.Result = await _repository.UpdateAsync(new Pais
+                {
+                    Id = id,
+                    CodPais = request.CodPais,
+                    Nombre = request.Nombre,
+                    CodigoISO = request.CodigoISO,
+                    CtrCtaVentasId = request.CtrCtaVentasId,
+                    CtrCtaDescGralId = request.CtrCtaDescGralId,
+                    CtrCtaCostoVenId = request.CtrCtaCostoVenId,
+                    CtrCtaDescLinId = request.CtrCtaDescLinId,
+                    CtrCtaCostoLinId = request.CtrCtaCostoLinId,
+                    CtrCtaGasComId = request.CtrCtaGasComId,
+                    CtrCtaContadoId = request.CtrCtaContadoId,
+                    CtrCtaCCId = request.CtrCtaCCId,
+                    CtrCtaLCId = request.CtrCtaLCId,
+                    CtrCtaProntoPagoCCId = request.CtrCtaProntoPagoCCId,
+                    CtrCtaIntMoraCCId = request.CtrCtaIntMoraCCId,
+                    CtrCtaRecibosCCId = request.CtrCtaRecibosCCId,
+                    CtrCtaDebitoCCId = request.CtrCtaDebitoCCId,
+                    CtrCtaCreditoCCId = request.CtrCtaCreditoCCId,
+                    CtrCtaImpuesto1CCId = request.CtrCtaImpuesto1CCId,
+                    CtrCtaImpuesto2CCId = request.CtrCtaImpuesto2CCId,
+                    CtrCtaRubro1CCId = request.CtrCtaRubro1CCId,
+                    CtrCtaRubro2CCId = request.CtrCtaRubro2CCId,
+                    CtrCtaAnticipoCCId = request.CtrCtaAnticipoCCId,
+                    CtrCtaLPId = request.CtrCtaLPId,
+                    CtrCtaCreditoCPId = request.CtrCtaCreditoCPId,
+                    CtrCtaDebitoCPId = request.CtrCtaDebitoCPId,
+                    CtrCtaCPId = request.CtrCtaCPId,
+                    CtrCtaProntoPagoCPId = request.CtrCtaProntoPagoCPId,
+                    CtrCtaComisionCPId = request.CtrCtaComisionCPId,
+                    CtrCtaImpuesto1CPId = request.CtrCtaImpuesto1CPId,
+                    CtrCtaImpuesto2CPId = request.CtrCtaImpuesto2CPId,
+                    CtrCtaRubro1CPId = request.CtrCtaRubro1CPId,
+                    CtrCtaRubro2CPId = request.CtrCtaRubro2CPId,
+                    CtrCtaAnticipoCPId = request.CtrCtaAnticipoCPId,
+                    CtrCtaDescBonifId = request.CtrCtaDescBonifId,
+                    CtrCtaDevVentasId = request.CtrCtaDevVentasId,
+                    CtrCtaIntCorrienteId = request.CtrCtaIntCorrienteId,
+                    CtrCtaVentasExenId = request.CtrCtaVentasExenId,
+                    CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
+                    CtrCtaRentaCPId = request.CtrCtaRentaCPId,
+                    EtiquetaDivGeo1 = request.EtiquetaDivGeo1,
+                    EtiquetaDivGeo2 = request.EtiquetaDivGeo2,
+                    IsDeleted = false,
+                    Updatedby = userId,
+                    UpdateDate = DateTime.Now
+                });
                 response.Success = true;
-                //{
-                //    Id = id,
-                //    CodBodega = request.CodBodega,
-                //    Nombre = request.Nombre,
-                //    Tipo = request.Tipo,
-                //    Activa = request.Activa,
-                //    Direccion = request.Direccion,
-                //    Updatedby = userId,
-                //    UpdateDate = DateTime.Now
-                //});
             }
-
             catch (Exception ex)
             {
                 _logger.LogCritical(ex.StackTrace);
