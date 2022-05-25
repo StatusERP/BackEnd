@@ -7177,6 +7177,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("UnidadVentaId");
 
+                    b.HasIndex(new[] { "CodArticulo" }, "IxCodArticulo")
+                        .IsUnique();
+
                     b.ToTable("Articulos", "H2C");
                 });
 

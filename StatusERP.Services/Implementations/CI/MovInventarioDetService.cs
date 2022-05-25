@@ -13,12 +13,16 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IMovInventarioDetRepository _repository;
         private readonly ILogger<MovInventarioDetService> _logger;
         private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
+        private readonly IExistenciaBodegaRepository _ebRepository;
+        private readonly IExistenciaLoteRepository _elRepository;
 
-        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
+        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository, IExistenciaLoteRepository elRepository)
         {
             _repository = repository;
             _logger = logger;
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
+            _ebRepository = ebRepository;
+            _elRepository = elRepository;
         }
 
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, string userId, int movInventarioEncId, int consecutivo)
@@ -74,6 +78,13 @@ namespace StatusERP.Services.Implementations.CI
                     Createdby = userId,
                     CreateDate = DateTime.Now
                 });
+
+                //response.Result = await _ebRepository.CreateAsync
+
+
+
+
+
                 response.Success = true;
             }
             catch (Exception ex)
