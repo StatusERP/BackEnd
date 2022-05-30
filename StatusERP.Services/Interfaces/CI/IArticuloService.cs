@@ -16,5 +16,7 @@ namespace StatusERP.Services.Interfaces.CI
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoArticulo request, string userId);
 
         Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId);
+
+        //Task<BaseResponseGeneric<int>> UsaLoteAsync(int id);
     }
 }
