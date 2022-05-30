@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
   "dgSpecHash": "STYAQf1vZFXCAQR2hcoXbgdPeeRIdukzDMgnj/0BA/t9GDgPZJN+Uzn1pK3AcaRCceIrTaYu5wM2rq/gCoMCqg==",
-=======
-  "dgSpecHash": "qilhNAnlFRlbHqK3eWM1KZNtPFhPUOJEwz8Ln7MkUE88/9g8pmMRCcgwZhGLa7G9CTewTIOCZodvH31uuMYlBw==",
->>>>>>> 019b2c00e9e9a28af085de7698769cf5af1457e7
   "success": true,
   "projectFilePath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.UnitTest\\StatusERP.UnitTest.csproj",
   "expectedPackageFiles": [],

@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(MovInventarioDet movInventarioDet)
         {
-            await _dbContext.UpdateAsync(movInventarioDet);
+            await _dbContext.UpdateAsync(movInventarioDet,Mapper);
             return movInventarioDet.Id;
         }
     }

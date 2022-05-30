@@ -39,7 +39,7 @@ public class CategoriaClienteRepository : StatusERPContextBase<CategoriaCliente>
 
     public async Task<int> UpdateAsync(CategoriaCliente categoriaCliente)
     {
-        await _dbContext.UpdateAsync(categoriaCliente);
+        await _dbContext.UpdateAsync(categoriaCliente,Mapper);
         return categoriaCliente.Id;
     }
 
