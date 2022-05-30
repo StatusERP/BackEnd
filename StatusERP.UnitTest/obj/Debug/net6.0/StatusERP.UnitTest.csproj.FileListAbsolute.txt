@@ -35,17 +35,29 @@ C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dl
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
 <<<<<<< HEAD
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.deps.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.AssemblyReference.cache
+=======
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.deps.json
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\StatusERP.UnitTest.pdb
+>>>>>>> f79154bae401f37e270f5c0839987632c1930d3b
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.GeneratedMSBuildEditorConfig.editorconfig
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.AssemblyInfoInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.AssemblyInfo.cs
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.dll
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\refint\StatusERP.UnitTest.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
 =======
 >>>>>>> 019b2c00e9e9a28af085de7698769cf5af1457e7
+=======
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.pdb
+>>>>>>> f79154bae401f37e270f5c0839987632c1930d3b

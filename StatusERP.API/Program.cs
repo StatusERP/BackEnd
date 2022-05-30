@@ -174,6 +174,10 @@ builder.Services.AddScoped<IConsecutivoInvRepository, ConsecutivoInvRepository>(
 builder.Services.AddScoped<IConsecutivoInvUsuarioService, ConsecutivoInvUsuarioService>();
 builder.Services.AddScoped<IConsecutivoInvUsuarioRepository, ConsecutivoInvUsuarioRepository>();
 
+builder.Services.AddScoped<IConsInvAjConfigService, ConsInvAjConfigService>();
+builder.Services.AddScoped<IConsInvAjConfigRepository, ConsInvAjConfigRepository>();
+
+
 builder.Services.AddScoped<IDocumentoInvDetService, DocumentoInvDetService>();
 builder.Services.AddScoped<IDocumentoInvDetRepository, DocumentoInvDetRepository>();
 

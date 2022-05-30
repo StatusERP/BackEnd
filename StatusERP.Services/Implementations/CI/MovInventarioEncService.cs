@@ -26,6 +26,7 @@ namespace StatusERP.Services.Implementations.CI
             var response = new BaseResponseGeneric<int>();
             try
             {
+                //Comprobación de privilegio para crear encabezados de movimientos de inventario
                 var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CI_CONS_ENC", 9, userId);
 
                 if (buscarPrivilegio == null)
@@ -35,11 +36,14 @@ namespace StatusERP.Services.Implementations.CI
                     return response;
                 }
 
+                //Comprobación de que el código de movimiento a utilizar no ha sido utilizado aún.
                 var buscarIdMovInventarioEnc = await _repository.BuscarIdMovInventarioEncAsync(id) ;
                 if (buscarIdMovInventarioEnc != null)
                 {
                     throw new Exception($"El código de movimiento de inventario {buscarIdMovInventarioEnc.Id} ya existe.");
                 }
+
+                // Ejecución de la inserción del registro
                 response.Result = await _repository.CreateAsync(new MovInventarioEnc
                 {
                     ConsecutivoId = request.ConsecutivoId,

@@ -347,5 +347,23 @@ namespace StatusERP.Services.Implementations.CI
             }
             return response;
         }
+
+        //public async Task<BaseResponseGeneric<Articulo>> UsaLotesAsync(int id)
+        //{
+        //    var response = new BaseResponseGeneric<Articulo>();
+        //    try
+        //    {
+        //        response.Result = await _repository.UsaLotesAsync(id) ?? new Articulo();
+        //        response.Success = true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogCritical(ex.StackTrace);
+        //        response.Success = false;
+        //        response.Errors.Add(ex.Message);
+        //    }
+
+        //    return response;
+        //}
     }
 }

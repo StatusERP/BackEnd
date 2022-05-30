@@ -13,14 +13,19 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IMovInventarioDetRepository _repository;
         private readonly ILogger<MovInventarioDetService> _logger;
         private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
+        private readonly IExistenciaBodegaRepository _ebRepository;
+        private readonly IExistenciaLoteRepository _elRepository;
 
-        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
+        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository, IExistenciaLoteRepository elRepository)
         {
             _repository = repository;
             _logger = logger;
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
+            _ebRepository = ebRepository;
+            _elRepository = elRepository;
         }
 
+        //public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, DtoExistenciaBodega ebrequest, DtoExistenciaLote elrequest, DtoArticulo arequest, string userId, int movInventarioEncId, int consecutivo)
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, string userId, int movInventarioEncId, int consecutivo)
         {
             var response = new BaseResponseGeneric<int>();
@@ -40,6 +45,8 @@ namespace StatusERP.Services.Implementations.CI
                 {
                     throw new Exception($"El consecutivo {buscarMovInventarioDet.Consecutivo} ya existe para el movimiento {buscarMovInventarioDet.MovInventarioEncId}");
                 }
+
+                // Creación de registro en Detalle de Movimiento de Inventario
                 response.Result = await _repository.CreateAsync(new MovInventarioDet
                 {
                     MovInventarioEncId = request.MovInventarioEncId,
@@ -74,7 +81,61 @@ namespace StatusERP.Services.Implementations.CI
                     Createdby = userId,
                     CreateDate = DateTime.Now
                 });
-                response.Success = true;
+
+                //Creación de registro en Existencia Bodega
+                //var ebresponse = new BaseResponseGeneric<int>();
+                //ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
+                //{
+                //    ArticuloId = ebrequest.ArticuloId,
+                //    BodegaId = ebrequest.BodegaId,
+                //    ExistenciaMinima = ebrequest.ExistenciaMinima,
+                //    ExistenciaMaxima = ebrequest.ExistenciaMaxima,
+                //    PuntoDeOrden = ebrequest.PuntoDeOrden,
+                //    CantDisponible = ebrequest.CantDisponible + request.Cantidad,
+                //    CantReservada = ebrequest.CantReservada,
+                //    CantNoAprobada = ebrequest.CantNoAprobada,
+                //    CantVencida = ebrequest.CantVencida,
+                //    CantTransito = ebrequest.CantTransito,
+                //    CantProduccion = ebrequest.CantProduccion,
+                //    CantPedida = ebrequest.CantPedida,
+                //    CantRemitida = ebrequest.CantRemitida,
+                //    Congelado = ebrequest.Congelado,
+                //    FechaCong = ebrequest.FechaCong,
+                //    BloqueaTrans = ebrequest.BloqueaTrans,
+                //    FechaDescong = ebrequest.FechaDescong,
+                //    CostoUntPromedioLoc = ebrequest.CostoUntPromedioLoc,
+                //    CostoUntPromedioDol = ebrequest.CostoUntPromedioDol,
+                //    IsDeleted = false,
+                //    Updatedby = userId,
+                //    UpdateDate = DateTime.Now,
+                //    Createdby = userId,
+                //    CreateDate = DateTime.Now
+                //});
+
+
+
+                //1. Comprobar si el artículo utiliza lotes.
+
+
+
+                //Creación de registro en Existencia Lote
+                //    var elresponse = new BaseResponseGeneric<int>();
+                //    response.Result = await _elRepository.CreateAsync(new ExistenciaLote
+                //    {
+                //        BodegaId = elrequest.BodegaId,
+                //        ArticuloId = elrequest.ArticuloId,
+                //        LocalizacionId = elrequest.LocalizacionId,
+                //        LoteId = elrequest.LoteId,
+                //        IsDeleted = false,
+                //        Updatedby = userId,
+                //        UpdateDate = DateTime.Now,
+                //        Createdby = userId,
+                //        CreateDate = DateTime.Now
+                //    });
+
+                //    response.Success = true;
+
+                   
             }
             catch (Exception ex)
             {
@@ -83,7 +144,7 @@ namespace StatusERP.Services.Implementations.CI
                 response.Errors.Add(ex.Message);
             }
 
-            return response;
+                return response;
         }
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)

@@ -234,4 +234,8 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\ref\StatusERP.API.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.genruntimeconfig.cache
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\refint\StatusERP.API.dll
+=======
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\ref\StatusERP.API.dll
+>>>>>>> f79154bae401f37e270f5c0839987632c1930d3b

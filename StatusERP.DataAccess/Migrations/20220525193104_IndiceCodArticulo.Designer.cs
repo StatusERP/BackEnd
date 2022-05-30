@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StatusERP.DataAccess;
 
@@ -11,9 +12,10 @@ using StatusERP.DataAccess;
 namespace StatusERP.DataAccess.Migrations
 {
     [DbContext(typeof(StatusERPDBContext))]
-    partial class StatusERPDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220525193104_IndiceCodArticulo")]
+    partial class IndiceCodArticulo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -7632,49 +7634,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasIndex(new[] { "Consecutivo", "Usuario" }, "IxConsecutivoInvUsuario");
 
                     b.ToTable("ConsecutivosInvUsuarios", "H2C");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ConsInvAjConfig", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("AjusteConfigId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ConsecutivoInvId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Createdby")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Updatedby")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AjusteConfigId");
-
-                    b.HasIndex(new[] { "ConsecutivoInvId", "AjusteConfigId" }, "IxConsecutivoAjuste")
-                        .IsUnique();
-
-                    b.ToTable("ConsInvAjConfig", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.DocumentoInvDet", b =>
@@ -17232,25 +17191,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("unidadMedida");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ConsInvAjConfig", b =>
-                {
-                    b.HasOne("StatusERP.Entities.CI.Tablas.AjusteConfig", "AjusteConfig")
-                        .WithMany()
-                        .HasForeignKey("AjusteConfigId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("StatusERP.Entities.CI.Tablas.ConsecutivoInv", "ConsecutivoInv")
-                        .WithMany()
-                        .HasForeignKey("ConsecutivoInvId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AjusteConfig");
-
-                    b.Navigation("ConsecutivoInv");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.DocumentoInvDet", b =>

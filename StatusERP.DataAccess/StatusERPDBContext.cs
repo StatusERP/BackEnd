@@ -98,6 +98,7 @@ namespace StatusERP.DataAccess
         public DbSet<CategoriaArticulo> CategoriasArticulos { get; set; }
         public DbSet<ClasificacionInv> ClasificacionesInv { get; set; }
         public DbSet<ConsecutivoInv> ConsecutivosInv { get; set; }
+        public DbSet<ConsInvAjConfig> ConsInvAjConfig { get; set; }
         public DbSet<ConsecutivoInvUsuario> ConsecutivosInvUsuarios { get; set; }
         public DbSet<DocumentoInvDet> DocumentosInvDet { get; set; }
         public DbSet<DocumentoInvEnc> DocumentosInvEnc { get; set; }

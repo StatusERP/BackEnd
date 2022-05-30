@@ -11,5 +11,6 @@ namespace StatusERP.DataAccess.Repositories.CI
         Task<int> CreateAsync(Articulo articulo);
         Task<int> UpdateAsync(Articulo articulo);
         Task<int> DeleteAsync(int id, string userId);
+        //Task<int> UsaLotesAsync(int id);
     }
 }
