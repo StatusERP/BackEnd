@@ -67,7 +67,7 @@ public class LocalizacionesService:ILocalizacionesService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoLocalizaciones request, string userId, string codLocalizacion)
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoLocalizaciones request, string userId, string codLocalizacion, int BodegaId)
     {
         var response = new BaseResponseGeneric<int>();
         try
@@ -77,15 +77,15 @@ public class LocalizacionesService:ILocalizacionesService
 
             if (buscarPrivilegio == null)
             {
-                response.Errors.Add($"No tiene Privilegios para ver Localizaciones");
+                response.Errors.Add($"No tiene Privilegios para crear localizaciones");
                 response.Success = false;
                 return response;
             }
 
-            var buscarCodLocalizacion = await _repository.BuscarCodLocalizacionAsync(codLocalizacion);
+            var buscarCodLocalizacion = await _repository.BuscarBodegaLocalizacionAsync(BodegaId, codLocalizacion);
             if (buscarCodLocalizacion != null)
             {
-                throw new Exception($"El codigo de Localizacion {buscarCodLocalizacion.CodLocalizacion} ya Existe");
+                throw new Exception($"El codigo de cocalización {buscarCodLocalizacion.CodLocalizacion} ya existe para la bodega {buscarCodLocalizacion.BodegaId}.");
             }
             response.Result = await _repository.CreateAsync(new Localizacion
             {

@@ -43,7 +43,7 @@ namespace StatusERP.API.Controllers.CI
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
             if (userId == null) return Unauthorized();
-            var response = await _service.CreateAsync(request, userId.Value, request.CodLote);
+            var response = await _service.CreateAsync(request, userId.Value, request.CodLote, request.ArticuloId);
             HttpContext.Response.Headers.Add("location", $"/api/CI/Lote/{response.Result}");
             return Ok(response);
         }

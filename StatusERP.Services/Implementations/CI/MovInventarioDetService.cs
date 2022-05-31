@@ -15,14 +15,19 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
         private readonly IExistenciaBodegaRepository _ebRepository;
         private readonly IExistenciaLoteRepository _elRepository;
+        private readonly IArticuloRepository _aRepository;
 
-        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository, IExistenciaLoteRepository elRepository)
+        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, 
+            IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository, 
+            IExistenciaLoteRepository elRepository, IArticuloRepository aRepository)
         {
             _repository = repository;
             _logger = logger;
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
             _ebRepository = ebRepository;
             _elRepository = elRepository;
+            _aRepository = aRepository;
+        
         }
 
         //public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, DtoExistenciaBodega ebrequest, DtoExistenciaLote elrequest, DtoArticulo arequest, string userId, int movInventarioEncId, int consecutivo)
@@ -114,28 +119,62 @@ namespace StatusERP.Services.Implementations.CI
 
 
 
-                //1. Comprobar si el artículo utiliza lotes.
+
+                var buscarArticulo = await _aRepository.GetByIdAsync(request.ArticuloId);
+
+                // El artículo existe?.
+                if (buscarArticulo == null)
+                {
+                    throw new Exception($"El artículo {buscarArticulo.CodArticulo} no existe.");
+                }
+                else
+                {   // El artículo es de tipo "servicio" o de tipo "kit"?
+                    if (buscarArticulo.Tipo  == "V" || buscarArticulo.Tipo == "K")
+                    {
+                        throw new Exception($"El artículo {buscarArticulo.CodArticulo} es de tipo SERVICIO.");
+                    }
+
+                    // Usa lotes?
+                    if (buscarArticulo.UsaLotes == false)
+                    {
+                        throw new Exception($"El artículo {buscarArticulo.CodArticulo} no utiliza lotes.");
+                    }
+                    else
+                    {
+                        
+                        // El registro no existe aún, se va a crear.
+
+                        var elresponse = new BaseResponseGeneric<int>();
+                        var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);
+                        var CostoUnitDol = decimal.Round((request.CostoTotDol / request.Cantidad), 8);
+                        response.Result = await _elRepository.CreateAsync(new ExistenciaLote
+                         {
+                            BodegaId = (int)request.BodegaId,
+                            ArticuloId = request.ArticuloId,
+                            LocalizacionId = (int)request.LocalizacionId,
+                            LoteId = (int)request.LoteId,
+                            CantDisponible = request.Cantidad,
+                            CantReservada = 0,
+                            CantNoAprobada = 0,
+                            CantVencida = 0,
+                            CantRemitida = 0,
+                            CostoUntLoc = CostoUnitLoc,
+                            CostoUntDol = CostoUnitDol,
+                            IsDeleted = false,
+                            Updatedby = userId,
+                            UpdateDate = DateTime.Now,
+                            Createdby = userId,
+                            CreateDate = DateTime.Now
+                        });
+
+                        response.Success = true;
+                    }
+            }
 
 
 
-                //Creación de registro en Existencia Lote
-                //    var elresponse = new BaseResponseGeneric<int>();
-                //    response.Result = await _elRepository.CreateAsync(new ExistenciaLote
-                //    {
-                //        BodegaId = elrequest.BodegaId,
-                //        ArticuloId = elrequest.ArticuloId,
-                //        LocalizacionId = elrequest.LocalizacionId,
-                //        LoteId = elrequest.LoteId,
-                //        IsDeleted = false,
-                //        Updatedby = userId,
-                //        UpdateDate = DateTime.Now,
-                //        Createdby = userId,
-                //        CreateDate = DateTime.Now
-                //    });
 
-                //    response.Success = true;
 
-                   
             }
             catch (Exception ex)
             {

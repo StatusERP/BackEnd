@@ -12,11 +12,11 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         }
 
-        public async Task<Lote?> BuscarCodLoteAsync(string CodLote)
+        public async Task<Lote?> BuscarLoteArticuloAsync(string CodLote, int ArticuloId)
         {
             return await _dbContext.Lotes
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.CodLote == CodLote);
+            .FirstOrDefaultAsync(t => t.CodLote == CodLote && t.ArticuloId == ArticuloId);
         }
 
         public async Task<int> CreateAsync(Lote Lote)
