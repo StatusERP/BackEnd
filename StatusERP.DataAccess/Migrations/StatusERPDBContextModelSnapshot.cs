@@ -6855,8 +6855,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<short>("Bultos")
-                        .HasColumnType("smallint");
+                    b.Property<int>("Bultos")
+                        .HasColumnType("int");
 
                     b.Property<bool>("CalculaPercep")
                         .HasColumnType("bit");
@@ -6934,8 +6934,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<short>("DiasCuarentena")
-                        .HasColumnType("smallint");
+                    b.Property<int>("DiasCuarentena")
+                        .HasColumnType("int");
 
                     b.Property<bool>("EsImpuesto")
                         .HasColumnType("bit");
@@ -6980,8 +6980,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<DateTime?>("FechaHoraUltModif")
                         .HasColumnType("datetime2");
 
-                    b.Property<short>("FrecuenciaConteo")
-                        .HasColumnType("smallint");
+                    b.Property<int>("FrecuenciaConteo")
+                        .HasColumnType("int");
 
                     b.Property<int>("ImpuestoId")
                         .HasColumnType("int");
@@ -6996,14 +6996,14 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(35)
                         .HasColumnType("nvarchar(35)");
 
-                    b.Property<short>("MinVidaCompra")
-                        .HasColumnType("smallint");
+                    b.Property<int>("MinVidaCompra")
+                        .HasColumnType("int");
 
-                    b.Property<short>("MinVidaConsumo")
-                        .HasColumnType("smallint");
+                    b.Property<int>("MinVidaConsumo")
+                        .HasColumnType("int");
 
-                    b.Property<short>("MinVidaVenta")
-                        .HasColumnType("smallint");
+                    b.Property<int>("MinVidaVenta")
+                        .HasColumnType("int");
 
                     b.Property<string>("ModalidadInvFis")
                         .HasMaxLength(1)
@@ -7031,8 +7031,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal>("PesoNeto")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<short>("PlazoReabast")
-                        .HasColumnType("smallint");
+                    b.Property<int>("PlazoReabast")
+                        .HasColumnType("int");
 
                     b.Property<decimal?>("PorcPercep")
                         .HasColumnType("decimal(28,8)");
@@ -7138,8 +7138,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("VentaTarjetaCredito")
                         .HasColumnType("bit");
 
-                    b.Property<short>("VidaUtilPromedio")
-                        .HasColumnType("smallint");
+                    b.Property<int>("VidaUtilPromedio")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Volumen")
                         .HasColumnType("decimal(28,8)");

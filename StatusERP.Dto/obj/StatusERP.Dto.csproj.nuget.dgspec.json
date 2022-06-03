@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {}
+    "C:\\proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {
+    "C:\\proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
+        "projectUniqueName": "C:\\proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
         "projectName": "StatusERP.Dto",
-        "projectPath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
+        "projectPath": "C:\\proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\obj\\",
+        "outputPath": "C:\\proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

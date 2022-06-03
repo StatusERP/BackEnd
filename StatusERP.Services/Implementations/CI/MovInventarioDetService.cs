@@ -87,37 +87,6 @@ namespace StatusERP.Services.Implementations.CI
                     CreateDate = DateTime.Now
                 });
 
-                //Creación de registro en Existencia Bodega
-                //var ebresponse = new BaseResponseGeneric<int>();
-                //ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
-                //{
-                //    ArticuloId = ebrequest.ArticuloId,
-                //    BodegaId = ebrequest.BodegaId,
-                //    ExistenciaMinima = ebrequest.ExistenciaMinima,
-                //    ExistenciaMaxima = ebrequest.ExistenciaMaxima,
-                //    PuntoDeOrden = ebrequest.PuntoDeOrden,
-                //    CantDisponible = ebrequest.CantDisponible + request.Cantidad,
-                //    CantReservada = ebrequest.CantReservada,
-                //    CantNoAprobada = ebrequest.CantNoAprobada,
-                //    CantVencida = ebrequest.CantVencida,
-                //    CantTransito = ebrequest.CantTransito,
-                //    CantProduccion = ebrequest.CantProduccion,
-                //    CantPedida = ebrequest.CantPedida,
-                //    CantRemitida = ebrequest.CantRemitida,
-                //    Congelado = ebrequest.Congelado,
-                //    FechaCong = ebrequest.FechaCong,
-                //    BloqueaTrans = ebrequest.BloqueaTrans,
-                //    FechaDescong = ebrequest.FechaDescong,
-                //    CostoUntPromedioLoc = ebrequest.CostoUntPromedioLoc,
-                //    CostoUntPromedioDol = ebrequest.CostoUntPromedioDol,
-                //    IsDeleted = false,
-                //    Updatedby = userId,
-                //    UpdateDate = DateTime.Now,
-                //    Createdby = userId,
-                //    CreateDate = DateTime.Now
-                //});
-
-
 
 
                 var buscarArticulo = await _aRepository.GetByIdAsync(request.ArticuloId);
@@ -128,11 +97,54 @@ namespace StatusERP.Services.Implementations.CI
                     throw new Exception($"El artículo {buscarArticulo.CodArticulo} no existe.");
                 }
                 else
-                {   // El artículo es de tipo "servicio" o de tipo "kit"?
+                {   // El artículo es de tipo "servicio" o de tipo "kit", no se realiza cambio alguno en tablas de existencias.
                     if (buscarArticulo.Tipo  == "V" || buscarArticulo.Tipo == "K")
                     {
                         throw new Exception($"El artículo {buscarArticulo.CodArticulo} es de tipo SERVICIO.");
                     }
+
+                    // Si llegó hasta acá es porque el artículo NO es de tipo servicio ni kit.
+                    // Por lo que se crea el registro en ExistenciaBodega, independientemente de si usa lotes o no.
+                    var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int) request.BodegaId);
+
+                    if (buscarIdExistenciaBodega != null)
+                    {
+                        //el registro existe, poner aquí la actualización de campos para Existencia Bodega
+
+                        //******* Revisar AjusteConfig
+
+                        var ebresponse = new BaseResponseGeneric<int>();
+                        ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
+                        {
+                            ArticuloId = request.ArticuloId,
+                            BodegaId = (int)request.BodegaId,
+                            CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
+                            CantReservada = buscarIdExistenciaBodega.CantReservada,
+                            CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
+                            CantVencida = buscarIdExistenciaBodega.CantVencida,
+                            CantTransito = buscarIdExistenciaBodega.CantTransito,
+                            CantProduccion = buscarIdExistenciaBodega.CantProduccion,
+                            CantPedida = buscarIdExistenciaBodega.CantPedida,
+                            CantRemitida = buscarIdExistenciaBodega.CantRemitida,
+                            CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
+                            CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
+                            IsDeleted = false,
+                            Updatedby = userId,
+                            UpdateDate = DateTime.Now,
+                            Createdby = userId,
+                            CreateDate = DateTime.Now
+                        });
+
+                    }
+                    else
+                    {
+                        throw new Exception($"No existe registro de existencias del artículo {request.ArticuloId} para la bodega {request.BodegaId}.");
+                    }    
+
+
+                   
+
+
 
                     // Usa lotes?
                     if (buscarArticulo.UsaLotes == false)
@@ -142,7 +154,8 @@ namespace StatusERP.Services.Implementations.CI
                     else
                     {
                         
-                        // El registro no existe aún, se va a crear.
+                        // El registro ya existe, sólo se va a actualizar,
+                        // si no existiera, debe crear en el mantenimiento de lotes.
 
                         var elresponse = new BaseResponseGeneric<int>();
                         var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);

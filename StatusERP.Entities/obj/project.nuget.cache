@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "eQqlV2jFo3a3SPTNmHOYbSIVA/2SuDO5cl2aKdRwCyiSRG8GKoIjDMPVYZ8ds+Yk6bTyF4TW3jnZvxOuQha/wA==",
+  "dgSpecHash": "2GvyDIjtOOf+QtEGI6pVS4bKT7li62tUSPUDVflzxTD0VhTzaFkIYfYXZn0vawr58s6msjP3yZlvcr8/3A/Q8A==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj",
+  "projectFilePath": "C:\\proyectos\\StatusERP\\BackEnd\\StatusERP.Entities\\StatusERP.Entities.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.2\\microsoft.entityframeworkcore.6.0.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.2\\microsoft.entityframeworkcore.abstractions.6.0.2.nupkg.sha512",
