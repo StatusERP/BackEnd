@@ -111,7 +111,26 @@ namespace StatusERP.Services.Implementations.CI
                     {
                         //el registro existe, poner aquí la actualización de campos para Existencia Bodega
 
-                        //******* Revisar AjusteConfig
+                        //******* Revisar AjusteConfig (ir a la tabla AjusteConfig con el Id y luego ingresar en una variable el campo CodAjusteConfig, desde un case.
+
+                        string TipoAjusteConfig = "~AA~";
+                        switch (TipoAjusteConfig)
+                        {
+                            case "~AA~":
+                                throw new Exception($"El ajuste es de tipo Aprobación.");
+
+                            case "~CC~":
+                                throw new Exception($"El ajuste es de tipo Compra.");
+
+                            case "~SS~":
+                                throw new Exception($"El ajuste es de tipo Costo.");
+
+                            case "~VV~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+                        }
+
+
+
 
                         var ebresponse = new BaseResponseGeneric<int>();
                         ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
@@ -121,7 +140,7 @@ namespace StatusERP.Services.Implementations.CI
                             CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
                             CantReservada = buscarIdExistenciaBodega.CantReservada,
                             CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
-                            CantVencida = buscarIdExistenciaBodega.CantVencida,
+                            CantVencida = buscarIdExistenciaBodega.CantVencida,         
                             CantTransito = buscarIdExistenciaBodega.CantTransito,
                             CantProduccion = buscarIdExistenciaBodega.CantProduccion,
                             CantPedida = buscarIdExistenciaBodega.CantPedida,
