@@ -16,10 +16,13 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IExistenciaBodegaRepository _ebRepository;
         private readonly IExistenciaLoteRepository _elRepository;
         private readonly IArticuloRepository _aRepository;
+        private readonly IAjusteConfigRepository _ajRepository;
 
-        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger, 
-            IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository, 
-            IExistenciaLoteRepository elRepository, IArticuloRepository aRepository)
+        string TipoAjusteConfig;
+
+        public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger,
+            IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository,
+            IExistenciaLoteRepository elRepository, IArticuloRepository aRepository, IAjusteConfigRepository ajRepository)
         {
             _repository = repository;
             _logger = logger;
@@ -27,7 +30,7 @@ namespace StatusERP.Services.Implementations.CI
             _ebRepository = ebRepository;
             _elRepository = elRepository;
             _aRepository = aRepository;
-        
+            _ajRepository = ajRepository;
         }
 
         //public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, DtoExistenciaBodega ebrequest, DtoExistenciaLote elrequest, DtoArticulo arequest, string userId, int movInventarioEncId, int consecutivo)
@@ -113,18 +116,63 @@ namespace StatusERP.Services.Implementations.CI
 
                         //******* Revisar AjusteConfig (ir a la tabla AjusteConfig con el Id y luego ingresar en una variable el campo CodAjusteConfig, desde un case.
 
-                        string TipoAjusteConfig = "~AA~";
+                        var buscarTipoAjusteConfig = await _ajRepository.GetByIdAsync((int) request.AjusteConfigId);
+                        if (buscarTipoAjusteConfig != null)
+                        {
+                            TipoAjusteConfig = buscarTipoAjusteConfig.CodAjusteConfig;
+                        }
+
                         switch (TipoAjusteConfig)
                         {
+                            // 1/13 - Aprobación
                             case "~AA~":
                                 throw new Exception($"El ajuste es de tipo Aprobación.");
 
+                            // 2/13 - Consumo
                             case "~CC~":
                                 throw new Exception($"El ajuste es de tipo Compra.");
 
-                            case "~SS~":
+                            // 3/13 - Físico *******************
+                            case "~FF~":
                                 throw new Exception($"El ajuste es de tipo Costo.");
 
+                            // 4/13 - Remisión
+                            case "~II~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 5/13 - Traslado 2F
+                            case "~LL~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 6/13 - Misceláneo
+                            case "~MM~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 7/13 - Vencimiento
+                            case "~NN~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 8/13 - Compra ***************
+                            case "~OO~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 9/13 - Producción
+                            case "~PP~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 10/13 - Reservación
+                            case "~RR~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 11/13 - Costo ****************
+                            case "~SS~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 12/13 - Traslado ****************
+                            case "~TT~":
+                                throw new Exception($"El ajuste es de tipo Venta.");
+
+                            // 13/13 - Venta ******************
                             case "~VV~":
                                 throw new Exception($"El ajuste es de tipo Venta.");
                         }
