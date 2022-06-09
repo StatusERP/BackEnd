@@ -70,9 +70,9 @@ namespace StatusERP.Dto.Request.CI
         public decimal Volumen { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar los bultos.")]
-        public Int16 Bultos { get; set; }
+        public int Bultos { get; set; }
 
-        public int CategoriaArticuloId1 { get; set; }
+        public int CategoriaArticuloId { get; set; }
 
         
 

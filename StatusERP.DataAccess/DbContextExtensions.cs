@@ -62,6 +62,17 @@ namespace StatusERP.DataAccess
 
             await context.SaveChangesAsync();
         }
+        public static async Task Update2Async<TEntityBase>(this DbContext context, TEntityBase entity)
+           where TEntityBase : EntityBase
+        {
+            
+             context.Set<TEntityBase>().Attach(entity);
+            context.Entry(entity).State = EntityState.Modified;
+            // context.Entry(registro).State = EntityState.Modified;
+
+            await context.SaveChangesAsync();
+        }
+
         public static async Task DeleteAsync<TEntityBase>(this DbContext context, TEntityBase entity)
            where TEntityBase : EntityBase
         {
