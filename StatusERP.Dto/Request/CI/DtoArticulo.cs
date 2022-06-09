@@ -129,7 +129,7 @@ namespace StatusERP.Dto.Request.CI
         public string ClaseABC { get; set; }
 
         [Required(ErrorMessage = "La frecuencia de conteo es requerida.")]
-        public Int16 FrecuenciaConteo { get; set; }
+        public int FrecuenciaConteo { get; set; }
 
         [StringLength(20)]
         public string ? CodigoBarrasVent { get; set; }
@@ -144,19 +144,19 @@ namespace StatusERP.Dto.Request.CI
         public bool ObligaCuarentena { get; set; }
 
         [Required(ErrorMessage = "Se debe ingresar el Mínimo de Vida Compra.")]
-        public Int16 MinVidaCompra { get; set; }
+        public int MinVidaCompra { get; set; }
 
         [Required(ErrorMessage = "Se debe ingresar el Mínimo de Vida Consumo.")]
-        public Int16 MinVidaConsumo { get; set; }
+        public int MinVidaConsumo { get; set; }
 
         [Required(ErrorMessage = "Se debe ingresar el Mínimo de Vida Venta.")]
-        public Int16 MinVidaVenta { get; set; }
+        public int MinVidaVenta { get; set; }
 
         [Required(ErrorMessage = "Se debe ingresar la Vida Util Promedio.")]
-        public Int16 VidaUtilPromedio { get; set; }
+        public int VidaUtilPromedio { get; set; }
 
         [Required(ErrorMessage = "Se debe ingresar los días cuarentena.")]
-        public Int16 DiasCuarentena { get; set; }
+        public int DiasCuarentena { get; set; }
 
         [StringLength(30)]
         public string? ArticuloDelProv { get; set; }
@@ -166,7 +166,7 @@ namespace StatusERP.Dto.Request.CI
         public decimal OrdenMinima { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el plazo de reabastecimiento.")]
-        public Int16 PlazoReabast { get; set; }
+        public int PlazoReabast { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el valor de Lote Múltiplo.")]
         [Column(TypeName = "decimal(28,8)")]

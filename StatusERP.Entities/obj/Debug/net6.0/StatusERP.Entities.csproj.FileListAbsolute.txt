@@ -46,4 +46,9 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Ent
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\refint\StatusERP.Entities.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.pdb
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\ref\StatusERP.Entities.dll
+=======
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\obj\Debug\net6.0\StatusERP.Entities.csproj.AssemblyReference.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Entities\bin\Debug\net6.0\ref\StatusERP.Entities.dll
+>>>>>>> 76487af636fb92c672537d57425caa158885bfd3

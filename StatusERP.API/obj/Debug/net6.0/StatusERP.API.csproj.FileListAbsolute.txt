@@ -163,6 +163,10 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.Gene
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfoInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
+<<<<<<< HEAD
+=======
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cs
+>>>>>>> 76487af636fb92c672537d57425caa158885bfd3
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.json
@@ -225,7 +229,10 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.DataAcce
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.Entities.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.Services.pdb
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cs
+=======
+>>>>>>> 76487af636fb92c672537d57425caa158885bfd3
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\staticwebassets.build.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\staticwebassets.development.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\scopedcss\bundle\StatusERP.API.styles.css

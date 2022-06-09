@@ -10,7 +10,6 @@ namespace StatusERP.DataAccess.Repositories.AS.Interfaces
         Task<int> CreateAsync( Localizacion localizacion);
         Task<int> UpdateAsync(Localizacion localizacion );
         Task<int> DeleteAsync(int id, string userId);
-        
-        Task<Localizacion?> BuscarCodLocalizacionAsync(string codLocalizacion);
+        Task<Localizacion?> BuscarBodegaLocalizacionAsync(int BodegaId, string codLocalizacion);
     }
 }

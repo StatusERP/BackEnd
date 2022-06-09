@@ -21,7 +21,7 @@ namespace StatusERP.Services.Implementations.CI
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoLote request, string userId, string codLote)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoLote request, string userId, string codLote, int ArticuloId)
         {
             var response = new BaseResponseGeneric<int>();
             try
@@ -35,10 +35,10 @@ namespace StatusERP.Services.Implementations.CI
                     return response;
                 }
 
-                var buscarCodLote = await _repository.BuscarCodLoteAsync(codLote);
-                if (buscarCodLote != null)
+                var buscarLoteArticulo = await _repository.BuscarLoteArticuloAsync(codLote, ArticuloId);
+                if (buscarLoteArticulo != null)
                 {
-                    throw new Exception($"El codigo de lote {buscarCodLote.CodLote} ya existe");
+                    throw new Exception($"El codigo de lote {buscarLoteArticulo.CodLote} ya existe para el artículo {buscarLoteArticulo.ArticuloId}");
                 }
                 response.Result = await _repository.CreateAsync(new Lote
                 {

@@ -27,11 +27,11 @@ namespace StatusERP.DataAccess.Repositories.AS
             return id;
         }
 
-        public async Task<Localizacion?> BuscarCodLocalizacionAsync(string codLocalizacion)
+        public async Task<Localizacion?> BuscarBodegaLocalizacionAsync(int BodegaId, string codLocalizacion)
         {
             return await _dbContext.Localizaciones
                 .AsNoTracking()
-                .FirstOrDefaultAsync(t => t.CodLocalizacion == codLocalizacion );
+                .FirstOrDefaultAsync(t => t.BodegaId == BodegaId && t.CodLocalizacion == codLocalizacion);
         }
 
         public async Task<Localizacion?> GetByIdAsync(int id)
