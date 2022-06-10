@@ -86,11 +86,11 @@ namespace StatusERP.Dto.Request.CI
 
         [Required(ErrorMessage = "Debe ingresar la existencia mínima.")]
         [Column(TypeName = "decimal(28,8)")]
-        public decimal ExistenciaMínima { get; set; }
+        public decimal ExistenciaMinima { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar la existencia máxima.")]
         [Column(TypeName = "decimal(28,8)")]
-        public decimal ExistenciaMáxima { get; set; }
+        public decimal ExistenciaMaxima { get; set; }
 
         [Required(ErrorMessage = "Debe ingresar el punto de reorden.")]
         [Column(TypeName = "decimal(28,8)")]

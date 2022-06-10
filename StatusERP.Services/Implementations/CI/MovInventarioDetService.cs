@@ -54,43 +54,7 @@ namespace StatusERP.Services.Implementations.CI
                     throw new Exception($"El consecutivo {buscarMovInventarioDet.Consecutivo} ya existe para el movimiento {buscarMovInventarioDet.MovInventarioEncId}");
                 }
 
-                // Creación de registro en Detalle de Movimiento de Inventario
-                response.Result = await _repository.CreateAsync(new MovInventarioDet
-                {
-                    MovInventarioEncId = request.MovInventarioEncId,
-                    Consecutivo = request.Consecutivo,
-                    FechaHoraTransac = request.FechaHoraTransac,
-                    DocTributarioId = request.DocTributarioId,
-                    AjusteConfigId = request.AjusteConfigId,
-                    ArticuloId = request.ArticuloId,
-                    BodegaId = request.BodegaId,
-                    LocalizacionId = request.LocalizacionId,
-                    LoteId = request.LoteId,
-                    Tipo = request.Tipo,
-                    Subtipo = request.Subtipo,
-                    Subsubtipo = request.Subsubtipo,
-                    Naturaleza = request.Naturaleza,
-                    Cantidad = request.Cantidad,
-                    CostoTotLoc = request.CostoTotLoc, 
-                    CostoTotDol = request.CostoTotDol,
-                    PrecioTotalLocal = request.PrecioTotalLocal,
-                    PrecioTotalDolar = request.PrecioTotalDolar,
-                    Contabilizada = request.Contabilizada,
-                    Fecha = request.Fecha,
-                    CentroCuentaId = request.CentroCuentaId,
-                    UnidadDistribucionId = request.UnidadDistribucionId,
-                    AsientoCardex = request.AsientoCardex,
-                    DocFiscal = request.DocFiscal,
-                    TipoOperacionId = request.TipoOperacionId,
-                    TipoPagoId = request.TipoPagoId,
-                    IsDeleted = false,
-                    Updatedby = userId,
-                    UpdateDate = DateTime.Now,
-                    Createdby = userId,
-                    CreateDate = DateTime.Now
-                });
-
-
+        //********************** COMIENZAN LAS VALIDACIONES
 
                 var buscarArticulo = await _aRepository.GetByIdAsync(request.ArticuloId);
 
@@ -103,159 +67,186 @@ namespace StatusERP.Services.Implementations.CI
                 {   // El artículo es de tipo "servicio" o de tipo "kit", no se realiza cambio alguno en tablas de existencias.
                     if (buscarArticulo.Tipo  == "V" || buscarArticulo.Tipo == "K")
                     {
-                        throw new Exception($"El artículo {buscarArticulo.CodArticulo} es de tipo SERVICIO.");
+                        throw new Exception($"El artículo {buscarArticulo.CodArticulo} es de tipo SERVICIO o KIT.");
                     }
 
                     // Si llegó hasta acá es porque el artículo NO es de tipo servicio ni kit.
-                    // Por lo que se crea el registro en ExistenciaBodega, independientemente de si usa lotes o no.
-                    var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int) request.BodegaId);
+                    // Por lo que se inicia la validación del tipo de AjusteConfig dentro de un switch.
 
-                    if (buscarIdExistenciaBodega != null)
-                    {
-                        //el registro existe, poner aquí la actualización de campos para Existencia Bodega
+                   //******* Revisar AjusteConfig (ir a la tabla AjusteConfig con el Id y luego ingresar en una variable el campo CodAjusteConfig, desde un case.
 
-                        //******* Revisar AjusteConfig (ir a la tabla AjusteConfig con el Id y luego ingresar en una variable el campo CodAjusteConfig, desde un case.
+                   var buscarTipoAjusteConfig = await _ajRepository.GetByIdAsync((int) request.AjusteConfigId);
+                   if (buscarTipoAjusteConfig != null)
+                   {
+                       TipoAjusteConfig = buscarTipoAjusteConfig.CodAjusteConfig;
+                        
+                       switch (TipoAjusteConfig)
+                       {
+                           // 1/13 - Aprobación
+                           case "~AA~":
+                               throw new Exception($"El ajuste es de tipo Aprobación.");
 
-                        var buscarTipoAjusteConfig = await _ajRepository.GetByIdAsync((int) request.AjusteConfigId);
-                        if (buscarTipoAjusteConfig != null)
-                        {
-                            TipoAjusteConfig = buscarTipoAjusteConfig.CodAjusteConfig;
-                        }
-
-                        switch (TipoAjusteConfig)
-                        {
-                            // 1/13 - Aprobación
-                            case "~AA~":
-                                throw new Exception($"El ajuste es de tipo Aprobación.");
-
-                            // 2/13 - Consumo
+                           // 2/13 - Consumo
                             case "~CC~":
-                                throw new Exception($"El ajuste es de tipo Compra.");
+                                 throw new Exception($"El ajuste es de tipo Consumo.");
 
-                            // 3/13 - Físico *******************
-                            case "~FF~":
-                                throw new Exception($"El ajuste es de tipo Costo.");
+                           // 3/13 - Físico *******************
+                           case "~FF~":
+                                 throw new Exception($"El ajuste es de tipo Físico.");
 
-                            // 4/13 - Remisión
-                            case "~II~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                           // 4/13 - Remisión
+                           case "~II~":
+                                 throw new Exception($"El ajuste es de tipo Remisión.");
 
-                            // 5/13 - Traslado 2F
-                            case "~LL~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                           // 5/13 - Traslado 2F
+                           case "~LL~":
+                                 throw new Exception($"El ajuste es de tipo Traslado 2F.");
 
-                            // 6/13 - Misceláneo
-                            case "~MM~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                           // 6/13 - Misceláneo
+                           case "~MM~":
+                                  throw new Exception($"El ajuste es de tipo Misceláneo.");
 
-                            // 7/13 - Vencimiento
-                            case "~NN~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                           // 7/13 - Vencimiento
+                           case "~NN~":
+                                  throw new Exception($"El ajuste es de tipo Vencimiento.");
 
                             // 8/13 - Compra ***************
                             case "~OO~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                           {
+                                //throw new Exception($"El ajuste es de tipo Compra.");    
+                                // Creación de registro en Detalle de Movimiento de Inventario
+                                response.Result = await _repository.CreateAsync(new MovInventarioDet
+                                {
+                                            MovInventarioEncId = request.MovInventarioEncId,
+                                            Consecutivo = request.Consecutivo,
+                                            FechaHoraTransac = request.FechaHoraTransac,
+                                            DocTributarioId = request.DocTributarioId,
+                                            AjusteConfigId = request.AjusteConfigId,
+                                            ArticuloId = request.ArticuloId,
+                                            BodegaId = request.BodegaId,
+                                            LocalizacionId = request.LocalizacionId,
+                                            LoteId = request.LoteId,
+                                            Tipo = request.Tipo,
+                                            Subtipo = request.Subtipo,
+                                            Subsubtipo = request.Subsubtipo,
+                                            Naturaleza = request.Naturaleza,
+                                            Cantidad = request.Cantidad,
+                                            CostoTotLoc = request.CostoTotLoc,
+                                            CostoTotDol = request.CostoTotDol,
+                                            PrecioTotalLocal = request.PrecioTotalLocal,
+                                            PrecioTotalDolar = request.PrecioTotalDolar,
+                                            Contabilizada = request.Contabilizada,
+                                            Fecha = request.Fecha,
+                                            CentroCuentaId = request.CentroCuentaId,
+                                            UnidadDistribucionId = request.UnidadDistribucionId,
+                                            AsientoCardex = request.AsientoCardex,
+                                            DocFiscal = request.DocFiscal,
+                                            TipoOperacionId = request.TipoOperacionId,
+                                            TipoPagoId = request.TipoPagoId,
+                                            IsDeleted = false,
+                                            Updatedby = userId,
+                                            UpdateDate = DateTime.Now,
+                                            Createdby = userId,
+                                            CreateDate = DateTime.Now
+                                 });
 
-                            // 9/13 - Producción
-                            case "~PP~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                                 var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int)request.BodegaId);
+                                    
+                                 if (buscarIdExistenciaBodega != null)
+                                 {
+                                     //el registro existe, poner aquí la actualización de campos para Existencia Bodega, SUSTITUIR ESTE CREATE
+                                     var ebresponse = new BaseResponseGeneric<int>();
+                                     ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
+                                     {
+                                          ArticuloId = request.ArticuloId,
+                                          BodegaId = (int)request.BodegaId,
+                                          CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
+                                          CantReservada = buscarIdExistenciaBodega.CantReservada,
+                                          CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
+                                          CantVencida = buscarIdExistenciaBodega.CantVencida,
+                                          CantTransito = buscarIdExistenciaBodega.CantTransito,
+                                          CantProduccion = buscarIdExistenciaBodega.CantProduccion,
+                                          CantPedida = buscarIdExistenciaBodega.CantPedida,
+                                          CantRemitida = buscarIdExistenciaBodega.CantRemitida,
+                                          CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
+                                          CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
+                                          FechaCong = DateTime.Now,
+                                          FechaDescong = DateTime.Now,
+                                          IsDeleted = false,
+                                          Updatedby = userId,
+                                          UpdateDate = DateTime.Now,
+                                          Createdby = userId,
+                                          CreateDate = DateTime.Now
+                                      });
+                                 }
+                                 else
+                                 {
+                                      throw new Exception($"No existe registro de existencias del artículo {request.ArticuloId} para la bodega {request.BodegaId}.");
+                                 }
 
-                            // 10/13 - Reservación
-                            case "~RR~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                                // Usa lotes?
+                                if (buscarArticulo.UsaLotes == false)
+                                {
+                                    throw new Exception($"El artículo {buscarArticulo.CodArticulo} no utiliza lotes.");
+                                }
+                                else
+                                {
 
-                            // 11/13 - Costo ****************
-                            case "~SS~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                                // El registro ya existe, sólo se va a actualizar,
+                                // si no existiera, debe crear en el mantenimiento de lotes.
 
-                            // 12/13 - Traslado ****************
-                            case "~TT~":
-                                throw new Exception($"El ajuste es de tipo Venta.");
+                                   var elresponse = new BaseResponseGeneric<int>();
+                                   var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);
+                                   var CostoUnitDol = decimal.Round((request.CostoTotDol / request.Cantidad), 8);
+                                   response.Result = await _elRepository.CreateAsync(new ExistenciaLote
+                                   {
+                                            BodegaId = (int)request.BodegaId,
+                                            ArticuloId = request.ArticuloId,
+                                            LocalizacionId = (int)request.LocalizacionId,
+                                            LoteId = (int)request.LoteId,
+                                            CantDisponible = request.Cantidad,
+                                            CantReservada = 0,
+                                            CantNoAprobada = 0,
+                                            CantVencida = 0,
+                                            CantRemitida = 0,
+                                            CostoUntLoc = CostoUnitLoc,
+                                            CostoUntDol = CostoUnitDol,
+                                            IsDeleted = false,
+                                            Updatedby = userId,
+                                            UpdateDate = DateTime.Now,
+                                            Createdby = userId,
+                                            CreateDate = DateTime.Now
+                                    });
+
+                                    response.Success = true;
+                                }
+                                return response;
+                           };
+                            
+                           // 9/13 - Producción
+                           case "~PP~":
+                                throw new Exception($"El ajuste es de tipo Producción.");
+
+                           // 10/13 - Reservación
+                           case "~RR~":
+                                throw new Exception($"El ajuste es de tipo Reservación.");
+
+                           // 11/13 - Costo ****************
+                           case "~SS~":
+                                throw new Exception($"El ajuste es de tipo Costo.");
+
+                           // 12/13 - Traslado ****************
+                           case "~TT~":
+                                throw new Exception($"El ajuste es de tipo Traslado.");
 
                             // 13/13 - Venta ******************
                             case "~VV~":
                                 throw new Exception($"El ajuste es de tipo Venta.");
-                        }
+                       };  // Fin del switch
+                   };  // Fin de la validación null del AjusteConfig
+                }; //Fin de la validación null del Articulo
+            } //Fin del try
 
-
-
-
-                        var ebresponse = new BaseResponseGeneric<int>();
-                        ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
-                        {
-                            ArticuloId = request.ArticuloId,
-                            BodegaId = (int)request.BodegaId,
-                            CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
-                            CantReservada = buscarIdExistenciaBodega.CantReservada,
-                            CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
-                            CantVencida = buscarIdExistenciaBodega.CantVencida,         
-                            CantTransito = buscarIdExistenciaBodega.CantTransito,
-                            CantProduccion = buscarIdExistenciaBodega.CantProduccion,
-                            CantPedida = buscarIdExistenciaBodega.CantPedida,
-                            CantRemitida = buscarIdExistenciaBodega.CantRemitida,
-                            CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
-                            CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
-                            IsDeleted = false,
-                            Updatedby = userId,
-                            UpdateDate = DateTime.Now,
-                            Createdby = userId,
-                            CreateDate = DateTime.Now
-                        });
-
-                    }
-                    else
-                    {
-                        throw new Exception($"No existe registro de existencias del artículo {request.ArticuloId} para la bodega {request.BodegaId}.");
-                    }    
-
-
-                   
-
-
-
-                    // Usa lotes?
-                    if (buscarArticulo.UsaLotes == false)
-                    {
-                        throw new Exception($"El artículo {buscarArticulo.CodArticulo} no utiliza lotes.");
-                    }
-                    else
-                    {
-                        
-                        // El registro ya existe, sólo se va a actualizar,
-                        // si no existiera, debe crear en el mantenimiento de lotes.
-
-                        var elresponse = new BaseResponseGeneric<int>();
-                        var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);
-                        var CostoUnitDol = decimal.Round((request.CostoTotDol / request.Cantidad), 8);
-                        response.Result = await _elRepository.CreateAsync(new ExistenciaLote
-                         {
-                            BodegaId = (int)request.BodegaId,
-                            ArticuloId = request.ArticuloId,
-                            LocalizacionId = (int)request.LocalizacionId,
-                            LoteId = (int)request.LoteId,
-                            CantDisponible = request.Cantidad,
-                            CantReservada = 0,
-                            CantNoAprobada = 0,
-                            CantVencida = 0,
-                            CantRemitida = 0,
-                            CostoUntLoc = CostoUnitLoc,
-                            CostoUntDol = CostoUnitDol,
-                            IsDeleted = false,
-                            Updatedby = userId,
-                            UpdateDate = DateTime.Now,
-                            Createdby = userId,
-                            CreateDate = DateTime.Now
-                        });
-
-                        response.Success = true;
-                    }
-            }
-
-
-
-
-
-            }
             catch (Exception ex)
             {
                 _logger.LogCritical(ex.StackTrace);
