@@ -38,11 +38,6 @@ C:\Proyectos\StatusERP\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAcces
 C:\Proyectos\StatusERP\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.AssemblyInfoInputs.cache
 C:\Proyectos\StatusERP\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.AssemblyInfo.cs
 C:\Proyectos\StatusERP\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.CoreCompileInputs.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.AssemblyReference.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.AssemblyInfoInputs.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.AssemblyInfo.cs
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.DataAccess.deps.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.DataAccess.pdb
@@ -50,6 +45,11 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.D
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Entities.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\bin\Debug\net6.0\StatusERP.Entities.pdb
+C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.AssemblyReference.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.AssemblyInfoInputs.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.AssemblyInfo.cs
+C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.CopyComplete
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\refint\StatusERP.DataAccess.dll

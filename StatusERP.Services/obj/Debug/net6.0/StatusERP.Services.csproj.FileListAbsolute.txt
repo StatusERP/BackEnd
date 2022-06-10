@@ -42,11 +42,6 @@ C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.Ge
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfoInputs.cache
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfo.cs
 C:\Proyectos\StatusERP\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.AssemblyReference.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfoInputs.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfo.cs
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.deps.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Services.pdb
@@ -56,6 +51,11 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Ent
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.DataAccess.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\bin\Debug\net6.0\StatusERP.Entities.pdb
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.AssemblyReference.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfoInputs.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.AssemblyInfo.cs
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
