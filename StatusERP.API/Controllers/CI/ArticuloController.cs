@@ -27,7 +27,7 @@ namespace StatusERP.API.Controllers.CI
         public async Task<ActionResult<BaseResponseGeneric<ICollection<Articulo>>>> Get(int page, int rows)
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
-
+            
             if (userId == null) return Unauthorized();
             return Ok(await _service.GetAsync(page, rows, userId.Value));
         }
@@ -42,8 +42,9 @@ namespace StatusERP.API.Controllers.CI
         public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoArticulo request)
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+            var userName = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Email);
             if (userId == null) return Unauthorized();
-            var response = await _service.CreateAsync(request, userId.Value, request.CodArticulo);
+            var response = await _service.CreateAsync(request, userId.Value, userName.Value, request.CodArticulo);
             HttpContext.Response.Headers.Add("location", $"/api/CI/Articulo/{response.Result}");
             return Ok(response);
         }

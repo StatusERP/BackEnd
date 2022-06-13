@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(AjusteConfig ajusteConfig)
         {
-            await _dbContext.UpdateAsync(ajusteConfig);
+            await _dbContext.UpdateAsync(ajusteConfig,Mapper);
             return ajusteConfig.Id;
         }
     }

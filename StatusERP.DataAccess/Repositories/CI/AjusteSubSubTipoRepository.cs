@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(AjusteSubSubTipo ajusteSubSubTipo)
         {
-            await _dbContext.UpdateAsync(ajusteSubSubTipo);
+            await _dbContext.UpdateAsync(ajusteSubSubTipo,Mapper);
             return ajusteSubSubTipo.Id;
         }
     }

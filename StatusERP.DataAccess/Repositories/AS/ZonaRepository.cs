@@ -36,7 +36,7 @@ public class ZonaRepository :StatusERPContextBase<Zona> ,IZonaRepository
 
     public async Task<int> UpdateAsync(Zona zona)
     {
-        await _dbContext.UpdateAsync(zona);
+        await _dbContext.UpdateAsync(zona,Mapper);
         return zona.Id;
 
     }

@@ -11,7 +11,7 @@ namespace StatusERP.Services.Interfaces.CI
 
         Task<BaseResponseGeneric<Articulo>> GetByIdAsync(int id);
 
-        Task<BaseResponseGeneric<int>> CreateAsync(DtoArticulo request, string userId, string codArticulo);
+        Task<BaseResponseGeneric<int>> CreateAsync(DtoArticulo request, string userId, string userName, string codArticulo);
 
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoArticulo request, string userId);
 

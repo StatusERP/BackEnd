@@ -41,12 +41,20 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<ICollection<Lote>> GetCollectionAsync(int page, int rows)
         {
-            return await _dbContext.SelectAsync<Lote>(page, rows);
+
+            return await _dbContext.Lotes
+              .Where(p => !p.IsDeleted)
+              .AsNoTracking()
+               .Skip((page - 1) * rows)
+              .Take(rows)
+              .ToListAsync();
+
+            
         }
 
         public async Task<int> UpdateAsync(Lote Lote)
         {
-            await _dbContext.UpdateAsync(Lote);
+            await _dbContext.UpdateAsync(Lote,Mapper);
             return Lote.Id;
         }
     }

@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ClasificacionInv ClasificacionInv)
         {
-            await _dbContext.UpdateAsync(ClasificacionInv);
+            await _dbContext.UpdateAsync(ClasificacionInv,Mapper);
             return ClasificacionInv.Id;
         }
     }

@@ -28,7 +28,7 @@ public class DocTributarioRepository:StatusERPContextBase<DocTributario>,IDocTri
 
     public async Task<int> UpdateAsync(DocTributario docTributario)
     {
-        await _dbContext.UpdateAsync(docTributario);
+        await _dbContext.UpdateAsync(docTributario,Mapper);
         return docTributario.Id;
     }
 

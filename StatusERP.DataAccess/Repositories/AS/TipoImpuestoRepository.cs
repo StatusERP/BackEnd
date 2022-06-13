@@ -27,7 +27,7 @@ public class TipoImpuestoRepository : StatusERPContextBase<TipoImpuesto>, ITipoI
 
     public async Task<int> UpdateAsync(TipoImpuesto tipoImpuesto)
     {
-        await _dbContext.UpdateAsync(tipoImpuesto);
+        await _dbContext.UpdateAsync(tipoImpuesto,Mapper);
         return tipoImpuesto.Id;
     }
 

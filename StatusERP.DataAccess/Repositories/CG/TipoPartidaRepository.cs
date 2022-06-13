@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(TipoPartida tipoPartida)
         {
-            await _dbContext.UpdateAsync(tipoPartida);
+            await _dbContext.UpdateAsync(tipoPartida,Mapper);
             return tipoPartida.Id;
         }
     }

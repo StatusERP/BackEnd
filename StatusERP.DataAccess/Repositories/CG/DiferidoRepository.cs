@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(Diferido Diferido)
         {
-            await _dbContext.UpdateAsync(Diferido);
+            await _dbContext.UpdateAsync(Diferido,Mapper);
             return Diferido.Id;
         }
     }

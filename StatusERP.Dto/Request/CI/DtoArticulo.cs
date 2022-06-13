@@ -72,7 +72,7 @@ namespace StatusERP.Dto.Request.CI
         [Required(ErrorMessage = "Debe ingresar los bultos.")]
         public int Bultos { get; set; }
 
-        public int CategoriaArticuloId1 { get; set; }
+        public int CategoriaArticuloId { get; set; }
 
         
 

@@ -26,9 +26,22 @@ public class UnidadMedidaRepository:StatusERPContextBase<UnidadMedida>,IUnidadMe
         return await _dbContext.InsertAsync(unidadMedida);
     }
 
-    public async Task<int> UpdateAsync(UnidadMedida unidadMedida)
+    public async Task <int> UpdateAsync(UnidadMedida unidadMedida)
     {
-        await _dbContext.UpdateAsync(unidadMedida);
+
+        var registro = await _dbContext.Set<UnidadMedida>()
+              .AsTracking()
+              .SingleOrDefaultAsync(x => x.Id == unidadMedida.Id);
+        //if (registro == null) return;
+
+        Mapper.Map(registro,unidadMedida);
+
+        // context.Entry(registro).State = EntityState.Modified;
+
+        await _dbContext.SaveChangesAsync();
+
+
+      //  await _dbContext.UpdateAsync(unidadMedida,Mapper);
         return unidadMedida.Id;
     }
 

@@ -40,8 +40,51 @@ public class BodegaRepository:StatusERPContextBase<Bodega>,IBodegaRepository
 
     public async Task<int> UpdateAsync(Bodega bodega)
     {
-        await _dbContext.UpdateAsync(bodega);
+       // await _dbContext.Update2Async(bodega);
+       // return bodega.Id;
+
+
+
+        try
+        {
+            var registro = await _dbContext.Set<Bodega>()
+        .AsNoTracking()
+        .SingleOrDefaultAsync(x => x.Id == bodega.Id && !x.IsDeleted);
+
+            if (registro == null)
+            {
+                return 0;
+            }
+
+            registro.Activa = bodega.Activa;
+            registro.Direccion = bodega.Direccion;
+            registro.Nombre=bodega.Nombre;
+            registro.Telefono = bodega.Telefono;
+            registro.Tipo=bodega.Tipo;
+            registro.Createdby=bodega.Createdby;
+            registro.UpdateDate = bodega.UpdateDate;
+            
+
+
+            _dbContext.Set<Bodega>().Attach(registro);
+            _dbContext.Entry(registro).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+
+        }
+        catch (Exception ex)
+        {
+            Console.Write(ex);
+        }
+
         return bodega.Id;
+
+
+
+
+
+
+
+
     }
 
     public  async Task<int> DeleteAsync(int id, string userId)

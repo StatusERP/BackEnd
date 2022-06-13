@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(CentroCuenta CentroCuenta)
         {
-            await _dbContext.UpdateAsync(CentroCuenta);
+            await _dbContext.UpdateAsync(CentroCuenta,Mapper);
             return CentroCuenta.Id;
         }
     }

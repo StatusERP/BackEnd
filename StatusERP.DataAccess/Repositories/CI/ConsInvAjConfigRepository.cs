@@ -46,7 +46,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ConsInvAjConfig consInvAjConfig)
         {
-            await _dbContext.UpdateAsync(consInvAjConfig);
+            await _dbContext.UpdateAsync(consInvAjConfig,Mapper);
             return consInvAjConfig.Id;
         }
     }

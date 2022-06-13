@@ -21,7 +21,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(GlobalesCI GlobalesCI)
         {
-            await _dbContext.UpdateAsync(GlobalesCI);
+            await _dbContext.UpdateAsync(GlobalesCI,Mapper);
             return GlobalesCI.Id;
         }
 

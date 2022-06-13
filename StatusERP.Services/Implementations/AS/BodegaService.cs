@@ -150,9 +150,21 @@ public class BodegaService:IBodegaService
                 return response;
             }
 
-            Bodega bodega = _mapper.Map<Bodega>(request);
-            bodega.Id = id;
-            response.Result = await _repository.UpdateAsync(bodega);
+            
+            response.Result = await _repository.UpdateAsync(new Bodega
+            {
+                Id = id,
+                CodBodega=request.CodBodega,
+                Nombre=request.Nombre,
+                Tipo=request.Tipo,
+                Activa=request.Activa,
+                Telefono=request.Telefono,
+                Direccion=request.Direccion,
+                Updatedby=userId,
+                UpdateDate=DateTime.Now,
+                CreateDate=DateTime.Now,
+                Createdby=userId
+            });
              response.Success=true;
            
         }

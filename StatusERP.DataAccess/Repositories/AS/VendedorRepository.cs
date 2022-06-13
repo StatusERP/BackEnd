@@ -45,7 +45,7 @@ namespace StatusERP.DataAccess.Repositories.AS
 
         public async Task<int> UpdateAsync(Vendedor vendedor)
         {
-            await _dbContext.UpdateAsync(vendedor);
+            await _dbContext.UpdateAsync(vendedor,Mapper);
             return vendedor.Id;
         }
     }

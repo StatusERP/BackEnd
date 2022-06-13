@@ -28,7 +28,7 @@ public class NivelPrecioRepository:StatusERPContextBase<NivelPrecio>,INivelPreci
 
     public async Task<int> UpdateAsync(NivelPrecio nivelPrecio)
     {
-        await _dbContext.UpdateAsync(nivelPrecio);
+        await _dbContext.UpdateAsync(nivelPrecio,Mapper);
         return nivelPrecio.Id;
     }
 

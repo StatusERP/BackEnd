@@ -21,7 +21,7 @@ namespace StatusERP.Services.Implementations.CI
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoArticulo request, string userId, string codArticulo)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoArticulo request, string userId, string userName, string codArticulo)
         {
             var response = new BaseResponseGeneric<int>(); 
             try
@@ -64,8 +64,8 @@ namespace StatusERP.Services.Implementations.CI
                     PesoNeto = request.PesoNeto,
                     PesoBruto = request.PesoBruto,
                     Volumen=request.Volumen,
-                    Bultos=request.Bultos,
-                    CategoriaArticuloId=request.CategoriaArticuloId1,
+                    Bultos= request.Bultos,
+                    CategoriaArticuloId=request.CategoriaArticuloId,
                     FactorEmpaque=request.FactorEmpaque,
                     FactorVenta=request.FactorVenta,
                     ExistenciaMinima=request.ExistenciaMinima,
@@ -96,8 +96,8 @@ namespace StatusERP.Services.Implementations.CI
                     PlazoReabast=request.PlazoReabast,
                     LoteMultiplo=request.LoteMultiplo,
                     Notas=request.Notas,
-                    UsuarioCreacion=request.UsuarioCreacion,
-                    FechaHoraCreacion=request.FechaHoraCreacion,
+                    UsuarioCreacion=userName,
+                    FechaHoraCreacion= DateTime.Now,
                     UsuarioUltModif=request.UsuarioUltModif,
                     FechaHoraUltModif= request.FechaHoraUltModif,
                     UsaNumerosSerie=request.UsaNumerosSerie,
@@ -270,7 +270,7 @@ namespace StatusERP.Services.Implementations.CI
                     PesoNeto = request.PesoNeto,
                     PesoBruto = request.PesoBruto,
                     Volumen = request.Volumen,
-                    Bultos = request.Bultos,
+                    Bultos =Convert.ToInt16( request.Bultos),
                    // CategoriaArticulo = request.CategoriaArticulo,
                     ImpuestoId = request.ImpuestoId,
                     FactorEmpaque = request.FactorEmpaque,

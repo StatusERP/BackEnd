@@ -27,7 +27,7 @@ public class ParentescoRepository:StatusERPContextBase<Parentesco> ,IParentescoR
 
     public async Task<int> UpdateAsync(Parentesco parentesco)
     {
-        await _dbContext.UpdateAsync(parentesco);
+        await _dbContext.UpdateAsync(parentesco,Mapper);
         return parentesco.Id;
     }
 

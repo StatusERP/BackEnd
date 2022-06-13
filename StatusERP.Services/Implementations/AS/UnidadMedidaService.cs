@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AutoMapper;
+using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
@@ -13,12 +14,14 @@ public class UnidadMedidaService:IUnidadMedidaService
     private readonly IUnidadMedidaRepository _repository;
     private readonly ILogger<UnidadMedidaService> _logger;
     private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
+    private readonly IMapper _mapper;
 
-    public UnidadMedidaService(IUnidadMedidaRepository repository,ILogger<UnidadMedidaService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
+    public UnidadMedidaService(IUnidadMedidaRepository repository,ILogger<UnidadMedidaService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository, IMapper mapper)
     {
         _repository = repository;
         _logger = logger;
         _privilegioUsuarioRepository = privilegioUsuarioRepository;
+        _mapper = mapper;
     }
     public async Task<BaseResponseGeneric<ICollection<UnidadMedida>>> GetAsync(int page, int rows, string userId)
     {
@@ -110,7 +113,7 @@ public class UnidadMedidaService:IUnidadMedidaService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoUnidadMedida request, string userId)
+    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id,DtoUpdateUnidadMedida request, string userId)
     {
         var response = new BaseResponseGeneric<int>();
         try
@@ -125,14 +128,11 @@ public class UnidadMedidaService:IUnidadMedidaService
                 return response;
             }
 
-            response.Result = await _repository.UpdateAsync(new UnidadMedida
-            {
-                Id = id,
-                CodUnidadMedida = request.CodUnidadMedida,
-                Descripcion = request.Descripcion,
-                Updatedby = userId,
-                UpdateDate = DateTime.Now
-            });
+            UnidadMedida unidadMedida =_mapper.Map<UnidadMedida>(request);
+            unidadMedida.Id = id;
+            unidadMedida.Updatedby = userId;
+         //   unidadMedida.UpdateDate= DateTime.Now;
+            response.Result = await _repository.UpdateAsync(unidadMedida);
             response.Success = true;
         }
         catch (Exception ex)
