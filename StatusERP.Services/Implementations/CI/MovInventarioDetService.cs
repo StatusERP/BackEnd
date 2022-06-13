@@ -153,80 +153,64 @@ namespace StatusERP.Services.Implementations.CI
                                  var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int)request.BodegaId);
                                     
                                  if (buscarIdExistenciaBodega != null)
-                                 {
-                                     //el registro existe, poner aquí la actualización de campos para Existencia Bodega, SUSTITUIR ESTE CREATE
+                                 { 
+                                    
+                                     //Se actualiza el registro existente en la tabla ExistenciaBodega
                                      var ebresponse = new BaseResponseGeneric<int>();
-                                     ebresponse.Result = await _ebRepository.CreateAsync(new ExistenciaBodega
+                                     try
+                                     { 
+                                         ebresponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
+                                         {
+                                               ArticuloId = request.ArticuloId,
+                                               BodegaId = (int)request.BodegaId,
+                                               CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
+                                               CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
+                                               CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
+                                               Updatedby = userId,
+                                               UpdateDate = DateTime.Now,
+
+                                         });
+                                         ebresponse.Success = true;
+                                     }
+                                     catch (Exception ex)
                                      {
-                                          ArticuloId = request.ArticuloId,
-                                          BodegaId = (int)request.BodegaId,
-                                          CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
-                                          CantReservada = buscarIdExistenciaBodega.CantReservada,
-                                          CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
-                                          CantVencida = buscarIdExistenciaBodega.CantVencida,
-                                          CantTransito = buscarIdExistenciaBodega.CantTransito,
-                                          CantProduccion = buscarIdExistenciaBodega.CantProduccion,
-                                          CantPedida = buscarIdExistenciaBodega.CantPedida,
-                                          CantRemitida = buscarIdExistenciaBodega.CantRemitida,
-                                          CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
-                                          CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
-                                          FechaCong = DateTime.Now,
-                                          FechaDescong = DateTime.Now,
-                                          IsDeleted = false,
-                                          Updatedby = userId,
-                                          UpdateDate = DateTime.Now,
-                                          Createdby = userId,
-                                          CreateDate = DateTime.Now
-                                      });
+                                          _logger.LogCritical(ex.StackTrace);
+                                          ebresponse.Success = false;
+                                          ebresponse.Errors.Add(ex.Message);
+                                     }
+                                     return ebresponse;
                                  }
                                  else
                                  {
-                                      throw new Exception($"No existe registro de existencias del artículo {request.ArticuloId} para la bodega {request.BodegaId}.");
+                                      throw new Exception($"No existe registro de existencias del artículo {request.ArticuloId} para la bodega {request.BodegaId}.  No se puede crear el movimiento");
+                                      //Poner rollback para la transacción
                                  }
 
                                 // Usa lotes?
-                                if (buscarArticulo.UsaLotes == false)
+                                if (buscarArticulo.UsaLotes)
                                 {
-                                    throw new Exception($"El artículo {buscarArticulo.CodArticulo} no utiliza lotes.");
-                                }
-                                else
-                                {
-
-                                // El registro ya existe, sólo se va a actualizar,
-                                // si no existiera, debe crear en el mantenimiento de lotes.
+                                // El registro ya existe, sólo se va a actualizar, si no existiera, debe crear en el mantenimiento de lotes.
 
                                    var elresponse = new BaseResponseGeneric<int>();
                                    var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);
                                    var CostoUnitDol = decimal.Round((request.CostoTotDol / request.Cantidad), 8);
-                                   response.Result = await _elRepository.CreateAsync(new ExistenciaLote
+                                   elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
                                    {
-                                            BodegaId = (int)request.BodegaId,
-                                            ArticuloId = request.ArticuloId,
-                                            LocalizacionId = (int)request.LocalizacionId,
-                                            LoteId = (int)request.LoteId,
                                             CantDisponible = request.Cantidad,
-                                            CantReservada = 0,
-                                            CantNoAprobada = 0,
-                                            CantVencida = 0,
-                                            CantRemitida = 0,
                                             CostoUntLoc = CostoUnitLoc,
                                             CostoUntDol = CostoUnitDol,
-                                            IsDeleted = false,
                                             Updatedby = userId,
                                             UpdateDate = DateTime.Now,
-                                            Createdby = userId,
-                                            CreateDate = DateTime.Now
-                                    });
+                                   });
 
-                                    response.Success = true;
+                                    elresponse.Success = true;
                                 }
-                                return response;
                            };
                             
                            // 9/13 - Producción
                            case "~PP~":
                                 throw new Exception($"El ajuste es de tipo Producción.");
-
+                                
                            // 10/13 - Reservación
                            case "~RR~":
                                 throw new Exception($"El ajuste es de tipo Reservación.");
