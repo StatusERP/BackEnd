@@ -45,9 +45,5 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.Asse
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.AssemblyInfo.cs
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
-<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
-=======
->>>>>>> 38540ed768e24cb8b39048f1d72c6340cc77d13d
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
