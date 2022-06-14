@@ -32,6 +32,9 @@ namespace StatusERP.API.Controllers.CI
             return Ok(await _service.GetAsync(page, rows, userId.Value));
         }
 
+
+        
+
         [HttpGet("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric<ExistenciaBodega>>> Get(int id)
         {

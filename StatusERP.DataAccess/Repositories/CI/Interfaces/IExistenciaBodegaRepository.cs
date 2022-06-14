@@ -7,6 +7,7 @@ namespace StatusERP.DataAccess.Repositories.CI
     {
         Task<ICollection<ExistenciaBodega>> GetCollectionAsync(int page, int rows);
         Task<ExistenciaBodega?> GetByIdAsync(int id);
+        Task<ICollection<ExistenciaBodega>> BuscarExistenciaXArticulo(int articuloId);
         Task<ExistenciaBodega?> BuscarIdExistenciaBodegaAsync(int articuloId, int bodegaId);
         Task<int> CreateAsync(ExistenciaBodega existenciaBodega);
         Task<int> UpdateAsync(ExistenciaBodega existenciaBodega);

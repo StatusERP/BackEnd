@@ -10,6 +10,7 @@ namespace StatusERP.Services.Interfaces.CI
         Task<BaseResponseGeneric<ICollection<ExistenciaBodega>>> GetAsync(int page, int rows, string userId);
 
         Task<BaseResponseGeneric<ExistenciaBodega>> GetByIdAsync(int id);
+        Task<BaseResponseGeneric<ICollection<ExistenciaBodega>>> GetByIdArticuloAsync(int articuloId);
 
         Task<BaseResponseGeneric<int>> CreateAsync(DtoExistenciaBodega request, string userId, int bodegaId, int articuloId);
 

@@ -110,6 +110,24 @@ namespace StatusERP.Services.Implementations.CI
             return response;
         }
 
+        public async Task<BaseResponseGeneric<ICollection<ExistenciaBodega>>> GetByIdArticuloAsync(int articuloId)
+        {
+           var response=new BaseResponseGeneric<ICollection<ExistenciaBodega>>();
+            try
+            {
+                response.Result=await _repository.BuscarExistenciaXArticulo(articuloId);
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success= false;
+                response.Errors.Add(ex.Message);
+                
+            }
+            return response;
+        }
+
         public async Task<BaseResponseGeneric<ExistenciaBodega>> GetByIdAsync(int id)
         {
             var response = new BaseResponseGeneric<ExistenciaBodega>();
