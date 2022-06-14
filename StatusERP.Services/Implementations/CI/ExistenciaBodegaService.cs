@@ -173,7 +173,6 @@ namespace StatusERP.Services.Implementations.CI
                     FechaDescong = request.FechaDescong,
                     CostoUntPromedioLoc = request.CostoUntPromedioLoc,
                     CostoUntPromedioDol = request.CostoUntPromedioDol,
-                    IsDeleted = false,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now                   
                 });

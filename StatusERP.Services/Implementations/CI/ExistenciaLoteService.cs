@@ -140,6 +140,7 @@ namespace StatusERP.Services.Implementations.CI
             return response;
         }
 
+        
         public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoExistenciaLote request, string userId)
         {
             var response = new BaseResponseGeneric<int>();
