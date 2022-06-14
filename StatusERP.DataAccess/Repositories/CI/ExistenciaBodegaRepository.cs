@@ -12,6 +12,16 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         }
 
+        public async Task<ICollection<ExistenciaBodega>> BuscarExistenciaXArticulo(int articuloId)
+        {
+            return await _dbContext.ExistenciaBodega
+                .AsNoTracking()
+                .Where(x => x.ArticuloId == articuloId)
+                .ToListAsync();
+               
+
+        }
+
         public async Task<ExistenciaBodega?> BuscarIdExistenciaBodegaAsync(int articuloId, int bodegaId)
         {
             return await _dbContext.ExistenciaBodega
@@ -41,13 +51,78 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<ICollection<ExistenciaBodega>> GetCollectionAsync(int page, int rows)
         {
-            return await _dbContext.SelectAsync<ExistenciaBodega>(page, rows);
+            //return await _dbContext.SelectAsync<ExistenciaBodega>(page, rows);
+
+            return await _dbContext.ExistenciaBodega
+             .Include(p=>p.bodega)
+             .Where(p => !p.IsDeleted)
+             .AsNoTracking()
+              .Skip((page - 1) * rows)
+             .Take(rows)
+             .ToListAsync();
         }
 
-        public async Task<int> UpdateAsync(ExistenciaBodega ExistenciaBodega)
+
+
+    
+
+        public async Task<int> UpdateAsync(ExistenciaBodega existenciaBodega)
         {
-            await _dbContext.UpdateAsync(ExistenciaBodega,Mapper);
-            return ExistenciaBodega.Id;
+
+            
+
+
+            try
+            {
+                var registro = await _dbContext.Set<ExistenciaBodega>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == existenciaBodega.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                registro.ExistenciaMinima = existenciaBodega.ExistenciaMinima;
+                registro.ExistenciaMaxima = existenciaBodega.ExistenciaMaxima;
+                registro.PuntoDeOrden = existenciaBodega.PuntoDeOrden;
+                registro.CantDisponible = existenciaBodega.CantDisponible;
+                registro.CantReservada = existenciaBodega.CantReservada;
+                registro.CantNoAprobada = existenciaBodega.CantNoAprobada;
+                registro.CantVencida = existenciaBodega.CantVencida;
+                registro.CantTransito = existenciaBodega.CantTransito;
+                registro.CantProduccion = existenciaBodega.CantProduccion;
+                registro.CantPedida = existenciaBodega.CantPedida;
+                registro.CantRemitida = existenciaBodega.CantRemitida;
+                registro.Congelado = existenciaBodega.Congelado;
+                registro.FechaCong = existenciaBodega.FechaCong;
+                registro.BloqueaTrans = existenciaBodega.BloqueaTrans;
+                registro.FechaDescong = existenciaBodega.FechaDescong;
+                registro.CostoUntPromedioDol = existenciaBodega.CostoUntPromedioDol;
+                registro.CostoUntPromedioLoc = existenciaBodega.CostoUntPromedioLoc;
+                registro.IsDeleted = existenciaBodega.IsDeleted;
+                registro.Updatedby = existenciaBodega.Updatedby;
+                registro.UpdateDate =existenciaBodega.UpdateDate;
+
+
+
+                _dbContext.Set<ExistenciaBodega>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
+            return existenciaBodega.Id;
+
+
+
+
+
+            
         }
     }
 }

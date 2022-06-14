@@ -49,7 +49,7 @@ namespace StatusERP.Services.Implementations.CI
                     Congelado = false,
                     FechaCong = new DateTime(1980, 1, 1),
                     BloqueaTrans = false,
-                    FechaDescong = = new DateTime(1980, 1, 1),
+                    FechaDescong = new DateTime(1980, 1, 1),
                     CostoUntPromedioLoc = 0,
                     CostoUntPromedioDol = 0,
                     IsDeleted = false,
@@ -107,6 +107,24 @@ namespace StatusERP.Services.Implementations.CI
                 response.Errors.Add(ex.Message);
             }
 
+            return response;
+        }
+
+        public async Task<BaseResponseGeneric<ICollection<ExistenciaBodega>>> GetByIdArticuloAsync(int articuloId)
+        {
+           var response=new BaseResponseGeneric<ICollection<ExistenciaBodega>>();
+            try
+            {
+                response.Result=await _repository.BuscarExistenciaXArticulo(articuloId);
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success= false;
+                response.Errors.Add(ex.Message);
+                
+            }
             return response;
         }
 
