@@ -160,13 +160,11 @@ C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreC
 C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
 <<<<<<< HEAD
 =======
-<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.AssemblyReference.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.GeneratedMSBuildEditorConfig.editorconfig
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfoInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
-=======
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cs
 >>>>>>> 76487af636fb92c672537d57425caa158885bfd3
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
