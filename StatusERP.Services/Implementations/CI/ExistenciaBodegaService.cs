@@ -49,7 +49,7 @@ namespace StatusERP.Services.Implementations.CI
                     Congelado = false,
                     FechaCong = new DateTime(1980, 1, 1),
                     BloqueaTrans = false,
-                    FechaDescong = = new DateTime(1980, 1, 1),
+                    FechaDescong = new DateTime(1980, 1, 1),
                     CostoUntPromedioLoc = 0,
                     CostoUntPromedioDol = 0,
                     IsDeleted = false,
@@ -155,7 +155,6 @@ namespace StatusERP.Services.Implementations.CI
                     FechaDescong = request.FechaDescong,
                     CostoUntPromedioLoc = request.CostoUntPromedioLoc,
                     CostoUntPromedioDol = request.CostoUntPromedioDol,
-                    IsDeleted = false,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now                   
                 });

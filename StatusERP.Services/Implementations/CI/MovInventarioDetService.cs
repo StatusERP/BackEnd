@@ -18,7 +18,11 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IArticuloRepository _aRepository;
         private readonly IAjusteConfigRepository _ajRepository;
 
-        string TipoAjusteConfig;
+        string ? strTipoAjusteConfig;
+        string ? strSubtipo;
+        string ? strSubsubtipo;
+        string? strNaturaleza;
+
 
         public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger,
             IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository,
@@ -73,89 +77,123 @@ namespace StatusERP.Services.Implementations.CI
                     // Si llegó hasta acá es porque el artículo NO es de tipo servicio ni kit.
                     // Por lo que se inicia la validación del tipo de AjusteConfig dentro de un switch.
 
-                   //******* Revisar AjusteConfig (ir a la tabla AjusteConfig con el Id y luego ingresar en una variable el campo CodAjusteConfig, desde un case.
-
                    var buscarTipoAjusteConfig = await _ajRepository.GetByIdAsync((int) request.AjusteConfigId);
                    if (buscarTipoAjusteConfig != null)
                    {
-                       TipoAjusteConfig = buscarTipoAjusteConfig.CodAjusteConfig;
+                       strTipoAjusteConfig = buscarTipoAjusteConfig.AjusteBase;
+                       strSubtipo = request.Subtipo;
+                       strSubsubtipo = request.Subsubtipo;
+                       strNaturaleza = request.Naturaleza;
                         
-                       switch (TipoAjusteConfig)
+                       switch (strTipoAjusteConfig)
                        {
                            // 1/13 - Aprobación
-                           case "~AA~":
+                           case "A":
                                throw new Exception($"El ajuste es de tipo Aprobación.");
 
                            // 2/13 - Consumo
-                            case "~CC~":
+                            case "C":
                                  throw new Exception($"El ajuste es de tipo Consumo.");
 
                            // 3/13 - Físico *******************
-                           case "~FF~":
+                           case "F":
                                  throw new Exception($"El ajuste es de tipo Físico.");
 
                            // 4/13 - Remisión
-                           case "~II~":
+                           case "I":
                                  throw new Exception($"El ajuste es de tipo Remisión.");
 
                            // 5/13 - Traslado 2F
-                           case "~LL~":
-                                 throw new Exception($"El ajuste es de tipo Traslado 2F.");
+                           //case "I":
+                           //      throw new Exception($"El ajuste es de tipo Traslado 2F.");
 
                            // 6/13 - Misceláneo
-                           case "~MM~":
+                           case "M":
                                   throw new Exception($"El ajuste es de tipo Misceláneo.");
 
                            // 7/13 - Vencimiento
-                           case "~NN~":
+                           case "N":
                                   throw new Exception($"El ajuste es de tipo Vencimiento.");
 
                             // 8/13 - Compra ***************
-                            case "~OO~":
+                            case "O":
                            {
-                                //throw new Exception($"El ajuste es de tipo Compra.");    
+                                if (strSubtipo == "D")
+                                {
+                                        switch (strSubsubtipo)
+                                        {
+                                            case "L":
+                                                // Compras Locales
+                                                throw new Exception($"Compra Local.");
+
+                                                if (strNaturaleza == "E")
+                                                {
+
+                                                }
+                                                else
+                                                {
+
+                                                }
+
+
+
+                                            case "I":
+                                                // Importaciones
+                                                throw new Exception($"Importación.");
+                                    }    
+                                    
+
+                                }
+                                else
+                                {
+                                     throw new Exception($"El subtipo no es igual a 'Disponible'.");
+                                }
+                                        //throw new Exception($"El ajuste es de tipo Compra.");
+                                        
+                                // AQUI DEBE COMENZAR LA TRANSACCION
+                                // Falta la inserción del Encabezado del movimimiento
+                                // Falta poner en loop la inserción del detalle
                                 // Creación de registro en Detalle de Movimiento de Inventario
                                 response.Result = await _repository.CreateAsync(new MovInventarioDet
                                 {
-                                            MovInventarioEncId = request.MovInventarioEncId,
-                                            Consecutivo = request.Consecutivo,
-                                            FechaHoraTransac = request.FechaHoraTransac,
-                                            DocTributarioId = request.DocTributarioId,
-                                            AjusteConfigId = request.AjusteConfigId,
-                                            ArticuloId = request.ArticuloId,
-                                            BodegaId = request.BodegaId,
-                                            LocalizacionId = request.LocalizacionId,
-                                            LoteId = request.LoteId,
-                                            Tipo = request.Tipo,
-                                            Subtipo = request.Subtipo,
-                                            Subsubtipo = request.Subsubtipo,
-                                            Naturaleza = request.Naturaleza,
-                                            Cantidad = request.Cantidad,
-                                            CostoTotLoc = request.CostoTotLoc,
-                                            CostoTotDol = request.CostoTotDol,
-                                            PrecioTotalLocal = request.PrecioTotalLocal,
-                                            PrecioTotalDolar = request.PrecioTotalDolar,
-                                            Contabilizada = request.Contabilizada,
-                                            Fecha = request.Fecha,
-                                            CentroCuentaId = request.CentroCuentaId,
-                                            UnidadDistribucionId = request.UnidadDistribucionId,
-                                            AsientoCardex = request.AsientoCardex,
-                                            DocFiscal = request.DocFiscal,
-                                            TipoOperacionId = request.TipoOperacionId,
-                                            TipoPagoId = request.TipoPagoId,
-                                            IsDeleted = false,
-                                            Updatedby = userId,
-                                            UpdateDate = DateTime.Now,
-                                            Createdby = userId,
-                                            CreateDate = DateTime.Now
+                                     MovInventarioEncId = request.MovInventarioEncId,
+                                     Consecutivo = request.Consecutivo,
+                                     FechaHoraTransac = request.FechaHoraTransac,
+                                     DocTributarioId = request.DocTributarioId,
+                                     AjusteConfigId = request.AjusteConfigId,
+                                     ArticuloId = request.ArticuloId,
+                                     BodegaId = request.BodegaId,
+                                     LocalizacionId = request.LocalizacionId,
+                                     LoteId = request.LoteId,
+                                     Tipo = request.Tipo,
+                                     Subtipo = request.Subtipo,
+                                     Subsubtipo = request.Subsubtipo,
+                                     Naturaleza = request.Naturaleza,
+                                     Cantidad = request.Cantidad,
+                                     CostoTotLoc = request.CostoTotLoc,
+                                     CostoTotDol = request.CostoTotDol,
+                                     PrecioTotalLocal = request.PrecioTotalLocal,
+                                     PrecioTotalDolar = request.PrecioTotalDolar,
+                                     Contabilizada = request.Contabilizada,
+                                     Fecha = request.Fecha,
+                                     CentroCuentaId = request.CentroCuentaId,
+                                     UnidadDistribucionId = request.UnidadDistribucionId,
+                                     AsientoCardex = request.AsientoCardex,
+                                     DocFiscal = request.DocFiscal,
+                                     TipoOperacionId = request.TipoOperacionId,
+                                     TipoPagoId = request.TipoPagoId,
+                                     IsDeleted = false,
+                                     Updatedby = userId,
+                                     UpdateDate = DateTime.Now,
+                                     Createdby = userId,  
+                                     CreateDate = DateTime.Now
                                  });
 
+                                 //Se actualiza el registro existente en la tabla ExistenciaBodega   
                                  var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int)request.BodegaId);
                                     
                                  if (buscarIdExistenciaBodega != null)
                                  { 
-                                    
-                                     //Se actualiza el registro existente en la tabla ExistenciaBodega
                                      var ebresponse = new BaseResponseGeneric<int>();
                                      try
                                      { 
@@ -186,45 +224,64 @@ namespace StatusERP.Services.Implementations.CI
                                       //Poner rollback para la transacción
                                  }
 
-                                // Usa lotes?
+                                // Si el artículo usa lotes, se actualiza el registro correspondiente.
                                 if (buscarArticulo.UsaLotes)
                                 {
-                                // El registro ya existe, sólo se va a actualizar, si no existiera, debe crear en el mantenimiento de lotes.
+                                     // Se comprueba que el registro ya existe, si no existiera, se debe crear en el mantenimiento de lotes.
+                                     var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)request.BodegaId, request.ArticuloId, (int)request.LocalizacionId, (int)request.LoteId);
+                                     if (buscarExistenciaLote != null)
+                                     {
+                                         //Se actualiza el registro existente en la tabla ExistenciaLote
+                                         var elresponse = new BaseResponseGeneric<int>();
+                                         try
+                                         {
+                                             var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);
+                                             var CostoUnitDol = decimal.Round((request.CostoTotDol / request.Cantidad), 8);
+                                             elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
+                                             {
+                                                  CantDisponible = request.Cantidad,
+                                                  CostoUntLoc = CostoUnitLoc,
+                                                  CostoUntDol = CostoUnitDol,
+                                                  Updatedby = userId,
+                                                  UpdateDate = DateTime.Now,
+                                             });
+                                             elresponse.Success = true;
+                                         }
+                                         catch (Exception ex)
+                                         {
+                                             _logger.LogCritical(ex.StackTrace);
+                                             elresponse.Success = false;
+                                             elresponse.Errors.Add(ex.Message);
+                                         }
+                                         return elresponse;
+                                     }
+                                     else
+                                     {
+                                          throw new Exception($"Se debe crear registro para el artículo {request.ArticuloId} en la bodega {request.BodegaId} para el lote {request.LoteId}.  No se puede crear el movimiento");
+                                          //Poner rollback para la transacción
+                                     }
 
-                                   var elresponse = new BaseResponseGeneric<int>();
-                                   var CostoUnitLoc = decimal.Round((request.CostoTotLoc / request.Cantidad), 8);
-                                   var CostoUnitDol = decimal.Round((request.CostoTotDol / request.Cantidad), 8);
-                                   elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
-                                   {
-                                            CantDisponible = request.Cantidad,
-                                            CostoUntLoc = CostoUnitLoc,
-                                            CostoUntDol = CostoUnitDol,
-                                            Updatedby = userId,
-                                            UpdateDate = DateTime.Now,
-                                   });
-
-                                    elresponse.Success = true;
-                                }
-                           };
+                                }  //AQUI TERMINA LA TRANSACCION
+                           };  //TERMINA EL CASE PARA TIPOAJUSTE = "O"
                             
                            // 9/13 - Producción
-                           case "~PP~":
+                           case "P":
                                 throw new Exception($"El ajuste es de tipo Producción.");
                                 
                            // 10/13 - Reservación
-                           case "~RR~":
+                           case "R":
                                 throw new Exception($"El ajuste es de tipo Reservación.");
 
                            // 11/13 - Costo ****************
-                           case "~SS~":
+                           case "S":
                                 throw new Exception($"El ajuste es de tipo Costo.");
 
                            // 12/13 - Traslado ****************
-                           case "~TT~":
+                           case "T":
                                 throw new Exception($"El ajuste es de tipo Traslado.");
 
                             // 13/13 - Venta ******************
-                            case "~VV~":
+                            case "V":
                                 throw new Exception($"El ajuste es de tipo Venta.");
                        };  // Fin del switch
                    };  // Fin de la validación null del AjusteConfig
