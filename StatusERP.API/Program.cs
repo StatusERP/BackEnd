@@ -48,7 +48,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(options =>
 {
     options.AddProfile(new AutoMapperProfileBodega());
-    options.AddProfile(new AutoMapperProfileUnidadDeMedida());
    // options.AddMaps(typeof(Concert));
    // options.AddProfile<SaleProfile>();
 });
