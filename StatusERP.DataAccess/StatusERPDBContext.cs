@@ -17,7 +17,7 @@ namespace StatusERP.DataAccess
     {
         public StatusERPDBContext()
         {
-
+           
         }
 
         public StatusERPDBContext(DbContextOptions<StatusERPDBContext> options) : base(options)
