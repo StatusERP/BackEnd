@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IAjusteConfigService
     {
-        Task<BaseResponseGeneric<ICollection<AjusteConfig>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<AjusteConfig>>> GetAsync(string userId);
 
         Task<BaseResponseGeneric<AjusteConfig>> GetByIdAsync(int id);
 

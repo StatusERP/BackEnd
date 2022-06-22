@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IConsecutivoInvUsuarioService
     {
-        Task<BaseResponseGeneric<ICollection<ConsecutivoInvUsuario>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<ConsecutivoInvUsuario>>> GetAsync( string userId);
 
         Task<BaseResponseGeneric<ConsecutivoInvUsuario>> GetByIdAsync(int id);
 

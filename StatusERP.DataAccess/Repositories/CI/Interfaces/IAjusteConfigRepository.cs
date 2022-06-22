@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 {
     public interface IAjusteConfigRepository
     {
-        Task<ICollection<AjusteConfig>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<AjusteConfig>> GetCollectionAsync();
         Task<AjusteConfig?> GetByIdAsync(int id);
         Task<AjusteConfig?> BuscarCodAjusteConfigAsync(string codAjusteConfig);
         Task<int> CreateAsync(AjusteConfig ajusteConfig);

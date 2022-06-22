@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 {
     public interface IConsecutivoInvUsuarioRepository
     {
-        Task<ICollection<ConsecutivoInvUsuario>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<ConsecutivoInvUsuario>> GetCollectionAsync();
         Task<ConsecutivoInvUsuario?> GetByIdAsync(int id);
         Task<ConsecutivoInvUsuario?> BuscarConsecutivoInvUsuarioAsync(int consecutivo, int usuario);
         Task<int> CreateAsync(ConsecutivoInvUsuario consecutivoInvUsuario );

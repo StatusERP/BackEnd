@@ -49,6 +49,4 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
 =======
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\refint\StatusERP.Dto.dll
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 >>>>>>> f1804e2b7b52258873aa87a1b266f62b738ed9b3
