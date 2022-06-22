@@ -21,7 +21,32 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> CreateAsync(MovInventarioDet movInventarioDet)
         {
-            return await _dbContext.InsertAsync(movInventarioDet);
+            //return await _dbContext.InsertAsync(movInventarioDet);
+            using (var dbContextTransaction = _dbContext.Database.BeginTransactionAsync())
+            {
+                bool success; 
+                try
+                {
+                    await _dbContext.Set<MovInventarioDet>().AddAsync(movInventarioDet);
+                    _dbContext.Entry(movInventarioDet).State = EntityState.Added;
+                    success = await _dbContext.SaveChangesAsync() > 0;
+
+                    // Poner aquí la inclinación adecuada para la operación que sigue.
+
+                    //await _dbContext.Set<ExistenciaBodega>().AddAsync(existenciaBodega);
+                    //_dbContext.Entry(ExistenciaBodega).State = EntityState.Modified;
+                    
+                    await _dbContext.Database.CommitTransactionAsync();
+                }
+                catch (Exception)
+                {
+
+                    await _dbContext.Database.RollbackTransactionAsync();
+                    throw;
+                }
+                return success ? movInventarioDet.Id : 0;
+
+            }   
         }
 
         public async Task<int> DeleteAsync(int id, string userId)
