@@ -174,12 +174,12 @@ namespace StatusERP.Dto.Request.CI
 
         public string? Notas { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string? UsuarioCreacion { get; set; }
 
         public DateTime? FechaHoraCreacion { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string? UsuarioUltModif { get; set; }
 
         public DateTime? FechaHoraUltModif { get; set; }

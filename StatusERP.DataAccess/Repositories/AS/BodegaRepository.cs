@@ -77,14 +77,6 @@ public class BodegaRepository:StatusERPContextBase<Bodega>,IBodegaRepository
         }
 
         return bodega.Id;
-
-
-
-
-
-
-
-
     }
 
     public  async Task<int> DeleteAsync(int id, string userId)

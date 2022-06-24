@@ -46,8 +46,53 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ExistenciaLote existenciaLote)
         {
-            await _dbContext.UpdateAsync(existenciaLote,Mapper);
+            //await _dbContext.UpdateAsync(existenciaLote,Mapper);
+            //return existenciaLote.Id;
+
+            try
+            {
+                var registro = await _dbContext.Set<ExistenciaLote>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == existenciaLote.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                registro.BodegaId = existenciaLote.BodegaId;
+                registro.ArticuloId = existenciaLote.ArticuloId;
+                registro.LocalizacionId = existenciaLote.LocalizacionId;
+                registro.LoteId = existenciaLote.LoteId;
+                registro.CantDisponible = existenciaLote.CantDisponible;
+                registro.CantReservada = existenciaLote.CantReservada;
+                registro.CantNoAprobada = existenciaLote.CantNoAprobada;
+                registro.CantVencida = existenciaLote.CantVencida;
+                registro.CantRemitida = existenciaLote.CantRemitida;
+                registro.CostoUntLoc = existenciaLote.CostoUntLoc;
+                registro.CostoUntDol = existenciaLote.CostoUntDol;
+                registro.IsDeleted = existenciaLote.IsDeleted;
+                registro.Updatedby = existenciaLote.Updatedby;
+                registro.UpdateDate = DateTime.Now;
+                registro.Createdby = existenciaLote.Createdby;
+                registro.CreateDate = existenciaLote.CreateDate;
+                
+
+
+                _dbContext.Set<ExistenciaLote>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
             return existenciaLote.Id;
+
+
         }
     }
 }

@@ -6944,10 +6944,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<decimal>("ExistenciaMáxima")
+                    b.Property<decimal>("ExistenciaMaxima")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<decimal>("ExistenciaMínima")
+                    b.Property<decimal>("ExistenciaMinima")
                         .HasColumnType("decimal(28,8)");
 
                     b.Property<decimal?>("FactorConver1")
@@ -7128,12 +7128,12 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UsuarioCreacion")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("UsuarioUltModif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("VentaTarjetaCredito")
                         .HasColumnType("bit");
