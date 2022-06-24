@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 {
     public interface IConsInvAjConfigRepository
     {
-        Task<ICollection<ConsInvAjConfig>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<ConsInvAjConfig>> GetCollectionAsync();
         Task<ConsInvAjConfig?> GetByIdAsync(int id);
         Task<ConsInvAjConfig?> BuscarConsecAjusteAsync(int ConsecutivoId, int AjusteId);
         Task<int> CreateAsync(ConsInvAjConfig consInvAjConfig);

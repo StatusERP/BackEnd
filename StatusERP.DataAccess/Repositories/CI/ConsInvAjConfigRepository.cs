@@ -14,6 +14,10 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<ConsInvAjConfig?> BuscarConsecAjusteAsync(int ConsecutivoId, int AjusteId)
         {
+          
+            
+            
+            
             return await _dbContext.ConsInvAjConfig 
             .AsNoTracking()
             .FirstOrDefaultAsync(t => t.ConsecutivoInvId == ConsecutivoId && t.AjusteConfigId == AjusteId);
@@ -39,9 +43,19 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.SelectAsync<ConsInvAjConfig>(id);
         }
 
-        public async Task<ICollection<ConsInvAjConfig>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<ConsInvAjConfig>> GetCollectionAsync()
         {
-            return await _dbContext.SelectAsync<ConsInvAjConfig>(page, rows);
+
+            return await _dbContext.Set<ConsInvAjConfig>()
+             .Include(p=>p.AjusteConfig)
+                .Where(p => !p.IsDeleted)
+               .AsNoTracking()
+               .ToListAsync();
+
+
+
+
+            
         }
 
         public async Task<int> UpdateAsync(ConsInvAjConfig consInvAjConfig)

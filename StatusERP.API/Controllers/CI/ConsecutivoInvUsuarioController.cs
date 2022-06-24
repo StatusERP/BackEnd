@@ -29,7 +29,7 @@ namespace StatusERP.API.Controllers.CI
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
 
             if (userId == null) return Unauthorized();
-            return Ok(await _service.GetAsync(page, rows, userId.Value));
+            return Ok(await _service.GetAsync(userId.Value));
         }
 
         [HttpGet("{id:int}")]

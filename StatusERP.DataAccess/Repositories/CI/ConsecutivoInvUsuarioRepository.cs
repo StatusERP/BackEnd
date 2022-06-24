@@ -39,9 +39,14 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.SelectAsync<ConsecutivoInvUsuario>(id);
         }
 
-        public async Task<ICollection<ConsecutivoInvUsuario>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<ConsecutivoInvUsuario>> GetCollectionAsync()
         {
-            return await _dbContext.SelectAsync<ConsecutivoInvUsuario>(page, rows);
+
+            return await _dbContext.Set<ConsecutivoInvUsuario>()
+               .Where(p => !p.IsDeleted)
+              .AsNoTracking()
+              .ToListAsync();
+            
         }
 
         public async Task<int> UpdateAsync(ConsecutivoInvUsuario consecutivoInvUsuario)

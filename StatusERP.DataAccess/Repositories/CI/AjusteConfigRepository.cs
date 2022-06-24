@@ -39,9 +39,12 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.SelectAsync<AjusteConfig>(id);
         }
 
-        public async Task<ICollection<AjusteConfig>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<AjusteConfig>> GetCollectionAsync()
         {
-            return await _dbContext.SelectAsync<AjusteConfig>(page, rows);
+            return await _dbContext.Set<AjusteConfig>()
+                  .Where(p => !p.IsDeleted)
+                 .AsNoTracking()
+                 .ToListAsync(); 
         }
 
         public async Task<int> UpdateAsync(AjusteConfig ajusteConfig)

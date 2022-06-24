@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IConsInvAjConfigService
     {
-        Task<BaseResponseGeneric<ICollection<ConsInvAjConfig>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<ConsInvAjConfig>>> GetAsync(string userId);
 
         Task<BaseResponseGeneric<ConsInvAjConfig>> GetByIdAsync(int id);
 
