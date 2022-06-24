@@ -192,5 +192,58 @@ namespace StatusERP.Services.Implementations.CI
             }
             return response;
         }
+
+
+        public static string SigConsecutivo(string consecutivoActual)
+        {
+            string ConsecCompleto = consecutivoActual;
+            var elements = ConsecCompleto.Split('-');
+            var element2 = elements[0];
+            string element1 = elements[1];
+            Int32 ParteNumerica = Convert.ToInt32(element1) + 1;
+            string SigConsec = element2 + "-" + ParteNumerica.ToString("0000");
+
+            return SigConsec;
+
+        }
+
+
+        //// 5/5 Actualización de valores en la tabla ConsecutivosInv
+        //var buscarConsecutivo = await _ciRepository.GetByIdAsync(request.Consecutivo);
+//        var ciresponse = new BaseResponseGeneric<int>();
+//                                            try
+//                                            {
+
+//                                                ciresponse.Result = await _ciRepository.UpdateAsync(new ConsecutivoInv
+//                                                {
+//                                                    SiguienteConsec = SigConsecutivo(buscarConsecutivo.SiguienteConsec),
+//                                                    Updatedby = userId,
+//                                                    UpdateDate = DateTime.Now,
+//                                                    CodConsecutivo = buscarConsecutivo.CodConsecutivo,
+//                                                    UltimoUsuario = buscarConsecutivo.UltimoUsuario,
+//                                                    Descripcion = buscarConsecutivo.Descripcion,
+//                                                    Mascara = buscarConsecutivo.Mascara,
+//                                                    Editable = buscarConsecutivo.Editable,
+//                                                    MultiplesTrans = buscarConsecutivo.MultiplesTrans,
+//                                                    FormatoImp = buscarConsecutivo.FormatoImp,
+//                                                    UltFechaHora = buscarConsecutivo.UltFechaHora,
+//                                                    TodasTrans = buscarConsecutivo.TodasTrans,
+//                                                    Tipo = buscarConsecutivo.Tipo,
+//                                                    UsaTraslado = buscarConsecutivo.UsaTraslado,
+//                                                    EmailCFDI = buscarConsecutivo.EmailCFDI,
+//                                                    IsDeleted = buscarConsecutivo.IsDeleted,
+//                                                    Createdby = buscarConsecutivo.Createdby,
+//                                                    CreateDate = buscarConsecutivo.CreateDate,
+//                                            });
+//                                                ciresponse.Success = true;
+//                                            }
+//                                            catch (Exception ex)
+//{
+//    _logger.LogCritical(ex.StackTrace);
+//    ciresponse.Success = false;
+    //ciresponse.Errors.Add(ex.Message);
+//}  // Fin del try de ConsecutivoInv
+
+
     }
 }

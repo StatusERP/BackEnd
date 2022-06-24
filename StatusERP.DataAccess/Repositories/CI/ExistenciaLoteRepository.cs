@@ -73,7 +73,7 @@ namespace StatusERP.DataAccess.Repositories.CI
                 registro.CostoUntDol = existenciaLote.CostoUntDol;
                 registro.IsDeleted = existenciaLote.IsDeleted;
                 registro.Updatedby = existenciaLote.Updatedby;
-                registro.UpdateDate = DateTime.Now;
+                registro.UpdateDate = existenciaLote.UpdateDate;
                 registro.Createdby = existenciaLote.Createdby;
                 registro.CreateDate = existenciaLote.CreateDate;
                 

@@ -25,12 +25,12 @@ namespace StatusERP.Services.Implementations.CI
         string? strNaturaleza;
         decimal decExistenciaTotal;
 
-        //Costos Promedio de la transacción actual
+        //Costos Promedio únicamente de la transacción actual
         decimal CostoUnitUltimoLoc;
         decimal CostoUnitUltimoDol;
-        ////Costos Promedio del artículo al concluir la transacción
-        //private decimal CostoPromLocArt;
-        //private decimal CostoPromDolArt;   
+        //Costos Promedio del artículo tomando en cuenta la transacción actual
+        decimal CostoPromLocArt;
+        decimal CostoPromDolArt;
 
 
         public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger,
@@ -132,7 +132,7 @@ namespace StatusERP.Services.Implementations.CI
                                         {
                                             // **** COMPRA LOCAL POSITIVA
 
-                                            // 1/5 Creación de registro en Detalle de Movimiento de Inventario
+                                            // 1/4 Creación de registro en Detalle de Movimiento de Inventario
                                             response.Result = await _repository.CreateAsync(new MovInventarioDet
                                             {
                                                 MovInventarioEncId = request.MovInventarioEncId,
@@ -169,7 +169,7 @@ namespace StatusERP.Services.Implementations.CI
                                             });  //Fin del create en la tabla MovsInventarioDet
 
                                            
-                                            // 2/5 Se actualiza el registro correspondiente en la tabla Articulos
+                                            // 2/4 Se actualiza el registro correspondiente en la tabla Articulos
                                             var Existencias = await _ebRepository.BuscarExistenciaXArticulo(request.ArticuloId);
                                             decExistenciaTotal = 0;
                                             foreach (var Existencia in Existencias)
@@ -179,6 +179,10 @@ namespace StatusERP.Services.Implementations.CI
 
                                             var buscarIdArticulo = await _aRepository.GetByIdAsync(request.ArticuloId);
                                             var aresponse = new BaseResponseGeneric<int>();
+
+                                            CostoPromLocArt = DecCostoPromLocArt(decExistenciaTotal, request.Cantidad, buscarIdArticulo.CostoLoc, CostoUnitUltimoLoc);
+                                            CostoPromDolArt = DecCostoPromDolArt(decExistenciaTotal, request.Cantidad, buscarIdArticulo.CostoDol, CostoUnitUltimoDol);
+
                                             try
                                             {
                                                 aresponse.Result = await _aRepository.UpdateAsync(new Articulo
@@ -205,8 +209,8 @@ namespace StatusERP.Services.Implementations.CI
                                                     PesoBruto = buscarIdArticulo.PesoBruto,
                                                     Volumen = buscarIdArticulo.Volumen,
                                                     Bultos = Convert.ToInt16(buscarIdArticulo.Bultos),
-                                                    CostoLoc = DecCostoPromLocArt(decExistenciaTotal, request.Cantidad, buscarIdArticulo.CostoLoc, CostoUnitUltimoLoc),
-                                                    CostoDol = DecCostoPromDolArt(decExistenciaTotal, request.Cantidad, buscarIdArticulo.CostoDol, CostoUnitUltimoDol),
+                                                    CostoLoc = CostoPromLocArt,
+                                                    CostoDol = CostoPromDolArt,
                                                     CostoPromUltimoLoc = CostoUnitUltimoLoc,
                                                     CostoPromUltimoDol = CostoUnitUltimoDol,
                                                     UltimoIngreso = DateTime.Now,
@@ -273,6 +277,7 @@ namespace StatusERP.Services.Implementations.CI
                                                     Createdby = buscarIdArticulo.Createdby
                                                     
                                                 });
+
                                                 aresponse.Success = true;
                                             }
                                             catch (Exception ex)
@@ -281,9 +286,10 @@ namespace StatusERP.Services.Implementations.CI
                                                 aresponse.Success = false;
                                                 aresponse.Errors.Add(ex.Message);
                                             }  // Fin del try del Articulo
-                                            return aresponse;
 
-                                            // 3/5 Se actualiza el registro existente en la tabla ExistenciaBodega
+                                            //return aresponse;
+
+                                            // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega
                                             var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int)request.BodegaId);
 
                                             var ebresponse = new BaseResponseGeneric<int>();
@@ -295,8 +301,8 @@ namespace StatusERP.Services.Implementations.CI
                                                     ArticuloId = request.ArticuloId,
                                                     BodegaId = (int)request.BodegaId,
                                                     CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + request.Cantidad,
-                                                    CostoUntPromedioLoc = buscarIdArticulo.CostoLoc,
-                                                    CostoUntPromedioDol = buscarIdArticulo.CostoDol, 
+                                                    CostoUntPromedioLoc = CostoPromLocArt,
+                                                    CostoUntPromedioDol = CostoPromDolArt, 
                                                     Updatedby = userId,
                                                     UpdateDate = DateTime.Now,
                                                     FechaCong = buscarIdExistenciaBodega.FechaCong,
@@ -328,24 +334,35 @@ namespace StatusERP.Services.Implementations.CI
                                                 ebresponse.Errors.Add(ex.Message);
                                             } // Fin del try de ExistenciaBodega
 
-                                            return ebresponse;
+                                            //return ebresponse;
 
-                                            // 4/5 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote
+                                            // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote
                                             if (buscarArticulo.UsaLotes)
                                             {
-                                                var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)request.BodegaId, request.ArticuloId, (int)request.LocalizacionId, (int)request.LoteId);
+                                                var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)request.BodegaId, request.ArticuloId, (int)request.LocalizacionId, (int) request.LoteId);
                                                 var elresponse = new BaseResponseGeneric<int>();
                                                 try
                                                 {
 
                                                     elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
                                                     {
-                                                        CantDisponible = request.Cantidad,
-                                                        CostoUntLoc = CostoUnitUltimoLoc,
-                                                        CostoUntDol = CostoUnitUltimoDol,
+                                                        Id = buscarExistenciaLote.Id,
+                                                        BodegaId = buscarExistenciaLote.BodegaId,
+                                                        ArticuloId = buscarExistenciaLote.ArticuloId,
+                                                        LocalizacionId = buscarExistenciaLote.LocalizacionId,
+                                                        LoteId = buscarExistenciaLote.LoteId,
+                                                        CantDisponible = buscarExistenciaLote.CantDisponible + request.Cantidad,
+                                                        CantReservada = buscarExistenciaLote.CantReservada,
+                                                        CantNoAprobada = buscarExistenciaLote.CantNoAprobada,
+                                                        CantRemitida = buscarExistenciaLote.CantRemitida,
+                                                        CantVencida = buscarExistenciaLote.CantVencida,
+                                                        CostoUntLoc = CostoPromLocArt,
+                                                        CostoUntDol = CostoPromDolArt,
+                                                        IsDeleted = buscarExistenciaLote.IsDeleted,
                                                         Updatedby = userId,
                                                         UpdateDate = DateTime.Now,
-                                                      
+                                                        Createdby = buscarExistenciaLote.Createdby,
+                                                        CreateDate = buscarExistenciaLote.CreateDate
                                                     });
                                                     elresponse.Success = true;
                                                 }
@@ -355,30 +372,9 @@ namespace StatusERP.Services.Implementations.CI
                                                     elresponse.Success = false;
                                                     elresponse.Errors.Add(ex.Message);
                                                 }  // Fin del try de ExistenciaLote
-                                                return elresponse;
+ 
                                             }  //Fin del if "usa lotes"
 
-                                            //// 5/5 Actualización de valores en la tabla ConsecutivosInv
-                                            //var buscarConsecutivo = await _ciRepository.GetByIdAsync(request.Consecutivo);
-                                            //var ciresponse = new BaseResponseGeneric<int>();
-                                            //try
-                                            //{
-
-                                            //    ciresponse.Result = await _ciRepository.UpdateAsync(new ConsecutivoInv
-                                            //    {
-                                            //            SiguienteConsec = "COMP0001",
-                                            //            Updatedby = userId,
-                                            //            UpdateDate = DateTime.Now,
-                                            //    });
-                                            //        ciresponse.Success = true;
-                                            // }
-                                            // catch (Exception ex)
-                                            //{
-                                            //        _logger.LogCritical(ex.StackTrace);
-                                            //        ciresponse.Success = false;
-                                            //        ciresponse.Errors.Add(ex.Message);
-                                            // }  // Fin del try de ConsecutivoInv
-                                            // return ciresponse;
                                         }  //Fin del if "Naturaleza = "E"
                                         else // Es salida
                                         {
@@ -435,7 +431,7 @@ namespace StatusERP.Services.Implementations.CI
                 response.Errors.Add(ex.Message);
             }
 
-                return response;
+            return response;
         }
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
@@ -581,10 +577,7 @@ namespace StatusERP.Services.Implementations.CI
         }
 
 
-        //public static decimal CompraLocalPositiva(decimal ExistenciaActual, decimal ExistenciaMov, decimal CostoPromActual, decimal CostoPromMov)
-        //{
 
-        //}
 
 
 

@@ -54,12 +54,4 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.D
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.csproj.CopyComplete
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\ref\StatusERP.DataAccess.dll
-<<<<<<< HEAD
-<<<<<<< HEAD
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\refint\StatusERP.DataAccess.dll
-=======
 C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.pdb
->>>>>>> 46a4cc0ff1d8f53ef1935d37ec3214b584f01856
-=======
-C:\Proyectos\StatusERP\BackEnd\StatusERP.DataAccess\obj\Debug\net6.0\StatusERP.DataAccess.pdb
->>>>>>> 46a4cc0ff1d8f53ef1935d37ec3214b584f01856
