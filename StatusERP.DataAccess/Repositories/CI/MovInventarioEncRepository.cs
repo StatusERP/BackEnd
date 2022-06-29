@@ -46,7 +46,49 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(MovInventarioEnc movInventarioEnc)
         {
-            await _dbContext.UpdateAsync(movInventarioEnc,Mapper);
+            //await _dbContext.UpdateAsync(movInventarioEnc,Mapper);
+            //return movInventarioEnc.Id;
+
+            try
+            {
+                var registro = await _dbContext.Set<MovInventarioEnc>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == movInventarioEnc.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                registro.Id = movInventarioEnc.Id;
+                registro.ConsecutivoId = movInventarioEnc.ConsecutivoId;
+                registro.Usuario = movInventarioEnc.Usuario;
+                registro.FechaHora  = movInventarioEnc.FechaHora;
+                registro.ModuloOrigen = movInventarioEnc.ModuloOrigen;
+                registro.Aplicacion  = movInventarioEnc.Aplicacion;
+                registro.Referencia  = movInventarioEnc.Referencia;
+                registro.Asiento  = movInventarioEnc.Asiento;
+                registro.UsuarioAprob  = movInventarioEnc.UsuarioAprob;
+                registro.FechaHoraAprob = movInventarioEnc.FechaHoraAprob;
+                registro.PaqueteInventario = movInventarioEnc.PaqueteInventario;
+                registro.IsDeleted = movInventarioEnc.IsDeleted;
+                registro.Updatedby = movInventarioEnc.Updatedby;
+                registro.UpdateDate = movInventarioEnc.UpdateDate;
+                registro.Createdby = movInventarioEnc.Createdby;
+                registro.CreateDate = movInventarioEnc.CreateDate;
+
+
+                _dbContext.Set<MovInventarioEnc>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
             return movInventarioEnc.Id;
         }
     }

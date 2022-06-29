@@ -36,5 +36,7 @@ namespace StatusERP.Dto.Request.CI
 
         [StringLength(4)]
         public String? PaqueteInventario { get; set; }
+
+        public Array Lineas { get; set; }
     }
 }

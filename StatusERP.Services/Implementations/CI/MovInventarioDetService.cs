@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+﻿  using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.CI;
 using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.CI;
@@ -17,12 +17,11 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IExistenciaLoteRepository _elRepository;
         private readonly IArticuloRepository _aRepository;
         private readonly IAjusteConfigRepository _ajRepository;
-        private readonly IConsecutivoInvRepository _ciRepository;
 
         string ? strTipoAjusteConfig;
         string ? strSubtipo;
         string ? strSubsubtipo;
-        string? strNaturaleza;
+        string ? strNaturaleza;
         decimal decExistenciaTotal;
 
         //Costos Promedio únicamente de la transacción actual
@@ -31,11 +30,11 @@ namespace StatusERP.Services.Implementations.CI
         //Costos Promedio del artículo tomando en cuenta la transacción actual
         decimal CostoPromLocArt;
         decimal CostoPromDolArt;
-
+        
 
         public MovInventarioDetService(IMovInventarioDetRepository repository, ILogger<MovInventarioDetService> logger,
             IPrivilegioUsuarioRepository privilegioUsuarioRepository, IExistenciaBodegaRepository ebRepository,
-            IExistenciaLoteRepository elRepository, IArticuloRepository aRepository, IAjusteConfigRepository ajRepository, IConsecutivoInvRepository ciRepository)
+            IExistenciaLoteRepository elRepository, IArticuloRepository aRepository, IAjusteConfigRepository ajRepository)
         {
             _repository = repository;
             _logger = logger;
@@ -44,7 +43,7 @@ namespace StatusERP.Services.Implementations.CI
             _elRepository = elRepository;
             _aRepository = aRepository;
             _ajRepository = ajRepository;
-        }
+        }  
 
         //public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, DtoExistenciaBodega ebrequest, DtoExistenciaLote elrequest, DtoArticulo arequest, string userId, int movInventarioEncId, int consecutivo)
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioDet request, string userId, int movInventarioEncId, int consecutivo)

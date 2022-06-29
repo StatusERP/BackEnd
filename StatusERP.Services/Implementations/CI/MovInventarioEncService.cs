@@ -6,6 +6,7 @@ using StatusERP.Dto.Response;
 using StatusERP.Entities.CI.Tablas;
 using StatusERP.Services.Interfaces.CI;
 
+
 namespace StatusERP.Services.Implementations.CI
 {
     public class MovInventarioEncService : IMovInventarioEncService
@@ -13,8 +14,12 @@ namespace StatusERP.Services.Implementations.CI
         private readonly IMovInventarioEncRepository _repository;
         private readonly ILogger<MovInventarioEncService> _logger;
         private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
+        private readonly IMovInventarioDetRepository _midRepository;
+        private readonly IConsecutivoInvRepository _ciRepository;
 
-        public MovInventarioEncService(IMovInventarioEncRepository repository, ILogger<MovInventarioEncService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
+        //Int32 IdentificadorConsecutivo;
+
+        public MovInventarioEncService(IMovInventarioEncRepository repository, ILogger<MovInventarioEncService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository, IMovInventarioDetRepository midRepository, IConsecutivoInvRepository ciRepository)
         {
             _repository = repository;
             _logger = logger;
@@ -63,16 +68,74 @@ namespace StatusERP.Services.Implementations.CI
                     CreateDate = DateTime.Now
                 });
                 response.Success = true;
-            }
+
+
+                //Inserción detalle de movimientos
+                //foreach (var DetalleMov in DetallesMov)
+                //{
+                //    decExistenciaTotal = decExistenciaTotal + Existencia.CantDisponible;
+                //}
+
+
+
+
+                //Actualización de consecutivo
+                var BuscarIdConsecutivo = await _ciRepository.GetByIdAsync(5);
+                if (request.ConsecutivoId != null)
+
+                {
+                    int _consecutivoId;
+                    _consecutivoId  = (int) request.ConsecutivoId;
+                    //var BuscarIdConsecutivo = await _ciRepository.GetByIdAsync(5);
+                    var ciresponse = new BaseResponseGeneric<int>();
+
+                   try
+                   {
+                        ciresponse.Result = await _ciRepository.UpdateAsync(new ConsecutivoInv
+                        {
+                            Id = BuscarIdConsecutivo.Id, 
+                            CodConsecutivo = BuscarIdConsecutivo.CodConsecutivo,
+                            UltimoUsuario = BuscarIdConsecutivo.UltimoUsuario,
+                            Descripcion = BuscarIdConsecutivo.Descripcion,
+                            Mascara = BuscarIdConsecutivo.Mascara,
+                            SiguienteConsec = SigConsecutivo(BuscarIdConsecutivo.SiguienteConsec),
+                            Editable = BuscarIdConsecutivo.Editable,
+                            MultiplesTrans = BuscarIdConsecutivo.MultiplesTrans,
+                            FormatoImp = BuscarIdConsecutivo.FormatoImp,
+                            UltFechaHora = BuscarIdConsecutivo.UltFechaHora,
+                            TodasTrans = BuscarIdConsecutivo.TodasTrans,
+                            Tipo = BuscarIdConsecutivo.Tipo,
+                            UsaTraslado = BuscarIdConsecutivo.UsaTraslado,
+                            EmailCFDI = BuscarIdConsecutivo.EmailCFDI,
+                            IsDeleted = BuscarIdConsecutivo.IsDeleted,
+                            Updatedby = userId,
+                            UpdateDate = DateTime.Now,
+                            Createdby = BuscarIdConsecutivo.Createdby,
+                            CreateDate = BuscarIdConsecutivo.CreateDate,
+                        });
+
+                        ciresponse.Success = true;
+                   }
+
+                   catch (Exception ex)
+                   {
+                        _logger.LogCritical(ex.StackTrace);
+                        ciresponse.Success = false;
+                        ciresponse.Errors.Add(ex.Message);
+                   }  
+                } //Fin del if (ConsecutivoId != null)
+
+            }  //Fin del try para la creación del Encabezado de Movimiento Inv
+
             catch (Exception ex)
             {
                 _logger.LogCritical(ex.StackTrace);
                 response.Success = false;
                 response.Errors.Add(ex.Message);
-            }
+            } // Fin del catch para la creación del Encabezado de Movimiento Inv
 
             return response;
-        }
+        } 
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
@@ -207,42 +270,6 @@ namespace StatusERP.Services.Implementations.CI
 
         }
 
-
-        //// 5/5 Actualización de valores en la tabla ConsecutivosInv
-        //var buscarConsecutivo = await _ciRepository.GetByIdAsync(request.Consecutivo);
-//        var ciresponse = new BaseResponseGeneric<int>();
-//                                            try
-//                                            {
-
-//                                                ciresponse.Result = await _ciRepository.UpdateAsync(new ConsecutivoInv
-//                                                {
-//                                                    SiguienteConsec = SigConsecutivo(buscarConsecutivo.SiguienteConsec),
-//                                                    Updatedby = userId,
-//                                                    UpdateDate = DateTime.Now,
-//                                                    CodConsecutivo = buscarConsecutivo.CodConsecutivo,
-//                                                    UltimoUsuario = buscarConsecutivo.UltimoUsuario,
-//                                                    Descripcion = buscarConsecutivo.Descripcion,
-//                                                    Mascara = buscarConsecutivo.Mascara,
-//                                                    Editable = buscarConsecutivo.Editable,
-//                                                    MultiplesTrans = buscarConsecutivo.MultiplesTrans,
-//                                                    FormatoImp = buscarConsecutivo.FormatoImp,
-//                                                    UltFechaHora = buscarConsecutivo.UltFechaHora,
-//                                                    TodasTrans = buscarConsecutivo.TodasTrans,
-//                                                    Tipo = buscarConsecutivo.Tipo,
-//                                                    UsaTraslado = buscarConsecutivo.UsaTraslado,
-//                                                    EmailCFDI = buscarConsecutivo.EmailCFDI,
-//                                                    IsDeleted = buscarConsecutivo.IsDeleted,
-//                                                    Createdby = buscarConsecutivo.Createdby,
-//                                                    CreateDate = buscarConsecutivo.CreateDate,
-//                                            });
-//                                                ciresponse.Success = true;
-//                                            }
-//                                            catch (Exception ex)
-//{
-//    _logger.LogCritical(ex.StackTrace);
-//    ciresponse.Success = false;
-    //ciresponse.Errors.Add(ex.Message);
-//}  // Fin del try de ConsecutivoInv
 
 
     }
