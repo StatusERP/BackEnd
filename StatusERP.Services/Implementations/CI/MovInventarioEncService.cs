@@ -226,7 +226,7 @@ namespace StatusERP.Services.Implementations.CI
                                                 {
                                                     MovInventarioEncId = response.Result,
                                                     Consecutivo = CorrelativoLinea,
-                                                    FechaHoraTransac = linea.FechaHoraTransac,
+                                                    FechaHoraTransac = DateTime.Now,
                                                     DocTributarioId = linea.DocTributarioId,
                                                     AjusteConfigId = linea.AjusteConfigId,
                                                     ArticuloId = linea.ArticuloId,
@@ -425,6 +425,52 @@ namespace StatusERP.Services.Implementations.CI
                                                 } // Fin del catch-try de ExistenciaBodega
 
 
+                                                // 3b/4 Actualización de costo promedio en todos los registros de ExistenciaBodega que corresponden al artículo
+                                                foreach (var Existencia in Existencias)
+                                                {
+                                                    var ExisArticuloResponse = new BaseResponseGeneric<int>();
+                                                    try  // Inicio try de ExistenciaArticulo
+                                                    {
+                                                        ExisArticuloResponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
+                                                        {
+                                                            Id = Existencia.Id,
+                                                            ArticuloId = Existencia.ArticuloId,
+                                                            BodegaId = Existencia.BodegaId,
+                                                            CantDisponible = Existencia.CantDisponible,
+                                                            CostoUntPromedioLoc = CostoPromLocArt,
+                                                            CostoUntPromedioDol = CostoPromDolArt,
+                                                            Updatedby = userId,
+                                                            UpdateDate = DateTime.Now,
+                                                            FechaCong = Existencia.FechaCong,
+                                                            ExistenciaMinima = Existencia.ExistenciaMinima,
+                                                            ExistenciaMaxima = Existencia.ExistenciaMaxima,
+                                                            PuntoDeOrden = Existencia.PuntoDeOrden,
+                                                            CantReservada = Existencia.CantReservada,
+                                                            CantNoAprobada = Existencia.CantNoAprobada,
+                                                            CantVencida = Existencia.CantVencida,
+                                                            CantTransito = Existencia.CantTransito,
+                                                            CantProduccion = Existencia.CantProduccion,
+                                                            CantPedida = Existencia.CantPedida,
+                                                            CantRemitida = Existencia.CantRemitida,
+                                                            Congelado = Existencia.Congelado,
+                                                            BloqueaTrans = Existencia.BloqueaTrans,
+                                                            FechaDescong = Existencia.FechaDescong,
+                                                            IsDeleted = Existencia.IsDeleted,
+                                                            Createdby = Existencia.Createdby,
+                                                            CreateDate = Existencia.CreateDate,
+
+                                                        });
+
+                                                        ExisArticuloResponse.Success = true;
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        _logger.LogCritical(ex.StackTrace);
+                                                        ExisArticuloResponse.Success = false;
+                                                        ExisArticuloResponse.Errors.Add(ex.Message);
+                                                    }
+                                                }
+
                                                 // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote
                                                 if (buscarArticulo.UsaLotes)
                                                 {
@@ -462,6 +508,44 @@ namespace StatusERP.Services.Implementations.CI
                                                         elresponse.Errors.Add(ex.Message);
                                                     }  // Fin del try de ExistenciaLote
 
+                                                    // 4b/4 Actualizar el costo promedio en los registros de ExistenciaLote que corresponden al artículo
+                                                    var LoteExistencias = await _elRepository.BuscarExistenciaXArticulo(linea.ArticuloId);
+                                                    var LoteExisResponse = new BaseResponseGeneric<int>();
+                                                    foreach (var LoteExistencia in LoteExistencias)
+                                                    {
+
+                                                        try  //Inicio del try para actualizar todos los registros de ExistenciaLote que corresponden al artículo
+                                                        {
+
+                                                            LoteExisResponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
+                                                            {
+                                                                Id = LoteExistencia.Id,
+                                                                BodegaId = LoteExistencia.BodegaId,
+                                                                ArticuloId = LoteExistencia.ArticuloId,
+                                                                LocalizacionId = LoteExistencia.LocalizacionId,
+                                                                LoteId = LoteExistencia.LoteId,
+                                                                CantDisponible = LoteExistencia.CantDisponible + linea.Cantidad,
+                                                                CantReservada = LoteExistencia.CantReservada,
+                                                                CantNoAprobada = LoteExistencia.CantNoAprobada,
+                                                                CantRemitida = LoteExistencia.CantRemitida,
+                                                                CantVencida = LoteExistencia.CantVencida,
+                                                                CostoUntLoc = CostoPromLocArt,
+                                                                CostoUntDol = CostoPromDolArt,
+                                                                IsDeleted = LoteExistencia.IsDeleted,
+                                                                Updatedby = userId,
+                                                                UpdateDate = DateTime.Now,
+                                                                Createdby = LoteExistencia.Createdby,
+                                                                CreateDate = LoteExistencia.CreateDate
+                                                            });
+                                                            LoteExisResponse.Success = true;
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            _logger.LogCritical(ex.StackTrace);
+                                                            LoteExisResponse.Success = false;
+                                                            LoteExisResponse.Errors.Add(ex.Message);
+                                                        }  // Fin del catch-try para actualización de todos los registros en ExistenciaLote que corresponden al artículo
+                                                    } //Fin del foreach para barrer la collection de ExistenciaLote que corresponde al artículo
                                                 }  //Fin del if "usa lotes"
 
                                                 break;

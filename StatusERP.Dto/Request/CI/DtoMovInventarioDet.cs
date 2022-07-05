@@ -9,7 +9,7 @@ namespace StatusERP.Dto.Request.CI
 
         public int Consecutivo { get; set; }
 
-        public DateTime? FechaHoraTransac { get; set; }
+        //public DateTime? FechaHoraTransac { get; set; }
 
         public int? DocTributarioId { get; set; }
 
