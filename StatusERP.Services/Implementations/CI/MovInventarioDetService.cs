@@ -108,7 +108,7 @@ namespace StatusERP.Services.Implementations.CI
 
                     // 5/13 - Traslado 2F
                     //case "I":
-                         throw new Exception($"El ajuste es de tipo Traslado 2F.");
+                    //    throw new Exception($"El ajuste es de tipo Traslado 2F.");
 
                     // 6/13 - Misceláneo
                     case "M":
@@ -286,10 +286,9 @@ namespace StatusERP.Services.Implementations.CI
                                                 aresponse.Errors.Add(ex.Message);
                                             }  // Fin del try del Articulo
 
-                                            //return aresponse;
 
                                             // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega
-                                            var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int)request.BodegaId);
+                                            var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(request.ArticuloId, (int) request.BodegaId);
 
                                             var ebresponse = new BaseResponseGeneric<int>();
                                             try
@@ -333,7 +332,6 @@ namespace StatusERP.Services.Implementations.CI
                                                 ebresponse.Errors.Add(ex.Message);
                                             } // Fin del try de ExistenciaBodega
 
-                                            //return ebresponse;
 
                                             // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote
                                             if (buscarArticulo.UsaLotes)
@@ -374,28 +372,35 @@ namespace StatusERP.Services.Implementations.CI
  
                                             }  //Fin del if "usa lotes"
 
+                                            break;
+
                                         }  //Fin del if "Naturaleza = "E"
+
                                         else // Es salida
                                         {
                                             throw new Exception($"Devolución de compra en proceso.");
-                                        }
-                                        
+
+                                            // **** DEVOLUCION DE COMPRA LOCAL
+
+                                        }  //Fin del if "Naturaleza = "E"
+                                                                    
+                        
                                         break;
+                        
 
                                    case "I":
                                    // Importaciones
                                         throw new Exception($"Importación.");
-                             }    
-                         }
+                             } // Fin del switch strSubsubtipo   
+                         } // Fin del if subTipo = D
+
                          else
                          {
                              throw new Exception($"El subtipo no es igual a 'Disponible'.");
                              //Poner aquí las instrucciones para los otros subtipos
                          }
+                         break;
 
-
-
-                            break;
                     }   //Termina el case para TipoAjuste= "O"
                             
                     // 9/13 - Producción
@@ -574,9 +579,6 @@ namespace StatusERP.Services.Implementations.CI
             decimal CostoPromLocalArt = ((ExistenciaActual * CostoPromActual) + (ExistenciaMov * CostoPromMov)) / (ExistenciaActual+ ExistenciaMov);
             return CostoPromLocalArt;
         }
-
-
-
 
 
 

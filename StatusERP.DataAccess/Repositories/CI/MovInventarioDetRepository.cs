@@ -31,7 +31,6 @@ namespace StatusERP.DataAccess.Repositories.CI
                     _dbContext.Entry(movInventarioDet).State = EntityState.Added;
                     success = await _dbContext.SaveChangesAsync() > 0;
 
-                    // Poner aquí la inclinación adecuada para la operación que sigue.
 
                     //await _dbContext.Set<ExistenciaBodega>().AddAsync(existenciaBodega);
                     //_dbContext.Entry(ExistenciaBodega).State = EntityState.Modified;

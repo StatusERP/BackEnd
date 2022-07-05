@@ -21,9 +21,21 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> CreateAsync(MovInventarioEnc movInventarioEnc)
         {
-            return await _dbContext.InsertAsync(movInventarioEnc);
-        }
+            
+            try
+            { 
+            var Encabezado = await _dbContext.InsertAsync(movInventarioEnc);
+            
+            }
 
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
+            return movInventarioEnc.Id;
+
+        }
         public async Task<int> DeleteAsync(int id, string userId)
         {
             await _dbContext.DeleteAsync(new MovInventarioEnc

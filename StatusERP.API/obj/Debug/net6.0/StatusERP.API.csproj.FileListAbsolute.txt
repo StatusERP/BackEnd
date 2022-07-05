@@ -158,6 +158,12 @@ C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo
 C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
 C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.AssemblyReference.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfoInputs.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.API.exe
@@ -220,13 +226,6 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.DataAcce
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.Entities.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.Services.pdb
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.AssemblyReference.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.GeneratedMSBuildEditorConfig.editorconfig
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfoInputs.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo.cs
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cs
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\staticwebassets.build.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\staticwebassets.development.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\scopedcss\bundle\StatusERP.API.styles.css

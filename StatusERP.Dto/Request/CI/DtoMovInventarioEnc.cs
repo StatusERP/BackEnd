@@ -19,9 +19,9 @@ namespace StatusERP.Dto.Request.CI
         [StringLength(4)]
         public string ModuloOrigen { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse la aplicación.")]
-        [StringLength(250)]
-        public string Aplicacion { get; set; }
+        //[Required(ErrorMessage = "Debe indicarse la aplicación.")]
+        //[StringLength(250)]
+        //public string Aplicacion { get; set; }
 
         [Required(ErrorMessage = "Debe indicarse la referencia.")]
         [StringLength(200)]
@@ -37,6 +37,72 @@ namespace StatusERP.Dto.Request.CI
         [StringLength(4)]
         public String? PaqueteInventario { get; set; }
 
-        public Array Lineas { get; set; }
+        public List<Detalle>  Detalle { get; set; } 
+    }
+
+    public class Detalle
+    {
+        public int MovInventarioEncId { get; set; }
+
+        public int Consecutivo { get; set; }
+
+        public DateTime? FechaHoraTransac { get; set; }
+
+        public int? DocTributarioId { get; set; }
+
+        public int? AjusteConfigId { get; set; }
+
+        public int ArticuloId { get; set; }
+
+        public int? BodegaId { get; set; }
+
+        public int? LocalizacionId { get; set; }
+
+        public int? LoteId { get; set; }
+
+        [StringLength(1)]
+        public string Tipo { get; set; }
+
+        [StringLength(1)]
+        public string Subtipo { get; set; }
+
+        [StringLength(1)]
+        public string Subsubtipo { get; set; }
+
+        [StringLength(1)]
+        public string Naturaleza { get; set; }
+
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal Cantidad { get; set; }
+
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal CostoTotLoc { get; set; }
+
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal CostoTotDol { get; set; }
+
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal PrecioTotalLocal { get; set; }
+
+        [Column(TypeName = "decimal(28,8)")]
+        public decimal PrecioTotalDolar { get; set; }
+
+        public bool Contabilizada { get; set; }
+
+        public DateTime Fecha { get; set; }
+
+        public int? CentroCuentaId { get; set; }
+
+        public int? UnidadDistribucionId { get; set; }
+
+        [StringLength(10)]
+        public string? AsientoCardex { get; set; }
+
+        [StringLength(50)]
+        public string? DocFiscal { get; set; }
+
+        public int? TipoOperacionId { get; set; }
+
+        public int? TipoPagoId { get; set; }
     }
 }

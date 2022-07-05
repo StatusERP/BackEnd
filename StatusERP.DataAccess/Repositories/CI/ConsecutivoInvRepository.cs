@@ -48,8 +48,8 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ConsecutivoInv consecutivoInv)
         {
-            await _dbContext.UpdateAsync(consecutivoInv,Mapper);
-            return consecutivoInv.Id;
+            //await _dbContext.UpdateAsync(consecutivoInv,Mapper);
+            //return consecutivoInv.Id;
 
             try
             {
@@ -62,6 +62,7 @@ namespace StatusERP.DataAccess.Repositories.CI
                     return 0;
                 }
 
+                //registro.Id = consecutivoInv.Id;
                 registro.CodConsecutivo = consecutivoInv.CodConsecutivo;
                 registro.UltimoUsuario = consecutivoInv.UltimoUsuario;
                 registro.Descripcion  = consecutivoInv.Descripcion;
