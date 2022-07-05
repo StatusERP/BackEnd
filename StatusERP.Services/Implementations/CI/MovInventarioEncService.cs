@@ -38,6 +38,12 @@ namespace StatusERP.Services.Implementations.CI
         //Costos Promedio del artículo tomando en cuenta la transacción actual
         decimal CostoPromLocArt;
         decimal CostoPromDolArt;
+        //Costo recalculado para ExistenciaBodega y ExistenciaLote, que será igual a cero si la cantidad disponible de la línea es igual a cero.
+        decimal CostoExistenciaBodegaLoc;
+        decimal CostoExistenciaBodegaDol;
+        decimal CostoExistenciaLoteLoc;
+        decimal CostoExistenciaLoteDol;
+
 
 
         public MovInventarioEncService(IMovInventarioEncRepository repository, ILogger<MovInventarioEncService> logger, ILogger<MovInventarioDetService> detlogger,
@@ -428,7 +434,19 @@ namespace StatusERP.Services.Implementations.CI
                                                 // 3b/4 Actualización de costo promedio en todos los registros de ExistenciaBodega que corresponden al artículo
                                                 foreach (var Existencia in Existencias)
                                                 {
+                                                    if (Existencia.CantDisponible == 0)
+                                                    {
+                                                        CostoExistenciaBodegaLoc = 0;
+                                                        CostoExistenciaBodegaDol = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        CostoExistenciaBodegaLoc = CostoPromLocArt;
+                                                        CostoExistenciaBodegaDol = CostoPromDolArt;
+                                                    }
+
                                                     var ExisArticuloResponse = new BaseResponseGeneric<int>();
+
                                                     try  // Inicio try de ExistenciaArticulo
                                                     {
                                                         ExisArticuloResponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
@@ -437,7 +455,7 @@ namespace StatusERP.Services.Implementations.CI
                                                             ArticuloId = Existencia.ArticuloId,
                                                             BodegaId = Existencia.BodegaId,
                                                             CantDisponible = Existencia.CantDisponible,
-                                                            CostoUntPromedioLoc = CostoPromLocArt,
+                                                            CostoUntPromedioLoc = CostoExistenciaBodegaLoc,
                                                             CostoUntPromedioDol = CostoPromDolArt,
                                                             Updatedby = userId,
                                                             UpdateDate = DateTime.Now,
@@ -516,6 +534,16 @@ namespace StatusERP.Services.Implementations.CI
 
                                                         try  //Inicio del try para actualizar todos los registros de ExistenciaLote que corresponden al artículo
                                                         {
+                                                            if (LoteExistencia.CantDisponible == 0)
+                                                            {
+                                                                CostoExistenciaLoteLoc = 0;
+                                                                CostoExistenciaLoteDol = 0;
+                                                            }
+                                                            else
+                                                            {
+                                                                CostoExistenciaLoteLoc = CostoPromLocArt;
+                                                                CostoExistenciaLoteDol = CostoPromDolArt;
+                                                            }
 
                                                             LoteExisResponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
                                                             {
@@ -524,13 +552,13 @@ namespace StatusERP.Services.Implementations.CI
                                                                 ArticuloId = LoteExistencia.ArticuloId,
                                                                 LocalizacionId = LoteExistencia.LocalizacionId,
                                                                 LoteId = LoteExistencia.LoteId,
-                                                                CantDisponible = LoteExistencia.CantDisponible + linea.Cantidad,
+                                                                CantDisponible = LoteExistencia.CantDisponible,
                                                                 CantReservada = LoteExistencia.CantReservada,
                                                                 CantNoAprobada = LoteExistencia.CantNoAprobada,
                                                                 CantRemitida = LoteExistencia.CantRemitida,
                                                                 CantVencida = LoteExistencia.CantVencida,
-                                                                CostoUntLoc = CostoPromLocArt,
-                                                                CostoUntDol = CostoPromDolArt,
+                                                                CostoUntLoc = CostoExistenciaLoteLoc,
+                                                                CostoUntDol = CostoExistenciaLoteDol,
                                                                 IsDeleted = LoteExistencia.IsDeleted,
                                                                 Updatedby = userId,
                                                                 UpdateDate = DateTime.Now,
