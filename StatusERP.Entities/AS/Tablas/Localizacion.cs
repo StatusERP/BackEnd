@@ -7,8 +7,7 @@ namespace StatusERP.Entities.AS.Tablas
     [Table("Localizaciones", Schema = Constants.Conjunto)]
     public class Localizacion:EntityBase
     {
-        [Required(ErrorMessage = "Se requiere especificar el código de Bodega.")]
-        [StringLength(4)]
+
         public int BodegaId { get; set; }
         public Bodega Bodega { get; set; }
 

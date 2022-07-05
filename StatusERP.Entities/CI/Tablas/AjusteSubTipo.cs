@@ -9,8 +9,10 @@ namespace StatusERP.Entities.CI.Tablas
         [Required]
         [StringLength(4)]
         public string AjusteConfig { get; set; }
-        //No defino FK porque no estoy validando el Id del AjusteConfig, sino el CodAjusteConfig
-        
+
+        public int AjusteConfigId { get; set; }
+        public AjusteConfig AjusteConfigPK { get; set; }
+
         [Required]
         [StringLength(1)]
         public string SubTipo { get; set; }  

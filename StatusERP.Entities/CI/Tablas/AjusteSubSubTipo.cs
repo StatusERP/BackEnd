@@ -10,7 +10,12 @@ namespace StatusERP.Entities.CI.Tablas
         [Required]
         [StringLength(4)]
         public string AjusteConfig { get; set; }
-        
+
+
+        public int AjusteConfigId { get; set; }
+        public AjusteConfig AjusteConfigPK { get; set; }
+
+
         [Required]
         [StringLength(1)]
         public string Subsubtipo { get; set; }
