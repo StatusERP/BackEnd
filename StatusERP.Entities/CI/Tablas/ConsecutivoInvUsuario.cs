@@ -10,3 +10,6 @@ namespace StatusERP.Entities.CI.Tablas
         public int Usuario { get; set; }
     }
 }
+
+
+

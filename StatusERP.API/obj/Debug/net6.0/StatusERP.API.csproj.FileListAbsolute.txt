@@ -159,14 +159,9 @@ C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.AssemblyInfo
 C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
 <<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 =======
 >>>>>>> f1804e2b7b52258873aa87a1b266f62b738ed9b3
 >>>>>>> faa24250f4d07114a10965259af57df356dcf30f
-=======
->>>>>>> 46a4cc0ff1d8f53ef1935d37ec3214b584f01856
-=======
 >>>>>>> 46a4cc0ff1d8f53ef1935d37ec3214b584f01856
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.AssemblyReference.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.GeneratedMSBuildEditorConfig.editorconfig
@@ -175,14 +170,8 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.Asse
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.MvcApplicationPartsAssemblyInfo.cache
-<<<<<<< HEAD
-<<<<<<< HEAD
 >>>>>>> 38540ed768e24cb8b39048f1d72c6340cc77d13d
 >>>>>>> e377362845c515ba653293591ae0728298bdd2af
-=======
->>>>>>> 46a4cc0ff1d8f53ef1935d37ec3214b584f01856
-=======
->>>>>>> 46a4cc0ff1d8f53ef1935d37ec3214b584f01856
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.Development.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\appsettings.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\StatusERP.API.exe
@@ -253,3 +242,4 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.genruntimeconfig.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\ref\StatusERP.API.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\ref\StatusERP.API.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\refint\StatusERP.API.dll
