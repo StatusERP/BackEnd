@@ -162,8 +162,6 @@ public class BodegaService:IBodegaService
                 Direccion=request.Direccion,
                 Updatedby=userId,
                 UpdateDate=DateTime.Now,
-                CreateDate=DateTime.Now,
-                Createdby=userId
             });
              response.Success=true;
            

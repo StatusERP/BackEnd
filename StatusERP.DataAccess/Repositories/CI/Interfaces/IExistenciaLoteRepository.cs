@@ -9,7 +9,7 @@ namespace StatusERP.DataAccess.Repositories.CI
         Task<ExistenciaLote?> GetByIdAsync(int id);
         Task<ExistenciaLote?> BuscarExistenciaLoteAsync(int bodegaId, int articuloId, int localizacionId, int loteId);
         Task<int> CreateAsync(ExistenciaLote existenciaLote);
-        Task<int> UpdateAsync(ExistenciaLote existenciaLote );
+        Task<int> UpdateAsync(ExistenciaLote existenciaLote);
         Task<int> DeleteAsync(int id, string userId);
     }
 }

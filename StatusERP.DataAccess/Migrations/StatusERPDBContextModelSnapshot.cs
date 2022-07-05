@@ -1359,7 +1359,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<int>("BodegaId")
-                        .HasMaxLength(4)
                         .HasColumnType("int");
 
                     b.Property<string>("CodLocalizacion")
@@ -6763,6 +6762,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
+                    b.Property<int>("AjusteConfigId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -6789,6 +6791,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AjusteConfigId");
+
                     b.HasIndex(new[] { "AjusteConfig", "Subsubtipo" }, "IxAjusteSubsubtipo")
                         .IsUnique();
 
@@ -6807,6 +6811,9 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
+
+                    b.Property<int>("AjusteConfigId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -6833,6 +6840,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AjusteConfigId");
 
                     b.HasIndex(new[] { "AjusteConfig", "SubTipo" }, "IxAjusteSubtipo")
                         .IsUnique();
@@ -6944,10 +6953,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(5)
                         .HasColumnType("nvarchar(5)");
 
-                    b.Property<decimal>("ExistenciaMáxima")
+                    b.Property<decimal>("ExistenciaMaxima")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<decimal>("ExistenciaMínima")
+                    b.Property<decimal>("ExistenciaMinima")
                         .HasColumnType("decimal(28,8)");
 
                     b.Property<decimal?>("FactorConver1")
@@ -7128,12 +7137,12 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UsuarioCreacion")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("UsuarioUltModif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("VentaTarjetaCredito")
                         .HasColumnType("bit");
@@ -16875,6 +16884,28 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CentroCosto");
 
                     b.Navigation("CuentaContable");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.AjusteSubSubTipo", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.AjusteConfig", "AjusteConfigPK")
+                        .WithMany()
+                        .HasForeignKey("AjusteConfigId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AjusteConfigPK");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.AjusteSubTipo", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.AjusteConfig", "AjusteConfigPK")
+                        .WithMany()
+                        .HasForeignKey("AjusteConfigId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AjusteConfigPK");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.Articulo", b =>

@@ -36,8 +36,10 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<ConsecutivoInv?> GetByIdAsync(int id)
         {
+
             return await _dbContext.SelectAsync<ConsecutivoInv>(id);
         }
+
 
         public async Task<ICollection<ConsecutivoInv>> GetCollectionAsync(int page, int rows)
         {
@@ -48,7 +50,50 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ConsecutivoInv consecutivoInv)
         {
-            await _dbContext.UpdateAsync(consecutivoInv,Mapper);
+            //await _dbContext.UpdateAsync(consecutivoInv,Mapper);
+            //return consecutivoInv.Id;
+
+            try
+            {
+                var registro = await _dbContext.Set<ConsecutivoInv>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == consecutivoInv.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                //registro.Id = consecutivoInv.Id;
+                registro.CodConsecutivo = consecutivoInv.CodConsecutivo;
+                registro.UltimoUsuario = consecutivoInv.UltimoUsuario;
+                registro.Descripcion  = consecutivoInv.Descripcion;
+                registro.Mascara = consecutivoInv.Mascara;
+                registro.SiguienteConsec  = consecutivoInv.SiguienteConsec;
+                registro.Editable = consecutivoInv.Editable;
+                registro.MultiplesTrans = consecutivoInv.MultiplesTrans;
+                registro.FormatoImp = consecutivoInv.FormatoImp;
+                registro.UltFechaHora = consecutivoInv.UltFechaHora;
+                registro.TodasTrans = consecutivoInv.TodasTrans;
+                registro.Tipo = consecutivoInv.Tipo;
+                registro.UsaTraslado = consecutivoInv.UsaTraslado;
+                registro.EmailCFDI = consecutivoInv.EmailCFDI;
+                registro.IsDeleted = consecutivoInv.IsDeleted;
+                registro.Updatedby = consecutivoInv.Updatedby;
+                registro.UpdateDate = consecutivoInv.UpdateDate;
+                registro.Createdby = consecutivoInv.Createdby;
+                registro.CreateDate = consecutivoInv.CreateDate;
+
+                _dbContext.Set<ConsecutivoInv>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
             return consecutivoInv.Id;
         }
     }

@@ -68,10 +68,6 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<int> UpdateAsync(ExistenciaBodega existenciaBodega)
         {
-
-            
-
-
             try
             {
                 var registro = await _dbContext.Set<ExistenciaBodega>()
@@ -103,6 +99,10 @@ namespace StatusERP.DataAccess.Repositories.CI
                 registro.IsDeleted = existenciaBodega.IsDeleted;
                 registro.Updatedby = existenciaBodega.Updatedby;
                 registro.UpdateDate =existenciaBodega.UpdateDate;
+                registro.Createdby = existenciaBodega.Createdby;
+                registro.CreateDate = existenciaBodega.CreateDate;
+
+
 
 
 
