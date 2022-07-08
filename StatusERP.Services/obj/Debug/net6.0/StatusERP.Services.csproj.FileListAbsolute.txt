@@ -59,5 +59,9 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Ser
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CoreCompileInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.csproj.CopyComplete
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.dll
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\refint\StatusERP.Services.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\StatusERP.Services.pdb
+<<<<<<< HEAD
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Services\obj\Debug\net6.0\ref\StatusERP.Services.dll
+=======
+>>>>>>> dd73fd86e060472022fcef45be4018567b9f98e1

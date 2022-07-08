@@ -43,6 +43,8 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         public async Task<ICollection<ConsecutivoInv>> GetCollectionAsync(int page, int rows)
         {
+
+
             return await _dbContext.SelectAsync<ConsecutivoInv>(page, rows);
         }
 
