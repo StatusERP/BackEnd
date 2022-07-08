@@ -38,6 +38,12 @@ namespace StatusERP.Services.Implementations.CI
         //Costos Promedio del artículo tomando en cuenta la transacción actual
         decimal CostoPromLocArt;
         decimal CostoPromDolArt;
+        //Costo recalculado para ExistenciaBodega y ExistenciaLote, que será igual a cero si la cantidad disponible de la línea es igual a cero.
+        decimal CostoExistenciaBodegaLoc;
+        decimal CostoExistenciaBodegaDol;
+        decimal CostoExistenciaLoteLoc;
+        decimal CostoExistenciaLoteDol;
+
 
 
         public MovInventarioEncService(IMovInventarioEncRepository repository, ILogger<MovInventarioEncService> logger, ILogger<MovInventarioDetService> detlogger,
@@ -226,7 +232,7 @@ namespace StatusERP.Services.Implementations.CI
                                                 {
                                                     MovInventarioEncId = response.Result,
                                                     Consecutivo = CorrelativoLinea,
-                                                    FechaHoraTransac = linea.FechaHoraTransac,
+                                                    FechaHoraTransac = DateTime.Now,
                                                     DocTributarioId = linea.DocTributarioId,
                                                     AjusteConfigId = linea.AjusteConfigId,
                                                     ArticuloId = linea.ArticuloId,
@@ -255,7 +261,7 @@ namespace StatusERP.Services.Implementations.CI
                                                     UpdateDate = DateTime.Now,
                                                     Createdby = userId,
                                                     CreateDate = DateTime.Now
-                                                });  //Fin del create en la tabla MovsInventarioDet
+                                                });  //Fin del create en la tabla MovsInventarioDet - Compras Locales
 
                                                 detresponse.Success = true;
 
@@ -425,6 +431,64 @@ namespace StatusERP.Services.Implementations.CI
                                                 } // Fin del catch-try de ExistenciaBodega
 
 
+                                                // 3b/4 Actualización de costo promedio en todos los registros de ExistenciaBodega que corresponden al artículo
+                                                foreach (var Existencia in Existencias)
+                                                {
+                                                    if (Existencia.CantDisponible == 0)
+                                                    {
+                                                        CostoExistenciaBodegaLoc = 0;
+                                                        CostoExistenciaBodegaDol = 0;
+                                                    }
+                                                    else
+                                                    {
+                                                        CostoExistenciaBodegaLoc = CostoPromLocArt;
+                                                        CostoExistenciaBodegaDol = CostoPromDolArt;
+                                                    }
+
+                                                    var ExisArticuloResponse = new BaseResponseGeneric<int>();
+
+                                                    try  // Inicio try de ExistenciaBodega
+                                                    {
+                                                        ExisArticuloResponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
+                                                        {
+                                                            Id = Existencia.Id,
+                                                            ArticuloId = Existencia.ArticuloId,
+                                                            BodegaId = Existencia.BodegaId,
+                                                            CantDisponible = Existencia.CantDisponible,
+                                                            CostoUntPromedioLoc = CostoExistenciaBodegaLoc,
+                                                            CostoUntPromedioDol = CostoPromDolArt,
+                                                            Updatedby = userId,
+                                                            UpdateDate = DateTime.Now,
+                                                            FechaCong = Existencia.FechaCong,
+                                                            ExistenciaMinima = Existencia.ExistenciaMinima,
+                                                            ExistenciaMaxima = Existencia.ExistenciaMaxima,
+                                                            PuntoDeOrden = Existencia.PuntoDeOrden,
+                                                            CantReservada = Existencia.CantReservada,
+                                                            CantNoAprobada = Existencia.CantNoAprobada,
+                                                            CantVencida = Existencia.CantVencida,
+                                                            CantTransito = Existencia.CantTransito,
+                                                            CantProduccion = Existencia.CantProduccion,
+                                                            CantPedida = Existencia.CantPedida,
+                                                            CantRemitida = Existencia.CantRemitida,
+                                                            Congelado = Existencia.Congelado,
+                                                            BloqueaTrans = Existencia.BloqueaTrans,
+                                                            FechaDescong = Existencia.FechaDescong,
+                                                            IsDeleted = Existencia.IsDeleted,
+                                                            Createdby = Existencia.Createdby,
+                                                            CreateDate = Existencia.CreateDate,
+
+                                                        });
+
+                                                        ExisArticuloResponse.Success = true;
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        _logger.LogCritical(ex.StackTrace);
+                                                        ExisArticuloResponse.Success = false;
+                                                        ExisArticuloResponse.Errors.Add(ex.Message);
+                                                    }
+                                                }
+
                                                 // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote
                                                 if (buscarArticulo.UsaLotes)
                                                 {
@@ -462,6 +526,54 @@ namespace StatusERP.Services.Implementations.CI
                                                         elresponse.Errors.Add(ex.Message);
                                                     }  // Fin del try de ExistenciaLote
 
+                                                    // 4b/4 Actualizar el costo promedio en los registros de ExistenciaLote que corresponden al artículo
+                                                    var LoteExistencias = await _elRepository.BuscarExistenciaXArticulo(linea.ArticuloId);
+                                                    var LoteExisResponse = new BaseResponseGeneric<int>();
+                                                    foreach (var LoteExistencia in LoteExistencias)
+                                                    {
+
+                                                        try  //Inicio del try para actualizar todos los registros de ExistenciaLote que corresponden al artículo
+                                                        {
+                                                            if (LoteExistencia.CantDisponible == 0)
+                                                            {
+                                                                CostoExistenciaLoteLoc = 0;
+                                                                CostoExistenciaLoteDol = 0;
+                                                            }
+                                                            else
+                                                            {
+                                                                CostoExistenciaLoteLoc = CostoPromLocArt;
+                                                                CostoExistenciaLoteDol = CostoPromDolArt;
+                                                            }
+
+                                                            LoteExisResponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
+                                                            {
+                                                                Id = LoteExistencia.Id,
+                                                                BodegaId = LoteExistencia.BodegaId,
+                                                                ArticuloId = LoteExistencia.ArticuloId,
+                                                                LocalizacionId = LoteExistencia.LocalizacionId,
+                                                                LoteId = LoteExistencia.LoteId,
+                                                                CantDisponible = LoteExistencia.CantDisponible ,
+                                                                CantReservada = LoteExistencia.CantReservada,
+                                                                CantNoAprobada = LoteExistencia.CantNoAprobada,
+                                                                CantRemitida = LoteExistencia.CantRemitida,
+                                                                CantVencida = LoteExistencia.CantVencida,
+                                                                CostoUntLoc = CostoExistenciaLoteLoc,
+                                                                CostoUntDol = CostoExistenciaLoteDol,
+                                                                IsDeleted = LoteExistencia.IsDeleted,
+                                                                Updatedby = userId,
+                                                                UpdateDate = DateTime.Now,
+                                                                Createdby = LoteExistencia.Createdby,
+                                                                CreateDate = LoteExistencia.CreateDate
+                                                            });
+                                                            LoteExisResponse.Success = true;
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            _logger.LogCritical(ex.StackTrace);
+                                                            LoteExisResponse.Success = false;
+                                                            LoteExisResponse.Errors.Add(ex.Message);
+                                                        }  // Fin del catch-try para actualización de todos los registros en ExistenciaLote que corresponden al artículo
+                                                    } //Fin del foreach para barrer la collection de ExistenciaLote que corresponde al artículo
                                                 }  //Fin del if "usa lotes"
 
                                                 break;
@@ -470,11 +582,270 @@ namespace StatusERP.Services.Implementations.CI
 
                                             else // Es salida
                                             {
-                                                throw new Exception($"Devolución de compra en proceso.");
 
                                                 // **** DEVOLUCION DE COMPRA LOCAL
 
-                                            }  //Fin del if "Naturaleza = "E"
+                                                // 1/4 Creación de registro en Detalle de Movimiento de Inventario
+                                                var detresponse = new BaseResponseGeneric<int>();
+                                                detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
+                                                {
+                                                    MovInventarioEncId = response.Result,
+                                                    Consecutivo = CorrelativoLinea,
+                                                    FechaHoraTransac = DateTime.Now,
+                                                    DocTributarioId = linea.DocTributarioId,
+                                                    AjusteConfigId = linea.AjusteConfigId,
+                                                    ArticuloId = linea.ArticuloId,
+                                                    BodegaId = linea.BodegaId,
+                                                    LocalizacionId = linea.LocalizacionId,
+                                                    LoteId = linea.LoteId,
+                                                    Tipo = linea.Tipo,
+                                                    Subtipo = linea.Subtipo,
+                                                    Subsubtipo = linea.Subsubtipo,
+                                                    Naturaleza = linea.Naturaleza,
+                                                    Cantidad = linea.Cantidad * -1,
+                                                    CostoTotLoc = linea.CostoTotLoc,
+                                                    CostoTotDol = linea.CostoTotDol,
+                                                    PrecioTotalLocal = linea.PrecioTotalLocal,
+                                                    PrecioTotalDolar = linea.PrecioTotalDolar,
+                                                    Contabilizada = linea.Contabilizada,
+                                                    Fecha = linea.Fecha,
+                                                    CentroCuentaId = linea.CentroCuentaId,
+                                                    UnidadDistribucionId = linea.UnidadDistribucionId,
+                                                    AsientoCardex = linea.AsientoCardex,
+                                                    DocFiscal = linea.DocFiscal,
+                                                    TipoOperacionId = linea.TipoOperacionId,
+                                                    TipoPagoId = linea.TipoPagoId,
+                                                    IsDeleted = false,
+                                                    Updatedby = userId,
+                                                    UpdateDate = DateTime.Now,
+                                                    Createdby = userId,
+                                                    CreateDate = DateTime.Now
+                                                });  //Fin del create en la tabla MovsInventarioDet
+
+                                                detresponse.Success = true;
+
+                                                // 2/4 Se actualiza el registro correspondiente en la tabla Articulos
+                                                var Existencias = await _ebRepository.BuscarExistenciaXArticulo(linea.ArticuloId);
+                                                decExistenciaTotal = 0;
+                                                foreach (var Existencia in Existencias)
+                                                {
+                                                    decExistenciaTotal += Existencia.CantDisponible;
+                                                }
+
+                                                var buscarIdArticulo = await _aRepository.GetByIdAsync(linea.ArticuloId);
+                                                var aresponse = new BaseResponseGeneric<int>();
+
+                                                CostoPromLocArt = DecCostoPromLocArt(decExistenciaTotal, linea.Cantidad, buscarIdArticulo.CostoLoc, CostoUnitUltimoLoc);
+                                                CostoPromDolArt = DecCostoPromDolArt(decExistenciaTotal, linea.Cantidad, buscarIdArticulo.CostoDol, CostoUnitUltimoDol);
+
+                                                try  //Inicio try del Articulo
+                                                {
+                                                    aresponse.Result = await _aRepository.UpdateAsync(new Articulo
+                                                    {
+                                                        Id = buscarIdArticulo.Id,
+                                                        CodArticulo = buscarIdArticulo.CodArticulo,
+                                                        Descripcion = buscarIdArticulo.Descripcion,
+                                                        Clasificacion1Id = buscarIdArticulo.Clasificacion1Id,
+                                                        Clasificacion2Id = buscarIdArticulo.Clasificacion2Id,
+                                                        Clasificacion3Id = buscarIdArticulo.Clasificacion3Id,
+                                                        Clasificacion4Id = buscarIdArticulo.Clasificacion4Id,
+                                                        Clasificacion5Id = buscarIdArticulo.Clasificacion5Id,
+                                                        Clasificacion6Id = buscarIdArticulo.Clasificacion6Id,
+                                                        FactorConver1 = buscarIdArticulo.FactorConver1,
+                                                        FactorConver2 = buscarIdArticulo.FactorConver2,
+                                                        FactorConver3 = buscarIdArticulo.FactorConver3,
+                                                        FactorConver4 = buscarIdArticulo.FactorConver4,
+                                                        FactorConver5 = buscarIdArticulo.FactorConver5,
+                                                        FactorConver6 = buscarIdArticulo.FactorConver6,
+                                                        Tipo = buscarIdArticulo.Tipo,
+                                                        TiendaEnLinea = buscarIdArticulo.TiendaEnLinea,
+                                                        VentaTarjetaCredito = buscarIdArticulo.VentaTarjetaCredito,
+                                                        PesoNeto = buscarIdArticulo.PesoNeto,
+                                                        PesoBruto = buscarIdArticulo.PesoBruto,
+                                                        Volumen = buscarIdArticulo.Volumen,
+                                                        Bultos = buscarIdArticulo.Bultos,
+                                                        CostoLoc = buscarIdArticulo.CostoLoc,
+                                                        CostoDol = buscarIdArticulo.CostoDol,
+                                                        CostoPromUltimoLoc = buscarIdArticulo.CostoPromUltimoLoc,
+                                                        CostoPromUltimoDol = buscarIdArticulo.CostoPromUltimoDol,
+                                                        UltimoIngreso = buscarIdArticulo.UltimoIngreso,
+                                                        UltimaSalida = DateTime.Now,
+                                                        UltimoMovimiento = DateTime.Now,
+                                                        UsuarioUltModif = userId,
+                                                        FechaHoraUltModif = DateTime.Now,
+                                                        Updatedby = userId,
+                                                        UpdateDate = DateTime.Now,
+                                                        CategoriaArticuloId = buscarIdArticulo.CategoriaArticuloId,
+                                                        ImpuestoId = buscarIdArticulo.ImpuestoId,
+                                                        FactorEmpaque = buscarIdArticulo.FactorEmpaque,
+                                                        FactorVenta = buscarIdArticulo.FactorVenta,
+                                                        ExistenciaMinima = buscarIdArticulo.ExistenciaMinima,
+                                                        ExistenciaMaxima = buscarIdArticulo.ExistenciaMaxima,
+                                                        PuntoDeOrden = buscarIdArticulo.PuntoDeOrden,
+                                                        PrecioBaseLocal = buscarIdArticulo.PrecioBaseLocal,
+                                                        PrecioBaseDol = buscarIdArticulo.PrecioBaseDol,
+                                                        UltimoInventario = buscarIdArticulo.UltimoInventario,
+                                                        ClaseABC = buscarIdArticulo.ClaseABC,
+                                                        FrecuenciaConteo = buscarIdArticulo.FrecuenciaConteo,
+                                                        CodigoBarrasVent = buscarIdArticulo.CodigoBarrasVent,
+                                                        CodigoBarrasInvt = buscarIdArticulo.CodigoBarrasInvt,
+                                                        Activo = buscarIdArticulo.Activo,
+                                                        UsaLotes = buscarIdArticulo.UsaLotes,
+                                                        ObligaCuarentena = buscarIdArticulo.ObligaCuarentena,
+                                                        MinVidaCompra = buscarIdArticulo.MinVidaCompra,
+                                                        MinVidaConsumo = buscarIdArticulo.MinVidaConsumo,
+                                                        MinVidaVenta = buscarIdArticulo.MinVidaVenta,
+                                                        VidaUtilPromedio = buscarIdArticulo.VidaUtilPromedio,
+                                                        DiasCuarentena = buscarIdArticulo.DiasCuarentena,
+                                                        Proveedor = buscarIdArticulo.Proveedor,
+                                                        ArticuloDelProv = buscarIdArticulo.ArticuloDelProv,
+                                                        OrdenMinima = buscarIdArticulo.OrdenMinima,
+                                                        PlazoReabast = buscarIdArticulo.PlazoReabast,
+                                                        LoteMultiplo = buscarIdArticulo.LoteMultiplo,
+                                                        UsuarioCreacion = buscarIdArticulo.UsuarioCreacion,
+                                                        FechaHoraCreacion = buscarIdArticulo.FechaHoraCreacion,
+                                                        UsaNumerosSerie = buscarIdArticulo.UsaNumerosSerie,
+                                                        ModalidadInvFis = buscarIdArticulo.ModalidadInvFis,
+                                                        TipoCodBarraDet = buscarIdArticulo.TipoCodBarraDet,
+                                                        TipoCodBarraAlm = buscarIdArticulo.TipoCodBarraAlm,
+                                                        UsaReglasLocales = buscarIdArticulo.UsaReglasLocales,
+                                                        UnidadAlmacenId = buscarIdArticulo.UnidadAlmacenId,
+                                                        UnidadEmpaqueId = buscarIdArticulo.UnidadEmpaqueId,
+                                                        UnidadVentaId = buscarIdArticulo.UnidadVentaId,
+                                                        Perecedero = buscarIdArticulo.Perecedero,
+                                                        Manufacturador = buscarIdArticulo.Manufacturador,
+                                                        CodigoRetencion = buscarIdArticulo.CodigoRetencion,
+                                                        RetencionVenta = buscarIdArticulo.RetencionVenta,
+                                                        RetencionCompra = buscarIdArticulo.RetencionCompra,
+                                                        ModeloRetencion = buscarIdArticulo.ModeloRetencion,
+                                                        Estilo = buscarIdArticulo.Estilo,
+                                                        Talla = buscarIdArticulo.Talla,
+                                                        Color = buscarIdArticulo.Color,
+                                                        TipoCosto = buscarIdArticulo.TipoCosto,
+                                                        EsImpuesto = buscarIdArticulo.EsImpuesto,
+                                                        TipoDocIVA = buscarIdArticulo.TipoDocIVA,
+                                                        SugiereMin = buscarIdArticulo.SugiereMin,
+                                                        CalculaPercep = buscarIdArticulo.CalculaPercep,
+                                                        PorcPercep = buscarIdArticulo.PorcPercep,
+                                                        Notas = buscarIdArticulo.Notas,
+                                                        IsDeleted = false,
+                                                        Createdby = buscarIdArticulo.Createdby
+
+                                                    });
+
+                                                    aresponse.Success = true;
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    _logger.LogCritical(ex.StackTrace);
+                                                    aresponse.Success = false;
+                                                    aresponse.Errors.Add(ex.Message);
+                                                }  // Fin del try del Articulo
+
+                                                // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega
+                                                var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(linea.ArticuloId, (int)linea.BodegaId);
+
+                                                if (buscarIdExistenciaBodega.CantDisponible - linea.Cantidad == 0)
+                                                {
+                                                    CostoExistenciaBodegaLoc = 0;
+                                                    CostoExistenciaBodegaDol = 0;
+                                                }
+                                                else
+                                                {
+                                                    CostoExistenciaBodegaLoc = CostoPromLocArt;
+                                                    CostoExistenciaBodegaDol = CostoPromDolArt;
+                                                }
+
+                                                var ebresponse = new BaseResponseGeneric<int>();
+                                                try  // Inicio try de ExistenciaBodega
+                                                {
+                                                    ebresponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
+                                                    {
+                                                        Id = buscarIdExistenciaBodega.Id,
+                                                        ArticuloId = linea.ArticuloId,
+                                                        BodegaId = (int)linea.BodegaId,
+                                                        CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible - linea.Cantidad,
+                                                        CostoUntPromedioLoc = CostoExistenciaBodegaLoc,
+                                                        CostoUntPromedioDol = CostoExistenciaBodegaDol,
+                                                        Updatedby = userId,
+                                                        UpdateDate = DateTime.Now,
+                                                        FechaCong = buscarIdExistenciaBodega.FechaCong,
+                                                        ExistenciaMinima = buscarIdExistenciaBodega.ExistenciaMinima,
+                                                        ExistenciaMaxima = buscarIdExistenciaBodega.ExistenciaMaxima,
+                                                        PuntoDeOrden = buscarIdExistenciaBodega.PuntoDeOrden,
+                                                        CantReservada = buscarIdExistenciaBodega.CantReservada,
+                                                        CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
+                                                        CantVencida = buscarIdExistenciaBodega.CantVencida,
+                                                        CantTransito = buscarIdExistenciaBodega.CantTransito,
+                                                        CantProduccion = buscarIdExistenciaBodega.CantProduccion,
+                                                        CantPedida = buscarIdExistenciaBodega.CantPedida,
+                                                        CantRemitida = buscarIdExistenciaBodega.CantRemitida,
+                                                        Congelado = buscarIdExistenciaBodega.Congelado,
+                                                        BloqueaTrans = buscarIdExistenciaBodega.BloqueaTrans,
+                                                        FechaDescong = buscarIdExistenciaBodega.FechaDescong,
+                                                        IsDeleted = buscarIdExistenciaBodega.IsDeleted,
+                                                        Createdby = buscarIdExistenciaBodega.Createdby,
+                                                        CreateDate = buscarIdExistenciaBodega.CreateDate,
+                                                    });
+
+                                                    ebresponse.Success = true;
+                                                }
+                                                catch (Exception ex)
+                                                {
+                                                    _logger.LogCritical(ex.StackTrace);
+                                                    ebresponse.Success = false;
+                                                    ebresponse.Errors.Add(ex.Message);
+                                                } // Fin del catch-try de ExistenciaBodega
+
+                                                // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote
+                                                if (buscarArticulo.UsaLotes)
+                                                {
+                                                    var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)linea.BodegaId, linea.ArticuloId, (int)linea.LocalizacionId, (int)linea.LoteId);
+                                                    var elresponse = new BaseResponseGeneric<int>();
+                                                    try  //Inicio del try de ExistenciaLote
+                                                    {
+                                                        if (buscarExistenciaLote.CantDisponible - linea.Cantidad == 0)
+                                                        {
+                                                            CostoExistenciaLoteLoc = 0;
+                                                            CostoExistenciaLoteDol = 0;
+                                                        }
+                                                        else
+                                                        {
+                                                            CostoExistenciaLoteLoc = CostoPromLocArt;
+                                                            CostoExistenciaLoteDol = CostoPromDolArt;
+                                                        }
+
+                                                        elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
+                                                        {
+                                                            Id = buscarExistenciaLote.Id,
+                                                            BodegaId = buscarExistenciaLote.BodegaId,
+                                                            ArticuloId = buscarExistenciaLote.ArticuloId,
+                                                            LocalizacionId = buscarExistenciaLote.LocalizacionId,
+                                                            LoteId = buscarExistenciaLote.LoteId,
+                                                            CantDisponible = buscarExistenciaLote.CantDisponible - linea.Cantidad,
+                                                            CantReservada = buscarExistenciaLote.CantReservada,
+                                                            CantNoAprobada = buscarExistenciaLote.CantNoAprobada,
+                                                            CantRemitida = buscarExistenciaLote.CantRemitida,
+                                                            CantVencida = buscarExistenciaLote.CantVencida,
+                                                            CostoUntLoc = CostoExistenciaLoteLoc,
+                                                            CostoUntDol = CostoExistenciaLoteDol,
+                                                            IsDeleted = buscarExistenciaLote.IsDeleted,
+                                                            Updatedby = userId,
+                                                            UpdateDate = DateTime.Now,
+                                                            Createdby = buscarExistenciaLote.Createdby,
+                                                            CreateDate = buscarExistenciaLote.CreateDate
+                                                        });
+                                                        elresponse.Success = true;
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        _logger.LogCritical(ex.StackTrace);
+                                                        elresponse.Success = false;
+                                                        elresponse.Errors.Add(ex.Message);
+                                                    }  // Fin del try de ExistenciaLote
+                                                }  //Fin del if "Usa Lotes" (Compras-Dev)
+                                                break;
+                                            }  //Fin del else-if "Naturaleza = "E"
 
 
                                         case "I":
@@ -511,7 +882,516 @@ namespace StatusERP.Services.Implementations.CI
 
                         // 13/13 - Venta ******************
                         case "V":
-                            throw new Exception($"El ajuste es de tipo Venta.");
+                        { 
+                            switch (strSubtipo)
+                            {
+                                case "D": // Disponible
+                                    switch (strSubsubtipo)
+                                    {
+                                        case "L":  // ****Ventas Locales
+                                        { 
+                                            if (strNaturaleza == "S")
+                                            {
+                                                    // 1/4 Creación de registro en Detalle de Movimiento de Inventario
+                                                    var detresponse = new BaseResponseGeneric<int>();
+                                                    detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
+                                                    {
+                                                        MovInventarioEncId = response.Result,
+                                                        Consecutivo = CorrelativoLinea,
+                                                        FechaHoraTransac = DateTime.Now,
+                                                        DocTributarioId = linea.DocTributarioId,
+                                                        AjusteConfigId = linea.AjusteConfigId,
+                                                        ArticuloId = linea.ArticuloId,
+                                                        BodegaId = linea.BodegaId,
+                                                        LocalizacionId = linea.LocalizacionId,
+                                                        LoteId = linea.LoteId,
+                                                        Tipo = linea.Tipo,
+                                                        Subtipo = linea.Subtipo,
+                                                        Subsubtipo = linea.Subsubtipo,
+                                                        Naturaleza = linea.Naturaleza,
+                                                        Cantidad = linea.Cantidad,
+                                                        CostoTotLoc = linea.CostoTotLoc,
+                                                        CostoTotDol = linea.CostoTotDol,
+                                                        PrecioTotalLocal = linea.PrecioTotalLocal,
+                                                        PrecioTotalDolar = linea.PrecioTotalDolar,
+                                                        Contabilizada = linea.Contabilizada,
+                                                        Fecha = linea.Fecha,
+                                                        CentroCuentaId = linea.CentroCuentaId,
+                                                        UnidadDistribucionId = linea.UnidadDistribucionId,
+                                                        AsientoCardex = linea.AsientoCardex,
+                                                        DocFiscal = linea.DocFiscal,
+                                                        TipoOperacionId = linea.TipoOperacionId,
+                                                        TipoPagoId = linea.TipoPagoId,
+                                                        IsDeleted = false,
+                                                        Updatedby = userId,
+                                                        UpdateDate = DateTime.Now,
+                                                        Createdby = userId,
+                                                        CreateDate = DateTime.Now
+                                                    });  //Fin del create en la tabla MovsInventarioDet - Ventas Locales
+
+                                                    detresponse.Success = true;
+
+                                                    // 2/4 Se actualiza el registro correspondiente en la tabla Articulos - Ventas Locales
+                                                    var Existencias = await _ebRepository.BuscarExistenciaXArticulo(linea.ArticuloId);
+                                                    decExistenciaTotal = 0;
+                                                    foreach (var Existencia in Existencias)
+                                                    {
+                                                        decExistenciaTotal += Existencia.CantDisponible;
+                                                    }
+
+                                                    var buscarIdArticulo = await _aRepository.GetByIdAsync(linea.ArticuloId);
+                                                    var aresponse = new BaseResponseGeneric<int>();
+
+                                                    CostoPromLocArt = DecCostoPromLocArt(decExistenciaTotal, linea.Cantidad, buscarIdArticulo.CostoLoc, CostoUnitUltimoLoc);
+                                                    CostoPromDolArt = DecCostoPromDolArt(decExistenciaTotal, linea.Cantidad, buscarIdArticulo.CostoDol, CostoUnitUltimoDol);
+
+                                                    try  //Inicio try del Articulo
+                                                    {
+                                                        aresponse.Result = await _aRepository.UpdateAsync(new Articulo
+                                                        {
+                                                            Id = buscarIdArticulo.Id,
+                                                            CodArticulo = buscarIdArticulo.CodArticulo,
+                                                            Descripcion = buscarIdArticulo.Descripcion,
+                                                            Clasificacion1Id = buscarIdArticulo.Clasificacion1Id,
+                                                            Clasificacion2Id = buscarIdArticulo.Clasificacion2Id,
+                                                            Clasificacion3Id = buscarIdArticulo.Clasificacion3Id,
+                                                            Clasificacion4Id = buscarIdArticulo.Clasificacion4Id,
+                                                            Clasificacion5Id = buscarIdArticulo.Clasificacion5Id,
+                                                            Clasificacion6Id = buscarIdArticulo.Clasificacion6Id,
+                                                            FactorConver1 = buscarIdArticulo.FactorConver1,
+                                                            FactorConver2 = buscarIdArticulo.FactorConver2,
+                                                            FactorConver3 = buscarIdArticulo.FactorConver3,
+                                                            FactorConver4 = buscarIdArticulo.FactorConver4,
+                                                            FactorConver5 = buscarIdArticulo.FactorConver5,
+                                                            FactorConver6 = buscarIdArticulo.FactorConver6,
+                                                            Tipo = buscarIdArticulo.Tipo,
+                                                            TiendaEnLinea = buscarIdArticulo.TiendaEnLinea,
+                                                            VentaTarjetaCredito = buscarIdArticulo.VentaTarjetaCredito,
+                                                            PesoNeto = buscarIdArticulo.PesoNeto,
+                                                            PesoBruto = buscarIdArticulo.PesoBruto,
+                                                            Volumen = buscarIdArticulo.Volumen,
+                                                            Bultos = buscarIdArticulo.Bultos,
+                                                            CostoLoc = buscarIdArticulo.CostoLoc,
+                                                            CostoDol = buscarIdArticulo.CostoDol,
+                                                            CostoPromUltimoLoc = buscarIdArticulo.CostoPromUltimoLoc,
+                                                            CostoPromUltimoDol = buscarIdArticulo.CostoPromUltimoDol,
+                                                            UltimoIngreso = buscarIdArticulo.UltimoIngreso,
+                                                            UltimoMovimiento = DateTime.Now,
+                                                            UsuarioUltModif = userId,
+                                                            FechaHoraUltModif = DateTime.Now,
+                                                            Updatedby = userId,
+                                                            UpdateDate = DateTime.Now,
+                                                            CategoriaArticuloId = buscarIdArticulo.CategoriaArticuloId,
+                                                            ImpuestoId = buscarIdArticulo.ImpuestoId,
+                                                            FactorEmpaque = buscarIdArticulo.FactorEmpaque,
+                                                            FactorVenta = buscarIdArticulo.FactorVenta,
+                                                            ExistenciaMinima = buscarIdArticulo.ExistenciaMinima,
+                                                            ExistenciaMaxima = buscarIdArticulo.ExistenciaMaxima,
+                                                            PuntoDeOrden = buscarIdArticulo.PuntoDeOrden,
+                                                            PrecioBaseLocal = buscarIdArticulo.PrecioBaseLocal,
+                                                            PrecioBaseDol = buscarIdArticulo.PrecioBaseDol,
+                                                            UltimaSalida = DateTime.Now,
+                                                            UltimoInventario = buscarIdArticulo.UltimoInventario,
+                                                            ClaseABC = buscarIdArticulo.ClaseABC,
+                                                            FrecuenciaConteo = buscarIdArticulo.FrecuenciaConteo,
+                                                            CodigoBarrasVent = buscarIdArticulo.CodigoBarrasVent,
+                                                            CodigoBarrasInvt = buscarIdArticulo.CodigoBarrasInvt,
+                                                            Activo = buscarIdArticulo.Activo,
+                                                            UsaLotes = buscarIdArticulo.UsaLotes,
+                                                            ObligaCuarentena = buscarIdArticulo.ObligaCuarentena,
+                                                            MinVidaCompra = buscarIdArticulo.MinVidaCompra,
+                                                            MinVidaConsumo = buscarIdArticulo.MinVidaConsumo,
+                                                            MinVidaVenta = buscarIdArticulo.MinVidaVenta,
+                                                            VidaUtilPromedio = buscarIdArticulo.VidaUtilPromedio,
+                                                            DiasCuarentena = buscarIdArticulo.DiasCuarentena,
+                                                            Proveedor = buscarIdArticulo.Proveedor,
+                                                            ArticuloDelProv = buscarIdArticulo.ArticuloDelProv,
+                                                            OrdenMinima = buscarIdArticulo.OrdenMinima,
+                                                            PlazoReabast = buscarIdArticulo.PlazoReabast,
+                                                            LoteMultiplo = buscarIdArticulo.LoteMultiplo,
+                                                            UsuarioCreacion = buscarIdArticulo.UsuarioCreacion,
+                                                            FechaHoraCreacion = buscarIdArticulo.FechaHoraCreacion,
+                                                            UsaNumerosSerie = buscarIdArticulo.UsaNumerosSerie,
+                                                            ModalidadInvFis = buscarIdArticulo.ModalidadInvFis,
+                                                            TipoCodBarraDet = buscarIdArticulo.TipoCodBarraDet,
+                                                            TipoCodBarraAlm = buscarIdArticulo.TipoCodBarraAlm,
+                                                            UsaReglasLocales = buscarIdArticulo.UsaReglasLocales,
+                                                            UnidadAlmacenId = buscarIdArticulo.UnidadAlmacenId,
+                                                            UnidadEmpaqueId = buscarIdArticulo.UnidadEmpaqueId,
+                                                            UnidadVentaId = buscarIdArticulo.UnidadVentaId,
+                                                            Perecedero = buscarIdArticulo.Perecedero,
+                                                            Manufacturador = buscarIdArticulo.Manufacturador,
+                                                            CodigoRetencion = buscarIdArticulo.CodigoRetencion,
+                                                            RetencionVenta = buscarIdArticulo.RetencionVenta,
+                                                            RetencionCompra = buscarIdArticulo.RetencionCompra,
+                                                            ModeloRetencion = buscarIdArticulo.ModeloRetencion,
+                                                            Estilo = buscarIdArticulo.Estilo,
+                                                            Talla = buscarIdArticulo.Talla,
+                                                            Color = buscarIdArticulo.Color,
+                                                            TipoCosto = buscarIdArticulo.TipoCosto,
+                                                            EsImpuesto = buscarIdArticulo.EsImpuesto,
+                                                            TipoDocIVA = buscarIdArticulo.TipoDocIVA,
+                                                            SugiereMin = buscarIdArticulo.SugiereMin,
+                                                            CalculaPercep = buscarIdArticulo.CalculaPercep,
+                                                            PorcPercep = buscarIdArticulo.PorcPercep,
+                                                            Notas = buscarIdArticulo.Notas,
+                                                            IsDeleted = false,
+                                                            Createdby = buscarIdArticulo.Createdby
+
+                                                        });
+
+                                                        aresponse.Success = true;
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        _logger.LogCritical(ex.StackTrace);
+                                                        aresponse.Success = false;
+                                                        aresponse.Errors.Add(ex.Message);
+                                                    }  // Fin del try del Articulo - Ventas Locales
+
+
+                                                    // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega  - Ventas Locales
+                                                    var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(linea.ArticuloId, (int)linea.BodegaId);
+
+                                                    var ebresponse = new BaseResponseGeneric<int>();
+                                                    try  // Inicio try de ExistenciaBodega
+                                                    {
+                                                        ebresponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
+                                                        {
+                                                            Id = buscarIdExistenciaBodega.Id,
+                                                            ArticuloId = linea.ArticuloId,
+                                                            BodegaId = (int)linea.BodegaId,
+                                                            CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible - linea.Cantidad,
+                                                            CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
+                                                            CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
+                                                            Updatedby = userId,
+                                                            UpdateDate = DateTime.Now,
+                                                            FechaCong = buscarIdExistenciaBodega.FechaCong,
+                                                            ExistenciaMinima = buscarIdExistenciaBodega.ExistenciaMinima,
+                                                            ExistenciaMaxima = buscarIdExistenciaBodega.ExistenciaMaxima,
+                                                            PuntoDeOrden = buscarIdExistenciaBodega.PuntoDeOrden,
+                                                            CantReservada = buscarIdExistenciaBodega.CantReservada,
+                                                            CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
+                                                            CantVencida = buscarIdExistenciaBodega.CantVencida,
+                                                            CantTransito = buscarIdExistenciaBodega.CantTransito,
+                                                            CantProduccion = buscarIdExistenciaBodega.CantProduccion,
+                                                            CantPedida = buscarIdExistenciaBodega.CantPedida,
+                                                            CantRemitida = buscarIdExistenciaBodega.CantRemitida,
+                                                            Congelado = buscarIdExistenciaBodega.Congelado,
+                                                            BloqueaTrans = buscarIdExistenciaBodega.BloqueaTrans,
+                                                            FechaDescong = buscarIdExistenciaBodega.FechaDescong,
+                                                            IsDeleted = buscarIdExistenciaBodega.IsDeleted,
+                                                            Createdby = buscarIdExistenciaBodega.Createdby,
+                                                            CreateDate = buscarIdExistenciaBodega.CreateDate,
+
+                                                        });
+
+                                                        ebresponse.Success = true;
+                                                    }
+                                                    catch (Exception ex)
+                                                    {
+                                                        _logger.LogCritical(ex.StackTrace);
+                                                        ebresponse.Success = false;
+                                                        ebresponse.Errors.Add(ex.Message);
+                                                    } // Fin del catch-try de ExistenciaBodega - Ventas Locales
+
+                                                    // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote - Ventas Locales
+                                                    if (buscarArticulo.UsaLotes)
+                                                    {
+                                                        var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)linea.BodegaId, linea.ArticuloId, (int)linea.LocalizacionId, (int)linea.LoteId);
+                                                        var elresponse = new BaseResponseGeneric<int>();
+                                                        try  //Inicio del try de ExistenciaLote
+                                                        {
+
+                                                            elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
+                                                            {
+                                                                Id = buscarExistenciaLote.Id,
+                                                                BodegaId = buscarExistenciaLote.BodegaId,
+                                                                ArticuloId = buscarExistenciaLote.ArticuloId,
+                                                                LocalizacionId = buscarExistenciaLote.LocalizacionId,
+                                                                LoteId = buscarExistenciaLote.LoteId,
+                                                                CantDisponible = buscarExistenciaLote.CantDisponible - linea.Cantidad,
+                                                                CantReservada = buscarExistenciaLote.CantReservada,
+                                                                CantNoAprobada = buscarExistenciaLote.CantNoAprobada,
+                                                                CantRemitida = buscarExistenciaLote.CantRemitida,
+                                                                CantVencida = buscarExistenciaLote.CantVencida,
+                                                                CostoUntLoc = buscarExistenciaLote.CostoUntLoc,
+                                                                CostoUntDol = buscarExistenciaLote.CostoUntDol,
+                                                                IsDeleted = buscarExistenciaLote.IsDeleted,
+                                                                Updatedby = userId,
+                                                                UpdateDate = DateTime.Now,
+                                                                Createdby = buscarExistenciaLote.Createdby,
+                                                                CreateDate = buscarExistenciaLote.CreateDate
+                                                            });
+                                                            elresponse.Success = true;
+                                                            break;
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            _logger.LogCritical(ex.StackTrace);
+                                                            elresponse.Success = false;
+                                                            elresponse.Errors.Add(ex.Message);
+                                                            break;
+                                                        }  // Fin del catch-try de ExistenciaLote - Ventas Locales
+                                                    } // Fin del if "UsaLotes" - Ventas Locales
+                                            }  // Fin del if strNaturaleza = 'S'
+                                            else  // Devolución de venta local - Naturaleza E
+                                            {
+                                                    // 1/4 Creación de registro en Detalle de Movimiento de Inventario - Devolución de Venta Local
+                                                    var detresponse = new BaseResponseGeneric<int>();
+                                                    detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
+                                                    {
+                                                         MovInventarioEncId = response.Result,
+                                                         Consecutivo = CorrelativoLinea,
+                                                         FechaHoraTransac = DateTime.Now,
+                                                         DocTributarioId = linea.DocTributarioId,
+                                                         AjusteConfigId = linea.AjusteConfigId,
+                                                         ArticuloId = linea.ArticuloId,
+                                                         BodegaId = linea.BodegaId,
+                                                         LocalizacionId = linea.LocalizacionId,
+                                                         LoteId = linea.LoteId,
+                                                         Tipo = linea.Tipo,
+                                                         Subtipo = linea.Subtipo,
+                                                         Subsubtipo = linea.Subsubtipo,
+                                                         Naturaleza = linea.Naturaleza,
+                                                         Cantidad = linea.Cantidad * -1,
+                                                         CostoTotLoc = linea.CostoTotLoc,
+                                                         CostoTotDol = linea.CostoTotDol,
+                                                         PrecioTotalLocal = linea.PrecioTotalLocal,
+                                                         PrecioTotalDolar = linea.PrecioTotalDolar,
+                                                         Contabilizada = linea.Contabilizada,
+                                                         Fecha = linea.Fecha,
+                                                         CentroCuentaId = linea.CentroCuentaId,
+                                                         UnidadDistribucionId = linea.UnidadDistribucionId,
+                                                         AsientoCardex = linea.AsientoCardex,
+                                                         DocFiscal = linea.DocFiscal,
+                                                         TipoOperacionId = linea.TipoOperacionId,
+                                                         TipoPagoId = linea.TipoPagoId,
+                                                         IsDeleted = false,
+                                                         Updatedby = userId,
+                                                         UpdateDate = DateTime.Now,
+                                                         Createdby = userId,
+                                                         CreateDate = DateTime.Now
+                                                    });  //Fin del create en la tabla MovsInventarioDet - Devolucion de Ventas Locales
+
+                                                        detresponse.Success = true;
+
+                                                        // 2/4 Se actualiza el registro correspondiente en la tabla Articulos - Ventas Locales
+                                            
+                                                        var buscarIdArticulo = await _aRepository.GetByIdAsync(linea.ArticuloId);
+                                                        var aresponse = new BaseResponseGeneric<int>();
+
+
+                                                        try  //Inicio try del Articulo
+                                                        {
+                                                            aresponse.Result = await _aRepository.UpdateAsync(new Articulo
+                                                            {
+                                                                Id = buscarIdArticulo.Id,
+                                                                CodArticulo = buscarIdArticulo.CodArticulo,
+                                                                Descripcion = buscarIdArticulo.Descripcion,
+                                                                Clasificacion1Id = buscarIdArticulo.Clasificacion1Id,
+                                                                Clasificacion2Id = buscarIdArticulo.Clasificacion2Id,
+                                                                Clasificacion3Id = buscarIdArticulo.Clasificacion3Id,
+                                                                Clasificacion4Id = buscarIdArticulo.Clasificacion4Id,
+                                                                Clasificacion5Id = buscarIdArticulo.Clasificacion5Id,
+                                                                Clasificacion6Id = buscarIdArticulo.Clasificacion6Id,
+                                                                FactorConver1 = buscarIdArticulo.FactorConver1,
+                                                                FactorConver2 = buscarIdArticulo.FactorConver2,
+                                                                FactorConver3 = buscarIdArticulo.FactorConver3,
+                                                                FactorConver4 = buscarIdArticulo.FactorConver4,
+                                                                FactorConver5 = buscarIdArticulo.FactorConver5,
+                                                                FactorConver6 = buscarIdArticulo.FactorConver6,
+                                                                Tipo = buscarIdArticulo.Tipo,
+                                                                TiendaEnLinea = buscarIdArticulo.TiendaEnLinea,
+                                                                VentaTarjetaCredito = buscarIdArticulo.VentaTarjetaCredito,
+                                                                PesoNeto = buscarIdArticulo.PesoNeto,
+                                                                PesoBruto = buscarIdArticulo.PesoBruto,
+                                                                Volumen = buscarIdArticulo.Volumen,
+                                                                Bultos = buscarIdArticulo.Bultos,
+                                                                CostoLoc = buscarIdArticulo.CostoLoc,
+                                                                CostoDol = buscarIdArticulo.CostoDol,
+                                                                CostoPromUltimoLoc = buscarIdArticulo.CostoPromUltimoLoc,
+                                                                CostoPromUltimoDol = buscarIdArticulo.CostoPromUltimoDol,
+                                                                UltimoIngreso = DateTime.Now,
+                                                                UltimoMovimiento = DateTime.Now,
+                                                                UsuarioUltModif = userId,
+                                                                FechaHoraUltModif = DateTime.Now,
+                                                                Updatedby = userId,
+                                                                UpdateDate = DateTime.Now,
+                                                                CategoriaArticuloId = buscarIdArticulo.CategoriaArticuloId,
+                                                                ImpuestoId = buscarIdArticulo.ImpuestoId,
+                                                                FactorEmpaque = buscarIdArticulo.FactorEmpaque,
+                                                                FactorVenta = buscarIdArticulo.FactorVenta,
+                                                                ExistenciaMinima = buscarIdArticulo.ExistenciaMinima,
+                                                                ExistenciaMaxima = buscarIdArticulo.ExistenciaMaxima,
+                                                                PuntoDeOrden = buscarIdArticulo.PuntoDeOrden,
+                                                                PrecioBaseLocal = buscarIdArticulo.PrecioBaseLocal,
+                                                                PrecioBaseDol = buscarIdArticulo.PrecioBaseDol,
+                                                                UltimaSalida = buscarIdArticulo.UltimaSalida,
+                                                                UltimoInventario = buscarIdArticulo.UltimoInventario,
+                                                                ClaseABC = buscarIdArticulo.ClaseABC,
+                                                                FrecuenciaConteo = buscarIdArticulo.FrecuenciaConteo,
+                                                                CodigoBarrasVent = buscarIdArticulo.CodigoBarrasVent,
+                                                                CodigoBarrasInvt = buscarIdArticulo.CodigoBarrasInvt,
+                                                                Activo = buscarIdArticulo.Activo,
+                                                                UsaLotes = buscarIdArticulo.UsaLotes,
+                                                                ObligaCuarentena = buscarIdArticulo.ObligaCuarentena,
+                                                                MinVidaCompra = buscarIdArticulo.MinVidaCompra,
+                                                                MinVidaConsumo = buscarIdArticulo.MinVidaConsumo,
+                                                                MinVidaVenta = buscarIdArticulo.MinVidaVenta,
+                                                                VidaUtilPromedio = buscarIdArticulo.VidaUtilPromedio,
+                                                                DiasCuarentena = buscarIdArticulo.DiasCuarentena,
+                                                                Proveedor = buscarIdArticulo.Proveedor,
+                                                                ArticuloDelProv = buscarIdArticulo.ArticuloDelProv,
+                                                                OrdenMinima = buscarIdArticulo.OrdenMinima,
+                                                                PlazoReabast = buscarIdArticulo.PlazoReabast,
+                                                                LoteMultiplo = buscarIdArticulo.LoteMultiplo,
+                                                                UsuarioCreacion = buscarIdArticulo.UsuarioCreacion,
+                                                                FechaHoraCreacion = buscarIdArticulo.FechaHoraCreacion,
+                                                                UsaNumerosSerie = buscarIdArticulo.UsaNumerosSerie,
+                                                                ModalidadInvFis = buscarIdArticulo.ModalidadInvFis,
+                                                                TipoCodBarraDet = buscarIdArticulo.TipoCodBarraDet,
+                                                                TipoCodBarraAlm = buscarIdArticulo.TipoCodBarraAlm,
+                                                                UsaReglasLocales = buscarIdArticulo.UsaReglasLocales,
+                                                                UnidadAlmacenId = buscarIdArticulo.UnidadAlmacenId,
+                                                                UnidadEmpaqueId = buscarIdArticulo.UnidadEmpaqueId,
+                                                                UnidadVentaId = buscarIdArticulo.UnidadVentaId,
+                                                                Perecedero = buscarIdArticulo.Perecedero,
+                                                                Manufacturador = buscarIdArticulo.Manufacturador,
+                                                                CodigoRetencion = buscarIdArticulo.CodigoRetencion,
+                                                                RetencionVenta = buscarIdArticulo.RetencionVenta,
+                                                                RetencionCompra = buscarIdArticulo.RetencionCompra,
+                                                                ModeloRetencion = buscarIdArticulo.ModeloRetencion,
+                                                                Estilo = buscarIdArticulo.Estilo,
+                                                                Talla = buscarIdArticulo.Talla,
+                                                                Color = buscarIdArticulo.Color,
+                                                                TipoCosto = buscarIdArticulo.TipoCosto,
+                                                                EsImpuesto = buscarIdArticulo.EsImpuesto,
+                                                                TipoDocIVA = buscarIdArticulo.TipoDocIVA,
+                                                                SugiereMin = buscarIdArticulo.SugiereMin,
+                                                                CalculaPercep = buscarIdArticulo.CalculaPercep,
+                                                                PorcPercep = buscarIdArticulo.PorcPercep,
+                                                                Notas = buscarIdArticulo.Notas,
+                                                                IsDeleted = false,
+                                                                Createdby = buscarIdArticulo.Createdby
+
+                                                            });
+
+                                                            aresponse.Success = true;
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            _logger.LogCritical(ex.StackTrace);
+                                                            aresponse.Success = false;
+                                                            aresponse.Errors.Add(ex.Message);
+                                                        }  // Fin del try del Articulo - Devolución de Venta Local
+
+
+                                                        // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega  - Ventas Locales
+                                                        var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(linea.ArticuloId, (int)linea.BodegaId);
+
+                                                        var ebresponse = new BaseResponseGeneric<int>();
+                                                        try  // Inicio try de ExistenciaBodega
+                                                        {
+                                                            ebresponse.Result = await _ebRepository.UpdateAsync(new ExistenciaBodega
+                                                            {
+                                                                Id = buscarIdExistenciaBodega.Id,
+                                                                ArticuloId = linea.ArticuloId,
+                                                                BodegaId = (int)linea.BodegaId,
+                                                                CantDisponible = (decimal)buscarIdExistenciaBodega.CantDisponible + linea.Cantidad,
+                                                                CostoUntPromedioLoc = buscarIdExistenciaBodega.CostoUntPromedioLoc,
+                                                                CostoUntPromedioDol = buscarIdExistenciaBodega.CostoUntPromedioDol,
+                                                                Updatedby = userId,
+                                                                UpdateDate = DateTime.Now,
+                                                                FechaCong = buscarIdExistenciaBodega.FechaCong,
+                                                                ExistenciaMinima = buscarIdExistenciaBodega.ExistenciaMinima,
+                                                                ExistenciaMaxima = buscarIdExistenciaBodega.ExistenciaMaxima,
+                                                                PuntoDeOrden = buscarIdExistenciaBodega.PuntoDeOrden,
+                                                                CantReservada = buscarIdExistenciaBodega.CantReservada,
+                                                                CantNoAprobada = buscarIdExistenciaBodega.CantNoAprobada,
+                                                                CantVencida = buscarIdExistenciaBodega.CantVencida,
+                                                                CantTransito = buscarIdExistenciaBodega.CantTransito,
+                                                                CantProduccion = buscarIdExistenciaBodega.CantProduccion,
+                                                                CantPedida = buscarIdExistenciaBodega.CantPedida,
+                                                                CantRemitida = buscarIdExistenciaBodega.CantRemitida,
+                                                                Congelado = buscarIdExistenciaBodega.Congelado,
+                                                                BloqueaTrans = buscarIdExistenciaBodega.BloqueaTrans,
+                                                                FechaDescong = buscarIdExistenciaBodega.FechaDescong,
+                                                                IsDeleted = buscarIdExistenciaBodega.IsDeleted,
+                                                                Createdby = buscarIdExistenciaBodega.Createdby,
+                                                                CreateDate = buscarIdExistenciaBodega.CreateDate,
+
+                                                            });
+
+                                                            ebresponse.Success = true;
+                                                        }
+                                                        catch (Exception ex)
+                                                        {
+                                                            _logger.LogCritical(ex.StackTrace);
+                                                            ebresponse.Success = false;
+                                                            ebresponse.Errors.Add(ex.Message);
+                                                        } // Fin del catch-try de ExistenciaBodega - Devolución de Venta Local
+
+                                                        // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote - Ventas Locales
+                                                        if (buscarArticulo.UsaLotes)
+                                                        {
+                                                            var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)linea.BodegaId, linea.ArticuloId, (int)linea.LocalizacionId, (int)linea.LoteId);
+                                                            var elresponse = new BaseResponseGeneric<int>();
+                                                            try  //Inicio del try de ExistenciaLote
+                                                            {
+
+                                                                elresponse.Result = await _elRepository.UpdateAsync(new ExistenciaLote
+                                                                {
+                                                                    Id = buscarExistenciaLote.Id,
+                                                                    BodegaId = buscarExistenciaLote.BodegaId,
+                                                                    ArticuloId = buscarExistenciaLote.ArticuloId,
+                                                                    LocalizacionId = buscarExistenciaLote.LocalizacionId,
+                                                                    LoteId = buscarExistenciaLote.LoteId,
+                                                                    CantDisponible = buscarExistenciaLote.CantDisponible + linea.Cantidad,
+                                                                    CantReservada = buscarExistenciaLote.CantReservada,
+                                                                    CantNoAprobada = buscarExistenciaLote.CantNoAprobada,
+                                                                    CantRemitida = buscarExistenciaLote.CantRemitida,
+                                                                    CantVencida = buscarExistenciaLote.CantVencida,
+                                                                    CostoUntLoc = buscarExistenciaLote.CostoUntLoc,
+                                                                    CostoUntDol = buscarExistenciaLote.CostoUntDol,
+                                                                    IsDeleted = buscarExistenciaLote.IsDeleted,
+                                                                    Updatedby = userId,
+                                                                    UpdateDate = DateTime.Now,
+                                                                    Createdby = buscarExistenciaLote.Createdby,
+                                                                    CreateDate = buscarExistenciaLote.CreateDate
+                                                                });
+                                                                elresponse.Success = true;
+                                                                break;
+                                                            }
+                                                            catch (Exception ex)
+                                                            {
+                                                                _logger.LogCritical(ex.StackTrace);
+                                                                elresponse.Success = false;
+                                                                elresponse.Errors.Add(ex.Message);
+                                                                break;
+                                                            }  // Fin del catch-try de ExistenciaLote - Devolución de Venta Local
+                                                        } // Fin del if "UsaLotes" - Devolución de Venta Local
+                                                    }
+
+                                            break;
+                                        }  // Fin de Subsubtipo = "L"
+
+                                        case "E":  // Exportaciones
+                                                throw new Exception($"Ventas, Disponible, Exportaciones.");
+
+                                    }
+                                    throw new Exception($"Ventas, Disponible.");
+
+                                case "I":
+                                    throw new Exception($"Ventas, Remitidas.");
+
+                                case "R":
+                                    throw new Exception($"Ventas, Reservadas.");
+                            }
+                            break;
+
+                        }  //Termina el case para TipoAjuste= "V"
+
                     };  // Fin del switch strTipoAjusteConfig
 
                 }  //Fin del foreach

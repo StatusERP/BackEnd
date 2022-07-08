@@ -19,6 +19,14 @@ namespace StatusERP.DataAccess.Repositories.CI
             .FirstOrDefaultAsync(t => t.BodegaId == bodegaId && t.ArticuloId == articuloId && t.LocalizacionId == localizacionId && t.LoteId == loteId);
         }
 
+        public async Task<ICollection<ExistenciaLote>> BuscarExistenciaXArticulo(int articuloId)
+        {
+            return await _dbContext.ExistenciaLotes
+                .AsNoTracking()
+                .Where(x => x.ArticuloId == articuloId)
+                .ToListAsync();
+        }
+
         public async Task<int> CreateAsync(ExistenciaLote existenciaLote)
         {
             return await _dbContext.InsertAsync(existenciaLote);

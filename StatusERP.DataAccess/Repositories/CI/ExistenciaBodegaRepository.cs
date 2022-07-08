@@ -64,8 +64,6 @@ namespace StatusERP.DataAccess.Repositories.CI
 
 
 
-    
-
         public async Task<int> UpdateAsync(ExistenciaBodega existenciaBodega)
         {
             try
@@ -102,10 +100,6 @@ namespace StatusERP.DataAccess.Repositories.CI
                 registro.Createdby = existenciaBodega.Createdby;
                 registro.CreateDate = existenciaBodega.CreateDate;
 
-
-
-
-
                 _dbContext.Set<ExistenciaBodega>().Attach(registro);
                 _dbContext.Entry(registro).State = EntityState.Modified;
                 await _dbContext.SaveChangesAsync();
@@ -117,12 +111,6 @@ namespace StatusERP.DataAccess.Repositories.CI
             }
 
             return existenciaBodega.Id;
-
-
-
-
-
-            
         }
     }
 }

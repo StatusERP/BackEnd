@@ -136,7 +136,6 @@ namespace StatusERP.Services.Implementations.CI
                                             {
                                                 MovInventarioEncId = request.MovInventarioEncId,
                                                 Consecutivo = request.Consecutivo,
-                                                FechaHoraTransac = request.FechaHoraTransac,
                                                 DocTributarioId = request.DocTributarioId,
                                                 AjusteConfigId = request.AjusteConfigId,
                                                 ArticuloId = request.ArticuloId,
@@ -534,7 +533,6 @@ namespace StatusERP.Services.Implementations.CI
                     Id = id,
                     MovInventarioEncId = request.MovInventarioEncId,
                     Consecutivo = request.Consecutivo,
-                    FechaHoraTransac = request.FechaHoraTransac,
                     DocTributarioId = request.DocTributarioId,
                     AjusteConfigId = request.AjusteConfigId,
                     ArticuloId = request.ArticuloId,
