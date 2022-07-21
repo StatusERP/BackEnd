@@ -23,7 +23,7 @@ namespace StatusERP.Services.Implementations.CI
         private readonly ILogger<MovInventarioDetService> _detlogger;
 
         int CorrelativoLinea;
-        string?   AplicacionDocActual;
+        string? AplicacionDocActual;
 
         string? strTipoAjusteConfig;
         string? strSubtipo;
@@ -276,7 +276,7 @@ namespace StatusERP.Services.Implementations.CI
 
                                                 var buscarIdArticulo = await _aRepository.GetByIdAsync(linea.ArticuloId);
                                                 var aresponse = new BaseResponseGeneric<int>();
-
+                                                     
                                                 CostoPromLocArt = DecCostoPromLocArt(decExistenciaTotal, linea.Cantidad, buscarIdArticulo.CostoLoc, CostoUnitUltimoLoc);
                                                 CostoPromDolArt = DecCostoPromDolArt(decExistenciaTotal, linea.Cantidad, buscarIdArticulo.CostoDol, CostoUnitUltimoDol);
 
