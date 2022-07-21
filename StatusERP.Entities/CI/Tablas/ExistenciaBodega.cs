@@ -5,7 +5,7 @@ using StatusERP.Entities.AS.Tablas;
 namespace StatusERP.Entities.CI.Tablas
 {
     [Table("ExistenciaBodega", Schema = Constants.Conjunto)]
-    [Index(nameof(ArticuloId), nameof(BodegaId), IsUnique = true)]
+    //[Index(nameof(ArticuloId), nameof(BodegaId), IsUnique = true)]
     public class ExistenciaBodega:EntityBase
     {
         public int ArticuloId { get; set; }

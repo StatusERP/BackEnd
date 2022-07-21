@@ -8002,10 +8002,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BodegaId");
+                    b.HasIndex("ArticuloId");
 
-                    b.HasIndex("ArticuloId", "BodegaId")
-                        .IsUnique();
+                    b.HasIndex("BodegaId");
 
                     b.ToTable("ExistenciaBodega", "H2C");
                 });
