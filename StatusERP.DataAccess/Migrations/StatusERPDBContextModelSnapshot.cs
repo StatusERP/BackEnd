@@ -7614,6 +7614,9 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int>("Consecutivo")
                         .HasColumnType("int");
 
+                    b.Property<int>("ConsecutivoInvId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -7637,6 +7640,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ConsecutivoInvId");
 
                     b.HasIndex(new[] { "Consecutivo", "Usuario" }, "IxConsecutivoInvUsuario");
 
@@ -17263,6 +17268,17 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("unidadMedida");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ConsecutivoInvUsuario", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.ConsecutivoInv", "ConsecutivoInv")
+                        .WithMany()
+                        .HasForeignKey("ConsecutivoInvId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ConsecutivoInv");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ConsInvAjConfig", b =>

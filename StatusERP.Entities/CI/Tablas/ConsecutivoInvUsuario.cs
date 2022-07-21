@@ -8,6 +8,9 @@ namespace StatusERP.Entities.CI.Tablas
         public int Consecutivo { get; set; }
         
         public int Usuario { get; set; }
+
+
+        public ConsecutivoInv ConsecutivoInv { get; set; }
     }
 }
 

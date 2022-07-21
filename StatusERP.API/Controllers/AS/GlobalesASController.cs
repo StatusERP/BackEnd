@@ -25,7 +25,13 @@ public class GlobalesASController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<BaseResponseGeneric<ICollection<GlobalesAS>>>> Get()
     {
-        return Ok(await _service.GetAllAsync());
+
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
+        return Ok(await _service.GetAllAsync(userId.Value));
+
+
+        
     }
 
     [HttpGet("{id:int}")]

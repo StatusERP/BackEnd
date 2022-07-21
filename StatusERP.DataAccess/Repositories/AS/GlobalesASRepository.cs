@@ -12,9 +12,14 @@ public class GlobalesASRepository:StatusERPContextBase<GlobalesAS>,IGlobalesAsRe
     {
     }
 
-    public async Task<ICollection<GlobalesAS>> GetCollectionAsync(int page, int rows)
+    public async Task<ICollection<GlobalesAS>> GetCollectionAsync()
     {
-        return await _dbContext.SelectAsync<GlobalesAS>(page, rows);
+
+        return await _dbContext.Set<GlobalesAS>()
+                .Where(p => !p.IsDeleted)
+                .AsNoTracking()
+                .ToListAsync();
+        
     }
 
     public async Task<GlobalesAS?> GetByIdAsync(int id)

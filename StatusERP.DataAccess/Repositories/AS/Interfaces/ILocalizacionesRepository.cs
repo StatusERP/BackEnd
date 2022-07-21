@@ -4,7 +4,7 @@ namespace StatusERP.DataAccess.Repositories.AS.Interfaces
 {
     public interface ILocalizacionesRepository
     {
-        Task<ICollection<Localizacion>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<Localizacion>> GetCollectionAsync();
         Task<Localizacion?> GetByIdAsync(int id);
         Task<ICollection<Localizacion>> GetByIdBodegaAsync(int id);
         Task<int> CreateAsync( Localizacion localizacion);

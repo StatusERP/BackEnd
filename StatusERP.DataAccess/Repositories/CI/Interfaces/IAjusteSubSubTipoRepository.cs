@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 {
     public interface IAjusteSubSubTipoRepository
     {
-        Task<ICollection<AjusteSubSubTipo>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<AjusteSubSubTipo>> GetCollectionAsync();
         Task<AjusteSubSubTipo?> GetByIdAsync(int id);
         Task<AjusteSubSubTipo?> BuscarAjusteSubSubTipoAsync(string AjusteConfig, string SubSubTipo);
         Task<int> CreateAsync(AjusteSubSubTipo ajusteSubSubTipo);
