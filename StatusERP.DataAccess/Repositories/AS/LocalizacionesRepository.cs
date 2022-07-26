@@ -39,9 +39,14 @@ namespace StatusERP.DataAccess.Repositories.AS
             return await _dbContext.SelectAsync<Localizacion>(id);
         }
 
-        public async Task<ICollection<Localizacion>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<Localizacion>> GetCollectionAsync()
         {
-            return await _dbContext.SelectAsync<Localizacion>(page, rows);
+
+            return await _dbContext.Set<Localizacion>()
+                .Include(p=>p.Bodega)
+                 .Where(p => !p.IsDeleted)
+                 .AsNoTracking()
+                 .ToListAsync();
         }
 
         public async Task<int> UpdateAsync(Localizacion localizacion)

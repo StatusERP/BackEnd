@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IAjusteSubTipoService
     {
-        Task<BaseResponseGeneric<ICollection<AjusteSubTipo>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<AjusteSubTipo>>> GetAsync( string userId);
 
         Task<BaseResponseGeneric<AjusteSubTipo>> GetByIdAsync(int id);
 

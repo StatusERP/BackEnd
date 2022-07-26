@@ -20,7 +20,7 @@ public class LocalizacionesService:ILocalizacionesService
         _logger = logger;
         _privilegioUsuarioRepository = privilegioUsuarioRepository;
     }
-    public async Task<BaseResponseGeneric<ICollection<Localizacion>>> GetAsync(int page, int rows,string userId)
+    public async Task<BaseResponseGeneric<ICollection<Localizacion>>> GetAsync(string userId)
     {
         var response = new BaseResponseGeneric<ICollection<Localizacion>>();
         try
@@ -36,7 +36,7 @@ public class LocalizacionesService:ILocalizacionesService
                 return response;
             }
 
-            response.Result = await _repository.GetCollectionAsync(page, rows);
+            response.Result = await _repository.GetCollectionAsync();
             response.Success = true;
         }
         catch (Exception ex)

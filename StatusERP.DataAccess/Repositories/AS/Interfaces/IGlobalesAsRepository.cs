@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.AS.Interfaces;
 
 public interface IGlobalesAsRepository
 {
-    Task<ICollection<GlobalesAS>> GetCollectionAsync(int page, int rows); 
+    Task<ICollection<GlobalesAS>> GetCollectionAsync(); 
     Task<GlobalesAS?> GetByIdAsync(int id);
     Task<int> CreateAsync(GlobalesAS globalesAs);
     Task<ICollection<GlobalesAS>> GetAllAsync();

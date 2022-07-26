@@ -39,9 +39,16 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.SelectAsync<AjusteSubTipo>(id);
         }
 
-        public async Task<ICollection<AjusteSubTipo>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<AjusteSubTipo>> GetCollectionAsync()
         {
-            return await _dbContext.SelectAsync<AjusteSubTipo>(page, rows);
+            return await _dbContext.Set<AjusteSubTipo>()
+              .Include(p=>p.AjusteConfigPK)
+                .Where(p => !p.IsDeleted)
+              .AsNoTracking()
+               
+              .ToListAsync();
+
+            
         }
 
         public async Task<int> UpdateAsync(AjusteSubTipo ajusteSubTipo)

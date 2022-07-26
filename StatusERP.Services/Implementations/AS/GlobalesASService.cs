@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
@@ -11,18 +12,29 @@ public class GlobalesASService:IGlobalesASService
 {
     private readonly IGlobalesAsRepository _repository;
     private readonly ILogger<GlobalesASService> _logger;
+    private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-    public GlobalesASService(IGlobalesAsRepository repository,ILogger<GlobalesASService> logger)
+    public GlobalesASService(IGlobalesAsRepository repository,ILogger<GlobalesASService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
     {
         _repository = repository;
         _logger = logger;
+        _privilegioUsuarioRepository = privilegioUsuarioRepository;
     }
-     public async Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAsync(int page, int rows)
+     public async Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAsync(string userId)
     {
         var response = new BaseResponseGeneric<ICollection<GlobalesAS>>();
         try
         {
-            response.Result = await _repository.GetCollectionAsync(page, rows);
+            //var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_GLOBALES", 9, userId);
+
+
+            //if (buscarPrivilegio == null)
+            //{
+            //    response.Errors.Add($"No tiene Privilegios para ver Globales AS");
+            //    response.Success = false;
+            //    return response;
+            //}
+            response.Result = await _repository.GetCollectionAsync();
             response.Success = true;
         }
         catch (Exception ex)
@@ -127,11 +139,20 @@ public class GlobalesASService:IGlobalesASService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAllAsync()
+    public async Task<BaseResponseGeneric<ICollection<GlobalesAS>>> GetAllAsync(string userId)
     {
         var response = new BaseResponseGeneric<ICollection<GlobalesAS>>();
         try
         {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_GLOBALES", 9, userId);
+
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene Privilegios para ver Globales AS");
+                response.Success = false;
+                return response;
+            }
             response.Result = await _repository.GetAllAsync();
             response.Success = true;
         }
