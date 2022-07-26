@@ -5,9 +5,7 @@ namespace StatusERP.Dto.Request.CI
 {
     public class DtoDocumentoInvEnc
     {
-        [Required(ErrorMessage = "Debe indicarse el paquete de inventario.")]
-        [StringLength(4)]
-        public string PaqueteInventario { get; set; }
+        public int PaqueteInventarioId { get; set; }
 
         [Required(ErrorMessage = "Debe indicarse el documento de inventario.")]
         [StringLength(50)]

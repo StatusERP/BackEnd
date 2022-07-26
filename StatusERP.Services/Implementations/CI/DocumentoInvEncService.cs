@@ -21,7 +21,7 @@ namespace StatusERP.Services.Implementations.CI
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocumentoInvEnc request, string userId, string paquete, string documento)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocumentoInvEnc request, string userId, int paquete, string documento)
         {
             var response = new BaseResponseGeneric<int>();
             try
@@ -38,11 +38,11 @@ namespace StatusERP.Services.Implementations.CI
                 var buscarDocumentoInvEnc = await _repository.BuscarDocumentoInvEncAsync(paquete, documento);
                 if (buscarDocumentoInvEnc != null)
                 {
-                    throw new Exception($"El documento de inventario {buscarDocumentoInvEnc.DocumentoInv} para el paquete {buscarDocumentoInvEnc.PaqueteInventario} ya existe");
+                    throw new Exception($"El documento de inventario {buscarDocumentoInvEnc.DocumentoInv} para el paquete {buscarDocumentoInvEnc.PaqueteInventarioId} ya existe");
                 }
                 response.Result = await _repository.CreateAsync(new DocumentoInvEnc
                 {
-                    PaqueteInventario = request.PaqueteInventario,
+                    PaqueteInventarioId = request.PaqueteInventarioId,
                     DocumentoInv = request.DocumentoInv,
                     ConsecutivoId = request.ConsecutivoId,
                     Referencia = request.Referencia,
@@ -166,7 +166,7 @@ namespace StatusERP.Services.Implementations.CI
                 response.Result = await _repository.UpdateAsync(new DocumentoInvEnc
                 {
                     Id = id,
-                    PaqueteInventario = request.PaqueteInventario,
+                    PaqueteInventarioId = request.PaqueteInventarioId,
                     DocumentoInv = request.DocumentoInv,
                     ConsecutivoId = request.ConsecutivoId,
                     Referencia = request.Referencia,
