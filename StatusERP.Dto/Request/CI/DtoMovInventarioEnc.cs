@@ -56,9 +56,15 @@ namespace StatusERP.Dto.Request.CI
 
         public int? BodegaId { get; set; }
 
+        public int? BodegaDestinoId { get; set; }
+
         public int? LocalizacionId { get; set; }
 
+        public int? LocDestinoId { get; set; }
+
         public int? LoteId { get; set; }
+
+        public int? LoteDestinoId { get; set; }
 
         [StringLength(1)]
         public string Tipo { get; set; }
