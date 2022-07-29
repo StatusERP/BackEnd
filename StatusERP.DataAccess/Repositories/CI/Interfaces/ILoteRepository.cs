@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 {
     public interface ILoteRepository
     {
-        Task<ICollection<Lote>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<Lote>> GetCollectionAsync();
         Task<Lote?> GetByIdAsync(int id);
         Task<Lote?> BuscarLoteArticuloAsync(string CodLote, int ArticuloId);
         Task<int> CreateAsync(Lote lote);

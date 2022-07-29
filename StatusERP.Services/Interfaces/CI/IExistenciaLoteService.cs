@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface IExistenciaLoteService
     {
-        Task<BaseResponseGeneric<ICollection<ExistenciaLote>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<ExistenciaLote>>> GetAsync( string userId);
 
         Task<BaseResponseGeneric<ExistenciaLote>> GetByIdAsync(int id);
 

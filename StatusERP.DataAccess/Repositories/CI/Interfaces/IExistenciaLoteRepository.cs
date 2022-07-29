@@ -5,7 +5,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 {
     public interface IExistenciaLoteRepository
     {
-        Task<ICollection<ExistenciaLote>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<ExistenciaLote>> GetCollectionAsync();
         Task<ExistenciaLote?> GetByIdAsync(int id);
         Task<ExistenciaLote?> BuscarExistenciaLoteAsync(int bodegaId, int articuloId, int localizacionId, int loteId);
         Task<ICollection<ExistenciaLote>> BuscarExistenciaXArticulo(int articuloId);

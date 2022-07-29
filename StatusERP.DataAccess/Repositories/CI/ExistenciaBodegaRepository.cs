@@ -55,6 +55,7 @@ namespace StatusERP.DataAccess.Repositories.CI
 
             return await _dbContext.ExistenciaBodega
              .Include(p=>p.bodega)
+             .Include(a=>a.articulo)
              .Where(p => !p.IsDeleted)
              .AsNoTracking()
               .Skip((page - 1) * rows)
