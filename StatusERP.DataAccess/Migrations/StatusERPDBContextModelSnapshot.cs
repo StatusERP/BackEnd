@@ -7760,10 +7760,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int?>("LoteId")
                         .HasColumnType("int");
 
-                    b.Property<string>("PaqueteInventario")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("PaqueteInventarioId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("PrecioTotalDolar")
                         .HasColumnType("decimal(28,8)");
@@ -7833,7 +7831,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("UnidadDistribucionId");
 
-                    b.HasIndex(new[] { "PaqueteInventario", "DocumentoInv", "LineaDocInv" }, "IxDocInvDet_PaqDocLin")
+                    b.HasIndex(new[] { "PaqueteInventarioId", "DocumentoInv", "LineaDocInv" }, "IxDocInvDet_PaqDocLin")
                         .IsUnique();
 
                     b.ToTable("DocumentosInvDet", "H2C");
@@ -7881,10 +7879,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<string>("MensajeSistema")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PaqueteInventario")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("PaqueteInventarioId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Referencia")
                         .IsRequired()
@@ -7915,7 +7911,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("ConsecutivoId");
 
-                    b.HasIndex(new[] { "PaqueteInventario", "DocumentoInv" }, "IxDocInvEnc_PaqDoc")
+                    b.HasIndex(new[] { "PaqueteInventarioId", "DocumentoInv" }, "IxDocInvEnc_PaqDoc")
                         .IsUnique();
 
                     b.ToTable("DocumentosInvEnc", "H2C");
@@ -8007,9 +8003,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ArticuloId");
-
                     b.HasIndex("BodegaId");
+
+                    b.HasIndex("ArticuloId", "BodegaId")
+                        .IsUnique();
 
                     b.ToTable("ExistenciaBodega", "H2C");
                 });
@@ -17345,6 +17342,12 @@ namespace StatusERP.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("LoteId");
 
+                    b.HasOne("StatusERP.Entities.CI.Tablas.PaqueteInv", "paqueteInv")
+                        .WithMany()
+                        .HasForeignKey("PaqueteInventarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("StatusERP.Entities.CI.Tablas.TipoOperacion", "tipoOperacion")
                         .WithMany()
                         .HasForeignKey("TipoOperacionId");
@@ -17377,6 +17380,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Navigation("lote");
 
+                    b.Navigation("paqueteInv");
+
                     b.Navigation("tipoOperacion");
 
                     b.Navigation("tipoPago");
@@ -17390,7 +17395,15 @@ namespace StatusERP.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("ConsecutivoId");
 
+                    b.HasOne("StatusERP.Entities.CI.Tablas.PaqueteInv", "paqueteInv")
+                        .WithMany()
+                        .HasForeignKey("PaqueteInventarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("consecutivoInv");
+
+                    b.Navigation("paqueteInv");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CI.Tablas.ExistenciaBodega", b =>

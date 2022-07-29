@@ -9,9 +9,9 @@ namespace StatusERP.Entities.CI.Tablas
     [Table("DocumentosInvDet", Schema = Constants.Conjunto)]
     public class DocumentoInvDet:EntityBase
     {
-        [Required]
-        [StringLength(4)]
-        public string PaqueteInventario { get; set; }
+        public int PaqueteInventarioId { get; set; }
+        [ForeignKey(nameof(PaqueteInventarioId))]
+        public PaqueteInv paqueteInv { get; set; }
 
         [Required]
         [StringLength(50)]

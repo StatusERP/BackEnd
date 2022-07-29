@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "RJgb7ROv2v/27JAnjdw/Hx3vkNvOVaUHv48vqUVdfSOBUeZxWb0IIwHcfbIU0yj5PLrVl3j6nIUwzSuWBsz/+w==",
+=======
+  "dgSpecHash": "RSxOOSbPAgQwCofo2243OJkqBAvtXtEDLXCs1GnBZL62w7gf3SFtoF4cR0iKHpO7gK8PRu6EgT77JKKK50jZwg==",
+>>>>>>> 15a7c1d444118313733a2330e17faa916e08d44f
   "success": true,
   "projectFilePath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.Dto\\StatusERP.Dto.csproj",
   "expectedPackageFiles": [],

@@ -46,7 +46,14 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.Uni
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\ref\StatusERP.UnitTest.dll
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
 >>>>>>> 2bd732bcf74a5af398ba73b03b8232f3f6a3cc52
+>>>>>>> 5d58562f7e380a749ae1b85b07145d39218fa9d9
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\StatusERP.UnitTest.csproj.AssemblyReference.cache
+<<<<<<< HEAD
 C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\obj\Debug\net6.0\refint\StatusERP.UnitTest.dll
+=======
+C:\Proyectos\StatusERP\BackEnd\StatusERP.UnitTest\bin\Debug\net6.0\ref\StatusERP.UnitTest.dll
+>>>>>>> 15a7c1d444118313733a2330e17faa916e08d44f

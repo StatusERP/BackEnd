@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "NnYR3qP2Vcs/2Q/O6i2ISkeqUYJXT1ta6ckLXR/0cYfFvnggWVjfzLUlJpsidwJw26oN6WHsIfUbVic7LQ7xHA==",
+=======
+  "dgSpecHash": "1QZuSa1RsSurUknhRLSCDJiRaMTsUQS1Ze0Spyja/QQzjfDlo1Gq88JLFR54AjSC6RFpJmX0o2267UrKPLo1eA==",
+>>>>>>> 15a7c1d444118313733a2330e17faa916e08d44f
   "success": true,
   "projectFilePath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.API\\StatusERP.API.csproj",
   "expectedPackageFiles": [

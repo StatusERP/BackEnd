@@ -11,7 +11,7 @@ namespace StatusERP.Services.Interfaces.CI
 
         Task<BaseResponseGeneric<DocumentoInvEnc>> GetByIdAsync(int id);
 
-        Task<BaseResponseGeneric<int>> CreateAsync(DtoDocumentoInvEnc request, string userId, string paquete, string documento);
+        Task<BaseResponseGeneric<int>> CreateAsync(DtoDocumentoInvEnc request, string userId, int paquete, string documento);
 
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoDocumentoInvEnc request, string userId);
 

@@ -231,7 +231,7 @@ C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\staticwebassets.de
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\scopedcss\bundle\StatusERP.API.styles.css
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.csproj.CopyComplete
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.dll
-C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\refint\StatusERP.API.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\StatusERP.API.genruntimeconfig.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.API\obj\Debug\net6.0\ref\StatusERP.API.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.API\bin\Debug\net6.0\ref\StatusERP.API.dll

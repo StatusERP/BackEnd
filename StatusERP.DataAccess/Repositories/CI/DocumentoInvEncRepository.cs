@@ -12,11 +12,11 @@ namespace StatusERP.DataAccess.Repositories.CI
 
         }
 
-        public async Task<DocumentoInvEnc?> BuscarDocumentoInvEncAsync(string paquete, string documento)
+        public async Task<DocumentoInvEnc?> BuscarDocumentoInvEncAsync(int paquete, string documento)
         {
             return await _dbContext.DocumentosInvEnc
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.PaqueteInventario == paquete && t.DocumentoInv == documento);
+            .FirstOrDefaultAsync(t => t.PaqueteInventarioId == paquete && t.DocumentoInv == documento);
         }
 
         public async Task<int> CreateAsync(DocumentoInvEnc documentoInvEnc)
