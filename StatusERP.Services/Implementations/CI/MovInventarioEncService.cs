@@ -1613,7 +1613,6 @@ namespace StatusERP.Services.Implementations.CI
                         // 12/13 - Traslado ****************
                         case "T":
                         {
-
                                 CantidadDisponible = 0;
                                 CantidadCuarentena = 0;
                                 CantidadRemitida = 0;
@@ -2007,14 +2006,28 @@ namespace StatusERP.Services.Implementations.CI
 
                         // 13/13 - Venta ******************
                         case "V":
-                        { 
-                            switch (strSubtipo)
-                            {
-                                case "D": // Disponible
-                                // No se evalúa Subsubtipo.  Las instrucciones que siguen aplican tanto para Venta Local como para Exportaciones.
-                                { 
-                                    if (strNaturaleza == "S")
-                                    {
+                        {
+                              CantidadDisponible = 0;
+                              CantidadRemitida = 0;
+                              CantidadReservada = 0;
+
+                              switch (strSubtipo)
+                              {
+                                    case "D": // Disponible
+                                        CantidadDisponible = linea.Cantidad;
+                                        break;
+                                    case "I": // Remitida
+                                        CantidadRemitida = linea.Cantidad;
+                                        break;
+                                    case "R": // Reservada
+                                        CantidadReservada = linea.Cantidad;
+                                        break;
+                              }
+
+                              // No se evalúa Subsubtipo.  Las instrucciones que siguen aplican tanto para Venta Local como para Exportaciones.
+                         
+                              if (strNaturaleza == "S")
+                              {
                                                     // 1/4 Creación de registro en Detalle de Movimiento de Inventario
                                                     var detresponse = new BaseResponseGeneric<int>();
                                                     detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
@@ -2258,34 +2271,34 @@ namespace StatusERP.Services.Implementations.CI
                                                         }  // Fin del catch-try de ExistenciaLote - Ventas Locales
                                                     } // Fin del if "UsaLotes" - Ventas Locales
                                             }  // Fin del if strNaturaleza = 'S'
-                                            else  // Devolución de venta local - Naturaleza E
-                                            {
-                                                    // 1/4 Creación de registro en Detalle de Movimiento de Inventario - Devolución de Venta Local
-                                                    var detresponse = new BaseResponseGeneric<int>();
-                                                    detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
-                                                    {
-                                                         MovInventarioEncId = response.Result,
-                                                         Consecutivo = CorrelativoLinea,
-                                                         FechaHoraTransac = DateTime.Now,
-                                                         DocTributarioId = linea.DocTributarioId,
-                                                         AjusteConfigId = linea.AjusteConfigId,
-                                                         ArticuloId = linea.ArticuloId,
-                                                         BodegaId = linea.BodegaId,
-                                                         LocalizacionId = linea.LocalizacionId,
-                                                         LoteId = linea.LoteId,
-                                                         Tipo = linea.Tipo,
-                                                         Subtipo = linea.Subtipo,
-                                                         Subsubtipo = linea.Subsubtipo,
-                                                         Naturaleza = linea.Naturaleza,
-                                                         Cantidad = linea.Cantidad * -1,
-                                                         CostoTotLoc = linea.CostoTotLoc,
-                                                         CostoTotDol = linea.CostoTotDol,
-                                                         PrecioTotalLocal = linea.PrecioTotalLocal,
-                                                         PrecioTotalDolar = linea.PrecioTotalDolar,
-                                                         Contabilizada = linea.Contabilizada,
-                                                         Fecha = linea.Fecha,
-                                                         CentroCuentaId = linea.CentroCuentaId,
-                                                         UnidadDistribucionId = linea.UnidadDistribucionId,
+                              else  // Devolución de venta local - Naturaleza E
+                              {
+                                   // 1/4 Creación de registro en Detalle de Movimiento de Inventario - Devolución de Venta Local
+                                   var detresponse = new BaseResponseGeneric<int>();
+                                   detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
+                                   {
+                                       MovInventarioEncId = response.Result,
+                                       Consecutivo = CorrelativoLinea,
+                                       FechaHoraTransac = DateTime.Now,
+                                       DocTributarioId = linea.DocTributarioId,
+                                       AjusteConfigId = linea.AjusteConfigId,
+                                       ArticuloId = linea.ArticuloId,
+                                       BodegaId = linea.BodegaId,
+                                       LocalizacionId = linea.LocalizacionId,
+                                       LoteId = linea.LoteId,
+                                       Tipo = linea.Tipo,
+                                       Subtipo = linea.Subtipo,
+                                       Subsubtipo = linea.Subsubtipo,
+                                       Naturaleza = linea.Naturaleza,
+                                       Cantidad = linea.Cantidad * -1,
+                                       CostoTotLoc = linea.CostoTotLoc,
+                                       CostoTotDol = linea.CostoTotDol,
+                                       PrecioTotalLocal = linea.PrecioTotalLocal,
+                                       PrecioTotalDolar = linea.PrecioTotalDolar,
+                                       Contabilizada = linea.Contabilizada,
+                                       Fecha = linea.Fecha,
+                                       CentroCuentaId = linea.CentroCuentaId,
+                                       UnidadDistribucionId = linea.UnidadDistribucionId,
                                                          AsientoCardex = linea.AsientoCardex,
                                                          DocFiscal = linea.DocFiscal,
                                                          TipoOperacionId = linea.TipoOperacionId,
@@ -2494,18 +2507,8 @@ namespace StatusERP.Services.Implementations.CI
                                                                 break;
                                                             }  // Fin del catch-try de ExistenciaLote - Devolución de Venta
                                                         } // Fin del if "UsaLotes" - Devolución de Venta
-                                       }
-
-                                      break;
-                                 }
-
-                                case "I":
-                                    throw new Exception($"Ventas, Remitidas.");
-
-                                case "R":
-                                    throw new Exception($"Ventas, Reservadas.");
-                            }
-                            break;
+                              }
+                              break;
                         }  //Termina el case para TipoAjuste= "V"
 
                     };  // Fin del switch strTipoAjusteConfig
