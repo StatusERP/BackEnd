@@ -168,7 +168,7 @@ namespace StatusERP.Services.Implementations.CI
                 {
                     var buscarArticulo = await _aRepository.GetByIdAsync(linea.ArticuloId);
 
-                    // Si el artículo no es de tipo servicio, ni kit, se realizan los cambios.
+                    // Si el artículo es de tipo servicio o kit, no se genera detalle.
                     if (buscarArticulo.Tipo == "V" || buscarArticulo.Tipo == "K")
                     {
                         //throw new Exception($"El artículo {buscarArticulo.CodArticulo} es de tipo SERVICIO o KIT.");
@@ -696,7 +696,6 @@ namespace StatusERP.Services.Implementations.CI
 
                         };
 
-
                         // 4/13 - Remisión
                         case "I":
                             throw new Exception($"El ajuste es de tipo Remisión.");
@@ -717,14 +716,11 @@ namespace StatusERP.Services.Implementations.CI
                         case "O":
                         {
                                 if (strSubtipo == "D")
+                                // No se evalúa el subsubtipo.  Las instrucciones que siguen aplicando tanto para Compra Local como para Importaciones.
                                 {
-                                    switch (strSubsubtipo)
-                                    {
-                                        case "L":
-                                            // Compras Locales
-                                            if (strNaturaleza == "E")  // Es entrada
+                                   if (strNaturaleza == "E")  // Es entrada
                                             {
-                                                // **** COMPRA LOCAL POSITIVA
+                                                // **** COMPRA POSITIVA
 
                                                 // 1/4 Creación de registro en Detalle de Movimiento de Inventario
                                                 var detresponse = new BaseResponseGeneric<int>();
@@ -1080,10 +1076,10 @@ namespace StatusERP.Services.Implementations.CI
 
                                             }  //Fin del if "Naturaleza = "E"
 
-                                            else // Es salida
-                                            {
+                                   else // Es salida
+                                   {
 
-                                                // **** DEVOLUCION DE COMPRA LOCAL
+                                                // **** DEVOLUCION DE COMPRA 
 
                                                 // 1/4 Creación de registro en Detalle de Movimiento de Inventario
                                                 var detresponse = new BaseResponseGeneric<int>();
@@ -1347,11 +1343,7 @@ namespace StatusERP.Services.Implementations.CI
                                                 break;
                                             }  //Fin del else-if "Naturaleza = "E"
 
-
-                                        case "I":
-                                            // Importaciones
-                                            throw new Exception($"Importación.");
-                                    } // Fin del switch strSubsubtipo   
+ 
                                 } // Fin del if subTipo = D
 
                                 else
@@ -1359,10 +1351,11 @@ namespace StatusERP.Services.Implementations.CI
                                     throw new Exception($"El subtipo no es igual a 'Disponible'.");
                                     //Poner aquí las instrucciones para los otros subtipos
                                 }
-
+                                
                                 break;
 
-                            }  //Termina el case para TipoAjuste= "O"
+                                //Termina el case para TipoAjuste= "O"
+                            }
 
                         // 9/13 - Producción
                         case "P":
@@ -1374,7 +1367,7 @@ namespace StatusERP.Services.Implementations.CI
 
                         // 11/13 - Costo ****************
                         case "S":
-  
+                        { 
                             // 1/4 Creación de registro en Detalle de Movimiento de Inventario - Costo
                             var detresponseCosto = new BaseResponseGeneric<int>();
                             detresponseCosto.Result = await _detRepository.CreateAsync(new MovInventarioDet
@@ -1605,7 +1598,9 @@ namespace StatusERP.Services.Implementations.CI
                                 }  // Fin del catch-try de ExistenciaLote - Costo
                             }  // Fin del if UsaLotes - Costo
                             
-                            break;
+                            
+                             break;
+                        }
 
                         // 12/13 - Traslado ****************
                         case "T":
@@ -1998,20 +1993,16 @@ namespace StatusERP.Services.Implementations.CI
                             break;
                         }
 
-
-
                         // 13/13 - Venta ******************
                         case "V":
                         { 
                             switch (strSubtipo)
                             {
                                 case "D": // Disponible
-                                    switch (strSubsubtipo)
+                                // No se evalúa Subsubtipo.  Las instrucciones que siguen aplican tanto para Venta Local como para Exportaciones.
+                                { 
+                                    if (strNaturaleza == "S")
                                     {
-                                        case "L":  // ****Ventas Locales
-                                        { 
-                                            if (strNaturaleza == "S")
-                                            {
                                                     // 1/4 Creación de registro en Detalle de Movimiento de Inventario
                                                     var detresponse = new BaseResponseGeneric<int>();
                                                     detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
@@ -2404,10 +2395,10 @@ namespace StatusERP.Services.Implementations.CI
                                                             _logger.LogCritical(ex.StackTrace);
                                                             aresponse.Success = false;
                                                             aresponse.Errors.Add(ex.Message);
-                                                        }  // Fin del try del Articulo - Devolución de Venta Local
+                                                        }  // Fin del try del Articulo - Devolución de Venta
 
 
-                                                        // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega  - Ventas Locales
+                                                        // 3/4 Se actualiza el registro existente en la tabla ExistenciaBodega  - Ventas
                                                         var buscarIdExistenciaBodega = await _ebRepository.BuscarIdExistenciaBodegaAsync(linea.ArticuloId, (int)linea.BodegaId);
 
                                                         var ebresponse = new BaseResponseGeneric<int>();
@@ -2450,9 +2441,9 @@ namespace StatusERP.Services.Implementations.CI
                                                             _logger.LogCritical(ex.StackTrace);
                                                             ebresponse.Success = false;
                                                             ebresponse.Errors.Add(ex.Message);
-                                                        } // Fin del catch-try de ExistenciaBodega - Devolución de Venta Local
+                                                        } // Fin del catch-try de ExistenciaBodega - Devolución de Venta
 
-                                                        // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote - Ventas Locales
+                                                        // 4/4 Si el artículo usa lotes, se actualiza el registro correspondiente en la tabla ExistenciaLote - Ventas 
                                                         if (buscarArticulo.UsaLotes)
                                                         {
                                                             var buscarExistenciaLote = await _elRepository.BuscarExistenciaLoteAsync((int)linea.BodegaId, linea.ArticuloId, (int)linea.LocalizacionId, (int)linea.LoteId);
@@ -2489,18 +2480,12 @@ namespace StatusERP.Services.Implementations.CI
                                                                 elresponse.Success = false;
                                                                 elresponse.Errors.Add(ex.Message);
                                                                 break;
-                                                            }  // Fin del catch-try de ExistenciaLote - Devolución de Venta Local
-                                                        } // Fin del if "UsaLotes" - Devolución de Venta Local
-                                                    }
+                                                            }  // Fin del catch-try de ExistenciaLote - Devolución de Venta
+                                                        } // Fin del if "UsaLotes" - Devolución de Venta
+                                       }
 
-                                            break;
-                                        }  // Fin de Subsubtipo = "L"
-
-                                        case "E":  // Exportaciones
-                                                throw new Exception($"Ventas, Disponible, Exportaciones.");
-
-                                    }
-                                    throw new Exception($"Ventas, Disponible.");
+                                      break;
+                                 }
 
                                 case "I":
                                     throw new Exception($"Ventas, Remitidas.");
@@ -2509,7 +2494,6 @@ namespace StatusERP.Services.Implementations.CI
                                     throw new Exception($"Ventas, Reservadas.");
                             }
                             break;
-
                         }  //Termina el case para TipoAjuste= "V"
 
                     };  // Fin del switch strTipoAjusteConfig
