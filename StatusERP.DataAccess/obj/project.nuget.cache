@@ -1,6 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "3oB/QhXI1tPCNxkBPVfdakiVUQS7iYPEyuRvfkbt27bd0bUS767fH5NXAXtHPuj+++9Q+Hr+a/yEzNAy3GzZhg==",
+=======
+<<<<<<< HEAD
+  "dgSpecHash": "kd3OKRBZ0++Le5i1OVqZL6gcR4I932otzCH3Zf+gn9Li1TgcaurZybflM7RpoXwKPBV1w3FJisn+/R+Ep9EULA==",
+=======
+  "dgSpecHash": "OxDKF1cPz6LNVTWUucY0lDcQhfD3CLQv9EX9o1VRuU63e+wsYRnPbOJUAGefA9coVYMV1mjZngPwmzivEv7zZA==",
+>>>>>>> 15a7c1d444118313733a2330e17faa916e08d44f
+>>>>>>> a16eb9c87fbde340f326518c43e014a3aebb7965
   "success": true,
   "projectFilePath": "C:\\proyectos\\statusERP\\backend\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
   "expectedPackageFiles": [

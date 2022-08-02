@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CI
 {
     public interface ILoteService
     {
-        Task<BaseResponseGeneric<ICollection<Lote>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<Lote>>> GetAsync( string userId);
 
         Task<BaseResponseGeneric<Lote>> GetByIdAsync(int id);
 

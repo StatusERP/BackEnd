@@ -47,9 +47,16 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.SelectAsync<ExistenciaLote>(id);
         }
 
-        public async Task<ICollection<ExistenciaLote>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<ExistenciaLote>> GetCollectionAsync()
         {
-            return await _dbContext.SelectAsync<ExistenciaLote>(page, rows);
+            return await _dbContext.ExistenciaLotes
+             .Include(a => a.articulo)
+             .Include(b=>b.bodega)
+             .Include(loc=>loc.localizacion)
+             .Include(l=>l.lote)
+             .Where(p => !p.IsDeleted)
+             .AsNoTracking()
+             .ToListAsync();
         }
 
         public async Task<int> UpdateAsync(ExistenciaLote existenciaLote)

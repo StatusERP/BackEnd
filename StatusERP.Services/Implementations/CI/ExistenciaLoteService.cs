@@ -94,7 +94,7 @@ namespace StatusERP.Services.Implementations.CI
             return response;
         }
 
-        public async Task<BaseResponseGeneric<ICollection<ExistenciaLote>>> GetAsync(int page, int rows, string userId)
+        public async Task<BaseResponseGeneric<ICollection<ExistenciaLote>>> GetAsync(string userId)
         {
             var response = new BaseResponseGeneric<ICollection<ExistenciaLote>>();
             try
@@ -109,7 +109,7 @@ namespace StatusERP.Services.Implementations.CI
                 }
 
 
-                response.Result = await _repository.GetCollectionAsync(page, rows);
+                response.Result = await _repository.GetCollectionAsync();
                 response.Success = true;
             }
             catch (Exception ex)

@@ -39,14 +39,13 @@ namespace StatusERP.DataAccess.Repositories.CI
             return await _dbContext.SelectAsync<Lote>(id);
         }
 
-        public async Task<ICollection<Lote>> GetCollectionAsync(int page, int rows)
+        public async Task<ICollection<Lote>> GetCollectionAsync()
         {
 
             return await _dbContext.Lotes
+              .Include(a=>a.Articulo)  
               .Where(p => !p.IsDeleted)
               .AsNoTracking()
-               .Skip((page - 1) * rows)
-              .Take(rows)
               .ToListAsync();
 
             

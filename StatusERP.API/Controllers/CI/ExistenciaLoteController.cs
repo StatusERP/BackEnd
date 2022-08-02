@@ -24,12 +24,12 @@ namespace StatusERP.API.Controllers.CI
         }
 
         [HttpGet]
-        public async Task<ActionResult<BaseResponseGeneric<ICollection<Lote>>>> Get(int page, int rows)
+        public async Task<ActionResult<BaseResponseGeneric<ICollection<Lote>>>> Get()
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
 
             if (userId == null) return Unauthorized();
-            return Ok(await _service.GetAsync(page, rows, userId.Value));
+            return Ok(await _service.GetAsync(userId.Value));
         }
 
         [HttpGet("{id:int}")]
