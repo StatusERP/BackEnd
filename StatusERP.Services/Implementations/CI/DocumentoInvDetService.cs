@@ -21,7 +21,7 @@ namespace StatusERP.Services.Implementations.CI
             _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocumentoInvDet request, string userId, int paquete, string documento, int linea)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocumentoInvDet request, string userId, int paquete, int documento, int linea)
         {
             var response = new BaseResponseGeneric<int>();
             try
@@ -38,12 +38,12 @@ namespace StatusERP.Services.Implementations.CI
                 var buscarDocumentoInvDet = await _repository.BuscarDocumentoInvDetAsync(paquete, documento, linea);
                 if (buscarDocumentoInvDet != null)
                 {
-                    throw new Exception($"La línea {buscarDocumentoInvDet.LineaDocInv} para el documento {buscarDocumentoInvDet.DocumentoInv} del paquete {buscarDocumentoInvDet.PaqueteInventarioId} ya existe");
+                    throw new Exception($"La línea {buscarDocumentoInvDet.LineaDocInv} para el documento {buscarDocumentoInvDet.DocumentoInvId} del paquete {buscarDocumentoInvDet.PaqueteInventarioId} ya existe");
                 }
                 response.Result = await _repository.CreateAsync(new DocumentoInvDet
                 {
                     PaqueteInventarioId = request.PaqueteInventarioId,
-                    DocumentoInv = request.DocumentoInv,
+                    DocumentoInvId = request.DocumentoInvId,
                     LineaDocInv = request.LineaDocInv,
                     AjusteConfigId = request.AjusteConfigId,
                     DocTributarioId = request.DocTributarioId,
@@ -180,7 +180,7 @@ namespace StatusERP.Services.Implementations.CI
                 {
                     Id = id,
                     PaqueteInventarioId = request.PaqueteInventarioId,
-                    DocumentoInv = request.DocumentoInv,
+                    DocumentoInvId = request.DocumentoInvId,
                     LineaDocInv = request.LineaDocInv,
                     AjusteConfigId = request.AjusteConfigId,
                     DocTributarioId = request.DocTributarioId,

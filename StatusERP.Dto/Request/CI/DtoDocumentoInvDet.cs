@@ -7,9 +7,7 @@ namespace StatusERP.Dto.Request.CI
     {
         public int PaqueteInventarioId { get; set; }
 
-        [Required(ErrorMessage = "El número de documento es requerido.")]
-        [StringLength(50)]
-        public string DocumentoInv { get; set; }
+        public int DocumentoInvId { get; set; }
 
         public int LineaDocInv { get; set; }
 

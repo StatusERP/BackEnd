@@ -7,7 +7,7 @@ namespace StatusERP.DataAccess.Repositories.CI
     {
         Task<ICollection<DocumentoInvDet>> GetCollectionAsync(int page, int rows);
         Task<DocumentoInvDet?> GetByIdAsync(int id);
-        Task<DocumentoInvDet?> BuscarDocumentoInvDetAsync(int paquete, string documento, int linea);
+        Task<DocumentoInvDet?> BuscarDocumentoInvDetAsync(int paquete, int documento, int linea);
         Task<int> CreateAsync(DocumentoInvDet documentoInvDet);
         Task<int> UpdateAsync(DocumentoInvDet documentoInvDet);
         Task<int> DeleteAsync(int id, string userId);

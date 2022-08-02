@@ -7739,10 +7739,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int?>("DocTributarioId")
                         .HasColumnType("int");
 
-                    b.Property<string>("DocumentoInv")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int>("DocumentoInvId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -7805,6 +7803,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
+                    b.Property<int>("documentoInvEncId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AjusteConfigId");
@@ -7831,7 +7832,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("UnidadDistribucionId");
 
-                    b.HasIndex(new[] { "PaqueteInventarioId", "DocumentoInv", "LineaDocInv" }, "IxDocInvDet_PaqDocLin")
+                    b.HasIndex("documentoInvEncId");
+
+                    b.HasIndex(new[] { "PaqueteInventarioId", "DocumentoInvId", "LineaDocInv" }, "IxDocInvDet_PaqDocLin")
                         .IsUnique();
 
                     b.ToTable("DocumentosInvDet", "H2C");
@@ -17362,6 +17365,12 @@ namespace StatusERP.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("UnidadDistribucionId");
 
+                    b.HasOne("StatusERP.Entities.CI.Tablas.DocumentoInvEnc", "documentoInvEnc")
+                        .WithMany()
+                        .HasForeignKey("documentoInvEncId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("LocDestino");
 
                     b.Navigation("ajusteConfig");
@@ -17375,6 +17384,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("centroCuenta");
 
                     b.Navigation("docTributario");
+
+                    b.Navigation("documentoInvEnc");
 
                     b.Navigation("localizacion");
 

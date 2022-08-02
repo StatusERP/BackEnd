@@ -13,9 +13,8 @@ namespace StatusERP.Entities.CI.Tablas
         [ForeignKey(nameof(PaqueteInventarioId))]
         public PaqueteInv paqueteInv { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string DocumentoInv { get; set; }
+        public int DocumentoInvId { get; set; }
+        public DocumentoInvEnc documentoInvEnc { get; set; }
 
         public int LineaDocInv { get; set; }
 
