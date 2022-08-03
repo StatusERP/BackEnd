@@ -7,7 +7,7 @@ namespace StatusERP.Dto.Request.CI
     {
         public int PaqueteInventarioId { get; set; }
 
-        public int DocumentoInvId { get; set; }
+        public int DocumentoInvEncId { get; set; }
 
         public int LineaDocInv { get; set; }
 

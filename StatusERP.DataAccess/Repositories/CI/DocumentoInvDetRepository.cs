@@ -16,7 +16,7 @@ namespace StatusERP.DataAccess.Repositories.CI
         {
             return await _dbContext.DocumentosInvDet
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.PaqueteInventarioId == paquete && t.DocumentoInvId == documento && t.LineaDocInv == linea);
+            .FirstOrDefaultAsync(t => t.PaqueteInventarioId == paquete && t.DocumentoInvEncId == documento && t.LineaDocInv == linea);
         }
 
         public async Task<int> CreateAsync(DocumentoInvDet documentoInvDet)

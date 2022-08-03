@@ -9,7 +9,7 @@ namespace StatusERP.DataAccess.Configurations.CI
         public void Configure(EntityTypeBuilder<DocumentoInvDet> builder)
         {
             builder
-                .HasIndex(p => new { p.PaqueteInventarioId, p.DocumentoInvId, p.LineaDocInv  }, "IxDocInvDet_PaqDocLin")
+                .HasIndex(p => new { p.PaqueteInventarioId, p.DocumentoInvEncId, p.LineaDocInv  }, "IxDocInvDet_PaqDocLin")
                 .IsUnique();
 
         }

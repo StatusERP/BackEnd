@@ -38,12 +38,12 @@ namespace StatusERP.Services.Implementations.CI
                 var buscarDocumentoInvDet = await _repository.BuscarDocumentoInvDetAsync(paquete, documento, linea);
                 if (buscarDocumentoInvDet != null)
                 {
-                    throw new Exception($"La línea {buscarDocumentoInvDet.LineaDocInv} para el documento {buscarDocumentoInvDet.DocumentoInvId} del paquete {buscarDocumentoInvDet.PaqueteInventarioId} ya existe");
+                    throw new Exception($"La línea {buscarDocumentoInvDet.LineaDocInv} para el documento {buscarDocumentoInvDet.DocumentoInvEncId} del paquete {buscarDocumentoInvDet.PaqueteInventarioId} ya existe");
                 }
                 response.Result = await _repository.CreateAsync(new DocumentoInvDet
                 {
                     PaqueteInventarioId = request.PaqueteInventarioId,
-                    DocumentoInvId = request.DocumentoInvId,
+                    DocumentoInvEncId = request.DocumentoInvEncId,
                     LineaDocInv = request.LineaDocInv,
                     AjusteConfigId = request.AjusteConfigId,
                     DocTributarioId = request.DocTributarioId,
@@ -180,7 +180,7 @@ namespace StatusERP.Services.Implementations.CI
                 {
                     Id = id,
                     PaqueteInventarioId = request.PaqueteInventarioId,
-                    DocumentoInvId = request.DocumentoInvId,
+                    DocumentoInvEncId = request.DocumentoInvEncId,
                     LineaDocInv = request.LineaDocInv,
                     AjusteConfigId = request.AjusteConfigId,
                     DocTributarioId = request.DocTributarioId,
