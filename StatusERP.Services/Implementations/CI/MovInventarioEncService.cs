@@ -728,47 +728,60 @@ namespace StatusERP.Services.Implementations.CI
                                 // No se evalúa el subsubtipo.  Las instrucciones que siguen aplicando tanto para Compra Local como para Importaciones.
                                 {
                                    if (strNaturaleza == "E")  // Es entrada
+                                    {
+                                        // **** COMPRA POSITIVA
+
+                                        // 1/4 Creación de registro en Detalle de Movimiento de Inventario
+                                        var detresponse = new BaseResponseGeneric<int>();
+                                        try
+                                        {
+
+                                            detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
                                             {
-                                                // **** COMPRA POSITIVA
+                                                MovInventarioEncId = response.Result,
+                                                Consecutivo = CorrelativoLinea,
+                                                FechaHoraTransac = DateTime.Now,
+                                                DocTributarioId = linea.DocTributarioId,
+                                                AjusteConfigId = linea.AjusteConfigId,
+                                                ArticuloId = linea.ArticuloId,
+                                                BodegaId = linea.BodegaId,
+                                                LocalizacionId = linea.LocalizacionId,
+                                                LoteId = linea.LoteId,
+                                                Tipo = linea.Tipo,
+                                                Subtipo = linea.Subtipo,
+                                                Subsubtipo = linea.Subsubtipo,
+                                                Naturaleza = linea.Naturaleza,
+                                                Cantidad = linea.Cantidad,
+                                                CostoTotLoc = linea.CostoTotLoc,
+                                                CostoTotDol = linea.CostoTotDol,
+                                                PrecioTotalLocal = linea.PrecioTotalLocal,
+                                                PrecioTotalDolar = linea.PrecioTotalDolar,
+                                                Contabilizada = linea.Contabilizada,
+                                                Fecha = linea.Fecha,
+                                                CentroCuentaId = linea.CentroCuentaId,
+                                                UnidadDistribucionId = linea.UnidadDistribucionId,
+                                                AsientoCardex = linea.AsientoCardex,
+                                                DocFiscal = linea.DocFiscal,
+                                                TipoOperacionId = linea.TipoOperacionId,
+                                                TipoPagoId = linea.TipoPagoId,
+                                                IsDeleted = false,
+                                                Updatedby = userId,
+                                                UpdateDate = DateTime.Now,
+                                                Createdby = userId,
+                                                CreateDate = DateTime.Now
+                                            });  //Fin del create en la tabla MovsInventarioDet - Compras Locales
 
-                                                // 1/4 Creación de registro en Detalle de Movimiento de Inventario
-                                                var detresponse = new BaseResponseGeneric<int>();
-                                                detresponse.Result = await _detRepository.CreateAsync(new MovInventarioDet
-                                                {
-                                                    MovInventarioEncId = response.Result,
-                                                    Consecutivo = CorrelativoLinea,
-                                                    FechaHoraTransac = DateTime.Now,
-                                                    DocTributarioId = linea.DocTributarioId,
-                                                    AjusteConfigId = linea.AjusteConfigId,
-                                                    ArticuloId = linea.ArticuloId,
-                                                    BodegaId = linea.BodegaId,
-                                                    LocalizacionId = linea.LocalizacionId,
-                                                    LoteId = linea.LoteId,
-                                                    Tipo = linea.Tipo,
-                                                    Subtipo = linea.Subtipo,
-                                                    Subsubtipo = linea.Subsubtipo,
-                                                    Naturaleza = linea.Naturaleza,
-                                                    Cantidad = linea.Cantidad,
-                                                    CostoTotLoc = linea.CostoTotLoc,
-                                                    CostoTotDol = linea.CostoTotDol,
-                                                    PrecioTotalLocal = linea.PrecioTotalLocal,
-                                                    PrecioTotalDolar = linea.PrecioTotalDolar,
-                                                    Contabilizada = linea.Contabilizada,
-                                                    Fecha = linea.Fecha,
-                                                    CentroCuentaId = linea.CentroCuentaId,
-                                                    UnidadDistribucionId = linea.UnidadDistribucionId,
-                                                    AsientoCardex = linea.AsientoCardex,
-                                                    DocFiscal = linea.DocFiscal,
-                                                    TipoOperacionId = linea.TipoOperacionId,
-                                                    TipoPagoId = linea.TipoPagoId,
-                                                    IsDeleted = false,
-                                                    Updatedby = userId,
-                                                    UpdateDate = DateTime.Now,
-                                                    Createdby = userId,
-                                                    CreateDate = DateTime.Now
-                                                });  //Fin del create en la tabla MovsInventarioDet - Compras Locales
+                                            detresponse.Success = true;
+                                        }
+                                        catch (Exception ex)
+                                        {
 
-                                                detresponse.Success = true;
+                                            _logger.LogCritical(ex.StackTrace);
+                                            detresponse.Success = false;
+                                            detresponse.Errors.Add(ex.Message);
+                                        }
+
+                                                
 
 
                                                 // 2/4 Se actualiza el registro correspondiente en la tabla Articulos
