@@ -76,7 +76,7 @@ namespace StatusERP.Services.Implementations.CI
             _ajRepository = ajRepository;
         }
 
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioEnc request, string userId, int id)
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioEnc request, string userId)
         {
             var response = new BaseResponseGeneric<int>();
             try
@@ -138,12 +138,12 @@ namespace StatusERP.Services.Implementations.CI
 
                 } //Fin del if (ConsecutivoId != null)
 
-                //Comprobación de que el código de movimiento a utilizar no ha sido utilizado aún.
-                var buscarIdMovInventarioEnc = await _repository.BuscarIdMovInventarioEncAsync(id) ;
-                if (buscarIdMovInventarioEnc != null)
-                {
-                    throw new Exception($"El código de movimiento de inventario {buscarIdMovInventarioEnc.Id} ya existe.");
-                }
+                ////Comprobación de que el código de movimiento a utilizar no ha sido utilizado aún.
+                //var buscarIdMovInventarioEnc = await _repository.BuscarIdMovInventarioEncAsync(request.Id) ;
+                //if (buscarIdMovInventarioEnc != null)
+                //{
+                //    throw new Exception($"El código de movimiento de inventario {buscarIdMovInventarioEnc.Id} ya existe.");
+                //}
 
                 // Ejecución de la inserción del registro en la tabla de encabezados de movimientos.
                 response.Result = await _repository.CreateAsync(new MovInventarioEnc
@@ -166,6 +166,7 @@ namespace StatusERP.Services.Implementations.CI
                     CreateDate = DateTime.Now
                 });
                 response.Success = true;
+            
 
 
                 //***************************Inserción detalle de movimientos ********************************************************

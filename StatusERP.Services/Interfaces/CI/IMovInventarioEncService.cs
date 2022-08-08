@@ -11,7 +11,7 @@ namespace StatusERP.Services.Interfaces.CI
 
         Task<BaseResponseGeneric<MovInventarioEnc>> GetByIdAsync(int id);
 
-        Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioEnc request, string userId, int id);
+        Task<BaseResponseGeneric<int>> CreateAsync(DtoMovInventarioEnc request, string userId);
 
         Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoMovInventarioEnc request, string userId);
 

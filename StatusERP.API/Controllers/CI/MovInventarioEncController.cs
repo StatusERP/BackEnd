@@ -43,7 +43,7 @@ namespace StatusERP.API.Controllers.CI
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
             if (userId == null) return Unauthorized();
-            var response = await _service.CreateAsync(request, userId.Value, request.Id);
+            var response = await _service.CreateAsync(request, userId.Value);
             HttpContext.Response.Headers.Add("location", $"/api/CI/MovInventarioEnc/{response.Result}");
             return Ok(response);
         }
