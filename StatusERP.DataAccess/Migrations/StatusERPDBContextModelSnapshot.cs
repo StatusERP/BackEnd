@@ -7709,7 +7709,7 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int?>("BodegaId")
+                    b.Property<int>("BodegaId")
                         .HasColumnType("int");
 
                     b.Property<string>("CAI")
@@ -17318,7 +17318,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasOne("StatusERP.Entities.AS.Tablas.Bodega", "bodega")
                         .WithMany()
-                        .HasForeignKey("BodegaId");
+                        .HasForeignKey("BodegaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "centroCuenta")
                         .WithMany()
