@@ -10,4 +10,8 @@
     <Folder Include="Request\FA\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\StatusERP.Entities\StatusERP.Entities.csproj" />
+  </ItemGroup>
+
 </Project>

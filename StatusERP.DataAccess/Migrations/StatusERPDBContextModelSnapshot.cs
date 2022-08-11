@@ -2015,6 +2015,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "CodTipoCambio" }, "IxCodTipoCambio")
+                        .IsUnique();
+
                     b.ToTable("TiposCambio", "H2C");
                 });
 
@@ -5291,9 +5294,13 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CentroCostoId");
-
                     b.HasIndex("CuentaContableId");
+
+                    b.HasIndex(new[] { "CodCentroCosto", "CodCuentaContable" }, "IxCentroCodCuentaCod")
+                        .IsUnique();
+
+                    b.HasIndex(new[] { "CentroCostoId", "CuentaContableId" }, "IxCentroIdCuentaId")
+                        .IsUnique();
 
                     b.ToTable("CentroCuenta", "H2C");
                 });

@@ -37,13 +37,16 @@ C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.deps.json
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Dto.pdb
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Entities.dll
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\StatusERP.Entities.pdb
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.AssemblyReference.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.GeneratedMSBuildEditorConfig.editorconfig
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.AssemblyInfoInputs.cache
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.AssemblyInfo.cs
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CoreCompileInputs.cache
+C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.csproj.CopyComplete
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\ref\StatusERP.Dto.dll
 C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\obj\Debug\net6.0\StatusERP.Dto.pdb
-C:\Proyectos\StatusERP\BackEnd\StatusERP.Dto\bin\Debug\net6.0\ref\StatusERP.Dto.dll

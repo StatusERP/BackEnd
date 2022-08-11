@@ -123,6 +123,10 @@ builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
 builder.Services.AddScoped<IPaisRepository, PaisRepository>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 
+builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
+builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
+
+
 builder.Services.AddScoped<ITipoImpuestoRepository, TipoImpuestoRepository>();
 builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
 
@@ -140,8 +144,8 @@ builder.Services.AddScoped<IPrivilegioUsuarioService,PrivilegioUsuarioService>()
 
 
 
-//builder.Services.AddScoped<ICentroCuentaRepository, CentroCuentaRepository>();
-//builder.Services.AddScoped<ICentroCuentaService, CentroCuentaService>();
+builder.Services.AddScoped<ICentroCuentaRepository, CentroCuentaRepository>();
+builder.Services.AddScoped<ICentroCuentaService, CentroCuentaService>();
 
 builder.Services.AddScoped<ICuentaContableService, CuentaContableService>();
 builder.Services.AddScoped<ICuentaContableRepository, CuentaContableRepository>();

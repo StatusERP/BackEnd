@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS;
 
 public interface ITipoCambioService
 {
-    Task<BaseResponseGeneric<ICollection<TipoCambio>>> GetAsync( int page, int rows);
+    Task<BaseResponseGeneric<ICollection<TipoCambio>>> GetAsync(int page, int rows, string userId);
     Task<BaseResponseGeneric<TipoCambio>> GetByIdAsync(int id);
 
     Task<BaseResponseGeneric<int>> CreateAsync(DtoTipoCambio request,string userId, string codTipoCambio);

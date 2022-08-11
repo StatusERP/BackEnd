@@ -28,8 +28,44 @@ public class TipoCambioRepository:StatusERPContextBase<TipoCambio>,ITipoCambioRe
 
     public async Task<int> UpdateAsync(TipoCambio tipoCambio)
     {
-        await _dbContext.UpdateAsync(tipoCambio,Mapper);
+        //await _dbContext.UpdateAsync(tipoCambio,Mapper);
+        //return tipoCambio.Id;
+
+        try
+        {
+            var registro = await _dbContext.Set<TipoCambio>()
+        .AsNoTracking()
+        .SingleOrDefaultAsync(x => x.Id == tipoCambio.Id && !x.IsDeleted);
+
+            if (registro == null)
+            {
+                return 0;
+            }
+
+            registro.CodTipoCambio = tipoCambio.CodTipoCambio;
+            registro.Descripcion = tipoCambio.Descripcion;
+            registro.Createdby = tipoCambio.Createdby;
+            registro.IsDeleted = tipoCambio.IsDeleted;
+            registro.Updatedby = tipoCambio.Updatedby;
+            registro.UpdateDate = tipoCambio.UpdateDate;
+            registro.Createdby = tipoCambio.Createdby;
+            registro.CreateDate = tipoCambio.CreateDate;
+
+
+
+            _dbContext.Set<TipoCambio>().Attach(registro);
+            _dbContext.Entry(registro).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+
+        }
+        catch (Exception ex)
+        {
+            Console.Write(ex);
+        }
+
         return tipoCambio.Id;
+
+
     }
 
     public async Task<int> DeleteAsync(int id, string userId)
@@ -47,5 +83,7 @@ public class TipoCambioRepository:StatusERPContextBase<TipoCambio>,ITipoCambioRe
         return await _dbContext.TiposCambio
             .AsNoTracking()
             .FirstOrDefaultAsync(t => t.CodTipoCambio == codTipoCambio );
+
+
     }
 }

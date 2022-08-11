@@ -12,7 +12,7 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         }
 
-        public async Task<CentroCuenta?> BuscarCodCentroCuentaAsync(int CentroCostoId, int CentroCuentaId)
+        public async Task<CentroCuenta?> BuscarCentroCuentaAsync(int CentroCostoId, int CentroCuentaId)
         {
             return await _dbContext.CentroCuenta
             .AsNoTracking()
@@ -44,10 +44,45 @@ namespace StatusERP.DataAccess.Repositories.CG
             return await _dbContext.SelectAsync<CentroCuenta>(page, rows);
         }
 
-        public async Task<int> UpdateAsync(CentroCuenta CentroCuenta)
+        public async Task<int> UpdateAsync(CentroCuenta centroCuenta)
         {
-            await _dbContext.UpdateAsync(CentroCuenta,Mapper);
-            return CentroCuenta.Id;
+            //await _dbContext.UpdateAsync(CentroCuenta,Mapper);
+            //return CentroCuenta.Id;
+
+            try
+            {
+                var registro = await _dbContext.Set<CentroCuenta>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == centroCuenta.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                registro.CentroCostoId = centroCuenta.CentroCostoId;
+                registro.CuentaContableId = centroCuenta.CuentaContableId;
+                registro.CodCentroCosto = centroCuenta.CodCentroCosto;
+                registro.CodCuentaContable = centroCuenta.CodCuentaContable;
+                registro.Activo = centroCuenta.Activo;
+                registro.IsDeleted = centroCuenta.IsDeleted;
+                registro.Updatedby = centroCuenta.Updatedby;
+                registro.UpdateDate = centroCuenta.UpdateDate;
+                registro.Createdby = centroCuenta.Createdby;
+                registro.CreateDate = centroCuenta.CreateDate;
+
+                _dbContext.Set<CentroCuenta>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
+            return centroCuenta.Id;
+
         }
     }
 }

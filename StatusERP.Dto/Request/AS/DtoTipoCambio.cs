@@ -1,3 +1,15 @@
-﻿namespace StatusERP.Dto.Request.AS;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record DtoTipoCambio(string CodTipoCambio,string Descripcion);
+namespace StatusERP.Dto.Request.AS
+{
+    public class DtoTipoCambio
+    {
+        [Required(ErrorMessage = "Se requiere especificar el código del Tipo de Cambio.")]
+        [StringLength(4)]
+        public string CodTipoCambio { get; set; }
+
+        [Required(ErrorMessage = "Se requiere especificar descripción del Tipo de Cambio.")]
+        [StringLength(40)]
+        public string Descripcion { get; set; }
+    }
+}

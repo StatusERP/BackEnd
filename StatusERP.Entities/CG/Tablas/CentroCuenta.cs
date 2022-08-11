@@ -10,14 +10,12 @@ namespace StatusERP.Entities.CG.Tablas
         public int CentroCostoId { get; set; }
         public CentroCosto CentroCosto { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar un centro de costo.")]
         [StringLength(25)]
         public string CodCentroCosto { get; set; }
 
         public int CuentaContableId { get; set; }
         public CuentaContable CuentaContable { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar una cuenta contable.")]
         [StringLength(25)]
         public string CodCuentaContable { get; set; }
 
