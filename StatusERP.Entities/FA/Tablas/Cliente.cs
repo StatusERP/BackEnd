@@ -1,6 +1,7 @@
 ﻿using StatusERP.Entities.ERPADMIN.Tablas;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.Entities.FA.Tablas
 {
@@ -38,9 +39,8 @@ namespace StatusERP.Entities.FA.Tablas
         public string ? Telefono2 { get; set; }
 
 
-        [Required(ErrorMessage = "El contribuyente es requerido.")]
-        [StringLength(20)]
-        public string Contribuyente { get; set; }
+        public int ContribuyenteId { get; set; }
+        public DocTributario DocTributario { get; set; }    
 
         [Required(ErrorMessage = "La fecha de ingreso es requerida.")]
         public DateTime FechaIngreso { get; set; }

@@ -865,6 +865,91 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("ConsecutivoUsuario", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Direccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CodDireccion")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("NombreCampo01")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo02")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo03")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo04")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo05")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo06")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo07")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo08")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo09")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<string>("NombreCampo10")
+                        .HasMaxLength(60)
+                        .HasColumnType("nvarchar(60)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodDireccion" }, "IxCodDireccion")
+                        .IsUnique();
+
+                    b.ToTable("Direcciones", "H2C");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DivGeografica1", b =>
                 {
                     b.Property<int>("Id")
@@ -7752,7 +7837,7 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int?>("LocalizacionId")
+                    b.Property<int>("LocalizacionId")
                         .HasColumnType("int");
 
                     b.Property<int?>("LoteId")
@@ -11547,10 +11632,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("Contribuyente")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("ContribuyenteId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -11603,6 +11686,9 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
+
+                    b.Property<int>("DocTributarioId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(250)
@@ -11997,6 +12083,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(4)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DocTributarioId");
 
                     b.ToTable("Clientes", "H2C");
                 });
@@ -17344,7 +17432,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasOne("StatusERP.Entities.AS.Tablas.Localizacion", "localizacion")
                         .WithMany()
-                        .HasForeignKey("LocalizacionId");
+                        .HasForeignKey("LocalizacionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("StatusERP.Entities.CI.Tablas.Lote", "lote")
                         .WithMany()
@@ -17785,6 +17875,17 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Accion");
 
                     b.Navigation("Conjunto");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.Cliente", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
+                        .WithMany()
+                        .HasForeignKey("DocTributarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DocTributario");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.FacturaEnc", b =>

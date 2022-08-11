@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StatusERP.Entities.AS.Tablas;
 
-namespace StatusERP.DataAccess.Configurations.CI
+namespace StatusERP.DataAccess.Configurations.AS
 {
     public class PaisConfiguration : IEntityTypeConfiguration<Pais>
     {

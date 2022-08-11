@@ -95,7 +95,7 @@ builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
 builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
 builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
 builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
-builder.Services.AddScoped<IMonedaRepository, ModenaRepository>();
+builder.Services.AddScoped<IMonedaRepository, MonedaRepository>();
 builder.Services.AddScoped<IMonedaService, MonedaService>();
 builder.Services.AddScoped<INivelPrecioRepository ,NivelPrecioRepository>();
 builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
@@ -125,6 +125,9 @@ builder.Services.AddScoped<IPaisService, PaisService>();
 
 builder.Services.AddScoped<ITipoImpuestoRepository, TipoImpuestoRepository>();
 builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
+
+builder.Services.AddScoped<IDireccionService, DireccionService>();
+builder.Services.AddScoped<IDireccionRepository, DireccionRepository>();
 
 
 
@@ -176,7 +179,6 @@ builder.Services.AddScoped<IConsecutivoInvUsuarioRepository, ConsecutivoInvUsuar
 builder.Services.AddScoped<IConsInvAjConfigService, ConsInvAjConfigService>();
 builder.Services.AddScoped<IConsInvAjConfigRepository, ConsInvAjConfigRepository>();
 
-
 builder.Services.AddScoped<IDocumentoInvDetService, DocumentoInvDetService>();
 builder.Services.AddScoped<IDocumentoInvDetRepository, DocumentoInvDetRepository>();
 
@@ -215,6 +217,11 @@ builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
 
 builder.Services.AddScoped<IUsuarioAjusteInvService, UsuarioAjusteInvService>();
 builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvRepository>();
+
+// Entidades Módulo FA
+
+//builder.Services.AddScoped<IClienteService, ClienteService>();
+//builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 
 

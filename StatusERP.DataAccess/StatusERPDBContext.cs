@@ -134,6 +134,10 @@ namespace StatusERP.DataAccess
         public DbSet<PedidoDet> PedidoDets { get; set; }
         public DbSet<FacturaDet> FacturaDets { get; set; }
         public DbSet<FacturaEnc> FacturaEncs { get; set; }
+        public DbSet<Direccion> Direcciones { get; set; }
+        //public DbSet<DetalleDireccion> DetalleDirecciones { get; set; }
+        //public DbSet<DirEmbarque> DirEmbarques { get; set; }
+
 
 
         // Para tablas de CC

@@ -32,7 +32,7 @@ namespace StatusERP.Entities.CI.Tablas
         public int BodegaId { get; set; }
         public Bodega bodega { get; set; }
 
-        public int? LocalizacionId { get; set; }
+        public int LocalizacionId { get; set; }
         public Localizacion localizacion { get; set; }
 
         public int? LoteId { get; set; }
