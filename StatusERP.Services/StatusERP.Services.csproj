@@ -23,7 +23,6 @@
     <Folder Include="Implementations\CB\" />
     <Folder Include="Implementations\CC\" />
     <Folder Include="Implementations\CP\" />
-    <Folder Include="Implementations\FA\" />
   </ItemGroup>
 
 </Project>

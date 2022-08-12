@@ -95,11 +95,11 @@ namespace StatusERP.DataAccess.Repositories.CI
                 registro.FechaDescong = existenciaBodega.FechaDescong;
                 registro.CostoUntPromedioDol = existenciaBodega.CostoUntPromedioDol;
                 registro.CostoUntPromedioLoc = existenciaBodega.CostoUntPromedioLoc;
-                registro.IsDeleted = existenciaBodega.IsDeleted;
+                registro.IsDeleted = registro.IsDeleted;
                 registro.Updatedby = existenciaBodega.Updatedby;
                 registro.UpdateDate =existenciaBodega.UpdateDate;
-                registro.Createdby = existenciaBodega.Createdby;
-                registro.CreateDate = existenciaBodega.CreateDate;
+                registro.Createdby = registro.Createdby;
+                registro.CreateDate = registro.CreateDate;
 
                 _dbContext.Set<ExistenciaBodega>().Attach(registro);
                 _dbContext.Entry(registro).State = EntityState.Modified;

@@ -8,7 +8,9 @@ namespace StatusERP.DataAccess.Configurations.AS
     {
         public void Configure(EntityTypeBuilder<Bodega> builder)
         {
-           
+            builder
+               .HasIndex(p => new { p.CodBodega}, "IxCodBodega")
+               .IsUnique();
         }
     }
 }

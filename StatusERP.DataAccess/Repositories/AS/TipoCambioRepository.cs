@@ -42,15 +42,14 @@ public class TipoCambioRepository:StatusERPContextBase<TipoCambio>,ITipoCambioRe
                 return 0;
             }
 
+            registro.Id = tipoCambio.Id;
             registro.CodTipoCambio = tipoCambio.CodTipoCambio;
             registro.Descripcion = tipoCambio.Descripcion;
-            registro.Createdby = tipoCambio.Createdby;
-            registro.IsDeleted = tipoCambio.IsDeleted;
+            registro.IsDeleted = registro.IsDeleted;
             registro.Updatedby = tipoCambio.Updatedby;
             registro.UpdateDate = tipoCambio.UpdateDate;
-            registro.Createdby = tipoCambio.Createdby;
-            registro.CreateDate = tipoCambio.CreateDate;
-
+            registro.Createdby = registro.Createdby;
+            registro.CreateDate = registro.CreateDate;
 
 
             _dbContext.Set<TipoCambio>().Attach(registro);

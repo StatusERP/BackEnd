@@ -12,16 +12,16 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         }
 
-        public async Task<PaqueteContable?> BuscarCodPaqueteContableAsync(string CodPaquete)
+        public async Task<PaqueteContable?> BuscarCodPaqueteContableAsync(string codPaquete)
         {
             return await _dbContext.PaquetesContables
             .AsNoTracking()
-            .FirstOrDefaultAsync(t => t.CodPaquete == CodPaquete);
+            .FirstOrDefaultAsync(t => t.CodPaquete == codPaquete);
         }
 
-        public async Task<int> CreateAsync(PaqueteContable PaqueteContable)
+        public async Task<int> CreateAsync(PaqueteContable paqueteContable)
         {
-            return await _dbContext.InsertAsync(PaqueteContable);
+            return await _dbContext.InsertAsync(paqueteContable);
         }
 
         public async Task<int> DeleteAsync(int id, string userId)
@@ -44,10 +44,15 @@ namespace StatusERP.DataAccess.Repositories.CG
             return await _dbContext.SelectAsync<PaqueteContable>(page, rows);
         }
 
-        public async Task<int> UpdateAsync(PaqueteContable PaqueteContable)
+        public async Task<int> UpdateAsync(PaqueteContable paqueteContable)
         {
-            await _dbContext.UpdateAsync(PaqueteContable,Mapper);
-            return PaqueteContable.Id;
+            await _dbContext.UpdateAsync(paqueteContable, Mapper);
+            return paqueteContable.Id;
+
+
+
+
+
         }
     }
 }

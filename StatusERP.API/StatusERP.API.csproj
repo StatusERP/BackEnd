@@ -31,7 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\FA\" />
     <Folder Include="Controllers\CC\" />
   </ItemGroup>
 

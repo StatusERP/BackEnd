@@ -62,7 +62,7 @@ public class CondicionPagoService:ICondicionPagoService
             }
             response.Result = await _repository.CreateAsync(new CondicionPago
             {
-                CodCondicionPago = request.CodCondiconPago,
+                CodCondicionPago = request.CodCondicionPago,
                 Descripcion = request.Descripcion,
                 DiasNeto = request.DiasNeto,
                 PagosParciales = request.PagosParciales,
@@ -94,7 +94,7 @@ public class CondicionPagoService:ICondicionPagoService
             response.Result = await _repository.UpdateAsync(new CondicionPago
             {
                 Id = id,
-                CodCondicionPago = request.CodCondiconPago,
+                CodCondicionPago = request.CodCondicionPago,
                 Descripcion = request.Descripcion,
                 DiasNeto = request.DiasNeto,
                 PagosParciales = request.PagosParciales,
@@ -104,6 +104,7 @@ public class CondicionPagoService:ICondicionPagoService
                 Activa = request.Activa,
                 Updatedby = userId,
                 UpdateDate = DateTime.Now
+                
 
             });
             response.Success = true;

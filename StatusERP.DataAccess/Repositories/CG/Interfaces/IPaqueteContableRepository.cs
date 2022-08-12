@@ -7,8 +7,8 @@ namespace StatusERP.DataAccess.Repositories.CG
         Task<ICollection<PaqueteContable>> GetCollectionAsync(int page, int rows);
         Task<PaqueteContable?> GetByIdAsync(int id);
         Task<PaqueteContable?> BuscarCodPaqueteContableAsync(string codPaqueteContable);
-        Task<int> CreateAsync(PaqueteContable PaqueteContable);
-        Task<int> UpdateAsync(PaqueteContable PaqueteContable);
+        Task<int> CreateAsync(PaqueteContable paqueteContable);
+        Task<int> UpdateAsync(PaqueteContable paqueteContable);
         Task<int> DeleteAsync(int id, string userId);
     }
 }

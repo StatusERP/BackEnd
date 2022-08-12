@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.DataAccess.Repositories.AS;
@@ -43,11 +42,9 @@ public class BodegaRepository:StatusERPContextBase<Bodega>,IBodegaRepository
        // await _dbContext.Update2Async(bodega);
        // return bodega.Id;
 
-
-
         try
         {
-            var registro = await _dbContext.Set<Bodega>()
+         var registro = await _dbContext.Set<Bodega>()
         .AsNoTracking()
         .SingleOrDefaultAsync(x => x.Id == bodega.Id && !x.IsDeleted);
 
@@ -55,16 +52,18 @@ public class BodegaRepository:StatusERPContextBase<Bodega>,IBodegaRepository
             {
                 return 0;
             }
-
+            registro.Id = bodega.Id;
+            registro.CodBodega = bodega.CodBodega;
+            registro.Nombre = bodega.Nombre;
+            registro.Tipo = bodega.Tipo;
             registro.Activa = bodega.Activa;
-            registro.Direccion = bodega.Direccion;
-            registro.Nombre=bodega.Nombre;
             registro.Telefono = bodega.Telefono;
-            registro.Tipo=bodega.Tipo;
-            registro.Createdby=bodega.Createdby;
+            registro.Direccion = bodega.Direccion;
+            registro.IsDeleted = registro.IsDeleted;
+            registro.Createdby = registro.Createdby;
+            registro.CreateDate = registro.CreateDate;
+            registro.Updatedby = bodega.Updatedby;
             registro.UpdateDate = bodega.UpdateDate;
-            
-
 
             _dbContext.Set<Bodega>().Attach(registro);
             _dbContext.Entry(registro).State = EntityState.Modified;

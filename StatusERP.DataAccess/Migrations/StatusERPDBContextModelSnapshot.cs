@@ -296,6 +296,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "CodBodega" }, "IxCodBodega")
+                        .IsUnique();
+
                     b.ToTable("Bodegas", "H2C");
                 });
 
@@ -726,6 +729,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodCondicionPago" }, "IxCodCondicionPago")
+                        .IsUnique();
 
                     b.ToTable("CondicionesPago", "H2C");
                 });
@@ -1535,67 +1541,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Monedas", "H2C");
-                });
-
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.NivelPrecio", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<bool>("Activo")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("CodNivelPrecio")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
-                    b.Property<int?>("CondicionPagoId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("CreateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Createdby")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
-
-                    b.Property<bool>("Descuentos")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("EsquemaTrabajo")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MonedaId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("SugerirDescuento")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Updatedby")
-                        .IsRequired()
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CondicionPagoId");
-
-                    b.HasIndex("MonedaId");
-
-                    b.ToTable("NivelesPrecios", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Pais", b =>
@@ -6521,7 +6466,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("Marcado")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UltimoAsientoFiscal")
+                    b.Property<string>("UltimoAsiento")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -6545,6 +6490,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodPaquete" }, "IxCodPaquete")
+                        .IsUnique();
 
                     b.ToTable("PaquetesContables", "H2C");
                 });
@@ -8788,6 +8736,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodPaqueteInv" }, "IxCodPaqueteInv")
+                        .IsUnique();
 
                     b.ToTable("PaquetesInv", "H2C");
                 });
@@ -13927,6 +13878,70 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("GlobalesFA", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.NivelPrecio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<bool>("Activo")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("CodNivelPrecio")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<int?>("CondicionPagoId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("Descuentos")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("EsquemaTrabajo")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Moneda")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<bool>("SugerirDescuento")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CondicionPagoId");
+
+                    b.HasIndex(new[] { "CodNivelPrecio", "Moneda" }, "IxCodNivelPrecio_Moneda")
+                        .IsUnique();
+
+                    b.ToTable("NivelesPrecios", "H2C");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.PaqueteDescuento", b =>
                 {
                     b.Property<int>("Id")
@@ -16495,23 +16510,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Bodega");
                 });
 
-            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.NivelPrecio", b =>
-                {
-                    b.HasOne("StatusERP.Entities.AS.Tablas.CondicionPago", "CondicionPago")
-                        .WithMany()
-                        .HasForeignKey("CondicionPagoId");
-
-                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "Moneda")
-                        .WithMany()
-                        .HasForeignKey("MonedaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CondicionPago");
-
-                    b.Navigation("Moneda");
-                });
-
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Pais", b =>
                 {
                     b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCAjusteRedondeo")
@@ -17960,6 +17958,15 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Vendedor");
 
                     b.Navigation("Zona");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.NivelPrecio", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.CondicionPago", "CondicionPago")
+                        .WithMany()
+                        .HasForeignKey("CondicionPagoId");
+
+                    b.Navigation("CondicionPago");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FC.Tablas.CalculoFC", b =>

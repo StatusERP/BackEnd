@@ -14,9 +14,9 @@ namespace StatusERP.API.Controllers.AS;
 public class BodegaController : ControllerBase
 {
     private readonly IBodegaService _service;
-    private readonly ILogger<PaisService> _logger;
+    private readonly ILogger<BodegaService> _logger;
 
-    public BodegaController( IBodegaService service,ILogger<PaisService> logger)
+    public BodegaController( IBodegaService service,ILogger<BodegaService> logger)
     {
         _service = service;
         _logger = logger;

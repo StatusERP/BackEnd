@@ -6,16 +6,11 @@ using StatusERP.DataAccess;
 using StatusERP.Entities;
 using System.Text;
 
-using StatusERP.Entities.AS.Tablas;
+
 using StatusERP.DataAccess.Repositories.AS;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Interfaces.AS;
-
-using StatusERP.DataAccess.Repositories.ERPADMIN;
-using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
-using StatusERP.Services.Implementations.ERPADMIN;
-using StatusERP.Services.Interfaces.ERPADMIN;
 
 using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Services.Implementations.CG;
@@ -24,8 +19,19 @@ using StatusERP.Services.Interfaces.CG;
 using StatusERP.Services.Interfaces.CI;
 using StatusERP.DataAccess.Repositories.CI;
 using StatusERP.Services.Implementations.CI;
-using StatusERP.Dto.Request.AS;
 using StatusERP.Services.Profile.AS;
+
+using StatusERP.DataAccess.Repositories.ERPADMIN;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
+using StatusERP.Services.Implementations.ERPADMIN;
+using StatusERP.Services.Interfaces.ERPADMIN;
+
+using StatusERP.DataAccess.Repositories.FA;
+using StatusERP.DataAccess.Repositories.FA.Interfaces;
+using StatusERP.Services.Implementations.FA;
+using StatusERP.Services.Interfaces.FA;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,10 +73,6 @@ builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
 builder.Services.AddScoped<IZonaService, ZonaService>();
 builder.Services.AddScoped<IRutaRepository, RutaRepository>();
 builder.Services.AddScoped<IRutaService, RutaService>();
-builder.Services.AddScoped<IBodegaRepository, BodegaRepository>();
-builder.Services.AddScoped<IBodegaService, BodegaService>();
-builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
-builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
 builder.Services.AddScoped<IDocTributarioRepository, DocTributarioRepository>();
 builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
 builder.Services.AddScoped<IEntidadFinacieraRepository, EntidadFinacieraRepository>();
@@ -97,8 +99,7 @@ builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>(
 builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
 builder.Services.AddScoped<IMonedaRepository, MonedaRepository>();
 builder.Services.AddScoped<IMonedaService, MonedaService>();
-builder.Services.AddScoped<INivelPrecioRepository ,NivelPrecioRepository>();
-builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
+
 builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
 builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
 builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
@@ -111,11 +112,17 @@ builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
 
 // Entidades Módulo AS
 
+builder.Services.AddScoped<IBodegaRepository, BodegaRepository>();
+builder.Services.AddScoped<IBodegaService, BodegaService>();
+
 builder.Services.AddScoped<ICategoriaClienteRepository, CategoriaClienteRepository>();
 builder.Services.AddScoped<ICategoriaClienteService, CategoriaClienteService>();
 
 builder.Services.AddScoped<ICategoriaProveedorRepository, CategoriaProveedorRepository>();
 builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService>();
+
+builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
+builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
 
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
@@ -227,6 +234,8 @@ builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvReposito
 //builder.Services.AddScoped<IClienteService, ClienteService>();
 //builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
+builder.Services.AddScoped<INivelPrecioRepository, NivelPrecioRepository>();
+builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
 
 
 builder.Services.AddControllers();

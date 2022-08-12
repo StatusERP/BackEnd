@@ -36,7 +36,7 @@ public class BodegaService:IBodegaService
 
             if (buscarPrivilegio == null)
             {
-                response.Errors.Add($"No tiene Privilegios para ver Bodegas");
+                response.Errors.Add($"No tiene privilegios para consultar bodegas.");
                 response.Success = false;
                 return response;
             }
@@ -88,7 +88,7 @@ public class BodegaService:IBodegaService
             
             if (buscarPrivilegio == null)
             {
-                response.Errors.Add($"No tiene Privilegios para Crear Bodega");
+                response.Errors.Add($"No tiene privilegios para crear bodegas.");
                 response.Success = false;
                 return response;
             }
@@ -97,7 +97,7 @@ public class BodegaService:IBodegaService
             var buscarCodBodega = await _repository.BuscarCodBodegaAsync(codBodega);
             if (buscarCodBodega != null)
             {
-                response.Errors.Add($"El codigo de Bodega {buscarCodBodega.CodBodega} ya Existe");
+                response.Errors.Add($"El código de bodega {buscarCodBodega.CodBodega} ya existe.");
                 response.Success = false;
                 return response;
 
