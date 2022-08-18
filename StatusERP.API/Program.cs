@@ -124,31 +124,27 @@ builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService
 builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
 builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
 
+builder.Services.AddScoped<IDireccionService, DireccionService>();
+builder.Services.AddScoped<IDireccionRepository, DireccionRepository>();
+
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
 
 builder.Services.AddScoped<IPaisRepository, PaisRepository>();
 builder.Services.AddScoped<IPaisService, PaisService>();
 
+builder.Services.AddScoped<IPrivilegioUsuarioRepository, PrivilegoUsuarioRepository>();
+builder.Services.AddScoped<IPrivilegioUsuarioService, PrivilegioUsuarioService>();
+
 builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
 builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
-
 
 builder.Services.AddScoped<ITipoImpuestoRepository, TipoImpuestoRepository>();
 builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
 
-builder.Services.AddScoped<IDireccionService, DireccionService>();
-builder.Services.AddScoped<IDireccionRepository, DireccionRepository>();
-
 
 
 // Entidades Módulo CG
-
-builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();
-builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
-builder.Services.AddScoped<IPrivilegioUsuarioRepository, PrivilegoUsuarioRepository>();
-builder.Services.AddScoped<IPrivilegioUsuarioService,PrivilegioUsuarioService>();
-
 
 
 builder.Services.AddScoped<ICentroCuentaRepository, CentroCuentaRepository>();
@@ -157,8 +153,15 @@ builder.Services.AddScoped<ICentroCuentaService, CentroCuentaService>();
 builder.Services.AddScoped<ICuentaContableService, CuentaContableService>();
 builder.Services.AddScoped<ICuentaContableRepository, CuentaContableRepository>();
 
+builder.Services.AddScoped<IPaqueteContableService, PaqueteContableService>();
+builder.Services.AddScoped<IPaqueteContableRepository, PaqueteContableRepository>();
+
 builder.Services.AddScoped<ISeccionCuentaService, SeccionCuentaService>();
 builder.Services.AddScoped<ISeccionCuentaRepository, SeccionCuentaRepository>();
+
+builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();
+builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
+
 
 
 // Entidades Módulo CI
@@ -233,6 +236,9 @@ builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvReposito
 
 //builder.Services.AddScoped<IClienteService, ClienteService>();
 //builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
+builder.Services.AddScoped<IGlobalesFARepository, GlobalesFARepository>();
+builder.Services.AddScoped<IGlobalesFAService, GlobalesFAService>();
 
 builder.Services.AddScoped<INivelPrecioRepository, NivelPrecioRepository>();
 builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();

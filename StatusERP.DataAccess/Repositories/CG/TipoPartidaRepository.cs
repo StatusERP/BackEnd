@@ -46,7 +46,37 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(TipoPartida tipoPartida)
         {
-            await _dbContext.UpdateAsync(tipoPartida,Mapper);
+            try
+            {
+                var registro = await _dbContext.Set<TipoPartida>()
+                .AsNoTracking()
+                .SingleOrDefaultAsync(x => x.Id == tipoPartida.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                registro.Id = tipoPartida.Id;
+                registro.CodTipoPartida = tipoPartida.CodTipoPartida;
+                registro.Descripcion = tipoPartida.Descripcion;
+                registro.IsDeleted = registro.IsDeleted;
+                registro.Updatedby = tipoPartida.Updatedby;
+                registro.UpdateDate = tipoPartida.UpdateDate;
+                registro.Createdby = registro.Createdby;
+                registro.CreateDate = registro.CreateDate;
+
+                _dbContext.Set<TipoPartida>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
             return tipoPartida.Id;
         }
     }

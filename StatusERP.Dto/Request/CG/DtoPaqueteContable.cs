@@ -13,11 +13,11 @@ namespace StatusERP.Dto.Request.CG
         public string Descripcion { get; set; }
 
         [Required(ErrorMessage = "Usuario Creador es requerido.")]
-        [StringLength(25)]
+        [StringLength(250)]
         public string UsuarioCreador { get; set; }
 
         [Required(ErrorMessage = "Ultimo Usuario es requerido")]
-        [StringLength(25)]
+        [StringLength(250)]
         public string UltimoUsuario { get; set; }
 
         public DateTime FechaUltAcceso { get; set; }

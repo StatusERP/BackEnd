@@ -49,6 +49,7 @@ namespace StatusERP.DataAccess
         public DbSet<CondicionPago> CondicionesPago { get; set; }
         public DbSet<ConsecutivoGlobal> ConsecutivosGlobales { get; set; }
         public DbSet<ConsecutivoUsuario> ConsecutivoUsuario { get; set; }
+        public DbSet<Direccion> Direcciones { get; set; }
         public DbSet<DivGeografica1> DivGeograficas1 { get; set; }
         public DbSet<DivGeografica2> DivGeograficas2 { get; set; }
         public DbSet<DocTributario> DocTributarios { get; set; }

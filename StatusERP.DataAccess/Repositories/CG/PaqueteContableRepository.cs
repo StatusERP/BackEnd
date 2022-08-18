@@ -46,13 +46,46 @@ namespace StatusERP.DataAccess.Repositories.CG
 
         public async Task<int> UpdateAsync(PaqueteContable paqueteContable)
         {
-            await _dbContext.UpdateAsync(paqueteContable, Mapper);
+            //await _dbContext.UpdateAsync(paqueteContable, Mapper);
+            //return paqueteContable.Id;
+
+            try
+            {
+                var registro = await _dbContext.Set<PaqueteContable>()
+            .AsNoTracking()
+            .SingleOrDefaultAsync(x => x.Id == paqueteContable.Id && !x.IsDeleted);
+
+                if (registro == null)
+                {
+                    return 0;
+                }
+
+                registro.Id = paqueteContable.Id;
+                registro.CodPaquete = paqueteContable.CodPaquete;
+                registro.Descripcion = paqueteContable.Descripcion;
+                registro.UsuarioCreador = paqueteContable.UsuarioCreador;
+                registro.UltimoUsuario = paqueteContable.UltimoUsuario;
+                registro.FechaUltAcceso = paqueteContable.FechaUltAcceso;
+                registro.UltimoAsiento = paqueteContable.UltimoAsiento;
+                registro.Marcado = paqueteContable.Marcado;
+                registro.IsDeleted = paqueteContable.IsDeleted;
+                registro.Updatedby = paqueteContable.Updatedby;
+                registro.UpdateDate = paqueteContable.UpdateDate;
+                registro.Createdby = registro.Createdby;
+                registro.CreateDate = registro.CreateDate;
+
+                _dbContext.Set<PaqueteContable>().Attach(registro);
+                _dbContext.Entry(registro).State = EntityState.Modified;
+                await _dbContext.SaveChangesAsync();
+
+            }
+
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+
             return paqueteContable.Id;
-
-
-
-
-
         }
     }
 }

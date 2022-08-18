@@ -7,11 +7,9 @@ namespace StatusERP.Entities.AS.Tablas
     [Table("CategoriasClientes", Schema = Constants.Conjunto)]
     public class CategoriaCliente:EntityBase
     {
-        [Required]
         [StringLength(8)]
         public string CodCategoriaCliente { get; set; }
 
-        [Required]
         [StringLength(40)]
         public string Descripcion { get; set; }
 

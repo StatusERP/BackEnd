@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Dto.Request.CG;
 using StatusERP.Dto.Response;
@@ -11,29 +12,39 @@ namespace StatusERP.Services.Implementations.CG
     {
         private readonly ITipoPartidaRepository _repository;
         private readonly ILogger<TipoPartidaService> _logger;
+        private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-        public TipoPartidaService(ITipoPartidaRepository repository,ILogger<TipoPartidaService> logger)
+        public TipoPartidaService(ITipoPartidaRepository repository, ILogger<TipoPartidaService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
         {
             _repository = repository;
             _logger = logger;
+            _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoTipoPartida request, string userId, string codTipoPartida)
         {
-            
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para crear tipos de partida.");
+                    response.Success = false;
+                    return response;
+                }
+
                 var buscarCodTipoPartida = await _repository.BuscarCodTipoPartidaAsync(codTipoPartida);
                 if (buscarCodTipoPartida != null)
                 {
-                    throw new Exception($"El codigo de Tipo Partida {buscarCodTipoPartida.CodTipoPartida} ya Existe");
+                    throw new Exception($"El código de tipo de partida {buscarCodTipoPartida.CodTipoPartida} ya existe.");
                 }
                 response.Result = await _repository.CreateAsync(new TipoPartida
                 {
-                    CodTipoPartida = request.codTipoPartida,
+                    CodTipoPartida = request.CodTipoPartida,
                     Descripcion = request.Descripcion,
-                    IsDeleted=false,
+                    IsDeleted = false,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now,
                     Createdby = userId,
@@ -53,9 +64,20 @@ namespace StatusERP.Services.Implementations.CG
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
+
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para eliminar paquetes contables.");
+                    response.Success = false;
+                    return response;
+                }
+
+
                 await _repository.DeleteAsync(id, userId);
                 response.Success = true;
                 response.Result = id;
@@ -70,11 +92,21 @@ namespace StatusERP.Services.Implementations.CG
             return response;
         }
 
-        public async Task<BaseResponseGeneric<ICollection<TipoPartida>>> GetAsync(int page, int rows)
+        public async Task<BaseResponseGeneric<ICollection<TipoPartida>>> GetAsync(int page, int rows, string userId)
         {
             var response = new BaseResponseGeneric<ICollection<TipoPartida>>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para consultar tipos de partida.");
+                    response.Success = false;
+                    return response;
+                }
+
+
                 response.Result = await _repository.GetCollectionAsync(page, rows);
                 response.Success = true;
             }
@@ -111,14 +143,24 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para modificar tipos de partida.");
+                    response.Success = false;
+                    return response;
+                }
+
 
                 response.Result = await _repository.UpdateAsync(new TipoPartida
                 {
                     Id = id,
-                    CodTipoPartida = request.codTipoPartida,
+                    CodTipoPartida = request.CodTipoPartida,
                     Descripcion = request.Descripcion,
+                    IsDeleted = false,
                     Updatedby = userId,
-                    UpdateDate = DateTime.Now
+                    UpdateDate = DateTime.Now,
                 });
                 response.Success = true;
             }

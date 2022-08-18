@@ -1,21 +1,24 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.AS.Tablas;
+using StatusERP.Entities.CG.Tablas;
+using StatusERP.Entities.CI.Tablas;
 
 namespace StatusERP.Entities.FA.Tablas
 {
     [Table("GlobalesFA", Schema = Constants.Conjunto)]
     public class GlobalesFA : EntityBase
     {
-        public Int16? Llave { get; set; }
+        public int? BodegaDefaultId { get; set; }
+        [ForeignKey(nameof(BodegaDefaultId))]
+        public Bodega Bodega { get; set; }
 
-        [StringLength(4)]
-        public string? BodegaDefault { get; set; }
-
-        [StringLength(4)]
-        public string? CondPagoContado { get; set; }
+        public int? CondPagoContadoId { get; set; }
+        [ForeignKey(nameof(CondPagoContadoId))]
+        public CondicionPago CondicionPago { get; set; }
 
         public bool VendedorObligator { get; set; }
-
+         
         public bool FactExcPedido { get; set; }
 
         public bool UsaTarjetaCred { get; set; }
@@ -48,11 +51,9 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool RedondearFactura { get; set; }
 
-        [Required(ErrorMessage ="El factor de redondeo es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal FactorRedondeo { get; set; }
 
-        [Required(ErrorMessage = "La cantidad de decimales en precios es requerida.")]
         public Int16 PreciosDec { get; set; }
 
         public bool DescEnPrecio { get; set; }
@@ -63,11 +64,9 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool AplicaNiPrImp1 { get; set; }
 
-        [StringLength(1)]
-        public string? MonedaImp1 { get; set; }
-
-        [StringLength(12)]
-        public string ? NivPrecioImp1 { get; set; }
+        public int? NivelPrecioImp1Id { get; set; }
+        [ForeignKey(nameof(NivelPrecioImp1Id))]
+        public NivelPrecio NivelPrecioImp1 { get; set; }
 
         public bool PagoComParcial { get; set; }
 
@@ -76,47 +75,37 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool AsientoVentaPor { get; set; }
 
-        [StringLength(4)]
-        public string ? TipoAsiento { get; set; }
+        public int? TipoPartidaId { get; set; }
+        [ForeignKey(nameof(TipoPartidaId))]
+        public TipoPartida TipoPartida{ get; set; }
 
-        [StringLength(4)]
-        public string ? Paquete { get; set; }
+        public int? PaqueteId { get; set; }
+        [ForeignKey(nameof(PaqueteId))]
+        public PaqueteContable PaqueteContable { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrFlete { get; set; }
+        public int? CtrCtaFleteId { get; set; }
+        [ForeignKey(nameof(CtrCtaFleteId))]
+        public CentroCuenta CtrCtaFlete { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaFlete { get; set; }
+        public int? CtrCtaSeguroId { get; set; }
+        [ForeignKey(nameof(CtrCtaSeguroId))]
+        public CentroCuenta CtrCtaSeguro { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrSeguro { get; set; }
+        public int? CtrCtaDocumentacionId { get; set; }
+        [ForeignKey(nameof(CtrCtaDocumentacionId))]
+        public CentroCuenta CtrCtaDocumentacion { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaSeguro { get; set; }
+        public int? CtrCtaImpuesto1Id { get; set; }
+        [ForeignKey(nameof(CtrCtaImpuesto1Id))]
+        public CentroCuenta CtrCtaImpuesto1 { get; set; }
 
-        [StringLength(25)]
-        public string  ? CtrDocumentanci { get; set; }
+        public int? CtrCtaImpuesto2Id { get; set; }
+        [ForeignKey(nameof(CtrCtaImpuesto2Id))]
+        public CentroCuenta CtrCtaImpuesto2 { get; set; }
 
-        [StringLength(25)]
-        public string ? CtaDocumentaci { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrImpuesto1 { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaImpuesto1 { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrImpuesto2 { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaImpuesto2 { get; set; }
-
-        [StringLength(25)]
-        public string ? CtrImpComisio { get; set; }
-
-        [StringLength(25)]
-        public string ? CtaImpComisio { get; set; }
+        public int? CtrCtaImpComisioId { get; set; }
+        [ForeignKey(nameof(CtrCtaImpComisioId))]
+        public CentroCuenta CtrCtaImpComisio { get; set; }
 
         public bool UsarRubros { get; set; }
 
@@ -151,15 +140,12 @@ namespace StatusERP.Entities.FA.Tablas
 
         public string ? Observaciones { get; set; }
 
-        [StringLength(12)]
-        public string ? NivPrePublico { get; set; }
-
-        [StringLength(1)]
-        public string ? MonedaPublico { get; set; }
+        public int? NivelPrecioPublicoId { get; set; }
+        [ForeignKey(nameof(NivelPrecioPublicoId))]
+        public NivelPrecio NivelPrecioPublico { get; set; }
 
         public string ? ColumnasEstandar { get; set; }
 
-        [Required(ErrorMessage = "El criterio para el Asiento de Costo es requerido.")]
         [StringLength(1)]
         public string AsientoCostoPor { get; set; }
 
@@ -175,27 +161,23 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool IntegracionConta { get; set; }
 
-        [Required(ErrorMessage = "El tipo de Contabilidad por omisión es requerido.")]
         [StringLength(1)]
         public string TipoContaOmision { get; set; }
 
-        [StringLength(4)]
-        public string ? TipoCambio { get; set; }
+        public int? TipoCambioId { get; set; }
+        [ForeignKey(nameof(TipoCambioId))]
+        public TipoCambio TipoCambio { get; set; }
 
         public bool PrecisionMaxima { get; set; }
 
-        [Required(ErrorMessage = "La cantidd de líneas permitida por artículo es requerida.")]
-        public Int16 LineasArticulo { get; set;}
+       public Int16 LineasArticulo { get; set;}
 
-        [Required(ErrorMessage = "La cantidad de líneas por factura es requerida.")]
-        public Int16 LineasFactura { get; set; }
+       public Int16 LineasFactura { get; set; }
 
-        [Required(ErrorMessage = "La cantidad de líneas permitidas después del detalle en factura es requerida.")]
         public Int16 LineasAdicionales { get; set; }
 
         public bool DetalleKits { get; set; }
 
-        [Required(ErrorMessage = "La moneda para los precios de clientes nuevos es requerida.")]
         [StringLength(1)]
         public string MonedaPrecios { get; set; }
 
@@ -209,8 +191,9 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool? Prevista5 { get; set; }
 
-        [StringLength(25)]
-        public string ? CtrConsumo { get; set; }
+        public int? CtrConsumoId { get; set; }
+        [ForeignKey(nameof(CtrConsumoId))]
+        public CentroCosto CentroCostoConsumo { get; set; }
 
         public bool CCEnLinea { get; set; }
 
@@ -222,7 +205,6 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool Imp2EnBonifica { get; set; }
 
-        [Required(ErrorMessage = "El criterio para el Asiento Contable de CXC es requerido.")]
         [StringLength(1)]
         public string AsientoContCXCPor { get; set; }
 
@@ -231,7 +213,6 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(60)]
         public string ? NomRubro10Cli { get; set; }
 
-        [Required(ErrorMessage = "La lista de precios por omisión al crear un cliente es requerida.")]
         [StringLength(1)]
         public string ListaPrecios { get; set; }
 
@@ -265,7 +246,6 @@ namespace StatusERP.Entities.FA.Tablas
 
         public Int16 ? MaxDocsVenc { get; set; }
 
-        [Required(ErrorMessage = "Los decimales en precios en dólares son requeridos.")]
         public Int16 PreciosDecDolar { get; set; }
 
         public bool CondPagoNivPre { get; set; }
@@ -298,17 +278,13 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool CalculoImp2 { get; set; }
 
-        [Required(ErrorMessage = "La Categoría de Cliente es requerida.")]
-        [StringLength(8)]
-        public string CategoriaCliente { get; set; }
+        public int CategoriaClienteId { get; set; }
+        [ForeignKey(nameof(CategoriaClienteId))]
+        public CategoriaCliente CategoriaCliente { get; set; }
 
-        [Required(ErrorMessage = "El nivel de precio es requerido.")]
-        [StringLength(12)]
-        public string NivelPrecio { get; set; }
-
-        [Required(ErrorMessage = "La moneda del nivel de precio es requerida.")]
-        [StringLength(1)]
-        public string MonedaNivel { get; set; }
+        public int NivelPrecioId { get; set; }
+        [ForeignKey(nameof(NivelPrecioId))]
+        public NivelPrecio NivelPrecio { get; set; }
 
         public bool DescuentoCascada { get; set; }
 
@@ -316,15 +292,15 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool RetencionesFletes { get; set; }
 
-        [StringLength(20)]
-        public string ? Articulo { get; set; }
+        public int ? ArticuloId { get; set; }
+        [ForeignKey(nameof(ArticuloId))]
+        public Articulo Articulo { get; set; }
 
         [StringLength(4)]
         public string ? CodigoRetencion { get; set; }
 
         public bool AplicarDescGen { get; set; }
 
-        [Required(ErrorMessage = "El mod de aplicación en caso de múltiples descuentos es requerido.")]
         [StringLength(1)]
         public string ModoDescMult { get; set; }    
 
@@ -334,7 +310,7 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool AutorGrabar { get; set; }
 
-        public bool AutroAprobar { get; set; }
+        public bool AutorAprobar { get; set; }
 
         public bool AutorFactuRemitir { get; set; } 
 

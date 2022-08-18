@@ -209,7 +209,6 @@ public class CategoriaClienteService : ICategoriaClienteService
                 CtrCtaIntCorrId = request.CtrCtaIntCorrId,
                 CtrCtaVentasExenId = request.CtrCtaVentasExenId,
                 CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
-                IsDeleted = false,
                 Updatedby = userId,
                 UpdateDate = DateTime.Now,
             });

@@ -7,7 +7,7 @@ namespace StatusERP.Services.Interfaces.CG
 {
     public interface IPaqueteContableService
     {
-        Task<BaseResponseGeneric<ICollection<PaqueteContable>>> GetAsync(int page, int rows);
+        Task<BaseResponseGeneric<ICollection<PaqueteContable>>> GetAsync(int page, int rows, string userId);
 
         Task<BaseResponseGeneric<PaqueteContable>> GetByIdAsync(int id);
 

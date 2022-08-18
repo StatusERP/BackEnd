@@ -27,8 +27,42 @@ public class TipoImpuestoRepository : StatusERPContextBase<TipoImpuesto>, ITipoI
 
     public async Task<int> UpdateAsync(TipoImpuesto tipoImpuesto)
     {
-        await _dbContext.UpdateAsync(tipoImpuesto,Mapper);
+        //await _dbContext.UpdateAsync(tipoImpuesto,Mapper);
+        //return tipoImpuesto.Id;
+
+        try
+        {
+            var registro = await _dbContext.Set<TipoImpuesto>()
+        .AsNoTracking()
+        .SingleOrDefaultAsync(x => x.Id == tipoImpuesto.Id && !x.IsDeleted);
+
+            if (registro == null)
+            {
+                return 0;
+            }
+
+            registro.Id = tipoImpuesto.Id;
+            registro.CodTipoImpuesto = tipoImpuesto.CodTipoImpuesto;
+            registro.Descripcion = tipoImpuesto.Descripcion;
+            registro.Activo = registro.Activo; 
+            registro.IsDeleted = registro.IsDeleted;
+            registro.Updatedby = tipoImpuesto.Updatedby;
+            registro.UpdateDate = tipoImpuesto.UpdateDate;
+            registro.Createdby = registro.Createdby;
+            registro.CreateDate = registro.CreateDate;
+
+            _dbContext.Set<TipoImpuesto>().Attach(registro);
+            _dbContext.Entry(registro).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
+
+        catch (Exception ex)
+        {
+            Console.Write(ex);
+        }
+
         return tipoImpuesto.Id;
+
     }
 
     public async Task<int> DeleteAsync(int id, string userId)

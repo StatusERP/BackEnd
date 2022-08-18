@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Dto.Request.CG;
 using StatusERP.Dto.Response;
@@ -11,11 +12,13 @@ namespace StatusERP.Services.Implementations.CG
     {
         private readonly IPaqueteContableRepository _repository;
         private readonly ILogger<PaqueteContableService> _logger;
+        private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-        public PaqueteContableService(IPaqueteContableRepository repository, ILogger<PaqueteContableService> logger)
+        public PaqueteContableService(IPaqueteContableRepository repository, ILogger<PaqueteContableService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
         {
             _repository = repository;
             _logger = logger;
+            _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
 
         public async Task<BaseResponseGeneric<int>> CreateAsync(DtoPaqueteContable request, string userId, string codPaquete)
@@ -23,25 +26,29 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarCodPaquete = await _repository.BuscarCodPaqueteContableAsync(codPaquete);
-                if (buscarCodPaquete != null)
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
                 {
-                    throw new Exception($"El codigo de paquete contable {buscarCodPaquete.CodPaquete} ya existe");
+                    response.Errors.Add($"No tiene privilegios para crear paquetes contables.");
+                    response.Success = false;
+                    return response;
+                }
+
+                var buscarPaqueteContable = await _repository.BuscarCodPaqueteContableAsync(codPaquete);
+                if (buscarPaqueteContable != null)
+                {
+                    throw new Exception($"El código de Paquete Contable {buscarPaqueteContable.CodPaquete} ya existe.");
                 }
                 response.Result = await _repository.CreateAsync(new PaqueteContable
                 {
                     CodPaquete = request.CodPaquete,
                     Descripcion = request.Descripcion,
                     UsuarioCreador = userId,
-                    UltimoUsuario  = userId,
+                    UltimoUsuario = userId,
                     FechaUltAcceso = DateTime.Now,
-                    //Conversion = request.Conversion,
-                    //TipoCambio = request.TipoCambio,
-                    //AceptaDatos = request.AceptaDatos,
-                    //UsaCentroCosto = request.UsaCentroCosto,
-                    //Notas = request.Notas,
-                    //UsoRestringido = request.UsoRestringido,
-                    //OrigenConversion = request.OrigenConversion,
+                    UltimoAsiento = request.UltimoAsiento,
+                    Marcado = request.Marcado,
                     IsDeleted = false,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now,
@@ -62,9 +69,20 @@ namespace StatusERP.Services.Implementations.CG
 
         public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
+
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para eliminar paquetes contables.");
+                    response.Success = false;
+                    return response;
+                }
+
+
                 await _repository.DeleteAsync(id, userId);
                 response.Success = true;
                 response.Result = id;
@@ -79,11 +97,21 @@ namespace StatusERP.Services.Implementations.CG
             return response;
         }
 
-        public async Task<BaseResponseGeneric<ICollection<PaqueteContable>>> GetAsync(int page, int rows)
+        public async Task<BaseResponseGeneric<ICollection<PaqueteContable>>> GetAsync(int page, int rows, string userId)
         {
             var response = new BaseResponseGeneric<ICollection<PaqueteContable>>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para consultar paquetes contables.");
+                    response.Success = false;
+                    return response;
+                }
+
+
                 response.Result = await _repository.GetCollectionAsync(page, rows);
                 response.Success = true;
             }
@@ -120,14 +148,29 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para modificar paquetes contables.");
+                    response.Success = false;
+                    return response;
+                }
+
 
                 response.Result = await _repository.UpdateAsync(new PaqueteContable
                 {
                     Id = id,
                     CodPaquete = request.CodPaquete,
                     Descripcion = request.Descripcion,
+                    UsuarioCreador = userId,
+                    UltimoUsuario = userId,
+                    FechaUltAcceso = DateTime.Now,
+                    UltimoAsiento = request.UltimoAsiento,
+                    Marcado = request.Marcado,
+                    IsDeleted = false,
                     Updatedby = userId,
-                    UpdateDate = DateTime.Now
+                    UpdateDate = DateTime.Now,
                 });
                 response.Success = true;
             }

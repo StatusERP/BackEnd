@@ -12,10 +12,10 @@ namespace StatusERP.Entities.CG.Tablas
         [StringLength(40)]
         public string Descripcion { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string UsuarioCreador { get; set; }
 
-        [StringLength(25)] 
+        [StringLength(250)] 
         public string UltimoUsuario { get; set; }
 
         public DateTime FechaUltAcceso { get; set; }
