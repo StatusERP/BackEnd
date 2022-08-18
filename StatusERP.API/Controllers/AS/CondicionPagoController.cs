@@ -24,7 +24,11 @@ public class CondicionPagoController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<BaseResponseGeneric<ICollection<CondicionPago>>>> Get(int page, int rows)
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+
+        if (userId == null) return Unauthorized();
+
+        return Ok(await _service.GetAsync(page, rows, userId.Value));
     }
 
     [HttpGet("{id:int}")]
@@ -38,8 +42,8 @@ public class CondicionPagoController : ControllerBase
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value,request.CodCondicionPago);
-        HttpContext.Response.Headers.Add("location",$"/api/AS/condicionPago/{response.Result}");
+        var response = await _service.CreateAsync(request, userId.Value, request.CodCondicionPago);
+        HttpContext.Response.Headers.Add("location",$"/api/AS/CondicionPago/{response.Result}");
         return Ok(response);
     }
 

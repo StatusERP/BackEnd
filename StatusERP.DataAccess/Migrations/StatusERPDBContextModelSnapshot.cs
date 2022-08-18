@@ -871,6 +871,89 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("ConsecutivoUsuario", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DetalleDireccion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Campo01")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo02")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo03")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo04")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo05")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo06")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo07")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo08")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo09")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<string>("Campo10")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int>("CodDetalleDireccion")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<int>("DireccionId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DireccionId");
+
+                    b.HasIndex(new[] { "CodDetalleDireccion" }, "IxCodDetalleDireccion")
+                        .IsUnique();
+
+                    b.ToTable("DetalleDirecciones", "H2C");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Direccion", b =>
                 {
                     b.Property<int>("Id")
@@ -16333,6 +16416,17 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Rubro1CP");
 
                     b.Navigation("Rubro2CP");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DetalleDireccion", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Direccion", "Direccion")
+                        .WithMany()
+                        .HasForeignKey("DireccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Direccion");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DivGeografica1", b =>

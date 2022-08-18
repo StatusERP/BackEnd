@@ -49,6 +49,7 @@ namespace StatusERP.DataAccess
         public DbSet<CondicionPago> CondicionesPago { get; set; }
         public DbSet<ConsecutivoGlobal> ConsecutivosGlobales { get; set; }
         public DbSet<ConsecutivoUsuario> ConsecutivoUsuario { get; set; }
+        public DbSet<DetalleDireccion> DetalleDirecciones { get; set; }
         public DbSet<Direccion> Direcciones { get; set; }
         public DbSet<DivGeografica1> DivGeograficas1 { get; set; }
         public DbSet<DivGeografica2> DivGeograficas2 { get; set; }
@@ -135,7 +136,6 @@ namespace StatusERP.DataAccess
         public DbSet<PedidoDet> PedidoDets { get; set; }
         public DbSet<FacturaDet> FacturaDets { get; set; }
         public DbSet<FacturaEnc> FacturaEncs { get; set; }
-        public DbSet<Direccion> Direcciones { get; set; }
         //public DbSet<DetalleDireccion> DetalleDirecciones { get; set; }
         //public DbSet<DirEmbarque> DirEmbarques { get; set; }
 

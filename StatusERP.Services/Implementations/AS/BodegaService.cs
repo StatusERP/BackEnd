@@ -6,6 +6,7 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.AS;
 
@@ -31,7 +32,7 @@ public class BodegaService:IBodegaService
         try
         {
 
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAS", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAS", Constants.EmpresaId, userId);
 
 
             if (buscarPrivilegio == null)
@@ -81,7 +82,7 @@ public class BodegaService:IBodegaService
         try
         {
 
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9,  userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", Constants.EmpresaId,  userId);
             
            
             
@@ -138,7 +139,7 @@ public class BodegaService:IBodegaService
         try
         {
 
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAMOD", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAMOD", Constants.EmpresaId, userId);
 
 
 

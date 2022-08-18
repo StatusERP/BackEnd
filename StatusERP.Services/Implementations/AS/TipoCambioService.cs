@@ -5,6 +5,7 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.AS
 {
@@ -26,7 +27,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIOADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIOADD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -68,7 +69,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIODEL", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIODEL", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -97,7 +98,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<ICollection<TipoCambio>>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIO", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIO", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -143,7 +144,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIOMOD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_TIPOCAMBIOMOD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {

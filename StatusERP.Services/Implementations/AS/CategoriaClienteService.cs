@@ -5,6 +5,7 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.AS;
 
@@ -27,7 +28,7 @@ public class CategoriaClienteService : ICategoriaClienteService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLIADD", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLIADD", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -94,7 +95,7 @@ public class CategoriaClienteService : ICategoriaClienteService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLIDEL", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLIDEL", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -123,7 +124,7 @@ public class CategoriaClienteService : ICategoriaClienteService
         var response = new BaseResponseGeneric<ICollection<CategoriaCliente>>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLI", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLI", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -169,7 +170,7 @@ public class CategoriaClienteService : ICategoriaClienteService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLIMOD", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_CATEGOR_CLIMOD", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {

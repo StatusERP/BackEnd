@@ -5,6 +5,7 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.AS
 {
@@ -26,7 +27,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTOADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTOADD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -92,7 +93,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTODEL", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTODEL", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -121,7 +122,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<ICollection<Impuesto>>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTOS", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTOS", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -167,7 +168,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTOMOD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_IMPUESTOMOD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {

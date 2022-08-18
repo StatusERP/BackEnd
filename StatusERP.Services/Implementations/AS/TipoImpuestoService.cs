@@ -5,6 +5,7 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.AS;
 
@@ -27,7 +28,7 @@ public class TipoImpuestoService : ITipoImpuestoService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP_ADD", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP_ADD", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -70,7 +71,7 @@ public class TipoImpuestoService : ITipoImpuestoService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP_DEL", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP_DEL", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -99,7 +100,7 @@ public class TipoImpuestoService : ITipoImpuestoService
         var response = new BaseResponseGeneric<ICollection<TipoImpuesto>>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -145,7 +146,7 @@ public class TipoImpuestoService : ITipoImpuestoService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP_MOD", 9, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_ADM_TIPIMP_MOD", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {

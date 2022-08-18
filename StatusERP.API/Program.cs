@@ -124,6 +124,9 @@ builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService
 builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
 builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
 
+builder.Services.AddScoped<IDetalleDireccionService, DetalleDireccionService>();
+builder.Services.AddScoped<IDetalleDireccionRepository, DetalleDireccionRepository>();
+
 builder.Services.AddScoped<IDireccionService, DireccionService>();
 builder.Services.AddScoped<IDireccionRepository, DireccionRepository>();
 

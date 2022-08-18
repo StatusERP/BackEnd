@@ -5,6 +5,7 @@ using StatusERP.Dto.Request.CG;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.CG.Tablas;
 using StatusERP.Services.Interfaces.CG;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.CG
 {
@@ -26,7 +27,7 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CG_ADMIN_PAQUETE", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -73,7 +74,7 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CG_ADMIN_PAQUETE", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -102,7 +103,7 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<ICollection<PaqueteContable>>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CG_ADMIN_PAQUETE", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -148,7 +149,7 @@ namespace StatusERP.Services.Implementations.CG
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_BODEGAADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("CG_ADMIN_PAQUETE", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
