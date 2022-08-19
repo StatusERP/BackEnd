@@ -42,8 +42,6 @@ namespace StatusERP.DataAccess.Repositories.AS
         public async Task<ICollection<DetalleDireccion>> GetCollectionAsync()
 
         {
-
-
             return await _dbContext.DetalleDirecciones
               .Include(p => p.Direccion)
               .Where(p => !p.IsDeleted)

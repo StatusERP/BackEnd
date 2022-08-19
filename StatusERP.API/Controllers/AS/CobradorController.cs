@@ -1,70 +1,65 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
+using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Interfaces.AS;
-using System.Security.Claims;
 
-namespace StatusERP.API.Controllers.AS
+namespace StatusERP.API.Controllers.AS;
+[ApiController]
+[Route("api/AS/[controller]")]
+[Authorize]
+public class CobradorController : ControllerBase
 {
-    [ApiController]
-    [Route("api/AS/[controller]")]
-    [Authorize]
-    public class CobradorController : ControllerBase
+    private readonly ICobradorService _service;
+    private readonly ILogger<CobradorService> _logger;
+
+    public CobradorController(ICobradorService service, ILogger<CobradorService> logger)
     {
-        private readonly ICobradorService _service;
+        _service = service;
+        _logger = logger;
+    }
+    [HttpGet]
+    public async Task<ActionResult<BaseResponseGeneric<ICollection<Cobrador>>>> Get()
+    {
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
 
-        public CobradorController(ICobradorService service)
-        {
-            _service = service;
-        }
-        [HttpGet]
-        //filter =""
-        //page =1||2
-        //rows =10||10
-        public async Task<ActionResult<BaseResponseGeneric<ICollection<Cobrador>>>> Get(
-            int page,
-            int rows
-            )
-        {
+        if (userId == null) return Unauthorized();
 
-            return Ok(await _service.GetAsync(page, rows));
+        return Ok(await _service.GetAsync(userId.Value));
+    }
 
-        }
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<BaseResponseGeneric<Cobrador>>> Get(int id)
-        {
-            return Ok(await _service.GetByIdAsync(id));
-        }
-        [HttpPost]
-        public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoCobrador request)
-        {
-            var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<BaseResponseGeneric<Cobrador>>> Get(int id)
+    {
+        return Ok(await _service.GetByIdAsync(id));
+    }
 
-            if (userId == null) return Unauthorized();
-            var response = await _service.CreateAsync(request, userId.Value,request.CodCobrador);
+    [HttpPost]
+    public async Task<ActionResult<BaseResponseGeneric<int>>> Post(DtoCobrador request)
+    {
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        if (userId == null) return Unauthorized();
+        var response = await _service.CreateAsync(request, userId.Value, request.CodCobrador);
+        HttpContext.Response.Headers.Add("location", $"/api/AS/Cobrador/{response.Result}");
+        return Ok(response);
+    }
 
-            HttpContext.Response.Headers.Add("location", $"/api/AS/vendedor/{response.Result}");
-            return Ok(response);
-        }
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult> Put(int id, DtoCobrador request)
+    {
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        var response = await _service.UpdateAsync(id, request, userId.Value);
+        return Ok(new { response });
+    }
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
+    {
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        var response = await _service.DeleteAsync(id, userId.Value);
+        return Ok(response);
 
-        [HttpPut("{id:int}")]
-        public async Task<ActionResult<BaseResponseGeneric<int>>> Put(int id, DtoCobrador request)
-        {
-            var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
-            var response = await _service.UpdateAsync(id, request,userId.Value);
-            
-            return Ok(response);
-        }
-
-        [HttpDelete("{id:int}")]
-        public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id )
-        {
-            var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
-            var response = await _service.DeleteAsync(id,userId.Value);
-            return Ok(response);
-
-        }
     }
 }

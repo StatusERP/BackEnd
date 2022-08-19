@@ -668,6 +668,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "CodCobrador" }, "IxCodCobrador")
+                        .IsUnique();
+
                     b.ToTable("Cobradores", "H2C");
                 });
 
@@ -12386,6 +12389,82 @@ namespace StatusERP.DataAccess.Migrations
                     b.ToTable("DesBonEscalaBonificacion", "H2C");
                 });
 
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.DireccEmbarque", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Cargo")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<int>("ClienteId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Contacto")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Descripcion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DetalleDireccionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Fax")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Telefono1")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Telefono2")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DetalleDireccionId");
+
+                    b.HasIndex(new[] { "ClienteId", "Direccion" }, "IxClienteId_Direccion")
+                        .IsUnique();
+
+                    b.ToTable("DireccEmbarques", "H2C");
+                });
+
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.EscalaBonif", b =>
                 {
                     b.Property<int>("Id")
@@ -17974,6 +18053,25 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired();
 
                     b.Navigation("DocTributario");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.DireccEmbarque", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FA.Tablas.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DetalleDireccion", "detalleDireccion")
+                        .WithMany()
+                        .HasForeignKey("DetalleDireccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("detalleDireccion");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.FacturaEnc", b =>

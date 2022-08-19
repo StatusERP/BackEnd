@@ -118,37 +118,37 @@ namespace StatusERP.DataAccess
 
 
         // Para tablas de FA
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<TipoFactura> TiposFactura { get; set; }
-        public DbSet<ConsecutivoFA> ConsecutivosFA { get; set; }
         public DbSet<ArticuloPrecio> ArticuloPrecios { get; set; }
-        public DbSet<VersionNivelPrecio> VersionesNivelPrecio { get; set; }
-        public DbSet<ConsecuFAUsuario> ConsecuFAUsuarios { get; set; }
-        public DbSet<GlobalesFA> GlobalesFA { get; set; }
-        public DbSet<PaqueteDescuento> PaquetesDescuento { get; set; }
-        public DbSet<ReglaDescuento> ReglasDescuento { get; set; }
-        public DbSet<EscalaBonif> EscalasBonif { get; set; }
         public DbSet<BonifArtXCli> BonifsArtXCli { get; set; }
         public DbSet<BonifClasXCli> BonifsClasXCli { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<ConsecuFAUsuario> ConsecuFAUsuarios { get; set; }
+        public DbSet<ConsecutivoFA> ConsecutivosFA { get; set; }
         public DbSet<DesBonEscalaBonificacion> DesBonEscalaBonificacion { get; set; }
+        public DbSet<DireccEmbarque> DireccEmbarques { get; set; }
+        public DbSet<EscalaBonif> EscalasBonif { get; set; }
         public DbSet<EscalaDcto> EscalasDcto { get; set; }
-        public DbSet<PedidoEnc> PedidoEncs { get; set; }
-        public DbSet<PedidoDet> PedidoDets { get; set; }
         public DbSet<FacturaDet> FacturaDets { get; set; }
         public DbSet<FacturaEnc> FacturaEncs { get; set; }
-        //public DbSet<DetalleDireccion> DetalleDirecciones { get; set; }
-        //public DbSet<DirEmbarque> DirEmbarques { get; set; }
+        public DbSet<GlobalesFA> GlobalesFA { get; set; }
+        public DbSet<PaqueteDescuento> PaquetesDescuento { get; set; }
+        public DbSet<PedidoDet> PedidoDets { get; set; }
+        public DbSet<PedidoEnc> PedidoEncs { get; set; }
+        public DbSet<ReglaDescuento> ReglasDescuento { get; set; }
+        public DbSet<RetencionesDocCC> RetencionesDocCC { get; set; }
+        public DbSet<TipoFactura> TiposFactura { get; set; }
+        public DbSet<VersionNivelPrecio> VersionesNivelPrecio { get; set; }
 
 
 
         // Para tablas de CC
-        public DbSet<RetencionesDocCC> RetencionesDocCC { get; set; }
-        public DbSet<SaldoCliente> SaldosClientes { get; set; }
-        public DbSet<SubTipoDocCC> SubTiposDocCC { get; set; }
-        public DbSet<ClienteRetencion> ClientesRetenciones { get; set; }
+
         public DbSet<AuxiliarCC> AuxiliarCC { get; set; }
+        public DbSet<ClienteRetencion> ClientesRetenciones { get; set; }
         public DbSet<DocumentosCC> DocumentosCC { get; set; }
         public DbSet<GlobalesCC> GlobalesCC { get; set; }
+        public DbSet<SaldoCliente> SaldosClientes { get; set; }
+        public DbSet<SubTipoDocCC> SubTiposDocCC { get; set; }
 
 
         // Para tablas de CP
@@ -177,7 +177,9 @@ namespace StatusERP.DataAccess
         public DbSet<MovProcesados> MovProcesados { get; set; }
         public DbSet<MovBancos> MovBancos { get; set; }
 
+
         // Para Tablas de FC
+        
         public DbSet<CalculoFC> CalculosFC { get; set; }
         public DbSet<ChequeRubroFC> ChequesRubroFC { get; set; }
         public DbSet<DetalleFC> DetallesFC { get; set; }
@@ -200,8 +202,6 @@ namespace StatusERP.DataAccess
         {
 
 
-
-
             base.OnModelCreating(modelBuilder);
             // Escanear el ensamblado entero en busqueda del IEntityTypeConfiguration
 
@@ -210,11 +210,6 @@ namespace StatusERP.DataAccess
             // Aplicar un configuration Individual
 
             //modelBuilder.ApplyConfiguration(new SalaConfiguration());
-
-
-
-
-
 
             base.OnModelCreating(modelBuilder);
 
@@ -227,10 +222,6 @@ namespace StatusERP.DataAccess
             modelBuilder.Entity<Articulo>()
                 .HasIndex(p => new { p.CodArticulo }).IsUnique();
 
-
-
-          
-
             //CI - TipoPago
             modelBuilder.Entity<TipoPago>()
                 .HasIndex(p => p.CodTipoPago , "IxCodTipoPago");
@@ -238,17 +229,6 @@ namespace StatusERP.DataAccess
             //CI - TipoOperacion
             modelBuilder.Entity<TipoOperacion>()
                 .HasIndex(p => p.CodTipoOperacion, "IxCodTipoOperacion");
-
-            ////CI - ConsecutivoInvUsuario
-            //modelBuilder.Entity<ConsecutivoInvUsuario>()
-            //    .HasIndex(p => p.Consecutivo, p.Usuario, "IxConsecutivoUsuario");
-
-            //CI - Lotes
-
-            //modelBuilder.Entity<Lote>()
-            //    .HasOne(x => x.ArtEnLote)
-            //    .WithMany()
-            //    .HasForeignKey(y => y.Id);
 
         }
     }

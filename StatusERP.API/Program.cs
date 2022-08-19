@@ -64,8 +64,6 @@ builder.Services.Configure<AppSettings>(builder.Configuration);
 //Registro la dependencia (Inyeccion de Dependencia)
 builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
 builder.Services.AddScoped<IVendedorService, VendedorService>();
-builder.Services.AddScoped<ICobradorRepository, CobradorRepository>();
-builder.Services.AddScoped<ICobradorService, CobradorService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
 builder.Services.AddScoped<ISucursalService, SucursalService>();
@@ -120,6 +118,9 @@ builder.Services.AddScoped<ICategoriaClienteService, CategoriaClienteService>();
 
 builder.Services.AddScoped<ICategoriaProveedorRepository, CategoriaProveedorRepository>();
 builder.Services.AddScoped<ICategoriaProveedorService, CategoriaProveedorService>();
+
+builder.Services.AddScoped<ICobradorRepository, CobradorRepository>();
+builder.Services.AddScoped<ICobradorService, CobradorService>();
 
 builder.Services.AddScoped<ICondicionPagoRepository, CondicionPagoRepository>();
 builder.Services.AddScoped<ICondicionPagoService, CondicionPagoService>();
@@ -239,6 +240,9 @@ builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvReposito
 
 //builder.Services.AddScoped<IClienteService, ClienteService>();
 //builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
+builder.Services.AddScoped<IDireccEmbarqueRepository, DireccEmbarqueRepository>();
+builder.Services.AddScoped<IDireccEmbarqueService, DireccEmbarqueService>();
 
 builder.Services.AddScoped<IGlobalesFARepository, GlobalesFARepository>();
 builder.Services.AddScoped<IGlobalesFAService, GlobalesFAService>();
