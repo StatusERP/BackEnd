@@ -95,8 +95,7 @@ builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
 builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
 builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
 builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
-builder.Services.AddScoped<IMonedaRepository, MonedaRepository>();
-builder.Services.AddScoped<IMonedaService, MonedaService>();
+
 
 builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
 builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
@@ -133,6 +132,9 @@ builder.Services.AddScoped<IDireccionRepository, DireccionRepository>();
 
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
+
+builder.Services.AddScoped<IMonedaRepository, MonedaRepository>();
+builder.Services.AddScoped<IMonedaService, MonedaService>();
 
 builder.Services.AddScoped<IPaisRepository, PaisRepository>();
 builder.Services.AddScoped<IPaisService, PaisService>();

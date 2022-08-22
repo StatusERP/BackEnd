@@ -1626,6 +1626,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex(new[] { "CodMoneda" }, "IxCodMoneda")
+                        .IsUnique();
+
                     b.ToTable("Monedas", "H2C");
                 });
 
