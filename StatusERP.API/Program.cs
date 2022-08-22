@@ -250,6 +250,9 @@ builder.Services.AddScoped<IGlobalesFAService, GlobalesFAService>();
 builder.Services.AddScoped<INivelPrecioRepository, NivelPrecioRepository>();
 builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
 
+builder.Services.AddScoped<IVersionNivelPrecioRepository, VersionNivelPrecioRepository>();
+builder.Services.AddScoped<IVersionNivelPrecioService, VersionNivelPrecioService>();
+
 
 builder.Services.AddControllers();
 

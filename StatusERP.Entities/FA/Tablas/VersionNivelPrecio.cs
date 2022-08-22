@@ -1,50 +1,41 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.Entities.FA.Tablas
 {
     [Table("VersionesNivelPrecio", Schema = Constants.Conjunto)]
     public class VersionNivelPrecio : EntityBase
     {
-        [Required(ErrorMessage = "El nombre de Nivel Precio es requerido.")]
-        [StringLength(12)]
-        public string NivelPrecio { get; set; }
+        public int NivelPrecioId { get; set; }
+        [ForeignKey(nameof(NivelPrecioId))]
+        public NivelPrecio NivelPrecio { get; set; }
 
-        [Required(ErrorMessage = "La moneda es requerida.")]
-        [StringLength(1)]
-        public string Moneda { get; set; }
-
-        [Required(ErrorMessage = "El número de versión es requerido.")]
         public int Version { get; set; }
 
-        [Required(ErrorMessage = "La fecha de inicio es requerida.")]
         public DateTime FechaInicio { get; set; }
 
-        [Required(ErrorMessage = "La fecha de corte es requerida.")]
         public DateTime FechaCorte { get; set; }
 
-        [Required(ErrorMessage = "El estado es requerido.")]
         [StringLength(1)]
         public string Estado { get; set; }
 
-        [Required(ErrorMessage = "El usuario de creación es requerido.")]
-        [StringLength(25)]
+        [StringLength(250)]
         public string  UsuarioCreacion {get; set; }
 
-        [Required(ErrorMessage = "La fecha y hora de creación son requeridas.")]
         public DateTime FechaHoraCreacion { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string ? UsuarioUltModif { get; set; }
 
         public DateTime ? FechaHoraUltModif { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string ? UsuarioAprobacion { get; set; }  
 
         public DateTime ? FechaHoraAprobacion { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string ? UsuarioAnulacion { get; set; }
 
         public DateTime ? FechaHoraAnulacion { get; set;}

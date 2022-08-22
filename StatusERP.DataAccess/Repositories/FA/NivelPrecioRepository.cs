@@ -11,9 +11,13 @@ public class NivelPrecioRepository:StatusERPContextBase<NivelPrecio>,INivelPreci
     {
     }
 
-    public async Task<ICollection<NivelPrecio>> GetCollectionAsync(int page, int rows)
+    public async Task<ICollection<NivelPrecio>> GetCollectionAsync()
     {
-        return await _dbContext.SelectAsync<NivelPrecio>(page, rows);
+        return await _dbContext.NivelesPrecio
+         .Include(p => p.CondicionPago)
+         .Where(p => !p.IsDeleted)
+         .AsNoTracking()
+         .ToListAsync();
     }
 
     public async Task<NivelPrecio?> GetByIdAsync(int id)

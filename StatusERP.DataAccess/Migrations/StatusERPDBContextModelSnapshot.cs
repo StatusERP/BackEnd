@@ -15122,15 +15122,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Moneda")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("NivelPrecio")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int>("NivelPrecioId")
+                        .HasColumnType("int");
 
                     b.Property<string>("PrecioReferenciaDE")
                         .HasMaxLength(4)
@@ -15148,26 +15141,29 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<string>("UsuarioAnulacion")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("UsuarioAprobacion")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("UsuarioCreacion")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("UsuarioUltModif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("Version")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "NivelPrecioId", "Version" }, "IxNivelPrecioId_Version")
+                        .IsUnique();
 
                     b.ToTable("VersionesNivelPrecio", "H2C");
                 });
@@ -18279,6 +18275,17 @@ namespace StatusERP.DataAccess.Migrations
                         .HasForeignKey("CondicionPagoId");
 
                     b.Navigation("CondicionPago");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.VersionNivelPrecio", b =>
+                {
+                    b.HasOne("StatusERP.Entities.FA.Tablas.NivelPrecio", "NivelPrecio")
+                        .WithMany()
+                        .HasForeignKey("NivelPrecioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NivelPrecio");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FC.Tablas.CalculoFC", b =>

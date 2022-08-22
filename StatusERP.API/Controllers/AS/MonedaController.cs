@@ -22,9 +22,13 @@ public class MonedaController : ControllerBase
         _logger = logger;
     }
     [HttpGet]
-    public async Task<ActionResult<BaseResponseGeneric<ICollection<Moneda>>>> Get(int page, int rows)
+    public async Task<ActionResult<BaseResponseGeneric<ICollection<Moneda>>>> Get()
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+
+        if (userId == null) return Unauthorized();
+
+        return Ok(await _service.GetAsync(userId.Value));
     }
 
     [HttpGet("{id:int}")]
@@ -39,7 +43,7 @@ public class MonedaController : ControllerBase
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
         var response = await _service.CreateAsync(request, userId.Value, request.CodMoneda);
-        HttpContext.Response.Headers.Add("location",$"/api/AS/moneda/{response.Result}");
+        HttpContext.Response.Headers.Add("location",$"/api/AS/Moneda/{response.Result}");
         return Ok(response);
     }
 

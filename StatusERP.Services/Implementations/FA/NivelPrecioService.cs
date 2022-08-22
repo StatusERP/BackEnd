@@ -28,7 +28,7 @@ public class NivelPrecioService : INivelPrecioService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NIVEL_PRECIO", Constants.EmpresaId, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("FA_ADMIN_NPRECADD", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -75,7 +75,7 @@ public class NivelPrecioService : INivelPrecioService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NIVEL_PRECIO", Constants.EmpresaId, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("FA_ADMIN_NPRECDEL", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -104,7 +104,7 @@ public class NivelPrecioService : INivelPrecioService
         var response = new BaseResponseGeneric<ICollection<NivelPrecio>>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NIVEL_PRECIO", Constants.EmpresaId, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("FA_ADMIN_NPREC", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
@@ -114,7 +114,7 @@ public class NivelPrecioService : INivelPrecioService
             }
 
 
-            response.Result = await _repository.GetCollectionAsync(page, rows);
+            response.Result = await _repository.GetCollectionAsync();
             response.Success = true;
         }
         catch (Exception ex)
@@ -150,7 +150,7 @@ public class NivelPrecioService : INivelPrecioService
         var response = new BaseResponseGeneric<int>();
         try
         {
-            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NIVEL_PRECIO", Constants.EmpresaId, userId);
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("FA_ADMIN_NPRECMOD", Constants.EmpresaId, userId);
 
             if (buscarPrivilegio == null)
             {
