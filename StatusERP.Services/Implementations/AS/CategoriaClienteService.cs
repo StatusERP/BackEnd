@@ -119,7 +119,7 @@ public class CategoriaClienteService : ICategoriaClienteService
         return response;
     }
 
-    public async Task<BaseResponseGeneric<ICollection<CategoriaCliente>>> GetAsync(int page, int rows, string userId)
+    public async Task<BaseResponseGeneric<ICollection<CategoriaCliente>>> GetAsync(string userId)
     {
         var response = new BaseResponseGeneric<ICollection<CategoriaCliente>>();
         try
@@ -134,7 +134,7 @@ public class CategoriaClienteService : ICategoriaClienteService
             }
 
 
-            response.Result = await _repository.GetCollectionAsync(page, rows);
+            response.Result = await _repository.GetCollectionAsync();
             response.Success = true;
         }
         catch (Exception ex)

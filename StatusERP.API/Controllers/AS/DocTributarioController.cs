@@ -22,9 +22,13 @@ public class DocTributarioController : ControllerBase
         _logger = logger;
     }
     [HttpGet]
-    public async Task<ActionResult<BaseResponseGeneric<ICollection<DocTributario>>>> Get(int page, int rows)
+    public async Task<ActionResult<BaseResponseGeneric<ICollection<DocTributario>>>> Get()
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+
+        if (userId == null) return Unauthorized();
+
+        return Ok(await _service.GetAsync(userId.Value));
     }
 
     [HttpGet("{id:int}")]
@@ -38,7 +42,7 @@ public class DocTributarioController : ControllerBase
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value,request.CodDocTributario);
+        var response = await _service.CreateAsync(request, userId.Value,request.NumDocTributario);
         HttpContext.Response.Headers.Add("location",$"/api/AS/DocTributario/{response.Result}");
         return Ok(response);
     }

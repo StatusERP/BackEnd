@@ -1,153 +1,183 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS.Interfaces;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
+using StatusERP.Entities;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
 
-namespace StatusERP.Services.Implementations.AS;
-
-public class DocTributarioService:IDocTributarioService
+namespace StatusERP.Services.Implementations.AS
 {
-    private readonly IDocTributarioRepository _repository;
-    private readonly ILogger<DocTributarioService> _logger;
+    public class DocTributarioService : IDocTributarioService
+    {
+        private readonly IDocTributarioRepository _repository;
+        private readonly ILogger<DocTributarioService> _logger;
+        private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
-    public DocTributarioService(IDocTributarioRepository repository,ILogger<DocTributarioService> logger)
-    {
-        _repository = repository;
-        _logger = logger;
-    }
-    public async Task<BaseResponseGeneric<ICollection<DocTributario>>> GetAsync(int page, int rows)
-    {
-        var response = new BaseResponseGeneric<ICollection<DocTributario>>();
-        try
+        public DocTributarioService(IDocTributarioRepository repository, ILogger<DocTributarioService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
         {
-            response.Result = await _repository.GetCollectionAsync(page, rows);
-            response.Success = true;
+            _repository = repository;
+            _logger = logger;
+            _privilegioUsuarioRepository = privilegioUsuarioRepository;
         }
-        catch (Exception ex)
-        {
-            _logger.LogCritical(ex.StackTrace);
-            response.Success = false;
-            response.Errors.Add(ex.Message);
-        }
-        return response;
-    }
 
-    public async Task<BaseResponseGeneric<DocTributario>> GetByIdAsync(int id)
-    {
-        var response = new BaseResponseGeneric<DocTributario>();
-        try
-        {
-            response.Result = await _repository.GetByIdAsync(id) ?? new DocTributario();
-            response.Success = true;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogCritical(ex.StackTrace);
-            response.Success = false;
-            response.Errors.Add(ex.Message);
-        }
-        return response;
-    }
+        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocTributario request, string userId, string numDocTributario)
 
-    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoDocTributario request, string userId, string codDocTributario)
-    {
-        var response = new BaseResponseGeneric<int>();
-        try
         {
-            var buscarCodDocTributario = await _repository.BuscarDocTributarioAsync(codDocTributario);
-            if (buscarCodDocTributario != null)
+            var response = new BaseResponseGeneric<int>();
+
+            try
             {
-                throw new Exception($"El codigo de Documento Tributario {buscarCodDocTributario.CodDocTributario} ya Existe");
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para crear documentos tributarios.");
+                    response.Success = false;
+                    return response;
+                }
+
+                var buscarDocTributario = await _repository.BuscarNumDocTributarioAsync(numDocTributario);
+                if (buscarDocTributario != null)
+                {
+                    throw new Exception($"El número de DocTributario {buscarDocTributario.NumDocTributario} ya existe.");
+                }
+                response.Result = await _repository.CreateAsync(new DocTributario
+                {
+                    NumDocTributario = request.NumDocTributario,
+                    RazonSocial = request.RazonSocial,
+                    Alias = request.Alias,
+                    Activo = request.Activo,
+                    IsDeleted = false,
+                    Updatedby = userId,
+                    UpdateDate = DateTime.Now,
+                    Createdby = userId,
+                    CreateDate = DateTime.Now
+                });
+                response.Success = true;
             }
-            response.Result = await _repository.CreateAsync(new DocTributario
+            catch (Exception ex)
             {
-                CodDocTributario = request.CodDocTributario,
-                RazonSocial = request.razonSocial,
-                Alias = request.Alias,
-                Notas = request.Nota,
-                DigitoVerificador = request.DigitoVerificador,
-                Activo = true,
-                TipoContribuyente = request.TipoContribuyente,
-                NRC = request.Nrc,
-                Giro = request.Giro,
-                Categoria = request.Categoria,
-                DUI = request.Dui,
-                Pasaporte = request.Pasaporte,
-                Carnet = request.Carnet,
-                Otro = request.Otro,
-                InfoLegal = request.infoLegal,
-                Createdby = userId,
-                CreateDate = DateTime.Now,
-                Updatedby = userId,
-                UpdateDate = DateTime.Now
-            });
-            response.Success = true;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogCritical(ex.StackTrace);
-            response.Success = false;
-            response.Errors.Add(ex.Message);
-        }
-        return response;
-    }
+                _logger.LogCritical(ex.StackTrace);
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
 
-    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoDocTributario request, string userId)
-    {
-        var response = new BaseResponseGeneric<int>();
-        try
+            return response;
+        }
+
+        public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
         {
-            response.Result = await _repository.UpdateAsync(new DocTributario
+
+            var response = new BaseResponseGeneric<int>();
+            try
             {
-                Id = id,
-                CodDocTributario = request.CodDocTributario,
-                RazonSocial = request.razonSocial,
-                Alias = request.Alias,
-                Notas = request.Nota,
-                DigitoVerificador = request.DigitoVerificador,
-                Activo = true,
-                TipoContribuyente = request.TipoContribuyente,
-                NRC = request.Nrc,
-                Giro = request.Giro,
-                Categoria = request.Categoria,
-                DUI = request.Dui,
-                Pasaporte = request.Pasaporte,
-                Carnet = request.Carnet,
-                Otro = request.Otro,
-                InfoLegal = request.infoLegal,
-                Updatedby = userId,
-                UpdateDate = DateTime.Now
-            });
-            response.Success = true;
-        }
-        catch (Exception ex)
-        {
-            _logger.LogCritical(ex.StackTrace);
-            response.Success = false;
-            response.Errors.Add(ex.Message);
-        }
-        return response;
-    }
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
 
-    public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
-    {
-        var response = new BaseResponseGeneric<int>();
-        try
-        {
-            await _repository.DeleteAsync(id, userId);
-            response.Success = true;
-            response.Result = id;
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para eliminar documentos tributarios.");
+                    response.Success = false;
+                    return response;
+                }
 
-        }
-        catch (Exception ex)
-        {
-            _logger.LogCritical(ex.StackTrace);
-            response.Success = false;
-            response.Errors.Add(ex.Message);
+
+                await _repository.DeleteAsync(id, userId);
+                response.Success = true;
+                response.Result = id;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
+
+            return response;
         }
 
-        return response;
+        public async Task<BaseResponseGeneric<ICollection<DocTributario>>> GetAsync(string userId)
+        {
+            var response = new BaseResponseGeneric<ICollection<DocTributario>>();
+            try
+            {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para consultar documentos tributarios.");
+                    response.Success = false;
+                    return response;
+                }
+
+
+                response.Result = await _repository.GetCollectionAsync();
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
+
+            return response;
+        }
+
+        public async Task<BaseResponseGeneric<DocTributario>> GetByIdAsync(int id)
+        {
+            var response = new BaseResponseGeneric<DocTributario>();
+            try
+            {
+                response.Result = await _repository.GetByIdAsync(id) ?? new DocTributario();
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
+
+            return response;
+        }
+
+        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoDocTributario request, string userId)
+        {
+            var response = new BaseResponseGeneric<int>();
+            try
+            {
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+
+                if (buscarPrivilegio == null)
+                {
+                    response.Errors.Add($"No tiene privilegios para modificar documentos tributarios.");
+                    response.Success = false;
+                    return response;
+                }
+
+
+                response.Result = await _repository.UpdateAsync(new DocTributario
+                {
+                    Id = id,
+                    NumDocTributario = request.NumDocTributario,
+                    RazonSocial = request.RazonSocial,
+                    Alias = request.Alias,
+                    Activo = request.Activo,
+                    IsDeleted = false,
+                    Updatedby = userId,
+                    UpdateDate = DateTime.Now,
+                });
+                response.Success = true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogCritical(ex.StackTrace);
+                response.Success = false;
+                response.Errors.Add(ex.Message);
+            }
+            return response;
+        }
     }
 }

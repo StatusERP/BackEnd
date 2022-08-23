@@ -11,9 +11,37 @@ public class CategoriaClienteRepository : StatusERPContextBase<CategoriaCliente>
     }
 
 
-    public async Task<ICollection<CategoriaCliente>> GetCollectionAsync(int page, int rows)
+    public async Task<ICollection<CategoriaCliente>> GetCollectionAsync()
     {
-        return await _dbContext.SelectAsync<CategoriaCliente>(page, rows);
+        return await _dbContext.CategoriasCliente
+        .Include(p => p.CCVentas)
+        .Include(p => p.CCDescGral)
+        .Include(p => p.CostVent)
+        .Include(p => p.DescLin)
+        .Include(p => p.CostLin)
+        .Include(p => p.VendCom)
+        .Include(p => p.CobrCom)
+        .Include(p => p.CC)
+        .Include(p => p.LC)
+        .Include(p => p.Contado)
+        .Include(p => p.ProntoPagoCC)
+        .Include(p => p.IntMoraCC)
+        .Include(p => p.RecibosCC)
+        .Include(p => p.DebitoCC)
+        .Include(p => p.CreditoCC)
+        .Include(p => p.Impuesto1CC)
+        .Include(p => p.Impuesto2CC)
+        .Include(p => p.Rubro1CC)
+        .Include(p => p.Rubro2CC)
+        .Include(p => p.AnticipoCC)
+        .Include(p => p.DescBonif)
+        .Include(p => p.DevVentas)
+        .Include(p => p.IntCorr)
+        .Include(p => p.VentasExen)
+        .Include(p => p.AjusteRedondeo)
+        .Where(p => !p.IsDeleted)
+        .AsNoTracking()
+        .ToListAsync();
     }
 
     public async Task<CategoriaCliente?> GetByIdAsync(int id)

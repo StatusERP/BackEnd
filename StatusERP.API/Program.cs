@@ -142,6 +142,9 @@ builder.Services.AddScoped<IPaisService, PaisService>();
 builder.Services.AddScoped<IPrivilegioUsuarioRepository, PrivilegoUsuarioRepository>();
 builder.Services.AddScoped<IPrivilegioUsuarioService, PrivilegioUsuarioService>();
 
+builder.Services.AddScoped<ITipoDocTributarioRepository, TipoDocTributarioRepository>();
+builder.Services.AddScoped<ITipoDocTributarioService, TipoDocTributarioService>();
+
 builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
 builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
 

@@ -4,7 +4,7 @@ namespace StatusERP.DataAccess.Repositories.AS;
 
 public interface ICategoriaClienteRepository
 {
-    Task<ICollection<CategoriaCliente>> GetCollectionAsync(int page, int rows);
+    Task<ICollection<CategoriaCliente>> GetCollectionAsync();
     
     Task<CategoriaCliente?> GetByIdAsync(int id);
     

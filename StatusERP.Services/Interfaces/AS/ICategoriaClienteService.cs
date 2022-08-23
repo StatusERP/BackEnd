@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS;
 
 public interface ICategoriaClienteService
 {
-    Task<BaseResponseGeneric<ICollection<CategoriaCliente>>> GetAsync(int page, int rows, string userId);
+    Task<BaseResponseGeneric<ICollection<CategoriaCliente>>> GetAsync(string userId);
 
     Task<BaseResponseGeneric<CategoriaCliente>> GetByIdAsync(int id);
 

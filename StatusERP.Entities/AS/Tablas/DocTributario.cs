@@ -6,11 +6,9 @@ namespace StatusERP.Entities.AS.Tablas
     [Table("DocTributarios", Schema = Constants.Conjunto)]
     public class DocTributario:EntityBase
     {
-        [Required(ErrorMessage = "Se requiere especificar el código del Documento Tributario.")]
         [StringLength(20)]
-        public string CodDocTributario { get; set; }
+        public string NumDocTributario { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar la razón social del Documento.")]
         [StringLength(150)]
         public string RazonSocial { get; set; }
 
@@ -18,6 +16,10 @@ namespace StatusERP.Entities.AS.Tablas
         public string ? Alias { get; set; }
 
         public string ? Notas { get; set; }
+
+        public int? TipoDocTributarioId { get; set; }
+        [ForeignKey(nameof(TipoDocTributarioId))]
+        public TipoDocTributario TipoDocTributario { get; set; }
 
         [StringLength(10)]
         public string ? DigitoVerificador { get; set; }

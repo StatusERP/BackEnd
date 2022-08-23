@@ -50,8 +50,6 @@ namespace StatusERP.DataAccess.Repositories.AS
 
         public async Task<int> UpdateAsync(Direccion direccion)
         {
-            //await _dbContext.UpdateAsync(direccion, Mapper);
-            //return direccion.Id;
 
             try
             {
@@ -77,6 +75,10 @@ namespace StatusERP.DataAccess.Repositories.AS
                 registro.NombreCampo08 = direccion.NombreCampo08;
                 registro.NombreCampo09 = direccion.NombreCampo09;
                 registro.NombreCampo10 = direccion.NombreCampo10;
+                registro.Updatedby = direccion.Updatedby;
+                registro.UpdateDate = direccion.UpdateDate;
+                registro.Createdby = registro.Createdby;
+                registro.CreateDate = registro.CreateDate;
 
 
                 _dbContext.Set<Direccion>().Attach(registro);
