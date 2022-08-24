@@ -1666,6 +1666,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
+                    b.Property<int?>("CtrCtaAdValoremId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CtrCtaAjusteRedondeoId")
                         .HasColumnType("int");
 
@@ -1682,6 +1685,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("CtrCtaComisionCPId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaComisionId")
                         .HasColumnType("int");
 
                     b.Property<int?>("CtrCtaContadoId")
@@ -1744,6 +1750,12 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int?>("CtrCtaLPId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("CtrCtaPensionAFPCPId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CtrCtaPensionONPCPId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("CtrCtaProntoPagoCCId")
                         .HasColumnType("int");
 
@@ -1774,6 +1786,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int?>("CtrCtaVentasId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("DireccionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<string>("EtiquetaDivGeo1")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -1784,6 +1800,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<int?>("MonedaId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -1800,6 +1820,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CtrCtaAdValoremId");
+
                     b.HasIndex("CtrCtaAjusteRedondeoId");
 
                     b.HasIndex("CtrCtaAnticipoCCId");
@@ -1811,6 +1833,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasIndex("CtrCtaCPId");
 
                     b.HasIndex("CtrCtaComisionCPId");
+
+                    b.HasIndex("CtrCtaComisionId");
 
                     b.HasIndex("CtrCtaContadoId");
 
@@ -1852,6 +1876,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.HasIndex("CtrCtaLPId");
 
+                    b.HasIndex("CtrCtaPensionAFPCPId");
+
+                    b.HasIndex("CtrCtaPensionONPCPId");
+
                     b.HasIndex("CtrCtaProntoPagoCCId");
 
                     b.HasIndex("CtrCtaProntoPagoCPId");
@@ -1871,6 +1899,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasIndex("CtrCtaVentasExenId");
 
                     b.HasIndex("CtrCtaVentasId");
+
+                    b.HasIndex("DireccionId");
+
+                    b.HasIndex("MonedaId");
 
                     b.HasIndex(new[] { "CodPais" }, "IxCodPais")
                         .IsUnique();
@@ -2163,6 +2195,55 @@ namespace StatusERP.DataAccess.Migrations
                         .IsUnique();
 
                     b.ToTable("TiposImpuesto", "H2C");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.TipoTarjeta", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("AssemblyInvocation")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("CodTipoTarjeta")
+                        .IsRequired()
+                        .HasMaxLength(12)
+                        .HasColumnType("nvarchar(12)");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Createdby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TipoCobro")
+                        .IsRequired()
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<DateTime>("UpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Updatedby")
+                        .IsRequired()
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodTipoTarjeta" }, "IxCodTipoTarjeta")
+                        .IsUnique();
+
+                    b.ToTable("TiposTarjeta", "H2C");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.UnidadMedida", b =>
@@ -16746,6 +16827,10 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.Pais", b =>
                 {
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCAdValorem")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaAdValoremId");
+
                     b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCAjusteRedondeo")
                         .WithMany()
                         .HasForeignKey("CtrCtaAjusteRedondeoId");
@@ -16769,6 +16854,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCComisionCP")
                         .WithMany()
                         .HasForeignKey("CtrCtaComisionCPId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCComision")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaComisionId");
 
                     b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCContado")
                         .WithMany()
@@ -16850,6 +16939,14 @@ namespace StatusERP.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("CtrCtaLPId");
 
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCPensionAFPCP")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaPensionAFPCPId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCPensionONPCP")
+                        .WithMany()
+                        .HasForeignKey("CtrCtaPensionONPCPId");
+
                     b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "CCProntoPagoCC")
                         .WithMany()
                         .HasForeignKey("CtrCtaProntoPagoCCId");
@@ -16890,6 +16987,20 @@ namespace StatusERP.DataAccess.Migrations
                         .WithMany()
                         .HasForeignKey("CtrCtaVentasId");
 
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Direccion", "Direccion")
+                        .WithMany()
+                        .HasForeignKey("DireccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "Moneda")
+                        .WithMany()
+                        .HasForeignKey("MonedaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CCAdValorem");
+
                     b.Navigation("CCAjusteRedondeo");
 
                     b.Navigation("CCAnticipoCC");
@@ -16899,6 +17010,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCCC");
 
                     b.Navigation("CCCP");
+
+                    b.Navigation("CCComision");
 
                     b.Navigation("CCComisionCP");
 
@@ -16942,6 +17055,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Navigation("CCLP");
 
+                    b.Navigation("CCPensionAFPCP");
+
+                    b.Navigation("CCPensionONPCP");
+
                     b.Navigation("CCProntoPagoCC");
 
                     b.Navigation("CCProntoPagoCP");
@@ -16961,6 +17078,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("CCVentas");
 
                     b.Navigation("CCVentasExen");
+
+                    b.Navigation("Direccion");
+
+                    b.Navigation("Moneda");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.UsuarioBodega", b =>

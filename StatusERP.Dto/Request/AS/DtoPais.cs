@@ -4,6 +4,7 @@ namespace StatusERP.Dto.Request.AS
 {
     public class DtoPais
     {
+
         [Required(ErrorMessage = "Se requiere especificar el código del País.")]
         [StringLength(4)]
         public string CodPais { get; set; }
@@ -11,7 +12,7 @@ namespace StatusERP.Dto.Request.AS
         [StringLength(4)]
         public string? CodigoISO { get; set; }
 
-        [Required(ErrorMessage = "Se requiere especificar el nombre del Nivel de Precio.")]
+        [Required(ErrorMessage = "Se requiere especificar el nombre del país.")]
         [StringLength(40)]
         public string Nombre { get; set; }
 
@@ -87,10 +88,22 @@ namespace StatusERP.Dto.Request.AS
 
         public int? CtrCtaRentaCPId { get; set; }
 
+        public int? CtrCtaPensionONPCPId { get; set; }
+
+        public int? CtrCtaPensionAFPCPId { get; set; }
+
+        public int? CtrCtaComisionId { get; set; }
+
+        public int? CtrCtaAdValoremId { get; set; }
+
+        public int DireccionId { get; set; }
+
         [StringLength(20)]
         public string? EtiquetaDivGeo1 { get; set; }
 
         [StringLength(20)]
         public string? EtiquetaDivGeo2 { get; set; }
+
+        public int? MonedaId { get; set; }
     }
 }

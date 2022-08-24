@@ -1,15 +1,10 @@
 ﻿using StatusERP.Entities.AS.Tablas;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace StatusERP.DataAccess.Repositories.AS.Interfaces
 {
     public interface IPaisRepository
     {
-        Task<ICollection<Pais>> GetCollectionAsync(int page, int rows);
+        Task<ICollection<Pais>> GetCollectionAsync();
         Task<Pais?> GetByIdAsync(int id);
         Task<Pais?> BuscarCodPaisAsync(string codPais);
         Task<int> CreateAsync(Pais pais);

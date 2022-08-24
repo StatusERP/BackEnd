@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS
 {
     public interface IPaisService
     {
-        Task<BaseResponseGeneric<ICollection<Pais>>> GetAsync(int page, int rows, string userId);
+        Task<BaseResponseGeneric<ICollection<Pais>>> GetAsync(string userId);
         Task<BaseResponseGeneric<Pais>> GetByIdAsync(int id);
 
         Task<BaseResponseGeneric<int>> CreateAsync(DtoPais request, string userId, string codPais);

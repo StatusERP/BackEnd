@@ -6,6 +6,7 @@ using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
 namespace StatusERP.Services.Implementations.AS
 {
@@ -30,7 +31,7 @@ namespace StatusERP.Services.Implementations.AS
             try
             {
 
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISADD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISADD", Constants.EmpresaId, userId);
 
 
 
@@ -94,13 +95,19 @@ namespace StatusERP.Services.Implementations.AS
                     CtrCtaVentasExenId = request.CtrCtaVentasExenId,
                     CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
                     CtrCtaRentaCPId = request.CtrCtaRentaCPId,
+                    CtrCtaPensionONPCPId = request.CtrCtaPensionONPCPId,
+                    CtrCtaPensionAFPCPId = request.CtrCtaPensionAFPCPId,
+                    CtrCtaAdValoremId = request.CtrCtaAdValoremId,
+                    CtrCtaComisionId = request.CtrCtaComisionId,
                     EtiquetaDivGeo1 = request.EtiquetaDivGeo1,
                     EtiquetaDivGeo2 = request.EtiquetaDivGeo2,
+                    DireccionId = request.DireccionId,
+                    MonedaId = request.MonedaId,
                     IsDeleted = false,
+                    Updatedby = userId,
+                    UpdateDate = DateTime.Now,
                     Createdby = userId,
                     CreateDate = DateTime.Now,
-                    Updatedby = userId,
-                    UpdateDate = DateTime.Now
                 });
                 response.Success = true;
             }
@@ -120,7 +127,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISDEL", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISDEL", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -144,13 +151,13 @@ namespace StatusERP.Services.Implementations.AS
             return response;
         }
 
-        public async Task<BaseResponseGeneric<ICollection<Pais>>> GetAsync(int page, int rows, string userId)
+        public async Task<BaseResponseGeneric<ICollection<Pais>>> GetAsync(string userId)
         {
             var response = new BaseResponseGeneric<ICollection<Pais>>();
             try
             {
 
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISES", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISES", Constants.EmpresaId, userId);
 
 
                 if (buscarPrivilegio == null)
@@ -160,7 +167,7 @@ namespace StatusERP.Services.Implementations.AS
                     return response;
                 }
 
-                response.Result = await _repository.GetCollectionAsync(page, rows);
+                response.Result = await _repository.GetCollectionAsync();
                 response.Success = true;
             }
             catch (Exception ex)
@@ -195,7 +202,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISMOD", 9, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_PAISMOD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -246,9 +253,14 @@ namespace StatusERP.Services.Implementations.AS
                     CtrCtaVentasExenId = request.CtrCtaVentasExenId,
                     CtrCtaAjusteRedondeoId = request.CtrCtaAjusteRedondeoId,
                     CtrCtaRentaCPId = request.CtrCtaRentaCPId,
+                    CtrCtaPensionONPCPId = request.CtrCtaPensionONPCPId, 
+                    CtrCtaPensionAFPCPId = request.CtrCtaPensionAFPCPId,
+                    CtrCtaAdValoremId = request.CtrCtaAdValoremId,
+                    CtrCtaComisionId = request.CtrCtaComisionId,
                     EtiquetaDivGeo1 = request.EtiquetaDivGeo1,
                     EtiquetaDivGeo2 = request.EtiquetaDivGeo2,
-                    IsDeleted = false,
+                    DireccionId = request.DireccionId,
+                    MonedaId = request.MonedaId,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now
                 });

@@ -66,6 +66,7 @@ namespace StatusERP.DataAccess
         public DbSet<Sucursal> Sucursales { get; set; }
         public DbSet<TipoCambio> TiposCambio { get; set; }
         public DbSet<TipoDocTributario> TiposDocTributarios { get; set; }
+        public DbSet<TipoTarjeta> TiposTarjeta { get; set; }
         public DbSet<TipoImpuesto> TiposImpuesto { get; set; }
         public DbSet<UnidadMedida> UnidadesMedida { get; set; }
         public DbSet<UsuarioBodega> UsuarioBodega { get; set; }

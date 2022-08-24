@@ -162,10 +162,34 @@ namespace StatusERP.Entities.AS.Tablas
         [ForeignKey(nameof(CtrCtaRentaCPId))]
         public CentroCuenta CCRentaCP { get; set; }
 
+        public int? CtrCtaPensionONPCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaPensionONPCPId))]
+        public CentroCuenta CCPensionONPCP { get; set; }
+
+        public int? CtrCtaPensionAFPCPId { get; set; }
+        [ForeignKey(nameof(CtrCtaPensionAFPCPId))]
+        public CentroCuenta CCPensionAFPCP { get; set; }
+
+        public int? CtrCtaComisionId { get; set; }
+        [ForeignKey(nameof(CtrCtaComisionId))]
+        public CentroCuenta CCComision { get; set; }
+
+        public int? CtrCtaAdValoremId { get; set; }
+        [ForeignKey(nameof(CtrCtaAdValoremId))]
+        public CentroCuenta CCAdValorem { get; set; }
+
+        public int? DireccionId { get; set; }
+        [ForeignKey(nameof(DireccionId))]
+        public Direccion Direccion { get; set; }
+
         [StringLength(20)]
         public string ? EtiquetaDivGeo1 { get; set; }
 
         [StringLength(20)]
         public string ? EtiquetaDivGeo2 { get; set; }
+
+        public int? MonedaId { get; set; }
+        [ForeignKey(nameof(MonedaId))]
+        public Moneda Moneda { get; set; }
     }
 }

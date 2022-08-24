@@ -91,8 +91,6 @@ builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
 builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
 builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
 builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
-
-
 builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
 builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
 builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
@@ -153,6 +151,8 @@ builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
 builder.Services.AddScoped<ITipoImpuestoRepository, TipoImpuestoRepository>();
 builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
 
+builder.Services.AddScoped<ITipoTarjetaRepository, TipoTarjetaRepository>();
+builder.Services.AddScoped<ITipoTarjetaService, TipoTarjetaService>();
 
 
 // Entidades Módulo CG

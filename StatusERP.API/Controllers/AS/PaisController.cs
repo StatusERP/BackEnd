@@ -12,7 +12,7 @@ namespace StatusERP.API.Controllers.AS
     [ApiController]
     [Route("api/AS/[controller]")]
     [Authorize]
-    public class PaisController :ControllerBase
+    public class PaisController : ControllerBase
     {
         private readonly IPaisService _service;
         private readonly ILogger<PaisService> _logger;
@@ -22,13 +22,18 @@ namespace StatusERP.API.Controllers.AS
             _service = service;
             _logger = logger;
         }
+
         [HttpGet]
-        public async Task<ActionResult<BaseResponseGeneric<ICollection<Pais>>>> Get(int page, int rows)
+        public async Task<ActionResult<BaseResponseGeneric<ICollection<Pais>>>> Get()
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+
             if (userId == null) return Unauthorized();
-            return Ok(await _service.GetAsync(page, rows, userId.Value));
+            return Ok(await _service.GetAsync(userId.Value));
         }
+
+
+
 
         [HttpGet("{id:int}")]
         public async Task<ActionResult<BaseResponseGeneric<Pais>>> Get(int id)
@@ -42,7 +47,7 @@ namespace StatusERP.API.Controllers.AS
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
             if (userId == null) return Unauthorized();
             var response = await _service.CreateAsync(request, userId.Value, request.CodPais);
-            HttpContext.Response.Headers.Add("location", $"/api/AS/pais/{response.Result}");
+            HttpContext.Response.Headers.Add("location", $"/api/AS/Pais/{response.Result}");
             return Ok(response);
         }
 
@@ -57,7 +62,6 @@ namespace StatusERP.API.Controllers.AS
         public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
-            if (userId == null) return Unauthorized();
             var response = await _service.DeleteAsync(id, userId.Value);
             return Ok(response);
 
