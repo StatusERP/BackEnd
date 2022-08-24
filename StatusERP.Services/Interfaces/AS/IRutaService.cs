@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS;
 
 public interface IRutaService
 {
-    Task<BaseResponseGeneric<ICollection<Ruta>>> GetAsync( int page, int rows);
+    Task<BaseResponseGeneric<ICollection<Ruta>>> GetAsync(string userId);
     Task<BaseResponseGeneric<Ruta>> GetByIdAsync(int id);
 
     Task<BaseResponseGeneric<int>> CreateAsync(DtoRuta request,string userId, string codRuta);

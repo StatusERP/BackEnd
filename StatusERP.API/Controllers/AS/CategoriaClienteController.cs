@@ -23,7 +23,7 @@ namespace StatusERP.API.Controllers.AS
             _logger = logger;
         }
         [HttpGet]
-        public async Task<ActionResult<BaseResponseGeneric<ICollection<CategoriaCliente>>>> Get(int page, int rows)
+        public async Task<ActionResult<BaseResponseGeneric<ICollection<CategoriaCliente>>>> Get()
         {
             var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
             if (userId == null) return Unauthorized();

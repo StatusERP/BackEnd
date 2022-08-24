@@ -1166,11 +1166,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("CodDocTributario")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
 
@@ -1203,6 +1198,11 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<string>("Notas")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("NumDocTributario")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.Property<string>("Otro")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
@@ -1220,6 +1220,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
+                    b.Property<int?>("TipoDocTributarioId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
@@ -1229,6 +1233,11 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoDocTributarioId");
+
+                    b.HasIndex(new[] { "NumDocTributario" }, "IxNumDocT")
+                        .IsUnique();
 
                     b.ToTable("DocTributarios", "H2C");
                 });
@@ -1961,6 +1970,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodRuta" }, "IxCodRuta")
+                        .IsUnique();
 
                     b.ToTable("Rutas", "H2C");
                 });
@@ -16585,6 +16597,17 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("DivGeografica1");
 
                     b.Navigation("Pais");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.AS.Tablas.DocTributario", b =>
+                {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.TipoDocTributario", "TipoDocTributario")
+                        .WithMany()
+                        .HasForeignKey("TipoDocTributarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoDocTributario");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.AS.Tablas.EntidadFinanciera", b =>

@@ -69,10 +69,6 @@ builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
 builder.Services.AddScoped<ISucursalService, SucursalService>();
 builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
 builder.Services.AddScoped<IZonaService, ZonaService>();
-builder.Services.AddScoped<IRutaRepository, RutaRepository>();
-builder.Services.AddScoped<IRutaService, RutaService>();
-builder.Services.AddScoped<IDocTributarioRepository, DocTributarioRepository>();
-builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
 builder.Services.AddScoped<IEntidadFinacieraRepository, EntidadFinacieraRepository>();
 builder.Services.AddScoped<IEntidadFinacieraService, EntidadFinacieraService>();
 builder.Services.AddScoped<IConsecutivoGlobalRepository, ConsecutivoGlobalRepository>();
@@ -130,6 +126,9 @@ builder.Services.AddScoped<IDetalleDireccionRepository, DetalleDireccionReposito
 builder.Services.AddScoped<IDireccionService, DireccionService>();
 builder.Services.AddScoped<IDireccionRepository, DireccionRepository>();
 
+builder.Services.AddScoped<IDocTributarioRepository, DocTributarioRepository>();
+builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
+
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
 
@@ -141,6 +140,9 @@ builder.Services.AddScoped<IPaisService, PaisService>();
 
 builder.Services.AddScoped<IPrivilegioUsuarioRepository, PrivilegoUsuarioRepository>();
 builder.Services.AddScoped<IPrivilegioUsuarioService, PrivilegioUsuarioService>();
+
+builder.Services.AddScoped<IRutaRepository, RutaRepository>();
+builder.Services.AddScoped<IRutaService, RutaService>();
 
 builder.Services.AddScoped<ITipoDocTributarioRepository, TipoDocTributarioRepository>();
 builder.Services.AddScoped<ITipoDocTributarioService, TipoDocTributarioService>();

@@ -4,7 +4,7 @@ namespace StatusERP.DataAccess.Repositories.AS
 {
     public interface IRutaRepository
     {
-        Task<ICollection<Ruta>> GetCollectionAsync(int page, int rows); 
+        Task<ICollection<Ruta>> GetCollectionAsync(); 
         Task<Ruta?> GetByIdAsync(int id);
         Task<int> CreateAsync(Ruta ruta);
         Task<int> UpdateAsync(Ruta ruta);

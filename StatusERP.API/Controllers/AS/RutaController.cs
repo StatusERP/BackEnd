@@ -16,15 +16,19 @@ public class RutaController : ControllerBase
     private readonly IRutaService _service;
     private readonly ILogger<RutaService> _logger;
 
-    public RutaController(IRutaService service,ILogger<RutaService> logger)
+    public RutaController(IRutaService service, ILogger<RutaService> logger)
     {
         _service = service;
         _logger = logger;
-    } 
+    }
     [HttpGet]
-    public async Task<ActionResult<BaseResponseGeneric<ICollection<Ruta>>>> Get(int page, int rows)
+    public async Task<ActionResult<BaseResponseGeneric<ICollection<Ruta>>>> Get()
     {
-        return Ok(await _service.GetAsync(page, rows));
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+
+        if (userId == null) return Unauthorized();
+
+        return Ok(await _service.GetAsync(userId.Value));
     }
 
     [HttpGet("{id:int}")]
@@ -38,25 +42,24 @@ public class RutaController : ControllerBase
     {
         var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
         if (userId == null) return Unauthorized();
-        var response = await _service.CreateAsync(request, userId.Value,request.CodRuta);
-        HttpContext.Response.Headers.Add("location",$"/api/AS/ruta/{response.Result}");
+        var response = await _service.CreateAsync(request, userId.Value, request.CodRuta);
+        HttpContext.Response.Headers.Add("location", $"/api/AS/Ruta/{response.Result}");
         return Ok(response);
     }
 
     [HttpPut("{id:int}")]
     public async Task<ActionResult> Put(int id, DtoRuta request)
     {
-        var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
-        var response =await _service.UpdateAsync(id, request,userId.Value);
-        return Ok(new {response});
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        var response = await _service.UpdateAsync(id, request, userId.Value);
+        return Ok(new { response });
     }
     [HttpDelete("{id:int}")]
     public async Task<ActionResult<BaseResponseGeneric<int>>> Delete(int id)
     {
-        var userId=HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
-        var response = await _service.DeleteAsync(id,userId.Value);
+        var userId = HttpContext.User.Claims.FirstOrDefault(p => p.Type == ClaimTypes.Sid);
+        var response = await _service.DeleteAsync(id, userId.Value);
         return Ok(response);
-           
+
     }
-    
 }

@@ -29,7 +29,7 @@ namespace StatusERP.Services.Implementations.AS
 
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NITADD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -41,7 +41,7 @@ namespace StatusERP.Services.Implementations.AS
                 var buscarDocTributario = await _repository.BuscarNumDocTributarioAsync(numDocTributario);
                 if (buscarDocTributario != null)
                 {
-                    throw new Exception($"El número de DocTributario {buscarDocTributario.NumDocTributario} ya existe.");
+                    throw new Exception($"El número de documento tributario {buscarDocTributario.NumDocTributario} ya existe.");
                 }
                 response.Result = await _repository.CreateAsync(new DocTributario
                 {
@@ -49,6 +49,18 @@ namespace StatusERP.Services.Implementations.AS
                     RazonSocial = request.RazonSocial,
                     Alias = request.Alias,
                     Activo = request.Activo,
+                    Notas = request.Notas,
+                    TipoDocTributarioId = request.TipoDocTributarioId,
+                    DigitoVerificador = request.DigitoVerificador,
+                    TipoContribuyente = request.TipoContribuyente,
+                    NRC = request.NRC,
+                    Giro = request.Giro,
+                    Categoria = request.Categoria,
+                    DUI = request.DUI,
+                    Pasaporte = request.Pasaporte,
+                    Carnet = request.Carnet,
+                    Otro = request.Otro,
+                    InfoLegal = request.InfoLegal,
                     IsDeleted = false,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now,
@@ -73,7 +85,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NITDEL", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -102,7 +114,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<ICollection<DocTributario>>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NITS", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -148,7 +160,7 @@ namespace StatusERP.Services.Implementations.AS
             var response = new BaseResponseGeneric<int>();
             try
             {
-                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_DocTributario", Constants.EmpresaId, userId);
+                var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_NITMOD", Constants.EmpresaId, userId);
 
                 if (buscarPrivilegio == null)
                 {
@@ -165,7 +177,18 @@ namespace StatusERP.Services.Implementations.AS
                     RazonSocial = request.RazonSocial,
                     Alias = request.Alias,
                     Activo = request.Activo,
-                    IsDeleted = false,
+                    Notas = request.Notas,
+                    TipoDocTributarioId = request.TipoDocTributarioId,
+                    DigitoVerificador = request.DigitoVerificador,
+                    TipoContribuyente = request.TipoContribuyente,
+                    NRC = request.NRC,
+                    Giro = request.Giro,
+                    Categoria = request.Categoria,
+                    DUI = request.DUI,
+                    Pasaporte = request.Pasaporte,
+                    Carnet = request.Carnet,
+                    Otro = request.Otro,
+                    InfoLegal = request.InfoLegal,
                     Updatedby = userId,
                     UpdateDate = DateTime.Now,
                 });
