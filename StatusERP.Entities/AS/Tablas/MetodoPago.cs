@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace StatusERP.Dto.Request.AS
+namespace StatusERP.Entities.AS.Tablas
 {
-    public class DtoMetodoPago
+    [Table("MetodosPago", Schema = Constants.Conjunto)]
+    public class MetodoPago : EntityBase
     {
-
-        [Required(ErrorMessage = "Se requiere indicar el código del Método de Pago.")]
         [StringLength(4)]
         public string CodMetodoPago { get; set; }
 
-        [Required(ErrorMessage = "Se requiere indicar la descripción del Método de Pago.")]
         [StringLength(40)]
         public string Descripcion { get; set; }
 
