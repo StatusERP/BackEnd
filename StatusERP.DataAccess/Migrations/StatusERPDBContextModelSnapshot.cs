@@ -2345,8 +2345,7 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<string>("CodVendedor")
                         .IsRequired()
                         .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)")
-                        .HasColumnName("Vendedor");
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -2368,6 +2367,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
+                    b.Property<string>("Telefono")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
 
@@ -2377,6 +2380,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodVendedor" }, "IxCodVendedor")
+                        .IsUnique();
 
                     b.ToTable("Vendedores", "H2C");
                 });
@@ -2422,6 +2428,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodZona" }, "IxCodZona")
+                        .IsUnique();
 
                     b.ToTable("Zonas", "H2C");
                 });

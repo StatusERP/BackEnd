@@ -6,7 +6,7 @@ namespace StatusERP.Services.Interfaces.AS;
 
 public interface IZonaService
 {
-    Task<BaseResponseGeneric<ICollection<Zona>>> GetAsync( int page, int rows);
+    Task<BaseResponseGeneric<ICollection<Zona>>> GetAsync(string userId);
     Task<BaseResponseGeneric<Zona>> GetByIdAsync(int id);
 
     Task<BaseResponseGeneric<int>> CreateAsync(DtoZona request,string userId,string codZona);

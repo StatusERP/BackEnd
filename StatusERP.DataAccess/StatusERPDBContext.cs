@@ -57,6 +57,7 @@ namespace StatusERP.DataAccess
         public DbSet<EntidadFinanciera> EntidadesFinancieras { get; set; }
         public DbSet<GlobalesAS> GlobalesAS { get; set; }
         public DbSet<Impuesto> Impuestos { get; set; }
+        public DbSet<MetodoPago> MetodosPago { get; set; }
         public DbSet<Moneda> Monedas { get; set; }
         public DbSet<Localizacion> Localizaciones { get; set; }
         public DbSet<NivelPrecio> NivelesPrecio { get; set; }

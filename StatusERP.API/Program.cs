@@ -62,13 +62,10 @@ builder.Services.AddAutoMapper(options =>
 builder.Services.Configure<AppSettings>(builder.Configuration);
 
 //Registro la dependencia (Inyeccion de Dependencia)
-builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
-builder.Services.AddScoped<IVendedorService, VendedorService>();
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISucursalesRepository, SucursalesRepository>();
 builder.Services.AddScoped<ISucursalService, SucursalService>();
-builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
-builder.Services.AddScoped<IZonaService, ZonaService>();
 builder.Services.AddScoped<IEntidadFinacieraRepository, EntidadFinacieraRepository>();
 builder.Services.AddScoped<IEntidadFinacieraService, EntidadFinacieraService>();
 builder.Services.AddScoped<IConsecutivoGlobalRepository, ConsecutivoGlobalRepository>();
@@ -153,6 +150,12 @@ builder.Services.AddScoped<ITipoImpuestoService, TipoImpuestoService>();
 
 builder.Services.AddScoped<ITipoTarjetaRepository, TipoTarjetaRepository>();
 builder.Services.AddScoped<ITipoTarjetaService, TipoTarjetaService>();
+
+builder.Services.AddScoped<IVendedorRepository, VendedorRepository>();
+builder.Services.AddScoped<IVendedorService, VendedorService>();
+
+builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
+builder.Services.AddScoped<IZonaService, ZonaService>();
 
 
 // Entidades Módulo CG

@@ -4,7 +4,7 @@ namespace StatusERP.DataAccess.Repositories.AS
 {
     public interface IZonaRepository
     {
-        Task<ICollection<Zona>> GetCollectionAsync(int page, int rows); 
+        Task<ICollection<Zona>> GetCollectionAsync(); 
         Task<Zona?> GetByIdAsync(int id);
         Task<Zona?> BuscarCodZonaAsync(string codZona);
         Task<int> CreateAsync(Zona zona);

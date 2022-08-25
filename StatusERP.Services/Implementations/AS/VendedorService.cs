@@ -1,138 +1,184 @@
 ﻿using Microsoft.Extensions.Logging;
 using StatusERP.DataAccess.Repositories.AS;
+using StatusERP.DataAccess.Repositories.ERPADMIN.Interfaces;
 using StatusERP.Dto.Request.AS;
 using StatusERP.Dto.Response;
 using StatusERP.Entities.AS.Tablas;
 using StatusERP.Services.Interfaces.AS;
+using StatusERP.Entities;
 
-namespace StatusERP.Services.Implementations.AS
+namespace StatusERP.Services.Implementations.AS;
+
+
+public class VendedorService : IVendedorService
 {
-    public class VendedorService : IVendedorService
+    private readonly IVendedorRepository _repository;
+    private readonly ILogger<VendedorService> _logger;
+    private readonly IPrivilegioUsuarioRepository _privilegioUsuarioRepository;
 
+    public VendedorService(IVendedorRepository repository, ILogger<VendedorService> logger, IPrivilegioUsuarioRepository privilegioUsuarioRepository)
     {
-        private readonly IVendedorRepository _repository;
-        private readonly ILogger<VendedorService> _logger;
+        _repository = repository;
+        _logger = logger;
+        _privilegioUsuarioRepository = privilegioUsuarioRepository;
+    }
 
-        public VendedorService(IVendedorRepository repository, ILogger<VendedorService> logger) 
+    public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request, string userId, string codVendedor)
+    {
+        var response = new BaseResponseGeneric<int>();
+        try
         {
-            _repository = repository;
-            _logger = logger;   
-        }
-        public async Task<BaseResponseGeneric<int>> CreateAsync(DtoVendedor request,string userId, string codVendedor)
-        {
-            var response =new BaseResponseGeneric<int>();
-            try
-            {
-                var buscarCodBodega = await _repository.BuscarCodVendedorAsync(codVendedor);
-                if (buscarCodBodega != null)
-                {
-                    throw new Exception($"El codigo de Vendedor {buscarCodBodega.CodVendedor} ya Existe");
-                }
-                response.Result = await _repository.CreateAsync(new Vendedor
-                {
-                    CodVendedor = request.CodVendedor,
-                    Nombre = request.Nombre,
-                    Email = request.Email,
-                    Activo = true,
-                    //ConjuntoId = request.ConjutoId,
-                    Updatedby = userId,
-                    CreateDate = DateTime.Now,
-                    UpdateDate = DateTime.Now,
-                    Createdby = userId,
-                });
-                response.Success = true;
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_VENDEDORADD", Constants.EmpresaId, userId);
 
-            }
-            catch (Exception ex)
+            if (buscarPrivilegio == null)
             {
-
-                _logger.LogCritical(ex.StackTrace);
+                response.Errors.Add($"No tiene privilegios para crear vendedores.");
                 response.Success = false;
-                response.Errors.Add(ex.Message);
+                return response;
             }
-            return response;
-        }
 
-        public async Task<BaseResponseGeneric<int>> DeleteAsync(int id,string userId)
-        {
-            var response =new BaseResponseGeneric<int>();
-            try
+            var buscarCodVendedor = await _repository.BuscarCodVendedorAsync(codVendedor);
+            if (buscarCodVendedor != null)
             {
-                await _repository.DeleteAsync(id,userId);
-                response.Success = true;
-                response.Result = id;
+                throw new Exception($"El código de vendedor {buscarCodVendedor.CodVendedor} ya existe.");
             }
-            catch (Exception ex)
+            response.Result = await _repository.CreateAsync(new Vendedor
             {
-                _logger.LogCritical(ex.StackTrace);
-                response.Success = false;
-                response.Errors.Add(ex.Message);
-
-            }
-            return response;
-        }
-
-        public  async Task<BaseResponseGeneric<ICollection<Vendedor>>> GetAsync(int page,int rows)
-        {
-            var response =new BaseResponseGeneric<ICollection <Vendedor>>();
-            try
-            {
-                response.Result = await _repository.GetCollectionAsync( page, rows);
-                response.Success=true;
-
-            }
-            catch (Exception ex)
-            {
-
-                _logger.LogCritical(ex.StackTrace);
-                response.Success = false;
-                response.Errors.Add(ex.Message);
-            }
-            return response;
-        }
-
-        public async Task<BaseResponseGeneric<Vendedor>> GetByIdAsync(int id)
-        {
-            var response = new BaseResponseGeneric<Vendedor>();
-            try
-            {
-                response.Result= await _repository.GetByIdAsync(id)?? new Vendedor();
-                response.Success=true;
-            }
-            catch (Exception ex)
-            {
-
-                _logger.LogCritical(ex.StackTrace);
-                response.Success = false;
-                response.Errors.Add(ex.Message);
-            }
-            return response;
-        }
-
-        public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoVendedor request ,string userId )
-        {
-            var response = new BaseResponseGeneric<int>();
-            try
-            {
-                response.Result = await _repository.UpdateAsync(new Vendedor
-                {
-                    Id = id,
-                    Nombre = request.Nombre,
-                    Email = request.Email,
-                    Activo=request.Activo,
-                    CodVendedor = request.CodVendedor,
-                    UpdateDate = DateTime.Now,
-                    Updatedby =userId
+                CodVendedor = request.CodVendedor,
+                Nombre = request.Nombre,
+                Email = request.Email,
+                Telefono = request.Telefono,
+                Activo = request.Activo,
+                IsDeleted = false,
+                Updatedby = userId,
+                UpdateDate = DateTime.Now,
+                Createdby = userId,
+                CreateDate = DateTime.Now
             });
-            }
-            catch (Exception ex)
-            {
-                _logger.LogCritical(ex.StackTrace);
-                response.Success = false;
-                response.Errors.Add(ex.Message);
-                throw;
-            }
-            return response;
+            response.Success = true;
         }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+
+        return response;
+    }
+
+    public async Task<BaseResponseGeneric<int>> DeleteAsync(int id, string userId)
+    {
+
+        var response = new BaseResponseGeneric<int>();
+        try
+        {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_VENDEDORDEL", Constants.EmpresaId, userId);
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene privilegios para eliminar vendedores");
+                response.Success = false;
+                return response;
+            }
+
+
+            await _repository.DeleteAsync(id, userId);
+            response.Success = true;
+            response.Result = id;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+
+        return response;
+    }
+
+    public async Task<BaseResponseGeneric<ICollection<Vendedor>>> GetAsync(string userId)
+    {
+        var response = new BaseResponseGeneric<ICollection<Vendedor>>();
+        try
+        {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_VENDEDORES", Constants.EmpresaId, userId);
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene privilegios para consultar vendedores.");
+                response.Success = false;
+                return response;
+            }
+
+
+            response.Result = await _repository.GetCollectionAsync();
+            response.Success = true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+
+        return response;
+    }
+
+    public async Task<BaseResponseGeneric<Vendedor>> GetByIdAsync(int id)
+    {
+        var response = new BaseResponseGeneric<Vendedor>();
+        try
+        {
+            response.Result = await _repository.GetByIdAsync(id) ?? new Vendedor();
+            response.Success = true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+
+        return response;
+    }
+
+    public async Task<BaseResponseGeneric<int>> UpdateAsync(int id, DtoVendedor request, string userId)
+    {
+        var response = new BaseResponseGeneric<int>();
+        try
+        {
+            var buscarPrivilegio = await _privilegioUsuarioRepository.GetPrivilegioUsuario("AS_VENDEDORMOD", Constants.EmpresaId, userId);
+
+            if (buscarPrivilegio == null)
+            {
+                response.Errors.Add($"No tiene privilegios para modificar vendedores.");
+                response.Success = false;
+                return response;
+            }
+
+
+            response.Result = await _repository.UpdateAsync(new Vendedor
+            {
+                Id = id,
+                CodVendedor = request.CodVendedor,
+                Nombre = request.Nombre,
+                Email = request.Email,
+                Telefono = request.Telefono,
+                Activo = request.Activo,
+                IsDeleted = false,
+                Updatedby = userId,
+                UpdateDate = DateTime.Now,
+            });
+            response.Success = true;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogCritical(ex.StackTrace);
+            response.Success = false;
+            response.Errors.Add(ex.Message);
+        }
+        return response;
     }
 }
+
