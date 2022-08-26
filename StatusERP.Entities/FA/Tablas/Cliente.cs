@@ -1,7 +1,6 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using StatusERP.Entities.AS.Tablas;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using StatusERP.Entities.AS.Tablas;
 
 namespace StatusERP.Entities.FA.Tablas
 {
@@ -15,6 +14,10 @@ namespace StatusERP.Entities.FA.Tablas
         [Required(ErrorMessage = "El nombre de cliente es requerido.")]
         [StringLength(150)]
         public string Nombre { get; set; }
+
+        public int? DetalleDireccionId { get; set; }
+        [ForeignKey(nameof(DetalleDireccionId))]
+        public DetalleDireccion detalleDireccion { get; set; }
 
         [StringLength(150)]
         public string ? Alias { get; set; }
@@ -38,18 +41,19 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(50)]
         public string ? Telefono2 { get; set; }
 
-
-        public int ContribuyenteId { get; set; }
-        public DocTributario DocTributario { get; set; }    
+        public int? DocTributarioId { get; set; }
+        [ForeignKey(nameof(DocTributarioId))]
+        public DocTributario DocTributario { get; set; }
 
         [Required(ErrorMessage = "La fecha de ingreso es requerida.")]
         public DateTime FechaIngreso { get; set; }
 
         public bool Multimoneda { get; set; }
 
-        [Required(ErrorMessage = "La moneda es requerida.")]
-        [StringLength(4)]
-        public string Moneda { get; set; }
+
+        public int? MonedaId { get; set; }
+        [ForeignKey(nameof(MonedaId))]
+        public Moneda Moneda { get; set; }
 
         [Required(ErrorMessage = "El saldo es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
@@ -89,13 +93,14 @@ namespace StatusERP.Entities.FA.Tablas
         [Required(ErrorMessage = "La fecha del último movimiento es requerida.")]
         public DateTime FechaUltMov { get; set; }
 
-        [Required(ErrorMessage = "La condición de pago es requerida.")]
-        [StringLength(4)]
-        public string CondicionPago { get; set; }
 
-        [Required(ErrorMessage = "El nivel precio es requerido.")]
-        [StringLength(12)]
-        public string NivelPrecio { get; set; }
+        public int? CondicionPagoId { get; set; }
+        [ForeignKey(nameof(CondicionPagoId))]
+        public CondicionPago CondicionPago { get; set; }
+
+        public int? NivelPrecioId { get; set; }
+        [ForeignKey(nameof(NivelPrecioId))]
+        public NivelPrecio NivelPrecio { get; set; }
 
         [Required(ErrorMessage = "El descuento es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
@@ -107,24 +112,28 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool AceptaBackorder { get; set; }
 
-        [Required(ErrorMessage = "El país es requerido.")]
-        [StringLength(4)]
-        public string Pais { get; set; }
+        public int PaisId { get; set; }
+        [ForeignKey(nameof(PaisId))]
+        public Pais Pais{ get; set; }
 
-        [Required(ErrorMessage = "La zona es requerida.")]
-        [StringLength(4)]
-        public string Zona { get; set; }
 
-        [Required(ErrorMessage = "La ruta es requerida.")]
-        [StringLength(4)]
-        public string Ruta { get; set; }
+        public int ZonaId { get; set; }
+        [ForeignKey(nameof(ZonaId))]
+        public Zona  Zona { get; set; }
 
-        [StringLength(4)]
-        public string ? Vendedor { get; set; }
+        public int RutaId { get; set; }
+        [ForeignKey(nameof(RutaId))]
+        public Ruta Ruta { get; set; }
 
-        [Required(ErrorMessage = "El cobrador es requerido.")]
-        [StringLength(4)]
-        public string Cobrador { get; set; }
+
+        public int? VendedorId { get; set; }
+        [ForeignKey(nameof(VendedorId))]
+        public Vendedor Vendedor { get; set; }
+
+
+        public int CobradorId { get; set; }
+        [ForeignKey(nameof(CobradorId))]
+        public Cobrador Cobrador { get; set; }
 
         public bool AceptaFracciones { get; set; }
 
@@ -142,9 +151,10 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool CobroJudicial { get; set; }
 
-        [Required(ErrorMessage = "El código de Categoría Cliente es requerido.")]
-        [StringLength(8)]
-        public string CategoriaCliente { get; set; }
+
+        public int? CategoriaClienteId { get; set; }
+        [ForeignKey(nameof(CategoriaClienteId))]
+        public CategoriaCliente CategoriaCliente { get; set; }
 
         [StringLength(1)]
         public string ? ClaseABC { get; set; }
@@ -157,8 +167,9 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(20)]
         public string ? TarjetaCredito { get; set; }
 
-        [StringLength(12)]
-        public string ? TipoTarjeta { get; set; }
+        public int? TipoTarjetaId { get; set; }
+        [ForeignKey(nameof(TipoTarjetaId))]
+        public TipoTarjeta TipoTarjeta { get; set; }
 
         public DateTime ? FechaVenceTar { get; set; }
 
@@ -169,8 +180,9 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool EsCorporacion { get; set; }
 
-        [StringLength(20)]
-        public string ? CliCorporacAsoc { get; set; }
+        public int? CliCorporacAsocId { get; set; }
+        [ForeignKey(nameof(CliCorporacAsocId))]
+        public Cliente CliCorporacAsoc { get; set; }
 
         public bool RegistrarDocsACorp { get; set; }
 
@@ -295,8 +307,10 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(40)]
         public string ? Rubro20Cliente { get; set; }
 
-        [StringLength(4)]
-        public string ? ModeloRetencion { get; set; }
+
+        //public int? ModeloRetencionId { get; set; }
+        //[ForeignKey(nameof(ModeloRetencionId))]
+        //public ModeloRetencion ModeloRetencion { get; set; }
 
         public bool AceptaDocElectronico {get; set;}
 
@@ -315,8 +329,9 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(250)]
         public string ? EmailErrorPedEDI { get; set; }
 
-        [StringLength(4)]
-        public string ? CodigoImpuesto { get; set; }
+        public int? ImpuestoId { get; set; }
+        [ForeignKey(nameof(ImpuestoId))]
+        public Impuesto Impuesto { get; set; }
 
         [StringLength(12)]
         public string ? DivisionGeografica1 { get; set; }

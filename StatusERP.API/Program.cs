@@ -127,6 +127,9 @@ builder.Services.AddScoped<IDocTributarioService, DocTributarioService>();
 builder.Services.AddScoped<IImpuestoRepository, ImpuestoRepository>();
 builder.Services.AddScoped<IImpuestoService, ImpuestoService>();
 
+builder.Services.AddScoped<IMetodoPagoRepository, MetodoPagoRepository>();
+builder.Services.AddScoped<IMetodoPagoService, MetodoPagoService>();
+
 builder.Services.AddScoped<IMonedaRepository, MonedaRepository>();
 builder.Services.AddScoped<IMonedaService, MonedaService>();
 
