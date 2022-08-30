@@ -11787,10 +11787,6 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("APIRecepcionDE")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
                     b.Property<bool>("AceptaBackorder")
                         .HasColumnType("bit");
 
@@ -11805,10 +11801,6 @@ namespace StatusERP.DataAccess.Migrations
 
                     b.Property<bool>("Activo")
                         .HasColumnType("bit");
-
-                    b.Property<string>("AfectacionIVA")
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
 
                     b.Property<string>("AjusteFechaCobro")
                         .IsRequired()
@@ -11825,19 +11817,13 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("AsocObligContFact")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CURP")
-                        .HasMaxLength(18)
-                        .HasColumnType("nvarchar(18)");
-
                     b.Property<string>("Cargo")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
-                    b.Property<string>("CategoriaCliente")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
+                    b.Property<int>("CategoriaClienteId")
+                        .HasColumnType("int");
 
                     b.Property<string>("ClaseABC")
                         .HasMaxLength(1)
@@ -11848,14 +11834,11 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("CliCorporacAsoc")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("CliCorporacAsocId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("Cobrador")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("CobradorId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("CobroJudicial")
                         .HasColumnType("bit");
@@ -11865,14 +11848,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("CodigoImpuesto")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("CondicionPago")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("CondicionPagoId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("ConfirmaDocElectronico")
                         .HasColumnType("bit");
@@ -11881,9 +11858,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
-
-                    b.Property<int>("ContribuyenteId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -11899,6 +11873,10 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("DetallarKits")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("DetalleDireccionId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<short>("DiasAbastecimien")
                         .HasColumnType("smallint");
 
@@ -11906,7 +11884,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
-                    b.Property<short>("DiasPromAtraso")
+                    b.Property<short>("DiasPromedAtraso")
                         .HasColumnType("smallint");
 
                     b.Property<string>("DirEmbarqueDefault")
@@ -11921,14 +11899,6 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(12)");
 
                     b.Property<string>("DivisionGeografica2")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
-                    b.Property<string>("DivisionGeografica3")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
-                    b.Property<string>("DivisionGeografica4")
                         .HasMaxLength(12)
                         .HasColumnType("nvarchar(12)");
 
@@ -11961,6 +11931,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<bool>("EsAgentePercepcion")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("EsBuenContribuyente")
                         .HasColumnType("bit");
 
                     b.Property<bool>("EsCorporacion")
@@ -12005,12 +11978,12 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal?>("GeoLongitud")
                         .HasColumnType("decimal(28,12)");
 
+                    b.Property<int?>("ImpuestoId")
+                        .IsRequired()
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ItemHacienda")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
 
                     b.Property<decimal?>("LimiteCredito")
                         .HasColumnType("decimal(28,8)");
@@ -12020,26 +11993,15 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("MetodoPago")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("ModeloRetencion")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("MetodoPagoId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<bool>("ModifNombEnFac")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Moneda")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("MonedaNivel")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
+                    b.Property<int>("MonedaId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("Moroso")
                         .HasColumnType("bit");
@@ -12047,10 +12009,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("Multimoneda")
                         .HasColumnType("bit");
 
-                    b.Property<string>("NivelPrecio")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int>("NivelPrecioId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -12067,24 +12027,15 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("NotificarErrorEDI")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Pais")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("PaisId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("ParticipaFlujoCaja")
                         .HasColumnType("bit");
 
-                    b.Property<string>("PassAPIRecepecion")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<bool>("PermiteDocGP")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("RegimenTrib")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<string>("PassAPIRecepcion")
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
 
                     b.Property<bool>("RegistrarDocsACorp")
                         .HasColumnType("bit");
@@ -12136,7 +12087,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Rubro1_Cliente")
+                    b.Property<string>("Rubro1Cliente")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
@@ -12148,7 +12099,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Rubro2_Cliente")
+                    b.Property<string>("Rubro2Cliente")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
@@ -12156,7 +12107,7 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Rubro3_Cliente")
+                    b.Property<string>("Rubro3Cliente")
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
@@ -12192,10 +12143,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(40)
                         .HasColumnType("nvarchar(40)");
 
-                    b.Property<string>("Ruta")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int>("RutaId")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("Saldo")
                         .HasColumnType("decimal(28,8)");
@@ -12246,10 +12195,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("TieneConvenio")
                         .HasColumnType("bit");
 
-                    b.Property<string>("TipificacionCliente")
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
-
                     b.Property<string>("TipoContribuyente")
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
@@ -12258,17 +12203,17 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("TipoImpuesto")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("TipoImpuestoId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<string>("TipoPersoneria")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("TipoTarjeta")
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int?>("TipoTarjetaId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<string>("Ubicacion")
                         .HasMaxLength(250)
@@ -12281,9 +12226,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
-
-                    b.Property<bool>("UsaAPIRecepcion")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("UsaTarjeta")
                         .HasColumnType("bit");
@@ -12300,41 +12242,68 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("UsarPreciosCorp")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserAPIRecepcion")
+                    b.Property<string>("UsuarioCreacion")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("UsoCFDI")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<string>("UsuarioCreacion")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
                     b.Property<string>("UsuarioUltMod")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
-                    b.Property<string>("Vendedor")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("VendedorId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<bool>("VerifLimCredCorp")
                         .HasColumnType("bit");
 
-                    b.Property<string>("XsltPersonalizado")
+                    b.Property<string>("XSLTPersonalizado")
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Zona")
-                        .IsRequired()
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<string>("XSLTPersonalizadoCredito")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("ZonaId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CategoriaClienteId");
+
+                    b.HasIndex("CliCorporacAsocId");
+
+                    b.HasIndex("CobradorId");
+
+                    b.HasIndex("CondicionPagoId");
+
+                    b.HasIndex("DetalleDireccionId");
+
                     b.HasIndex("DocTributarioId");
+
+                    b.HasIndex("ImpuestoId");
+
+                    b.HasIndex("MetodoPagoId");
+
+                    b.HasIndex("MonedaId");
+
+                    b.HasIndex("NivelPrecioId");
+
+                    b.HasIndex("PaisId");
+
+                    b.HasIndex("RutaId");
+
+                    b.HasIndex("TipoImpuestoId");
+
+                    b.HasIndex("TipoTarjetaId");
+
+                    b.HasIndex("VendedorId");
+
+                    b.HasIndex("ZonaId");
+
+                    b.HasIndex(new[] { "CodCliente" }, "IxCodCliente")
+                        .IsUnique();
 
                     b.ToTable("Clientes", "H2C");
                 });
@@ -18296,13 +18265,131 @@ namespace StatusERP.DataAccess.Migrations
 
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.Cliente", b =>
                 {
+                    b.HasOne("StatusERP.Entities.AS.Tablas.CategoriaCliente", "CategoriaCliente")
+                        .WithMany()
+                        .HasForeignKey("CategoriaClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FA.Tablas.Cliente", "CliCorporacAsoc")
+                        .WithMany()
+                        .HasForeignKey("CliCorporacAsocId");
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Cobrador", "Cobrador")
+                        .WithMany()
+                        .HasForeignKey("CobradorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.CondicionPago", "CondicionPago")
+                        .WithMany()
+                        .HasForeignKey("CondicionPagoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.DetalleDireccion", "detalleDireccion")
+                        .WithMany()
+                        .HasForeignKey("DetalleDireccionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("StatusERP.Entities.AS.Tablas.DocTributario", "DocTributario")
                         .WithMany()
                         .HasForeignKey("DocTributarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Impuesto", "Impuesto")
+                        .WithMany()
+                        .HasForeignKey("ImpuestoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.MetodoPago", "MetodoPago")
+                        .WithMany()
+                        .HasForeignKey("MetodoPagoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Moneda", "Moneda")
+                        .WithMany()
+                        .HasForeignKey("MonedaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FA.Tablas.NivelPrecio", "NivelPrecio")
+                        .WithMany()
+                        .HasForeignKey("NivelPrecioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Pais", "Pais")
+                        .WithMany()
+                        .HasForeignKey("PaisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Ruta", "Ruta")
+                        .WithMany()
+                        .HasForeignKey("RutaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.TipoImpuesto", "TipoImpuesto")
+                        .WithMany()
+                        .HasForeignKey("TipoImpuestoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.TipoTarjeta", "TipoTarjeta")
+                        .WithMany()
+                        .HasForeignKey("TipoTarjetaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Vendedor", "Vendedor")
+                        .WithMany()
+                        .HasForeignKey("VendedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.AS.Tablas.Zona", "Zona")
+                        .WithMany()
+                        .HasForeignKey("ZonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CategoriaCliente");
+
+                    b.Navigation("CliCorporacAsoc");
+
+                    b.Navigation("Cobrador");
+
+                    b.Navigation("CondicionPago");
+
                     b.Navigation("DocTributario");
+
+                    b.Navigation("Impuesto");
+
+                    b.Navigation("MetodoPago");
+
+                    b.Navigation("Moneda");
+
+                    b.Navigation("NivelPrecio");
+
+                    b.Navigation("Pais");
+
+                    b.Navigation("Ruta");
+
+                    b.Navigation("TipoImpuesto");
+
+                    b.Navigation("TipoTarjeta");
+
+                    b.Navigation("Vendedor");
+
+                    b.Navigation("Zona");
+
+                    b.Navigation("detalleDireccion");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.DireccEmbarque", b =>

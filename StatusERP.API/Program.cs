@@ -251,8 +251,8 @@ builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvReposito
 
 // Entidades Módulo FA
 
-//builder.Services.AddScoped<IClienteService, ClienteService>();
-//builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 builder.Services.AddScoped<IDireccEmbarqueRepository, DireccEmbarqueRepository>();
 builder.Services.AddScoped<IDireccEmbarqueService, DireccEmbarqueService>();

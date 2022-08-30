@@ -7,11 +7,9 @@ namespace StatusERP.Entities.FA.Tablas
     [Table("Clientes", Schema = Constants.Conjunto)]
     public class Cliente:EntityBase
     {
-        [Required(ErrorMessage ="El código de cliente es requerido.")]
         [StringLength(20)]
         public string CodCliente { get; set; }
 
-        [Required(ErrorMessage = "El nombre de cliente es requerido.")]
         [StringLength(150)]
         public string Nombre { get; set; }
 
@@ -22,18 +20,16 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(150)]
         public string ? Alias { get; set; }
 
-        [Required(ErrorMessage = "El contacto de cliente es requerido.")]
         [StringLength(30)]
         public string Contacto { get; set; }
 
-        [Required(ErrorMessage = "El cargo es requerido.")]
         [StringLength(30)]
         public string Cargo { get; set; }
 
         public string ? Direccion { get; set; }
-        
+
         [StringLength(8)]
-        public string ? DirEmbarqueDefault { get; set; }
+        public string? DirEmbarqueDefault { get; set; }
 
         [StringLength(50)]
         public string ? Telefono1 { get; set; }
@@ -41,33 +37,27 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(50)]
         public string ? Telefono2 { get; set; }
 
-        public int? DocTributarioId { get; set; }
+        public int DocTributarioId { get; set; }
         [ForeignKey(nameof(DocTributarioId))]
         public DocTributario DocTributario { get; set; }
 
-        [Required(ErrorMessage = "La fecha de ingreso es requerida.")]
         public DateTime FechaIngreso { get; set; }
 
         public bool Multimoneda { get; set; }
 
-
-        public int? MonedaId { get; set; }
+        public int MonedaId { get; set; }
         [ForeignKey(nameof(MonedaId))]
         public Moneda Moneda { get; set; }
 
-        [Required(ErrorMessage = "El saldo es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal Saldo { get; set; }
 
-        [Required(ErrorMessage = "El saldo en moneda local es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal SaldoLocal { get; set; }
 
-        [Required(ErrorMessage = "El saldo en dólares es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal SaldoDolar { get; set; }
 
-        [Required(ErrorMessage = "El saldo disponible del crédito es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal SaldoCredito { get; set; }
 
@@ -79,43 +69,32 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool ExcederLimite { get; set; }
 
-        [Required(ErrorMessage = "La tasa de interés es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal TasaInteres { get; set; }
 
-        [Required(ErrorMessage = "La tasa de interés por mora es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
-        public decimal TasaInteresesMora { get; set; }
+        public decimal TasaInteresesMora { get; set; }   
 
-        [Required(ErrorMessage = "La fecha de la última mora es requerida.")]
         public DateTime FechaUltMora { get; set; }
 
-        [Required(ErrorMessage = "La fecha del último movimiento es requerida.")]
         public DateTime FechaUltMov { get; set; }
 
-
-        public int? CondicionPagoId { get; set; }
+        public int CondicionPagoId { get; set; }
         [ForeignKey(nameof(CondicionPagoId))]
         public CondicionPago CondicionPago { get; set; }
 
-        public int? NivelPrecioId { get; set; }
+        public int NivelPrecioId { get; set; }
         [ForeignKey(nameof(NivelPrecioId))]
         public NivelPrecio NivelPrecio { get; set; }
 
-        [Required(ErrorMessage = "El descuento es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal Descuento { get; set; }
-
-        [Required(ErrorMessage = "La moneda del nivel de precios es requerida.")]
-        [StringLength(1)]
-        public string MonedaNivel { get; set; }
 
         public bool AceptaBackorder { get; set; }
 
         public int PaisId { get; set; }
         [ForeignKey(nameof(PaisId))]
         public Pais Pais{ get; set; }
-
 
         public int ZonaId { get; set; }
         [ForeignKey(nameof(ZonaId))]
@@ -125,11 +104,9 @@ namespace StatusERP.Entities.FA.Tablas
         [ForeignKey(nameof(RutaId))]
         public Ruta Ruta { get; set; }
 
-
         public int? VendedorId { get; set; }
         [ForeignKey(nameof(VendedorId))]
         public Vendedor Vendedor { get; set; }
-
 
         public int CobradorId { get; set; }
         [ForeignKey(nameof(CobradorId))]
@@ -141,25 +118,21 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool ExentoImpuestos { get; set; }
 
-        [Required(ErrorMessage = "Se debe indicar el porcentaje de exención que se aplicará al Impuesto 1.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal ExencionImp1 { get; set; }
 
-        [Required(ErrorMessage = "Se debe indicar el porcentaje de exención que se aplicará al Impuesto 2.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal ExencionImp2 { get; set; }
 
         public bool CobroJudicial { get; set; }
 
-
-        public int? CategoriaClienteId { get; set; }
+        public int CategoriaClienteId { get; set; }
         [ForeignKey(nameof(CategoriaClienteId))]
         public CategoriaCliente CategoriaCliente { get; set; }
 
         [StringLength(1)]
         public string ? ClaseABC { get; set; }
 
-        [Required(ErrorMessage = "Los días de abastecimiento son requeridos.")]
         public Int16 DiasAbastecimien { get; set; }
 
         public bool UsaTarjeta { get; set; }
@@ -194,25 +167,23 @@ namespace StatusERP.Entities.FA.Tablas
 
         public bool UsarDescCorp { get; set; }
 
-        [Required(ErrorMessage = "Se debe indicar el tipo de documento por omisión que se va a generar para el cliente.")]
         [StringLength(1)]
         public string DocAGenerar { get; set; }
 
         [StringLength(40)]
-        public string ? Rubro1_Cliente { get; set; }
+        public string ? Rubro1Cliente { get; set; }
 
         [StringLength(40)]
-        public string ? Rubro2_Cliente { get; set; }
+        public string ? Rubro2Cliente { get; set; }
 
         [StringLength(40)]
-        public string ? Rubro3_Cliente { get; set; }
+        public string ? Rubro3Cliente { get; set; }
 
         public bool TieneConvenio { get; set; }
 
         public string ? Notas { get; set; }
 
-        [Required(ErrorMessage = "Los días promedio de atraso son requeridos.")]
-        public Int16 DiasPromAtraso { get; set; }
+        public Int16 DiasPromedAtraso { get; set; }
 
         [StringLength(50)]
         public string ? Rubro1Cli { get; set; }
@@ -259,18 +230,15 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(13)]
         public string ? DiasDeCobro { get; set; }
 
-        [Required(ErrorMessage = "Debe indicarse el tipo de ajuste de la fecha cobro.")]
         [StringLength(1)]
         public string AjusteFechaCobro { get; set; }
 
         [StringLength(250)]
         public string ? Ubicacion { get; set; }
 
-        [Required(ErrorMessage = "La clase de documento es requerida.")]
         [StringLength(1)]
         public string ClaseDocumento { get; set; }
 
-        [Required(ErrorMessage = "Se debe indicar si el cliente es local o del exterior.")]
         [StringLength(1)]
         public string Local { get; set; }
 
@@ -306,12 +274,7 @@ namespace StatusERP.Entities.FA.Tablas
 
         [StringLength(40)]
         public string ? Rubro20Cliente { get; set; }
-
-
-        //public int? ModeloRetencionId { get; set; }
-        //[ForeignKey(nameof(ModeloRetencionId))]
-        //public ModeloRetencion ModeloRetencion { get; set; }
-
+       
         public bool AceptaDocElectronico {get; set;}
 
         public bool ConfirmaDocElectronico { get; set;}
@@ -339,39 +302,27 @@ namespace StatusERP.Entities.FA.Tablas
         [StringLength(12)]
         public string ? DivisionGeografica2 { get; set; }
 
-
-        [StringLength(12)]
-        public string ? RegimenTrib { get; set; }
-
         public bool Moroso { get; set; }
 
         public bool ModifNombEnFac { get; set;}
 
-        [Required(ErrorMessage = "El saldo transaccional es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal SaldoTrans { get; set; }
 
-        [Required(ErrorMessage = "El saldo transaccional en moneda local es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal SaldoTransLocal { get; set; }
 
-        [Required(ErrorMessage = "El saldo transaccional en dólares es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal SaldoTransDolar { get; set; }
 
-        public bool PermiteDocGP { get; set; }
-
         public bool ParticipaFlujoCaja { get; set; }
 
-        [StringLength(18)]
-        public string ? CURP { get; set; }
-
-        [StringLength(25)]
+        [StringLength(250)]
         public string ? UsuarioCreacion { get; set; }
 
         public DateTime ? FechaHoraCreacion { get; set; }
 
-        [StringLength(25)]
+        [StringLength(250)]
         public string ? UsuarioUltMod { get; set; }   
 
         public DateTime ? FchHoraUltMod { get; set; }
@@ -382,7 +333,7 @@ namespace StatusERP.Entities.FA.Tablas
         public bool DetallarKits { get; set; }
 
         [StringLength(20)]
-        public string ? XsltPersonalizado { get; set; }
+        public string ? XSLTPersonalizado { get; set; }
 
         [StringLength(20)]
         public string ? NombreAddenda { get; set; }
@@ -393,52 +344,33 @@ namespace StatusERP.Entities.FA.Tablas
         [Column(TypeName = "decimal(28,12)")]
         public decimal ? GeoLongitud { get; set; }
 
-        [StringLength(12)]
-        public string ? DivisionGeografica3 { get; set; }
-
-        [StringLength(12)]
-        public string ? DivisionGeografica4 { get; set; }
-
         [StringLength(25)]
         public string ? SubTipoDoc { get; set; }
 
-        [StringLength(250)]
-        public string ? APIRecepcionDE { get; set; }
+        [StringLength(254)]
+        public string ? PassAPIRecepcion { get; set; }
 
-        public bool UsaAPIRecepcion { get; set; }
-
-        [StringLength(250)]
-        public string ? UserAPIRecepcion { get; set; }
-
-        [StringLength(250)]
-        public string ? PassAPIRecepecion { get; set; }
-
-        [StringLength(4)]
-        public string ? TipoImpuesto { get; set; }
-
-        [StringLength(2)]
-        public string ? TipificacionCliente { get; set; }
-
-        [StringLength(2)]
-        public string ? AfectacionIVA { get; set; }
+        public int? TipoImpuestoId { get; set; }
+        [ForeignKey(nameof(TipoImpuestoId))]
+        public TipoImpuesto TipoImpuesto { get; set; }
 
         public bool EsExtranjero { get; set; }
 
-        [StringLength(4)]
-        public string ? ItemHacienda { get; set; }
-
+        [StringLength(20)]
+        public string? XSLTPersonalizadoCredito { get; set; }
+        
         [StringLength(10)]
         public string ? TipoGenerar { get; set; }
 
         [StringLength(10)]
         public string ? TipoPersoneria { get; set; }
 
-        [StringLength(3)]
-        public string ? UsoCFDI { get; set; }
-
-        [StringLength(10)]
-        public string ? MetodoPago { get; set; }
+        public int? MetodoPagoId { get; set; }
+        [ForeignKey(nameof(MetodoPagoId))]
+        public MetodoPago MetodoPago { get; set; }
 
         public bool EsAgentePercepcion { get; set; }
+
+        public bool EsBuenContribuyente { get; set; }
     }
 }
