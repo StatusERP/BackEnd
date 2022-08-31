@@ -11562,10 +11562,8 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Articulo")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("ArticuloId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -11601,16 +11599,6 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<decimal?>("MargenUtilidadMin")
                         .HasColumnType("decimal(28,8)");
 
-                    b.Property<string>("Moneda")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("NivelPrecio")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
-
                     b.Property<decimal>("Precio")
                         .HasColumnType("decimal(28,8)");
 
@@ -11623,16 +11611,21 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<string>("UsuarioUltModif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("VersionArticulo")
                         .HasColumnType("int");
 
+                    b.Property<int>("VersionNivelId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ArticuloId");
+
+                    b.HasIndex(new[] { "VersionNivelId", "ArticuloId", "VersionArticulo" }, "IxVersionNivel_Articulo_VersionArticulo")
+                        .IsUnique();
 
                     b.ToTable("ArticuloPrecios", "H2C");
                 });
@@ -18261,6 +18254,25 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Accion");
 
                     b.Navigation("Conjunto");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.ArticuloPrecio", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "Articulo")
+                        .WithMany()
+                        .HasForeignKey("ArticuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FA.Tablas.VersionNivelPrecio", "VersionNivelPrecio")
+                        .WithMany()
+                        .HasForeignKey("VersionNivelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Articulo");
+
+                    b.Navigation("VersionNivelPrecio");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.Cliente", b =>

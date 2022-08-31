@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using StatusERP.Entities.AS.Tablas;
 
+// Esta tabla guarda relación Encabezado-Detalle con la tabla ArticuloPrecio.  Esta tabla es el encabezado.
+
 namespace StatusERP.Entities.FA.Tablas
 {
     [Table("VersionesNivelPrecio", Schema = Constants.Conjunto)]

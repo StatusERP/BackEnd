@@ -88,12 +88,13 @@ builder.Services.AddScoped<IGlobalesAsRepository, GlobalesASRepository>();
 builder.Services.AddScoped<IGlobalesASService, GlobalesASService>();
 builder.Services.AddScoped<ILocalizacionesRepository, LocalizacionesRepository>();
 builder.Services.AddScoped<ILocalizacionesService, LocalizacionesService>();
+
 builder.Services.AddScoped<IPeriodosContableRepository, PeriodoContableRepository>();
 builder.Services.AddScoped<IPeriodoContableService,PeriodoContableService>();
-builder.Services.AddScoped<ITipoCambioRepository, TipoCambioRepository>();
-builder.Services.AddScoped<ITipoCambioService, TipoCambioService>();
+
 builder.Services.AddScoped<IUnidadMedidaRepository, UnidadMedidaRepository>();
 builder.Services.AddScoped<IUnidadMedidaService, UnidadMedidaService>();
+
 builder.Services.AddScoped<IUsuarioBodegaRepository, UsuarioBodegaRepository>();
 builder.Services.AddScoped<IUsuarioBodegaService, UsuarioBodegaService>();
 
@@ -250,6 +251,9 @@ builder.Services.AddScoped<IUsuarioAjusteInvService, UsuarioAjusteInvService>();
 builder.Services.AddScoped<IUsuarioAjusteInvRepository, UsuarioAjusteInvRepository>();
 
 // Entidades Módulo FA
+
+builder.Services.AddScoped<IArticuloPrecioService, ArticuloPrecioService>();
+builder.Services.AddScoped<IArticuloPrecioRepository, ArticuloPrecioRepository>();
 
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
