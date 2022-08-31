@@ -12638,17 +12638,10 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("Articulo")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("ArticuloBonifId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("ArticuloBonif")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int>("CodEscalaBonif")
+                    b.Property<int>("ArticuloId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
@@ -12680,15 +12673,8 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<int>("MinArtFact")
                         .HasColumnType("int");
 
-                    b.Property<string>("Moneda")
-                        .IsRequired()
-                        .HasMaxLength(1)
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("NivelPrecio")
-                        .IsRequired()
-                        .HasMaxLength(12)
-                        .HasColumnType("nvarchar(12)");
+                    b.Property<int>("NumEscalaBonif")
+                        .HasColumnType("int");
 
                     b.Property<decimal>("UnidadesBonif")
                         .HasColumnType("decimal(28,8)");
@@ -12702,16 +12688,23 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<string>("UsuarioUltModif")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<int>("Version")
-                        .HasColumnType("int");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("VersionBonif")
                         .HasColumnType("int");
 
+                    b.Property<int>("VersionNivelId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ArticuloBonifId");
+
+                    b.HasIndex("ArticuloId");
+
+                    b.HasIndex(new[] { "VersionNivelId", "ArticuloId", "NumEscalaBonif", "VersionBonif" }, "IxVersNiv_Art_NumEscala_VerBon")
+                        .IsUnique();
 
                     b.ToTable("EscalasBonif", "H2C");
                 });
@@ -18421,6 +18414,33 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Cliente");
 
                     b.Navigation("detalleDireccion");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.FA.Tablas.EscalaBonif", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "ArticuloBonif")
+                        .WithMany()
+                        .HasForeignKey("ArticuloBonifId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CI.Tablas.Articulo", "Articulo")
+                        .WithMany()
+                        .HasForeignKey("ArticuloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FA.Tablas.VersionNivelPrecio", "VersionNivelPrecio")
+                        .WithMany()
+                        .HasForeignKey("VersionNivelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Articulo");
+
+                    b.Navigation("ArticuloBonif");
+
+                    b.Navigation("VersionNivelPrecio");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.FA.Tablas.FacturaEnc", b =>
