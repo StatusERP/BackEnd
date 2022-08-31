@@ -264,6 +264,9 @@ builder.Services.AddScoped<IDireccEmbarqueService, DireccEmbarqueService>();
 builder.Services.AddScoped<IEscalaBonifRepository, EscalaBonifRepository>();
 builder.Services.AddScoped<IEscalaBonifService, EscalaBonifService>();
 
+builder.Services.AddScoped<IEscalaDctoRepository, EscalaDctoRepository>();
+builder.Services.AddScoped<IEscalaDctoService, EscalaDctoService>();
+
 builder.Services.AddScoped<IGlobalesFARepository, GlobalesFARepository>();
 builder.Services.AddScoped<IGlobalesFAService, GlobalesFAService>();
 
