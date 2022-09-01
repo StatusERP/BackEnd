@@ -12,6 +12,11 @@ using StatusERP.DataAccess.Repositories.AS.Interfaces;
 using StatusERP.Services.Implementations.AS;
 using StatusERP.Services.Interfaces.AS;
 
+using StatusERP.DataAccess.Repositories.CB;
+using StatusERP.DataAccess.Repositories.CB.Interfaces;
+using StatusERP.Services.Implementations.CB;
+using StatusERP.Services.Interfaces.CB;
+
 using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Services.Implementations.CG;
 using StatusERP.Services.Interfaces.CG;
@@ -162,8 +167,14 @@ builder.Services.AddScoped<IZonaRepository, ZonaRepository>();
 builder.Services.AddScoped<IZonaService, ZonaService>();
 
 
-// Entidades Módulo CG
 
+// Entidades Módulo CB
+
+builder.Services.AddScoped<ISubTipoDocCBService, SubTipoDocCBService>();
+builder.Services.AddScoped<ISubTipoDocCBRepository, SubTipoDocCBRepository>();
+
+
+// Entidades Módulo CG
 
 builder.Services.AddScoped<ICentroCuentaRepository, CentroCuentaRepository>();
 builder.Services.AddScoped<ICentroCuentaService, CentroCuentaService>();
@@ -179,7 +190,6 @@ builder.Services.AddScoped<ISeccionCuentaRepository, SeccionCuentaRepository>();
 
 builder.Services.AddScoped<ITipoPartidaRepository, TipoPartidaRepository>();
 builder.Services.AddScoped<ITipoPartidaService, TipoPartidaService>();
-
 
 
 // Entidades Módulo CI

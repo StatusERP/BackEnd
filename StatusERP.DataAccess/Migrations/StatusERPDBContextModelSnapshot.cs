@@ -3865,9 +3865,9 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CentroCosto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                    b.Property<int?>("CentroCuentaId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -3876,10 +3876,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
-
-                    b.Property<string>("CuentaContable")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -3901,9 +3897,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(1)
                         .HasColumnType("nvarchar(1)");
 
-                    b.Property<string>("Paquete")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("PaqueteId")
+                        .HasColumnType("int");
 
                     b.Property<string>("RubroCF")
                         .HasMaxLength(20)
@@ -3921,13 +3916,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
-                    b.Property<string>("TipoAsiento")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("TipoServicio")
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
+                    b.Property<int?>("TipoPartidaId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -3938,6 +3929,15 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CentroCuentaId");
+
+                    b.HasIndex("PaqueteId");
+
+                    b.HasIndex("TipoPartidaId");
+
+                    b.HasIndex(new[] { "Tipo", "SubTipo" }, "IxTipo_SubTipo")
+                        .IsUnique();
 
                     b.ToTable("SubTiposDocCB", "H2C");
                 });
@@ -17257,6 +17257,31 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("ConciliacionBancaria");
 
                     b.Navigation("CuentaBancaria");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CB.Tablas.SubTipoDocCB", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "centroCuenta")
+                        .WithMany()
+                        .HasForeignKey("CentroCuentaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.PaqueteContable", "paqueteContable")
+                        .WithMany()
+                        .HasForeignKey("PaqueteId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.TipoPartida", "tipoPartida")
+                        .WithMany()
+                        .HasForeignKey("TipoPartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("centroCuenta");
+
+                    b.Navigation("paqueteContable");
+
+                    b.Navigation("tipoPartida");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CB.Tablas.TransferenciaCB", b =>

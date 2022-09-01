@@ -1,36 +1,31 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.CG.Tablas;
 
 namespace StatusERP.Entities.CB.Tablas
 {
     [Table("SubTiposDocCB", Schema = Constants.Conjunto)]
     public class SubTipoDocCB:EntityBase
     {
-        [Required(ErrorMessage = "El de tipo de documento CB es requerido.")]
         [StringLength(3)]
         public string Tipo { get; set; }
 
-        [Required(ErrorMessage = "El subtipo de documento CB es requerido.")]
         public Int16 SubTipo { get; set; }
 
-        [Required(ErrorMessage = "La descripción es requerida.")]
         [StringLength(40)]
         public string Descripcion { get; set; }
 
-        [StringLength(25)]
-        public string ? CuentaContable { get; set; }
+        public int ? CentroCuentaId { get; set; }
+        [ForeignKey(nameof(CentroCuentaId))]
+        public CentroCuenta centroCuenta { get; set; }
+                
+        public int? TipoPartidaId { get; set; }
+        [ForeignKey(nameof(TipoPartidaId))]
+        public TipoPartida tipoPartida { get; set; }
 
-        [StringLength(25)]
-        public string ? CentroCosto { get; set; }
-
-        [StringLength(4)]
-        public string ? TipoAsiento { get; set; }
-
-        [StringLength(4)]
-        public string ? Paquete { get; set; }
-
-        [StringLength(2)]
-        public string ? TipoServicio { get; set; }
+        public int? PaqueteId { get; set; }
+        [ForeignKey(nameof(PaqueteId))]
+        public PaqueteContable paqueteContable { get; set; }
 
         [StringLength(10)]
         public string ? DocumentoGlobal { get; set; }
