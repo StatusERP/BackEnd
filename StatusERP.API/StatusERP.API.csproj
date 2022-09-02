@@ -30,8 +30,4 @@
     <ProjectReference Include="..\StatusERP.Services\StatusERP.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\CC\" />
-  </ItemGroup>
-
 </Project>

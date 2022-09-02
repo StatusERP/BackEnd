@@ -1,4 +1,6 @@
-﻿using StatusERP.Entities.ERPADMIN.Tablas;
+﻿using StatusERP.Entities.CB.Tablas;
+using StatusERP.Entities.CG.Tablas;
+using StatusERP.Entities.FA.Tablas;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,38 +9,31 @@ namespace StatusERP.Entities.CC.Tablas
     [Table("SubTiposDocCC", Schema = Constants.Conjunto)]
     public class SubTipoDocCC:EntityBase
     {
-        [Required(ErrorMessage = "El tipo es requerido.")]
         [StringLength(3)]
         public string Tipo { get; set; }
 
-        [Required(ErrorMessage = "El subtipo es requerido.")]
         public Int16 Subtipo { get; set; }
 
-        [StringLength(3)]
-        public string ? TipoCB { get; set; }
+        public int? SubTipoCBId { get; set; }
+        [ForeignKey(nameof(SubTipoCBId))]
+        public SubTipoDocCB subTipoDocCB { get; set; }
 
-        public Int16 ? SubTipoCB { get; set; }
-
-        [Required(ErrorMessage = "La descripción es requerida.")]
         [StringLength(25)]
         public string Descripcion { get; set; }
 
-        [StringLength(25)]
-        public string ? CuentaContable { get; set; }
-
-        [StringLength(25)]
-        public string ? CentroCosto { get; set; }
+        public int? CentroCuentaId { get; set; }
+        [ForeignKey(nameof(CentroCuentaId))]
+        public CentroCuenta centroCuenta { get; set; }
 
         public bool CalculaImp2 { get; set; }
 
-        [StringLength(4)]
-        public string ? TipoAsiento { get; set; }
+        public int? TipoPartidaId { get; set; }
+        [ForeignKey(nameof(TipoPartidaId))]
+        public TipoPartida tipoPartida { get; set; }
 
-        [StringLength(4)]
-        public string ? Paquete { get; set; }
-
-        [StringLength(2)]
-        public string ? TipoServicio { get; set; }
+        public int? PaqueteId { get; set; }
+        [ForeignKey(nameof(PaqueteId))]
+        public PaqueteContable paqueteContable { get; set; }
 
         [StringLength(10)]
         public string ? DocumentoGlobal { get; set; }
@@ -55,9 +50,6 @@ namespace StatusERP.Entities.CC.Tablas
         [StringLength(4)]
         public string ? TipoDoc { get; set; }
 
-        [StringLength(50)]
-        public string ? CodigoHacienda { get; set; }
-
         [StringLength(10)]
         public string ? TipoOperacFac { get; set; }
 
@@ -67,10 +59,9 @@ namespace StatusERP.Entities.CC.Tablas
         [StringLength(10)]
         public string ? TipoOperacND { get; set; }
 
-        [StringLength(10)]
-        public string ? TipoPago { get; set; }
+        public int? ConsecutivoFacId { get; set; }
+        [ForeignKey(nameof(ConsecutivoFacId))]
+        public ConsecutivoFA consecutivoFA { get; set; }
 
-        [StringLength(10)]
-        public string ? ConsecutivoFac { get; set; }
     }
 }

@@ -17,6 +17,11 @@ using StatusERP.DataAccess.Repositories.CB.Interfaces;
 using StatusERP.Services.Implementations.CB;
 using StatusERP.Services.Interfaces.CB;
 
+using StatusERP.DataAccess.Repositories.CC;
+using StatusERP.DataAccess.Repositories.CC.Interfaces;
+using StatusERP.Services.Implementations.CC;
+using StatusERP.Services.Interfaces.CC;
+
 using StatusERP.DataAccess.Repositories.CG;
 using StatusERP.Services.Implementations.CG;
 using StatusERP.Services.Interfaces.CG;
@@ -172,6 +177,12 @@ builder.Services.AddScoped<IZonaService, ZonaService>();
 
 builder.Services.AddScoped<ISubTipoDocCBService, SubTipoDocCBService>();
 builder.Services.AddScoped<ISubTipoDocCBRepository, SubTipoDocCBRepository>();
+
+
+// Entidades Módulo CB
+
+builder.Services.AddScoped<ISubTipoDocCCService, SubTipoDocCCService>();
+builder.Services.AddScoped<ISubTipoDocCCRepository, SubTipoDocCCRepository>();
 
 
 // Entidades Módulo CG

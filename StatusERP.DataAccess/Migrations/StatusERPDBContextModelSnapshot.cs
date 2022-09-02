@@ -5372,13 +5372,9 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("CalculaImp2")
                         .HasColumnType("bit");
 
-                    b.Property<string>("CentroCosto")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CodigoHacienda")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int?>("CentroCuentaId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<string>("ConceptoFAC")
                         .HasMaxLength(4)
@@ -5392,9 +5388,8 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(4)
                         .HasColumnType("nvarchar(4)");
 
-                    b.Property<string>("ConsecutivoFac")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<int?>("ConsecutivoFacId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -5403,10 +5398,6 @@ namespace StatusERP.DataAccess.Migrations
                         .IsRequired()
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
-
-                    b.Property<string>("CuentaContable")
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -5420,26 +5411,17 @@ namespace StatusERP.DataAccess.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Paquete")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
+                    b.Property<int?>("PaqueteId")
+                        .HasColumnType("int");
 
-                    b.Property<short?>("SubTipoCB")
-                        .HasColumnType("smallint");
+                    b.Property<int?>("SubTipoCBId")
+                        .HasColumnType("int");
 
                     b.Property<short>("Subtipo")
                         .HasColumnType("smallint");
 
                     b.Property<string>("Tipo")
                         .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<string>("TipoAsiento")
-                        .HasMaxLength(4)
-                        .HasColumnType("nvarchar(4)");
-
-                    b.Property<string>("TipoCB")
                         .HasMaxLength(3)
                         .HasColumnType("nvarchar(3)");
 
@@ -5459,13 +5441,9 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("TipoPago")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("TipoServicio")
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
+                    b.Property<int?>("TipoPartidaId")
+                        .IsRequired()
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdateDate")
                         .HasColumnType("datetime2");
@@ -5476,6 +5454,19 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CentroCuentaId");
+
+                    b.HasIndex("ConsecutivoFacId");
+
+                    b.HasIndex("PaqueteId");
+
+                    b.HasIndex("SubTipoCBId");
+
+                    b.HasIndex("TipoPartidaId");
+
+                    b.HasIndex(new[] { "Tipo", "Subtipo" }, "IxTipo_Subtipo")
+                        .IsUnique();
 
                     b.ToTable("SubTiposDocCC", "H2C");
                 });
@@ -17344,6 +17335,43 @@ namespace StatusERP.DataAccess.Migrations
                     b.Navigation("Pais");
 
                     b.Navigation("Vendedor");
+                });
+
+            modelBuilder.Entity("StatusERP.Entities.CC.Tablas.SubTipoDocCC", b =>
+                {
+                    b.HasOne("StatusERP.Entities.CG.Tablas.CentroCuenta", "centroCuenta")
+                        .WithMany()
+                        .HasForeignKey("CentroCuentaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("StatusERP.Entities.FA.Tablas.ConsecutivoFA", "consecutivoFA")
+                        .WithMany()
+                        .HasForeignKey("ConsecutivoFacId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.PaqueteContable", "paqueteContable")
+                        .WithMany()
+                        .HasForeignKey("PaqueteId");
+
+                    b.HasOne("StatusERP.Entities.CB.Tablas.SubTipoDocCB", "subTipoDocCB")
+                        .WithMany()
+                        .HasForeignKey("SubTipoCBId");
+
+                    b.HasOne("StatusERP.Entities.CG.Tablas.TipoPartida", "tipoPartida")
+                        .WithMany()
+                        .HasForeignKey("TipoPartidaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("centroCuenta");
+
+                    b.Navigation("consecutivoFA");
+
+                    b.Navigation("paqueteContable");
+
+                    b.Navigation("subTipoDocCB");
+
+                    b.Navigation("tipoPartida");
                 });
 
             modelBuilder.Entity("StatusERP.Entities.CG.Tablas.CentroCuenta", b =>
