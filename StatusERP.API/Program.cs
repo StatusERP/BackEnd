@@ -279,6 +279,9 @@ builder.Services.AddScoped<IArticuloPrecioRepository, ArticuloPrecioRepository>(
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
+builder.Services.AddScoped<IConsecutivoFARepository, ConsecutivoFARepository>();
+builder.Services.AddScoped<IConsecutivoFAService, ConsecutivoFAService>();
+
 builder.Services.AddScoped<IDireccEmbarqueRepository, DireccEmbarqueRepository>();
 builder.Services.AddScoped<IDireccEmbarqueService, DireccEmbarqueService>();
 

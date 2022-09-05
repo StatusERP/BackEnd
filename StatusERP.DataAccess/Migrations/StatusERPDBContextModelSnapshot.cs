@@ -12342,7 +12342,7 @@ namespace StatusERP.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("CodigoConsecutivo")
+                    b.Property<string>("CodConsecutivo")
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
@@ -12376,12 +12376,12 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<string>("DeCCRPT")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
 
                     b.Property<string>("DeConsRPT")
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
 
                     b.Property<string>("Descripcion")
                         .IsRequired()
@@ -12441,13 +12441,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
-                    b.Property<bool>("UsaEsquemaCajas")
-                        .HasColumnType("bit");
-
                     b.Property<string>("UsuarioUlt")
                         .IsRequired()
-                        .HasMaxLength(25)
-                        .HasColumnType("nvarchar(25)");
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.Property<string>("ValorConsecutivo")
                         .IsRequired()
@@ -12464,6 +12461,10 @@ namespace StatusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex(new[] { "CodConsecutivo" }, "IxCodConsecutivo")
+                        .IsUnique()
+                        .HasDatabaseName("IxCodConsecutivo1");
 
                     b.ToTable("ConsecutivosFA", "H2C");
                 });
