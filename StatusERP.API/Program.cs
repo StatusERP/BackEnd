@@ -297,6 +297,9 @@ builder.Services.AddScoped<IGlobalesFAService, GlobalesFAService>();
 builder.Services.AddScoped<INivelPrecioRepository, NivelPrecioRepository>();
 builder.Services.AddScoped<INivelPrecioService, NivelPrecioService>();
 
+builder.Services.AddScoped<IPedidoDetRepository, PedidoDetRepository>();
+builder.Services.AddScoped<IPedidoDetService, PedidoDetService>();
+
 builder.Services.AddScoped<IPedidoEncRepository, PedidoEncRepository>();
 builder.Services.AddScoped<IPedidoEncService, PedidoEncService>();
 
