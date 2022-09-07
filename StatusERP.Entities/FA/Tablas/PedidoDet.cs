@@ -1,79 +1,70 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using StatusERP.Entities.AS.Tablas;
+using StatusERP.Entities.CI.Tablas;
+using StatusERP.Entities.CG.Tablas;
 
 namespace StatusERP.Entities.FA.Tablas
 {
     [Table("PedidoDets", Schema = Constants.Conjunto)]
     public class PedidoDet:EntityBase
     {
-        [Required(ErrorMessage="El número de pedido es requerido." )]
-        [StringLength(50)]
-        public string Pedido { get; set; }
+        public int? PedidoEncId { get; set; }
+        [ForeignKey(nameof(PedidoEncId))]
+        public PedidoEnc pedidoEnc { get; set; }
 
-        [Required(ErrorMessage = "El número de línea de pedido es requerido.")]
         public Int16 PedidoLinea { get; set; }
 
-        [Required(ErrorMessage = "La bodega es requerida.")]
-        [StringLength(4)]
-        public string Bodega { get; set; }
+        public int? BodegaId { get; set; }
+        [ForeignKey(nameof(BodegaId))]
+        public Bodega bodega { get; set; }
 
-        [StringLength(15)]
-        public string ? Lote { get; set; }
+        public int? LoteId { get; set; }
+        [ForeignKey(nameof(LoteId))]
+        public Lote lote { get; set; }
 
-        [StringLength(8)]
-        public String ? Localizacion { get; set; }
+        public int? LocalizacionId { get; set; }
+        [ForeignKey(nameof(LocalizacionId))]
+        public Localizacion localizacion { get; set; }
 
-        [Required(ErrorMessage = "El código de artículo es requerido.")]
-        [StringLength(20)]
-        public string Articulo { get; set; }
+        public int ArticuloId { get; set; }
+        [ForeignKey(nameof(ArticuloId))]
+        public Articulo articulo { get; set; }
 
-        [Required(ErrorMessage = "El estado es requerido.")]
         [StringLength(1)]
         public string Estado { get; set; }
 
-        [Required(ErrorMessage = "La fecha de entrega.")]
         public DateTime FechaEntrega { get; set; }
 
-        [Required(ErrorMessage = "La línea de Usuario es requerida.")]
         public Int16 LineaUsuario { get; set; }
 
-        [Required(ErrorMessage = "El precio unitario es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal PrecioUnitario { get; set; }
 
-        [Required(ErrorMessage = "La cantidad pedida es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadPedida { get; set; }
 
-        [Required(ErrorMessage = "La cantidad a facturar es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadAFacturar { get; set; }
 
-        [Required(ErrorMessage = "La cantidad facturada es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadFacturada { get; set; }
 
-        [Required(ErrorMessage = "La cantidad reservada es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadReservada { get; set; }
 
-        [Required(ErrorMessage = "La cantidad bonificada es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadBonificada { get; set; }
 
-        [Required(ErrorMessage = "La cantidad cancelada es requerida.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal CantidadCancelada { get; set; }
 
-        [Required(ErrorMessage = "El tipo de descuento es requerido.")]
         [StringLength(1)]
         public string TipoDescuento { get; set; }
 
-        [Required(ErrorMessage = "El monto del descuento es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal MontoDescuento { get; set; }
 
-        [Required(ErrorMessage = "El porcentaje de descuento es requerido.")]
         [Column(TypeName = "decimal(28,8)")]
         public decimal PorcDescuento { get; set; }
 
@@ -84,25 +75,20 @@ namespace StatusERP.Entities.FA.Tablas
 
         public Int16 ? PedidoLineaBonif { get; set; }
 
-        [StringLength(6)]
-        public string ? UnidadDistribucio { get; set; }
+        public int? UnidadDistribucionId { get; set; }
+        [ForeignKey(nameof(UnidadDistribucionId))]
+        public UnidadMedida unidadDistribucion { get; set; }
 
-        [Required(ErrorMessage = "La fecha prometida es requerida.")]
         public DateTime FechaPrometida { get; set; }
 
         public int ? LineaOrdenCompra { get; set; }
 
-        [StringLength(25)]
-        public string ? CentroCosto { get; set; }
-
-        [StringLength(25)]
-        public string ? CuentaContable { get; set; }
+        public int? CentroCuentaId { get; set; }
+        [ForeignKey(nameof(CentroCuentaId))]
+        public CentroCuenta centroCuenta { get; set; }
 
         [StringLength(250)]
         public string ? RazonPerdida { get; set; }
-
-        [StringLength(10)]
-        public string ? TipoDesc { get; set; }
 
         [StringLength(4)]
         public string ? TipoImpuesto1 { get; set; }
@@ -143,8 +129,5 @@ namespace StatusERP.Entities.FA.Tablas
 
         [Column(TypeName = "decimal(28,8)")]
         public decimal ? PorcImp2Base { get; set; }
-
-        [StringLength(2)]
-        public string ? TipoDescuentoLinea { get; set; }
     }
 }

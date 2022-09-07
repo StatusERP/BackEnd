@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uBzEFBv6+jWIOx57kvszMJ7NAdBtSBuj/4NCLySHSZXkeIwoe4KUxdpHEit3e/gbtt05yRVk+QkO+I6ZlmrIWA==",
+  "dgSpecHash": "03vmCyV6Sba1FMYlYtet/BxiZlxFbHPR0s8sGa0/MFRsMHeU7oRACB78wdrpq8Tv/2X9m7KbW4iX7cnWAF9EXQ==",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\StatusERP\\BackEnd\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
+  "projectFilePath": "C:\\proyectos\\StatusERP\\Backend\\StatusERP.DataAccess\\StatusERP.DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.2\\microsoft.aspnetcore.cryptography.internal.6.0.2.nupkg.sha512",
