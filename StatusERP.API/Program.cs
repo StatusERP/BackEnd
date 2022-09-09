@@ -291,6 +291,9 @@ builder.Services.AddScoped<IEscalaBonifService, EscalaBonifService>();
 builder.Services.AddScoped<IEscalaDctoRepository, EscalaDctoRepository>();
 builder.Services.AddScoped<IEscalaDctoService, EscalaDctoService>();
 
+builder.Services.AddScoped<IFacturaEncRepository, FacturaEncRepository>();
+builder.Services.AddScoped<IFacturaEncService, FacturaEncService>();
+
 builder.Services.AddScoped<IGlobalesFARepository, GlobalesFARepository>();
 builder.Services.AddScoped<IGlobalesFAService, GlobalesFAService>();
 
